@@ -142,6 +142,10 @@ module.exports = function (grunt) {
       sprite: {
         files: 'images/icons/*.png',
         tasks: ['sprite', 'sass']
+      },
+      markup: {
+        files: 'dev-html/**/*.html',
+        tasks: ['htmlbuild']
       }
     },
 
