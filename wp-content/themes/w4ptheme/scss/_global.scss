@@ -1,0 +1,25 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+body {
+    min-width: 320px;
+    font: normal #{$fontSize-small}/#{$lineHeight-base} $font-base;
+    color: $black;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    @media #{$large-up} {
+        font-size: $fontSize-base;
+    }
+}
+a {
+    color: $black;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}

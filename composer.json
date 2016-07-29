@@ -1,0 +1,31 @@
+{
+  "name": "w4p/package",
+  "type": "project",
+  "config": {
+    "preferred-install": "dist"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
+  "require": {
+    "php": ">=5.5",
+    "composer/installers": "~1.0.12",
+    "vlucas/phpdotenv": "^2.0.1",
+    "johnpbloch/wordpress": ">4.5",
+    "oscarotero/env": "^1.0",
+    "roots/wp-password-bcrypt": "1.0.0",
+    "wpackagist-plugin/wordpress-seo": "*",
+    "wpackagist-plugin/types": ">2.0"
+  },
+  "extra": {
+    "installer-paths": {
+      "wp-content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+      "wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
+      "wp-content/themes/{$name}/": ["type:wordpress-theme"]
+    },
+    "wordpress-install-dir": "wp"
+  }
+}
