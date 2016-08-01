@@ -46,7 +46,6 @@ module.exports = function (grunt) {
       vendor: {
         files: {
           'js/vendor/foundation.js': [
-            'bower_components/jquery/dist/jquery.min.js',
             'bower_components/foundation-sites/js/foundation.core.js'
             // other components goes here
             // 'bower_components/foundation-sites/js/
@@ -61,7 +60,12 @@ module.exports = function (grunt) {
       },
       vendor: {
         files: {
-          'js/vendor.min.js': ['js/vendor/foundation.js']
+          'js/vendor.min.js': [
+            'bower_components/jquery/dist/jquery.min.js',
+            'js/vendor/jquery-ui.min.js',
+            'js/vendor/jquery.selectBoxIt.min.js',
+            'js/vendor/foundation.js'
+          ]
         }
       },
       custom: {
