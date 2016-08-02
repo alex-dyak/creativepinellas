@@ -162,6 +162,7 @@ module.exports = function (grunt) {
               'css/**',
               'js/**',
               'images/**',
+              'favicons/**',
               'fonts/**',
               'scss/**',
               'Gruntfile.js',
