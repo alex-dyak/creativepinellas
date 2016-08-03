@@ -1,0 +1,23 @@
+.socialList {
+    li {
+        margin-left: 2px;
+    }
+    .svgIcon {
+        width: 20px;
+        height: 20px;
+    }
+    a {
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        border: 1px solid $white;
+        border-radius: 50%;
+        background: $white;
+        color: $sky;
+        transition: all .2s ease-out;
+        &:hover {
+            background: none;
+            color: $white;
+        }
+    }
+}

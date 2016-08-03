@@ -1,3 +1,8 @@
-jQuery(function($) {
-  $('select').selectBoxIt();
-});
+(function () {
+  jQuery(function($) {
+    $('select').selectBoxIt();
+
+    $(document).foundation();
+
+  });
+})();
