@@ -31,7 +31,86 @@
 <body>
 <div class="off-canvas-wrapper">
     <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-        <div class="off-canvas position-right" id="offCanvas" data-off-canvas data-position="right">
+        <div class="off-canvas position-right" id="offCanvas" data-off-canvas data-position="right" data-auto-focus="false">
+<nav class="offCanvas-navigation">
+    <ul class="siteNavigation siteNavigation--mobile u-list--plain js-mobileNavigation">
+        <li class="has-subNav js-hasSubNav">
+            <a href="#">
+                About
+                <span class="siteNavigation-subNavToggle js-subNavToggle"></span>
+            </a>
+            <ul class="u-list--plain js-subNav">
+                <li><a href="#">Our Team</a></li>
+                <li><a href="#">Partnership</a></li>
+            </ul>
+        </li>
+        <li class="has-subNav js-hasSubNav">
+            <a href="#">For the arts community
+                <span class="siteNavigation-subNavToggle js-subNavToggle"></span>
+            </a>
+            <ul class="u-list--plain js-subNav">
+                <li><a href="#">Our Grants</a></li>
+                <li><a href="#">Grant Recipients</a></li>
+                <li><a href="#">Learning Center</a></li>
+                <li><a href="#">Events for Artists</a></li>
+            </ul>
+        </li>
+        <li class="has-subNav js-hasSubNav">
+            <a href="#">Explore the arts
+                <span class="siteNavigation-subNavToggle js-subNavToggle"></span>
+            </a>
+            <ul class="u-list--plain js-subNav">
+                <li><a href="#">Events</a></li>
+                <li><a href="#">Venue Directory</a></li>
+                <li><a href="#">Local Artists Directory</a></li>
+            </ul>
+        </li>
+        <li class="has-subNav js-hasSubNav">
+            <a href="#">Our journal
+                <span class="siteNavigation-subNavToggle js-subNavToggle"></span>
+            </a>
+            <ul class="u-list--plain js-subNav">
+                <li><a href="#">Learning Center</a></li>
+                <li><a href="#">Visual Arts</a></li>
+                <li><a href="#">Music</a></li>
+                <li><a href="#">Performing Arts</a></li>
+                <li><a href="#">Literature</a></li>
+                <li><a href="#">News</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Contacts
+                <!-- TODO: .siteNavigation-subNavToggle could be outputted in every item, if there is no subNav it wil be hidden via css -->
+                <span class="siteNavigation-subNavToggle js-subNavToggle"></span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<div class="offCanvas-social">
+    <ul class="socialList u-list--plain u-list--inline">
+        <li>
+            <a href="#" target="_blank" title="Follow us on Twitter">
+                <svg class='svgIcon'>
+                    <use xlink:href='#twitter'/>
+                </svg>
+            </a>
+        </li>
+        <li>
+            <a href="#" target="_blank" title="Follow us on Facebook">
+                <svg class='svgIcon'>
+                    <use xlink:href='#facebook'/>
+                </svg>
+            </a>
+        </li>
+        <li>
+            <a href="#" target="_blank" title="Follow us on Youtube">
+                <svg class='svgIcon'>
+                    <use xlink:href='#youtube'/>
+                </svg>
+            </a>
+        </li>
+    </ul>
+</div>
 
         </div>
         <div class="off-canvas-content" data-off-canvas-content>
