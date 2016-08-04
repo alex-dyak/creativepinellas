@@ -1,7 +1,10 @@
 .siteNavigation {
     & > li {
         position: relative;
-        margin-left: 10px;
+        margin-left: 5px;
+        font-size: $fontSize-navigation;
+        font-weight: $fontWeight-normal;
+        line-height: $lineHeight-tighter;
         vertical-align: top;
         text-transform: uppercase;
         &:first-child {
@@ -54,7 +57,6 @@
         background: $sky--dark;
         a {
             padding: 5px 15px;
-            line-height: $lineHeight-tight;
             text-decoration: none;
             &:hover {
                 background: $sky--darker;
