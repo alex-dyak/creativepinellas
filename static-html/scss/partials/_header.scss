@@ -8,10 +8,29 @@
 }
 .siteHeader-top {
     padding: 20px 0;
+    @include breakpoint(large down) {
+        display: table;
+        width: 100%;
+
+        & > .column {
+            display: table-cell;
+            vertical-align: middle;
+            float: none;
+            &:last-child:not(:first-child) {
+                float: none;
+            }
+        }
+    }
 }
 .siteHeader-social,
 .siteHeader-topNav {
     display: inline-block;
     margin-left: 4px;
     vertical-align: middle;
+}
+.siteHeader-topNav {
+    margin-right: 4px;
+    @include breakpoint(large) {
+        margin-right: 0;
+    }
 }

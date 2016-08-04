@@ -1,0 +1,58 @@
+.mobileNavToggle {
+    margin: 0;
+    padding: 4px 7px 5px;
+    font-size: 8px;
+    line-height: 10px;
+    vertical-align: middle;
+    border-color: $white;
+    color: $white;
+    &:before {
+        content: attr(data-close);
+    }
+    &:hover {
+        border-color: $white;
+        background: $white;
+        color: $sky;
+        .mobileNavToggle-hamburger {
+            span,
+            &:before,
+            &:after {
+                background: $sky;
+            }
+        }
+    }
+    &.is-open {
+        &:before {
+            content: attr(data-open);
+        }
+        .mobileNavToggle-hamburger {
+            span {
+                opacity: 0;
+            }
+            &:before {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+            &:after {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+        }
+    }
+}
+.mobileNavToggle-hamburger {
+    display: block;
+    margin-top: 1px;
+    span,
+    &:before,
+    &:after {
+        content: "";
+        display: block;
+        height: 5px;
+        margin-bottom: 4px;
+        border-radius: 2px;
+        background: $white;
+        transition: all .3s;
+    }
+    &:after {
+        margin-bottom: 0;
+    }
+}
