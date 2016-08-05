@@ -136,19 +136,27 @@ module.exports = function (grunt) {
     watch: {
       sass: {
         files: 'scss/**/*.scss',
-        tasks: ['sass', 'postcss']
+        tasks: ['sass', 'postcss', 'copy:styles']
       },
       jsVendor: {
         files: 'js/vendor/**/*.js',
-        tasks: ['babel', 'uglify:vendor']
+        tasks: ['babel', 'uglify:vendor', 'copy:styles']
       },
       jsCustom: {
         files: 'js/custom/**/*.js',
-        tasks: ['uglify:custom']
+        tasks: ['uglify:custom', 'copy:styles']
       },
-      sprite: {
-        files: 'images/icons/*.png',
-        tasks: ['sprite', 'sass']
+      svg: {
+        files: 'images/svgs/*.svg',
+        tasks: ['svgstore', 'svginjector', 'copy:media']
+      },
+      favicons: {
+        files: 'favicons/*',
+        tasks: ['copy:media']
+      },
+      system: {
+        files: ['Gruntfile.js', 'package.json', 'bower.json'],
+        tasks: ['copy:system']
       },
       markup: {
         files: 'dev-html/**/*.html',
@@ -157,6 +165,53 @@ module.exports = function (grunt) {
     },
 
     copy: {
+      options: {
+        expand: true
+      },
+      styles: {
+        files: [
+          {
+            src: [
+              'css/**',
+              'scss/**'
+            ],
+            dest: '../wp-content/themes/w4ptheme/'
+          }
+        ]
+      },
+      js: {
+        files: [
+          {
+            src: [
+              'js/**'
+            ],
+            dest: '../wp-content/themes/w4ptheme/'
+          }
+        ]
+      },
+      media: {
+        files: [
+          {
+            src: [
+              'images/**',
+              'favicons/**'
+            ],
+            dest: '../wp-content/themes/w4ptheme/'
+          }
+        ]
+      },
+      system: {
+        files: [
+          {
+            src: [
+              'Gruntfile.js',
+              'package.json',
+              'bower.json'
+            ],
+            dest: '../wp-content/themes/w4ptheme/'
+          }
+        ]
+      },
       build: {
         files: [
           {
