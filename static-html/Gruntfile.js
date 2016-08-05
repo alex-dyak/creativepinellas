@@ -125,6 +125,7 @@ module.exports = function (grunt) {
               scripts: '<%= fixturesPath %>/services/scripts.html'
             },
             partials: {
+              footer: '<%= fixturesPath %>/partials/footer.html',
               header: '<%= fixturesPath %>/partials/header.html',
               offCanvas: '<%= fixturesPath %>/partials/off-canvas.html'
             }
