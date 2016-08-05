@@ -115,16 +115,30 @@ module.exports = function (grunt) {
 
     fixturesPath: 'dev-html',
     htmlbuild: {
+      partialsDev: {
+        src: '<%= fixturesPath %>/partials-dev/*.html',
+        dest: '<%= fixturesPath %>/partials/',
+        options: {
+          beautify: true,
+          sections: {
+            blocks: {
+              socialList: '<%= fixturesPath %>/blocks/social-list.html'
+            }
+          }
+        }
+      },
       dist: {
         src: '<%= fixturesPath %>/pages/*.html',
         dest: '',
         options: {
+          beautify: true,
           sections: {
             services: {
               head: '<%= fixturesPath %>/services/head.html',
               scripts: '<%= fixturesPath %>/services/scripts.html'
             },
             partials: {
+              footer: '<%= fixturesPath %>/partials/footer.html',
               header: '<%= fixturesPath %>/partials/header.html',
               offCanvas: '<%= fixturesPath %>/partials/off-canvas.html'
             }
@@ -160,7 +174,7 @@ module.exports = function (grunt) {
       },
       markup: {
         files: 'dev-html/**/*.html',
-        tasks: ['htmlbuild']
+        tasks: ['htmlbuild:partialsDev', 'htmlbuild:dist']
       }
     },
 
