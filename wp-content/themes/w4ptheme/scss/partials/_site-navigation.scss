@@ -1,0 +1,124 @@
+.siteNavigation {
+    & > li {
+        position: relative;
+        margin-left: 5px;
+        font-size: $fontSize-navigation;
+        font-weight: $fontWeight-normal;
+        line-height: $lineHeight-tighter;
+        vertical-align: top;
+        text-transform: uppercase;
+        &:first-child {
+            margin-left: 0;
+        }
+        li {
+            text-transform: none;
+            a {
+                border-bottom: none;
+            }
+        }
+    }
+    a {
+        display: block;
+        border-bottom: 1px solid transparent;
+        color: $white;
+        transition: all .2s ease-out;
+        &:hover {
+            text-decoration: none;
+            border-color: $white;
+        }
+    }
+}
+.siteNavigation--header {
+    display: inline-block;
+    & > li {
+        padding: 5px;
+        transition: all .2s ease-out;
+        &.has-subNav:hover {
+            background: $sky--dark;
+            ul {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        a {
+            border-bottom: 1px solid transparent;
+            &:hover {
+                text-decoration: none;
+                border-color: $white;
+            }
+        }
+    }
+    ul {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        left: 0;
+        min-width: 100%;
+        background: $sky--dark;
+        a {
+            padding: 5px 15px;
+            text-decoration: none;
+            &:hover {
+                background: $sky--darker;
+            }
+        }
+    }
+}
+.siteNavigation--mobile {
+    a {
+        position: relative;
+        &:hover {
+            border-color: $sky--dark;
+        }
+    }
+    & > li {
+        margin-left: 0;
+        &> a {
+            padding: 15px 0 15px 26px;
+            border-bottom: 1px solid $sky--dark;
+        }
+    }
+    ul {
+        display: none;
+        padding: 15px 0;
+        background: $sky--dark;
+        a {
+            padding: 4px 0 4px 55px;
+        }
+    }
+    .siteNavigation-subNavToggle {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 40px;
+        height: 100%;
+        border-top: 1px solid $sky;
+        background: $sky--dark;
+        &:before {
+            content: "";
+            display: block;
+            position: relative;
+            top: 50%;
+            width: 5px;
+            height: 5px;
+            margin: -3px auto 0;
+            border-right: 1px solid $white;
+            border-bottom: 1px solid $white;
+            transform: rotate(45deg);
+        }
+    }
+    .has-subNav {
+        .siteNavigation-subNavToggle {
+            display: block;
+        }
+        & > a {
+            padding-right: 50px;
+        }
+    }
+    .is-open {
+        & > a {
+            border-bottom-color: $sky;
+        }
+    }
+}
