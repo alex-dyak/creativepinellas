@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title></title>
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="favicons/apple-touch-icon-57x57.png" />
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="favicons/apple-touch-icon-114x114.png" />
@@ -18,7 +19,7 @@
     <link rel="icon" type="image/png" href="favicons/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="favicons/favicon-16x16.png" sizes="16x16" />
     <link rel="icon" type="image/png" href="favicons/favicon-128.png" sizes="128x128" />
-    <meta name="application-name" content="&nbsp;"/>
+    <meta name="application-name" content="&nbsp;" />
     <meta name="msapplication-TileColor" content="#FFFFFF" />
     <meta name="msapplication-TileImage" content="favicons/mstile-144x144.png" />
     <meta name="msapplication-square70x70logo" content="favicons/mstile-70x70.png" />
@@ -28,192 +29,259 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/application.css">
 </head>
+
 <body>
-<div class="off-canvas-wrapper">
-    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-        <div class="off-canvas position-right" id="offCanvas" data-off-canvas data-position="right" data-auto-focus="false">
-<nav class="offCanvas-navigation">
-    <ul class="siteNavigation siteNavigation--mobile u-list--plain js-mobileNavigation">
-        <li class="has-subNav js-hasSubNav">
-            <a href="#">
+    <div class="off-canvas-wrapper">
+        <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+            <div class="off-canvas position-right" id="offCanvas" data-off-canvas data-position="right" data-auto-focus="false">
+                <nav class="offCanvas-navigation">
+                    <ul class="siteNavigation siteNavigation--mobile u-list--plain js-mobileNavigation">
+                        <li class="has-subNav js-hasSubNav">
+                            <a href="#">
                 About
                 <span class="siteNavigation-subNavToggle js-subNavToggle"></span>
             </a>
-            <ul class="u-list--plain js-subNav">
-                <li><a href="#">Our Team</a></li>
-                <li><a href="#">Partnership</a></li>
-            </ul>
-        </li>
-        <li class="has-subNav js-hasSubNav">
-            <a href="#">For the arts community
+                            <ul class="u-list--plain js-subNav">
+                                <li><a href="#">Our Team</a></li>
+                                <li><a href="#">Partnership</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-subNav js-hasSubNav">
+                            <a href="#">For the arts community
                 <span class="siteNavigation-subNavToggle js-subNavToggle"></span>
             </a>
-            <ul class="u-list--plain js-subNav">
-                <li><a href="#">Our Grants</a></li>
-                <li><a href="#">Grant Recipients</a></li>
-                <li><a href="#">Learning Center</a></li>
-                <li><a href="#">Events for Artists</a></li>
-            </ul>
-        </li>
-        <li class="has-subNav js-hasSubNav">
-            <a href="#">Explore the arts
+                            <ul class="u-list--plain js-subNav">
+                                <li><a href="#">Our Grants</a></li>
+                                <li><a href="#">Grant Recipients</a></li>
+                                <li><a href="#">Learning Center</a></li>
+                                <li><a href="#">Events for Artists</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-subNav js-hasSubNav">
+                            <a href="#">Explore the arts
                 <span class="siteNavigation-subNavToggle js-subNavToggle"></span>
             </a>
-            <ul class="u-list--plain js-subNav">
-                <li><a href="#">Events</a></li>
-                <li><a href="#">Venue Directory</a></li>
-                <li><a href="#">Local Artists Directory</a></li>
-            </ul>
-        </li>
-        <li class="has-subNav js-hasSubNav">
-            <a href="#">Our journal
+                            <ul class="u-list--plain js-subNav">
+                                <li><a href="#">Events</a></li>
+                                <li><a href="#">Venue Directory</a></li>
+                                <li><a href="#">Local Artists Directory</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-subNav js-hasSubNav">
+                            <a href="#">Our journal
                 <span class="siteNavigation-subNavToggle js-subNavToggle"></span>
             </a>
-            <ul class="u-list--plain js-subNav">
-                <li><a href="#">Learning Center</a></li>
-                <li><a href="#">Visual Arts</a></li>
-                <li><a href="#">Music</a></li>
-                <li><a href="#">Performing Arts</a></li>
-                <li><a href="#">Literature</a></li>
-                <li><a href="#">News</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="#">Contacts
+                            <ul class="u-list--plain js-subNav">
+                                <li><a href="#">Learning Center</a></li>
+                                <li><a href="#">Visual Arts</a></li>
+                                <li><a href="#">Music</a></li>
+                                <li><a href="#">Performing Arts</a></li>
+                                <li><a href="#">Literature</a></li>
+                                <li><a href="#">News</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Contacts
                 <!-- TODO: .siteNavigation-subNavToggle could be outputted in every item, if there is no subNav it wil be hidden via css -->
                 <span class="siteNavigation-subNavToggle js-subNavToggle"></span>
             </a>
-        </li>
-    </ul>
-</nav>
-<div class="offCanvas-social">
-    <ul class="socialList u-list--plain u-list--inline">
-        <li>
-            <a href="#" target="_blank" title="Follow us on Twitter">
-                <svg class='svgIcon'>
-                    <use xlink:href='#twitter'/>
-                </svg>
-            </a>
-        </li>
-        <li>
-            <a href="#" target="_blank" title="Follow us on Facebook">
-                <svg class='svgIcon'>
-                    <use xlink:href='#facebook'/>
-                </svg>
-            </a>
-        </li>
-        <li>
-            <a href="#" target="_blank" title="Follow us on Youtube">
-                <svg class='svgIcon'>
-                    <use xlink:href='#youtube'/>
-                </svg>
-            </a>
-        </li>
-    </ul>
-</div>
-
-        </div>
-        <div class="off-canvas-content" data-off-canvas-content>
-<header class="siteHeader">
-    <section class="row siteHeader-top">
-        <div class="small-9 medium-3 column">
-            <div class="siteHeader-logo">
-                <a href="#" title="Creative Pinellas">
-                    <svg class='svgIcon svgIcon--logo'>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="offCanvas-social">
+                    <ul class="socialList u-list--plain u-list--inline test5">
+                        <li>
+                            <a href="#" target="_blank" title="Follow us on Twitter">
+                                <svg class='svgIcon'>
+                <use xlink:href='#twitter'/>
+            </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank" title="Follow us on Facebook">
+                                <svg class='svgIcon'>
+                <use xlink:href='#facebook'/>
+            </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank" title="Follow us on Youtube">
+                                <svg class='svgIcon'>
+                <use xlink:href='#youtube'/>
+            </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="off-canvas-content" data-off-canvas-content>
+                <header class="siteHeader">
+                    <section class="row siteHeader-top">
+                        <div class="small-9 medium-3 column">
+                            <div class="siteHeader-logo">
+                                <a href="#" title="Creative Pinellas">
+                                    <svg class='svgIcon svgIcon--logo'>
                         <use xlink:href='#logoFull'/>
                     </svg>
-                </a>
-            </div>
-        </div>
-        <div class="small-3 medium-9 column u-text--right">
-            <div class="show-for-medium siteHeader-social">
-                <ul class="socialList u-list--plain u-list--inline">
-                    <li>
-                        <a href="#" target="_blank" title="Follow us on Twitter">
-                            <svg class='svgIcon'>
-                                <use xlink:href='#twitter'/>
-                            </svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank" title="Follow us on Facebook">
-                            <svg class='svgIcon'>
-                                <use xlink:href='#facebook'/>
-                            </svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank" title="Follow us on Youtube">
-                            <svg class='svgIcon'>
-                                <use xlink:href='#youtube'/>
-                            </svg>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <nav class="show-for-medium siteHeader-topNav">
-                <ul class="siteNavigation u-list--plain u-list--inline">
-                    <li>
-                        <a href="#">Contacts</a>
-                    </li>
-                </ul>
-            </nav>
-            <nav class="show-for-large">
-                <ul class="siteNavigation siteNavigation--header u-list--plain u-list--inline u-text--left">
-                    <li class="has-subNav">
-                        <a href="#">About</a>
-                        <ul class="u-list--plain">
-                            <li><a href="#">Our Team</a></li>
-                            <li><a href="#">Partnership</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-subNav">
-                        <a href="#">For the arts community</a>
-                        <ul class="u-list--plain">
-                            <li><a href="#">Oure Grants</a></li>
-                            <li><a href="#">Grant Recipients</a></li>
-                            <li><a href="#">Learning Center</a></li>
-                            <li><a href="#">Events for Artists</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-subNav">
-                        <a href="#">Explore the arts</a>
-                        <ul class="u-list--plain">
-                            <li><a href="#">Events</a></li>
-                            <li><a href="#">Venue Directory</a></li>
-                            <li><a href="#">Local Artists Directory</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-subNav">
-                        <a href="#">Our journal</a>
-                        <ul class="u-list--plain">
-                            <li><a href="#">Learning Center</a></li>
-                            <li><a href="#">Visual Arts</a></li>
-                            <li><a href="#">Music</a></li>
-                            <li><a href="#">Performing Arts</a></li>
-                            <li><a href="#">Literature</a></li>
-                            <li><a href="#">News</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-            <button type="button" class="hide-for-large mobileNavToggle js-mobileNavToggle" data-toggle="offCanvas" data-open="CLOSE" data-close="MENU">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="small-3 medium-9 column u-text--right">
+                            <div class="show-for-medium siteHeader-social">
+                                <ul class="socialList u-list--plain u-list--inline test5">
+                                    <li>
+                                        <a href="#" target="_blank" title="Follow us on Twitter">
+                                            <svg class='svgIcon'>
+                <use xlink:href='#twitter'/>
+            </svg>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank" title="Follow us on Facebook">
+                                            <svg class='svgIcon'>
+                <use xlink:href='#facebook'/>
+            </svg>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank" title="Follow us on Youtube">
+                                            <svg class='svgIcon'>
+                <use xlink:href='#youtube'/>
+            </svg>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <nav class="show-for-medium siteHeader-topNav">
+                                <ul class="siteNavigation u-list--plain u-list--inline">
+                                    <li>
+                                        <a href="#">Contacts</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <nav class="show-for-large">
+                                <ul class="siteNavigation siteNavigation--header u-list--plain u-list--inline u-text--left">
+                                    <li class="has-subNav">
+                                        <a href="#">About</a>
+                                        <ul class="u-list--plain">
+                                            <li><a href="#">Our Team</a></li>
+                                            <li><a href="#">Partnership</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-subNav">
+                                        <a href="#">For the arts community</a>
+                                        <ul class="u-list--plain">
+                                            <li><a href="#">Oure Grants</a></li>
+                                            <li><a href="#">Grant Recipients</a></li>
+                                            <li><a href="#">Learning Center</a></li>
+                                            <li><a href="#">Events for Artists</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-subNav">
+                                        <a href="#">Explore the arts</a>
+                                        <ul class="u-list--plain">
+                                            <li><a href="#">Events</a></li>
+                                            <li><a href="#">Venue Directory</a></li>
+                                            <li><a href="#">Local Artists Directory</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-subNav">
+                                        <a href="#">Our journal</a>
+                                        <ul class="u-list--plain">
+                                            <li><a href="#">Learning Center</a></li>
+                                            <li><a href="#">Visual Arts</a></li>
+                                            <li><a href="#">Music</a></li>
+                                            <li><a href="#">Performing Arts</a></li>
+                                            <li><a href="#">Literature</a></li>
+                                            <li><a href="#">News</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <button type="button" class="hide-for-large mobileNavToggle js-mobileNavToggle" data-toggle="offCanvas" data-open="CLOSE" data-close="MENU">
                 <span class="mobileNavToggle-hamburger"><span></span></span>
             </button>
-        </div>
-    </section>
-</header>
-
-
+                        </div>
+                    </section>
+                </header>
+                <footer class="siteFooter">
+                    <div class="row">
+                        <div class="large-3 column">
+                            <div class="siteFooter-logo">
+                                <a href="#" title="Creative Pinellas">
+                                    <svg class='svgIcon svgIcon--logo'>
+                        <use xlink:href='#logoFull'/>
+                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="medium-9 large-6 column">
+                            <nav class="show-for-large siteNavigation siteNavigation--footer">
+                                <ul class="u-list--plain u-list--inline">
+                                    <li>
+                                        <a href="#">For the arts community</a>
+                                        <ul class="u-list--plain">
+                                            <li><a href="#">Oure Grants</a></li>
+                                            <li><a href="#">Grant Recipients</a></li>
+                                            <li><a href="#">Learning Center</a></li>
+                                            <li><a href="#">Events for Artists</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">Explore the arts</a>
+                                        <ul class="u-list--plain">
+                                            <li><a href="#">Events</a></li>
+                                            <li><a href="#">Venue Directory</a></li>
+                                            <li><a href="#">Local Artists Directory</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">New Releases</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="medium-3 column">
+                            <ul class="socialList u-list--plain u-list--inline test5">
+                                <li>
+                                    <a href="#" target="_blank" title="Follow us on Twitter">
+                                        <svg class='svgIcon'>
+                <use xlink:href='#twitter'/>
+            </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank" title="Follow us on Facebook">
+                                        <svg class='svgIcon'>
+                <use xlink:href='#facebook'/>
+            </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank" title="Follow us on Youtube">
+                                        <svg class='svgIcon'>
+                <use xlink:href='#youtube'/>
+            </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </footer>
+            </div>
         </div>
     </div>
-</div>
 
 
-<div id="svgPlaceholder"></div>
-<script src="https://use.typekit.net/gpb0qdz.js"></script>
-<script>try{Typekit.load({ async: true });}catch(e){}</script>
-<script src="js/vendor.min.js"></script>
-<script src="js/app.min.js"></script>
+    <div id="svgPlaceholder"></div>
+    <script src="https://use.typekit.net/gpb0qdz.js"></script>
+    <script>
+        try {
+            Typekit.load({
+                async: true
+            });
+        } catch (e) {}
+    </script>
+    <script src="js/vendor.min.js"></script>
+    <script src="js/app.min.js"></script>
 </body>
+
 </html>
