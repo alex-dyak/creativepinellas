@@ -18,7 +18,8 @@
     "oscarotero/env": "^1.0",
     "roots/wp-password-bcrypt": "1.0.0",
     "wpackagist-plugin/wordpress-seo": "*",
-    "wpackagist-plugin/types": ">2.0"
+    "wpackagist-plugin/types": ">2.0",
+    "wpackagist-plugin/addthis": ">5.3"
   },
   "extra": {
     "installer-paths": {
