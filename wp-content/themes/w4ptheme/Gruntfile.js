@@ -140,11 +140,11 @@ module.exports = function (grunt) {
       },
       jsVendor: {
         files: 'js/vendor/**/*.js',
-        tasks: ['babel', 'uglify:vendor', 'copy:styles']
+        tasks: ['babel', 'uglify:vendor', 'copy:js']
       },
       jsCustom: {
         files: 'js/custom/**/*.js',
-        tasks: ['uglify:custom', 'copy:styles']
+        tasks: ['uglify:custom', 'copy:js']
       },
       svg: {
         files: 'images/svgs/*.svg',
