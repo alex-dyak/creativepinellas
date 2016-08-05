@@ -71,3 +71,10 @@ ol {
     font-size: $fontSize-small;
     color: $charcoal;
 }
+.svgIcon {
+    fill: currentColor;
+}
+.svgIcon--logo {
+    width: 164px;
+    height: 65px;
+}

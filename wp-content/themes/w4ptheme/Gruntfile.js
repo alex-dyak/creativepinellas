@@ -45,11 +45,13 @@ module.exports = function (grunt) {
       },
       vendor: {
         files: {
-          'js/vendor/foundation.js': [
-            'bower_components/foundation-sites/js/foundation.core.js'
-            // other components goes here
-            // 'bower_components/foundation-sites/js/
-          ]
+          'js/vendor/foundation/foundation.core.js': 'bower_components/foundation-sites/js/foundation.core.js',
+          'js/vendor/foundation/foundation.offcanvas.js': 'bower_components/foundation-sites/js/foundation.offcanvas.js',
+          'js/vendor/foundation/foundation.util.mediaQuery.js': 'bower_components/foundation-sites/js/foundation.util.mediaQuery.js',
+          'js/vendor/foundation/foundation.util.triggers.js': 'bower_components/foundation-sites/js/foundation.util.triggers.js',
+          'js/vendor/foundation/foundation.util.motion.js': 'bower_components/foundation-sites/js/foundation.util.motion.js'
+          // other components goes here
+          // 'bower_components/foundation-sites/js/
         }
       }
     },
@@ -64,7 +66,7 @@ module.exports = function (grunt) {
             'bower_components/jquery/dist/jquery.min.js',
             'js/vendor/jquery-ui.min.js',
             'js/vendor/jquery.selectBoxIt.min.js',
-            'js/vendor/foundation.js'
+            'js/vendor/foundation/*.js'
           ]
         }
       },
@@ -123,7 +125,8 @@ module.exports = function (grunt) {
               scripts: '<%= fixturesPath %>/services/scripts.html'
             },
             partials: {
-              header: '<%= fixturesPath %>/partials/header.html'
+              header: '<%= fixturesPath %>/partials/header.html',
+              offCanvas: '<%= fixturesPath %>/partials/off-canvas.html'
             }
           }
         }
