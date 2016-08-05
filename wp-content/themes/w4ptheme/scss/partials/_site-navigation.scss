@@ -122,3 +122,25 @@
         }
     }
 }
+.siteNavigation--footer {
+    text-align: center;
+    @include breakpoint(medium) {
+        text-align: left;
+    }
+    & > li {
+        margin-left: 15px;
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+    ul {
+        display: none;
+        margin-top: 15px;
+        @include breakpoint(medium) {
+            display: block;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    }
+}
