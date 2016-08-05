@@ -123,10 +123,6 @@
     }
 }
 .siteNavigation--footer {
-    text-align: center;
-    @include breakpoint(medium) {
-        text-align: left;
-    }
     & > li {
         margin-left: 15px;
         &:first-child {

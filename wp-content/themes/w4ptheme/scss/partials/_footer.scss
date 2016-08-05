@@ -1,5 +1,68 @@
 .siteFooter {
     position: relative;
     z-index: 2;
+    padding: 25px 0 30px;
+    text-align: center;
     background: $sky;
+    color: $white;
+    @include breakpoint(medium) {
+        padding-top: 35px;
+        padding-bottom: 20px;
+        text-align: left;
+    }
+    @include breakpoint(large) {
+        padding-top: 65px;
+        padding-bottom: 25px;
+    }
+    & > .row {
+        @include breakpoint(medium) {
+            width: 615px;
+        }
+        @include breakpoint(large) {
+            width: $global-width;
+        }
+    }
+}
+.siteFooter-blockTitle {
+    margin-bottom: 6px;
+    font-size: $fontSize-navigation;
+    font-weight: $fontWeight-normal;
+    line-height: $lineHeight-tighter;
+    text-transform: uppercase;
+}
+.siteFooter-logo {
+    padding-bottom: 10px;
+    @include breakpoint(large) {
+        padding-bottom: 0;
+    }
+    .svgIcon--logo {
+        width: 220px;
+        height: 80px;
+    }
+}
+.siteFooter-nav {
+    padding-bottom: 20px;
+    @include breakpoint(medium) {
+        padding-bottom: 0;
+        border-right: 1px solid $white--40;
+    }
+}
+.siteFooter-social {
+    .siteFooter-blockTitle {
+        display: none;
+        @include breakpoint(medium) {
+            display: block;
+            padding-left: 22px;
+        }
+    }
+    .socialList {
+        display: inline-block;
+        padding-bottom: 13px;
+        border-bottom: 1px solid $white--40;
+        @include breakpoint(medium) {
+            padding-left: 20px;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+    }
 }
