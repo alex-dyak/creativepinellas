@@ -1,20 +1,21 @@
 .siteFooter {
     position: relative;
     z-index: 2;
-    padding: 25px 0 30px;
+    padding: 25px 0 10px;
     text-align: center;
     background: $sky;
     color: $white;
     @include breakpoint(medium) {
         padding-top: 35px;
-        padding-bottom: 20px;
+        padding-bottom: 0;
         text-align: left;
     }
     @include breakpoint(large) {
         padding-top: 65px;
-        padding-bottom: 25px;
+        padding-bottom: 5px;
     }
     & > .row {
+        padding-bottom: 20px;
         @include breakpoint(medium) {
             width: 615px;
         }
@@ -65,4 +66,20 @@
             border-bottom: none;
         }
     }
+}
+.siteFooter-partnerLogos {
+    @include breakpoint(medium) {
+        text-align: right;
+    }
+    img {
+        max-width: 120px;
+        margin: 0 10px;
+        @include breakpoint(medium) {
+            max-width: 150px;
+        }
+    }
+}
+.siteFooter-copyright {
+    text-align: center;
+    font-size: $fontSize-xsmall;
 }

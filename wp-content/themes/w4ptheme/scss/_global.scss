@@ -28,6 +28,9 @@ img {
 }
 p {
     margin: 0 0 1.421rem;
+    &:last-child {
+        margin-bottom: 0;
+    }
 }
 h1 {
     margin: 0 0 27px;
