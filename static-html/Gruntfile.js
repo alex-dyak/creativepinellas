@@ -146,9 +146,9 @@ module.exports = function (grunt) {
         files: 'js/custom/**/*.js',
         tasks: ['uglify:custom']
       },
-      sprite: {
-        files: 'images/icons/*.png',
-        tasks: ['sprite', 'sass']
+      svg: {
+        files: 'images/svgs/*.svg',
+        tasks: ['svgstore', 'svginjector']
       },
       markup: {
         files: 'dev-html/**/*.html',
