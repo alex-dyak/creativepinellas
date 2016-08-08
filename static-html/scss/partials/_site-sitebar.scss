@@ -1,0 +1,16 @@
+.siteSidebar-inner {
+    @include breakpoint(medium) {
+        float: right;
+        max-width: 220px;
+    }
+}
+.siteSidebar-item {
+    margin-bottom: 30px;
+    padding: 10px 10px 30px;
+    border-bottom: 1px solid $black;
+}
+.siteSidebar-item--sky {
+    border-bottom: none;
+    background: url("../images/sky-background.jpg") $sky no-repeat 0 0;
+    color: $white;
+}
