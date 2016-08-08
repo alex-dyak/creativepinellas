@@ -1,10 +1,11 @@
 /*TODO: Temporary style */
 .off-canvas-wrapper-inner {
-    height: 700px;
+    //height: 700px;
 }
 /*TODO: End Temporary style */
 .siteHeader {
     background-color: $sky;
+    overflow: hidden;
 }
 .siteHeader-top {
     position: relative;
@@ -31,6 +32,9 @@
         height: 760px;
         background: url("../images/header-background-image.svg") 0 0 no-repeat;
         opacity: .1;
+    }
+    & > .column {
+        position: relative;
     }
 }
 .siteHeader-social,

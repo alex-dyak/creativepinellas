@@ -74,6 +74,9 @@ ol {
     font-size: $fontSize-small;
     color: $charcoal;
 }
+#svgPlaceholder {
+    display: none;
+}
 .svgIcon {
     fill: currentColor;
 }

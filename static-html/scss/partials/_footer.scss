@@ -1,10 +1,13 @@
 .siteFooter {
+    display: table-footer-group;
     position: relative;
     z-index: 2;
-    padding: 25px 0 10px;
+    width: 100%;
+    height: 1%;
     text-align: center;
     background: $sky;
     color: $white;
+    overflow: hidden;
     @include breakpoint(medium) {
         padding-top: 35px;
         padding-bottom: 0;
@@ -14,6 +17,9 @@
         padding-top: 65px;
         padding-bottom: 5px;
     }
+}
+.siteFooter-inner {
+    padding: 25px 0 10px;
     & > .row {
         padding-bottom: 20px;
         @include breakpoint(medium) {

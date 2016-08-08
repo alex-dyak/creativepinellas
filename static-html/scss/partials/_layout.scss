@@ -1,0 +1,19 @@
+.off-canvas-wrapper,
+.off-canvas-wrapper-inner {
+    height: 100%;
+}
+.off-canvas-content {
+    display: table;
+    width: 100%;
+}
+.off-canvas {
+    height: 100%;
+}
+.siteContent,
+.siteSidebar {
+    padding-top: 100px;
+    padding-bottom: 90px;
+}
+.siteContent--hasSidebar {
+    padding-right: 10%;
+}

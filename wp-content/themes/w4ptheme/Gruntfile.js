@@ -140,7 +140,8 @@ module.exports = function (grunt) {
             partials: {
               footer: '<%= fixturesPath %>/partials/footer.html',
               header: '<%= fixturesPath %>/partials/header.html',
-              offCanvas: '<%= fixturesPath %>/partials/off-canvas.html'
+              offCanvas: '<%= fixturesPath %>/partials/off-canvas.html',
+              sidebarTemplate: '<%= fixturesPath %>/partials/sidebar-template.html'
             }
           }
         }
