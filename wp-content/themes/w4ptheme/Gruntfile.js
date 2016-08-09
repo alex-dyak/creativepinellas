@@ -142,6 +142,7 @@ module.exports = function (grunt) {
               header: '<%= fixturesPath %>/partials/header.html',
               offCanvas: '<%= fixturesPath %>/partials/off-canvas.html',
               sidebarTemplate: '<%= fixturesPath %>/partials/sidebar-template.html',
+              blogPost: '<%= fixturesPath %>/partials/blog-post-template.html',
               testTemplate: '<%= fixturesPath %>/partials/testpage-template.html'
             }
           }

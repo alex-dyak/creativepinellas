@@ -69,10 +69,20 @@ ol {
     margin: 0 0 1em 3em;
     padding: 0;
 }
-.caption {
+.caption,
+.wp-caption .wp-caption-text,
+.gallery-caption {
     font-style: italic;
     font-size: $fontSize-small;
     color: $charcoal;
+}
+.postPage-info {
+    font-size: $fontSize-small;
+    letter-spacing: 2px;
+    margin-top: 27px;
+    margin-bottom: 30px;
+    padding: 5px 0;
+    border-bottom: 3px solid $black;
 }
 #svgPlaceholder {
     display: none;
