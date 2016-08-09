@@ -33,9 +33,25 @@
     & > li {
         padding: 5px;
         transition: all .2s ease-out;
-        &.has-subNav:hover {
+        &.has-subNav:focus {
+            background: #fff;
+        }
+        &.has-subNav:hover,
+        &.has-subNav.is-open {
             background: $sky--dark;
+            a {
+                background: $sky--dark;
+            }
             ul {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        &.has-subNav a:focus {
+            background: $sky--dark;
+            border-color: $white;
+            outline: none;
+            &  + ul {
                 opacity: 1;
                 visibility: visible;
             }
