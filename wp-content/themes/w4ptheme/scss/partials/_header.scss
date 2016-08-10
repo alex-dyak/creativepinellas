@@ -9,6 +9,10 @@
 .siteHeader-top {
     position: relative;
     padding: 20px 0;
+    overflow: hidden;
+    @include breakpoint(large) {
+        overflow: auto;
+    }
     @include breakpoint(large down) {
         display: table;
         width: 100%;
@@ -29,10 +33,14 @@
         top: 0;
         left: -90px;
         bottom: 0;
-        width: 760px;
-        background: url("../images/header-background-image.svg") 0 -160px no-repeat;
+        width: 460px;
+        background: url("../images/header-background-image.svg") 0 -220px no-repeat;
         background-size: 100% 760px;
         opacity: .1;
+        @include breakpoint(medium) {
+            width: 760px;
+            background-position: 0 -160px;
+        }
     }
     & > .column {
         position: relative;
