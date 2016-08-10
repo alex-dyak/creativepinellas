@@ -1,15 +1,23 @@
 .mobileNavToggle {
+    position: relative;
+    display: inline-block;
     margin: 0;
     padding: 4px 7px 5px;
     font-size: 8px;
     line-height: 10px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
     vertical-align: middle;
-    border-color: $white;
+    border: 1px solid $white;
     color: $white;
     &:before {
         content: attr(data-close);
     }
     &:hover {
+        text-decoration: none;
+    }
+    &.is-open:not('is-open'):hover {
         border-color: $white;
         background: $white;
         color: $sky;
