@@ -3,8 +3,10 @@
     height: 100%;
 }
 .off-canvas-content {
-    display: table;
     width: 100%;
+    @include breakpoint(medium) {
+        display: table;
+    }
 }
 .off-canvas {
     height: 100%;
