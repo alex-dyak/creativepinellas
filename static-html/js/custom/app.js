@@ -16,6 +16,12 @@
       $mobileNavToggle.removeClass('is-open');
     });
 
+    $(window).resize(function () {
+      if (Foundation.MediaQuery.atLeast('large')) {
+        $offCanvas.foundation('close');
+      }
+    });
+
     /*  Mobile navigation show subNav*/
     $subNavToggle.click(function (e) {
       e.preventDefault();
