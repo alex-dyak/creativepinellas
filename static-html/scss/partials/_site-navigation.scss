@@ -39,7 +39,7 @@
         &.has-subNav:hover,
         &.has-subNav.is-open {
             background: $sky--dark;
-            a {
+            & > a {
                 background: $sky--dark;
             }
             ul {
