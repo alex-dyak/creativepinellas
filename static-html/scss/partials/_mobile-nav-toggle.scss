@@ -11,6 +11,7 @@
     vertical-align: middle;
     border: 1px solid $white;
     color: $white;
+    backface-visibility: hidden;
     &:before {
         content: attr(data-close);
     }
@@ -49,6 +50,7 @@
 .mobileNavToggle-hamburger {
     display: block;
     margin-top: 1px;
+    backface-visibility: hidden;
     span,
     &:before,
     &:after {
@@ -59,6 +61,7 @@
         border-radius: 2px;
         background: $white;
         transition: all .3s;
+        backface-visibility: hidden;
     }
     &:after {
         margin-bottom: 0;

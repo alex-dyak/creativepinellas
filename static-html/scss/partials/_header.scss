@@ -37,6 +37,7 @@
         background: url("../images/header-background-image.svg") 0 -220px no-repeat;
         background-size: 100% 760px;
         opacity: .1;
+        backface-visibility: hidden;
         @include breakpoint(medium) {
             width: 760px;
             background-position: 0 -160px;
