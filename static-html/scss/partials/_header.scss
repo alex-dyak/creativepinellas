@@ -11,7 +11,7 @@
     padding: 20px 0;
     overflow: hidden;
     @include breakpoint(large) {
-        overflow: auto;
+        overflow: visible;
     }
     @include breakpoint(large down) {
         display: table;
