@@ -122,7 +122,8 @@ module.exports = function (grunt) {
           beautify: true,
           sections: {
             blocks: {
-              socialList: '<%= fixturesPath %>/blocks/social-list.html'
+              socialList: '<%= fixturesPath %>/blocks/social-list.html',
+              promoBox: '<%= fixturesPath %>/blocks/promo-box.html'
             }
           }
         }
@@ -143,7 +144,8 @@ module.exports = function (grunt) {
               offCanvas: '<%= fixturesPath %>/partials/off-canvas.html',
               sidebarTemplate: '<%= fixturesPath %>/partials/sidebar-template.html',
               blogPost: '<%= fixturesPath %>/partials/blog-post-template.html',
-              testTemplate: '<%= fixturesPath %>/partials/testpage-template.html'
+              testTemplate: '<%= fixturesPath %>/partials/testpage-template.html',
+              sectionLanding: '<%= fixturesPath %>/partials/section-landing.html'
             }
           }
         }
