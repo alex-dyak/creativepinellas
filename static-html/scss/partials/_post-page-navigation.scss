@@ -19,6 +19,8 @@
 
 .pagination {
     position: relative;
+    padding: 13px 0;
+    border-top: 1px solid $gray-border;
     text-align: center;
     .page-numbers {
         display: none;
@@ -35,7 +37,7 @@
         display: block;
         @include breakpoint(medium) {
             position: absolute;
-            top: 0;
+            top: 13px;
             float: none;
         }
     }
