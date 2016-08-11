@@ -123,7 +123,9 @@ module.exports = function (grunt) {
           sections: {
             blocks: {
               socialList: '<%= fixturesPath %>/blocks/social-list.html',
-              postsList: '<%= fixturesPath %>/blocks/posts-list.html'
+              postsList: '<%= fixturesPath %>/blocks/posts-list.html',
+              gridItemBlog: '<%= fixturesPath %>/blocks/grid-item-blog.html',
+              gridItemBloglanding: '<%= fixturesPath %>/blocks/grid-item-blogLanding.html'
             }
           }
         }
