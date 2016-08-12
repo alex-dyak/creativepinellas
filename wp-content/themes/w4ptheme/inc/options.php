@@ -91,6 +91,7 @@ class W4PThemeSettingsPage {
 			'googleplus' => __( 'Google+', 'w4ptheme' ),
 			'instagram' => __( 'Instagram', 'w4ptheme' ),
 			'linkedin' => __( 'LinkedIn', 'w4ptheme' ),
+			'youtube' => __( 'Youtube', 'w4ptheme' ),
 		);
 		add_action( 'admin_menu', array( $this, 'add_plugin_page' ) );
 		add_action( 'admin_init', array( $this, 'page_init' ) );
@@ -121,10 +122,15 @@ class W4PThemeSettingsPage {
 		$this->options['w4p_contacts_phones'] = get_option( 'w4p_contacts_phones' );
 		$this->options['w4p_contacts_skype'] = get_option( 'w4p_contacts_skype' );
 
-		$this->options['w4p_copyright'] = get_option( 'w4p_copyright' ); ?>
+		$this->options['w4p_copyright'] = get_option( 'w4p_copyright' );
+
+		$this->options['w4p_partners_link_1'] = get_option( 'w4p_partners_link_1' );
+		$this->options['w4p_partners_logo_1'] = get_option( 'w4p_partners_logo_1' );
+		$this->options['w4p_partners_link_2'] = get_option( 'w4p_partners_link_2' );
+		$this->options['w4p_partners_logo_2'] = get_option( 'w4p_partners_logo_2' );?>
 		<div class="wrap">
 			<!-- <h2>My Settings</h2> -->
-			<form method="post" action="options.php">
+			<form method="post" action="options.php" enctype="multipart/form-data">
 				<?php
 				// This prints out all hidden setting fields.
 				settings_fields( 'w4p_options_group' );
@@ -165,6 +171,28 @@ class W4PThemeSettingsPage {
 			array( $this, 'sanitize_copyright' ) /* Sanitize */
 		);
 
+		register_setting(
+			'w4p_options_group', /* Option group */
+			'w4p_partners_link_1' /* Option name */
+		);
+
+		register_setting(
+			'w4p_options_group', /* Option group */
+			'w4p_partners_link_2' /* Option name */
+		);
+
+		register_setting(
+			'w4p_options_group', /* Option group */
+			'w4p_partners_logo_1', /* Option name */
+			array( $this, 'handle_logo_upload' )
+		);
+
+		register_setting(
+			'w4p_options_group', /* Option group */
+			'w4p_partners_logo_2', /* Option name */
+			array( $this, 'handle_logo_upload' )
+		);
+
 		add_settings_section(
 			'setting_section_id', /* ID */
 			__( 'W4P Theme Options', 'w4ptheme' ), /* Title */
@@ -195,6 +223,15 @@ class W4PThemeSettingsPage {
 			'theme_options',
 			'setting_section_id'
 		);
+
+		add_settings_field(
+			'w4p_partners',
+			__( 'Partners', 'w4ptheme' ),
+			array( $this, 'partners_callback' ),
+			'theme_options',
+			'setting_section_id'
+		);
+
 	}
 
 	/**
@@ -242,7 +279,7 @@ class W4PThemeSettingsPage {
 	 * @return string
 	 */
 	public function get_default_copyright() {
-		return sprintf( esc_html__( 'Copyright © %d. %s. All Rights Reserved.', 'w4ptheme' ), date( 'Y' ), get_bloginfo( 'name' ) );
+		return sprintf( esc_html__( 'Copyright © %d. %s. All Rights Reserved. Creative Pinellas, Inc. 14025 58th Street N. Largo, FL 33760', 'w4ptheme' ), date( 'Y' ), get_bloginfo( 'name' ) );
 	}
 
 	/**
@@ -357,6 +394,57 @@ class W4PThemeSettingsPage {
 			/>
 		</div>
 	<?php }
+
+	public function handle_logo_upload() {
+		global $option;
+		if ( ! empty( $_FILES[ $option ]['tmp_name'] ) ) {
+			$urls = wp_handle_upload( $_FILES[ $option ], array( 'test_form' => FALSE ) );
+			$temp = $urls["url"];
+
+			return $temp;
+		}
+
+		return get_option( $option );
+	}
+
+	/**
+	 * Get the settings option array and print one of its values
+	 */
+	public function partners_callback() {
+		?>
+		<div class="w4p-partners-wrapper">
+			<label for="w4p_partners_link_1" class="w4p-option-label"><?php esc_html_e( 'Partner link:', 'w4ptheme' ); ?></label>
+			<input
+				type="text"
+				id="w4p_partners_link_1"
+				name="w4p_partners_link_1"
+				value="<?php echo !empty( $this->options['w4p_partners_link_1'] ) ? esc_attr( $this->options['w4p_partners_link_1'] ) : '' ?>"
+				/><br>
+			<label for="w4p_partners_logo_1" class="w4p-option-label"><?php esc_html_e( 'Partner logo:', 'w4ptheme' ); ?></label>
+			<input
+				type="file"
+				id="w4p_partners_logo_1"
+				name="w4p_partners_logo_1"
+				/>
+			<?php echo get_option('w4p_partners_logo_1'); ?>
+			<hr>
+			<label for="w4p_partners_link_2" class="w4p-option-label"><?php esc_html_e( 'Partner link:', 'w4ptheme' ); ?></label>
+			<input
+				type="text"
+				id="w4p_partners_link_2"
+				name="w4p_partners_link_2"
+				value="<?php echo !empty( $this->options['w4p_partners_link_2'] ) ? esc_attr( $this->options['w4p_partners_link_2'] ) : '' ?>"
+				/><br>
+			<label for="w4p_partners_logo_2" class="w4p-option-label"><?php esc_html_e( 'Partner logo:', 'w4ptheme' ); ?></label>
+			<input
+				type="file"
+				id="w4p_partners_logo_2"
+				name="w4p_partners_logo_2"
+				/>
+			<?php echo get_option('w4p_partners_logo_2'); ?>
+		</div>
+	<?php }
+
 }
 
 if ( is_admin() ) {
