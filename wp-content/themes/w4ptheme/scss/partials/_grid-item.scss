@@ -1,0 +1,52 @@
+.gridItem {
+    position: relative;
+    a {
+        color: $white;
+    }
+    &:hover,
+    a:focus {
+        .gridItem-categoryDecor {
+            height: 100%;
+        }
+        .gridItem-info {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    img {
+        width: 100%;
+    }
+}
+.gridItem-categoryDecor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 25px;
+    opacity: .75;
+    transition: all .2s ease-out;
+}
+.gridItem-info {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 15px;
+    transition: all .2s ease-out;
+    h3 {
+        text-transform: uppercase;
+        @include breakpoint(medium) {
+            font-size: $fontSize-base;
+        }
+        &:before {
+            content: "";
+            display: block;
+            width: 24px;
+            height: 24px;
+            background: $white;
+            margin-bottom: 15px;
+        }
+    }
+}

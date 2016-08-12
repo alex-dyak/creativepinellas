@@ -7,7 +7,8 @@
     var $offCanvas = $(".off-canvas"),
       $mobileNavToggle = $('.js-mobileNavToggle'),
       $subNavToggle = $('.js-subNavToggle'),
-      $touchNav = $('.js-touchNav');
+      $touchNav = $('.js-touchNav'),
+      $touchFocusBlock = $('.js-touchFocus');
 
     $offCanvas.on("opened.zf.offcanvas", function(e) {
       $mobileNavToggle.addClass('is-open');
@@ -55,7 +56,15 @@
       }).on('blur', function () {
         $(this).parent().removeClass('is-open');
       })
-    })
+    });
+
+    $touchFocusBlock.on('touchstart', function(e) {
+      var $t = $(this);
+      if (!$t.is(':focus')) {
+        e.preventDefault();
+        $t.focus();
+      }
+    });
 
   });
 })();
