@@ -6,7 +6,9 @@
 
     var $offCanvas = $(".off-canvas"),
       $mobileNavToggle = $('.js-mobileNavToggle'),
-      $subNavToggle = $('.js-subNavToggle');
+      $subNavToggle = $('.js-subNavToggle'),
+      $touchNav = $('.js-touchNav'),
+      $touchFocusBlock = $('.js-touchFocus');
 
     $offCanvas.on("opened.zf.offcanvas", function(e) {
       $mobileNavToggle.addClass('is-open');
@@ -15,6 +17,13 @@
       $mobileNavToggle.removeClass('is-open');
     });
 
+    $(window).resize(function () {
+      if (Foundation.MediaQuery.atLeast('large')) {
+        $offCanvas.foundation('close');
+      }
+    });
+
+    /*  Mobile navigation show subNav*/
     $subNavToggle.click(function (e) {
       e.preventDefault();
       e.stopPropagation();
@@ -28,6 +37,32 @@
         $t.parents('.js-mobileNavigation:first').find('.js-subNav').slideUp();
         $parentHasSubNav.addClass('is-open').siblings().removeClass('is-open');
         $parentHasSubNav.find('.js-subNav').slideDown();
+      }
+    });
+
+    /*  desktop navigation show subNav on touch devices */
+    $touchNav.each(function () {
+      var $subNavItem = $(this).find('.js-hasSubNav');
+
+      $subNavItem.on('touchstart', function(e) {
+        var $t = $(this);
+        if (!$t.find('a').is(':focus')) {
+          e.preventDefault();
+          $t.find('a').focus();
+        }
+      });
+      $subNavItem.find('a').on('focus', function () {
+        $(this).parent().addClass('is-open').siblings().removeClass('is-open');
+      }).on('blur', function () {
+        $(this).parent().removeClass('is-open');
+      })
+    });
+
+    $touchFocusBlock.on('touchstart', function(e) {
+      var $t = $(this);
+      if (!$t.is(':focus')) {
+        e.preventDefault();
+        $t.focus();
       }
     });
 

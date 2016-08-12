@@ -35,14 +35,10 @@ a img.aligncenter {
     margin-right:auto;
 }
 .wp-caption {
-    background:#FFF;
-    border:1px solid #F0F0F0;
-    max-width:96%;
-    padding:5px 3px 10px;
-    text-align:center;
+
 }
 .wp-caption.alignnone {
-    margin:5px 20px 20px 0;
+    margin:5px 0 20px 0;
 }
 .wp-caption.alignleft {
     margin:5px 20px 20px 0;
@@ -53,17 +49,13 @@ a img.aligncenter {
 .wp-caption img {
     border:0 none;
     height:auto;
-    margin:0;
-    max-width:98.5%;
+    margin:0 0 10px;
     padding:0;
     width:auto;
 }
 .wp-caption .wp-caption-text,
 .gallery-caption {
-    font-size:11px;
-    line-height:17px;
     margin:0;
-    padding:0 4px 5px;
 }
 .sticky {
 
