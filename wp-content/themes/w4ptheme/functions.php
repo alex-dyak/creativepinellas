@@ -43,6 +43,7 @@ function w4ptheme_setup() {
 	);
 	register_nav_menu( 'primary', __( 'Navigation Menu', 'w4ptheme' ) );
 	register_nav_menu( 'contacts', __( 'Contacts Menu', 'w4ptheme' ) );
+	register_nav_menu( 'footer', __( 'Footer Menu', 'w4ptheme' ) );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'title-tag' );
 }
@@ -66,17 +67,37 @@ function w4ptheme_scripts_styles() {
 	// Load Stylesheets.
 	wp_enqueue_style( 'application.css', get_stylesheet_uri() );
 
-	// Vendors
-	wp_enqueue_script( 'w4ptheme-vendors', get_template_directory_uri() . '/js/vendor.min.js', array(), NULL, TRUE );
-
 	// Load scripts.
 	wp_enqueue_script( 'w4ptheme-svgdefs', get_template_directory_uri() . '/js/custom/svgdefs.js', array( 'w4ptheme-jquery' ), NULL, TRUE );
 
+	// Load mobile scripts.
+	wp_enqueue_script( 'w4ptheme-gpb0qdz', "https://use.typekit.net/gpb0qdz.js", array(), NULL, TRUE );
+
+	add_action('wp_footer', 'add_this_script_footer');
+
 	// This is where we put our custom JS functions.
 	wp_enqueue_script( 'w4ptheme-app', get_template_directory_uri() . '/js/app.min.js', array( 'w4ptheme-vendors' ), NULL, TRUE );
+
+	// Vendors
+	wp_enqueue_script( 'w4ptheme-vendors', get_template_directory_uri() . '/js/vendor.min.js', array(), NULL, TRUE );
 }
 
 add_action( 'wp_enqueue_scripts', 'w4ptheme_scripts_styles' );
+
+/**
+ * Function add script to footer.
+ */
+function add_this_script_footer(){ ?>
+	<script>
+		try {
+			Typekit.load({
+				async: true
+			});
+		} catch (e) {
+		}
+	</script>
+<?php }
+
 
 /**
  * WP Title.
@@ -143,9 +164,47 @@ require_once( get_template_directory() . '/inc/filters.php' );
 require_once( get_template_directory() . '/inc/shortcodes.php' );
 
 /**
- * Class Walker
+ * Class Main_Nav_Menu
  */
 class Main_Nav_Menu extends Walker_Nav_Menu {
+	function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
+		$id_field = $this->db_fields['id'];
+
+		if ( is_object( $args[0] ) ) {
+			$args[0]->has_children = ! empty( $children_elements[ $element->$id_field ] );
+		}
+
+		return parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
+	}
+
+	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+		if ( $item->title == 'Contacts' ) {
+			return;
+		}
+
+		if ( $args->has_children ) {
+			$item->classes[] = 'has-subNav';
+		}
+
+		parent::start_el( $output, $item, $depth, $args );
+	}
+
+	public function start_lvl( &$output, $depth = 0, $args = array() ) {
+		$indent = str_repeat( "\t", $depth );
+		$output .= "\n$indent<ul class=\"u-list--plain\">\n";
+	}
+
+	public function end_lvl( &$output, $depth = 0, $args = array() ) {
+		$indent = str_repeat( "\t", $depth );
+		$output .= "$indent</ul>\n";
+	}
+
+}
+
+/**
+ * Class Footer_Nav_Menu
+ */
+class Footer_Nav_Menu extends Walker_Nav_Menu {
 	function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
 		$id_field = $this->db_fields['id'];
 
@@ -167,6 +226,47 @@ class Main_Nav_Menu extends Walker_Nav_Menu {
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$indent = str_repeat( "\t", $depth );
 		$output .= "\n$indent<ul class=\"u-list--plain\">\n";
+	}
+
+	public function end_lvl( &$output, $depth = 0, $args = array() ) {
+		$indent = str_repeat( "\t", $depth );
+		$output .= "$indent</ul>\n";
+	}
+
+}
+
+/**
+ * Class Mobile_Nav_Menu
+ */
+class Mobile_Nav_Menu extends Walker_Nav_Menu {
+	function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
+		$id_field = $this->db_fields['id'];
+
+		if ( is_object( $args[0] ) ) {
+			$args[0]->has_children = ! empty( $children_elements[ $element->$id_field ] );
+		}
+
+		return parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
+	}
+
+	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+		if ( $args->has_children ) {
+			$item->classes[] = 'has-subNav js-hasSubNav';
+		}
+		if ( $item->title == 'Contacts' ) {
+			$item->classes[] = 'has-subNav js-hasSubNav';
+		}
+
+		parent::start_el( $output, $item, $depth, $args );
+		if ( $args->has_children ) {
+			$output = substr( $output, 0, - 4 );
+			$output .= '<span class="siteNavigation-subNavToggle js-subNavToggle"></span></a>';
+		}
+	}
+
+	public function start_lvl( &$output, $depth = 0, $args = array() ) {
+		$indent = str_repeat( "\t", $depth );
+		$output .= "\n$indent<ul class=\"u-list--plain js-subNav\">\n";
 	}
 
 	public function end_lvl( &$output, $depth = 0, $args = array() ) {

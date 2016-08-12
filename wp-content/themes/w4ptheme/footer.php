@@ -15,7 +15,8 @@
 		<div class="row medium-collapse">
 			<div class="large-3 column siteFooter-logo">
 				<!--    Footer Logo     -->
-				<a href="#" title="Creative Pinellas">
+				<a href="<?php echo get_home_url(); ?>"
+				   title="Creative Pinellas">
 					<svg class='svgIcon svgIcon--logo'>
 						<use xlink:href='#logoFull'/>
 					</svg>
@@ -24,28 +25,24 @@
 			</div>
 			<div class="medium-10 large-7 column siteFooter-nav">
 				<!--        Navigation      -->
-				<nav>
-					<ul class="siteNavigation siteNavigation--footer u-list--plain u-list--inline">
-						<li>
-							<a href="#">For the arts community</a>
-							<ul class="u-list--plain">
-								<li><a href="#">Oure Grants</a></li>
-								<li><a href="#">Grant Recipients</a></li>
-								<li><a href="#">Learning Center</a></li>
-								<li><a href="#">Events for Artists</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="#">Explore the arts</a>
-							<ul class="u-list--plain">
-								<li><a href="#">Events</a></li>
-								<li><a href="#">Venue Directory</a></li>
-								<li><a href="#">Local Artists Directory</a></li>
-							</ul>
-						</li>
-						<li><a href="#">New Releases</a></li>
-					</ul>
-				</nav>
+				<?php wp_nav_menu( array(
+					'theme_location'  => 'footer',
+					'menu'            => 'footer-menu',
+					'container'       => 'nav',
+					'container_class' => '',
+					'container_id'    => '',
+					'menu_class'      => 'siteNavigation siteNavigation--footer u-list--plain u-list--inline',
+					'menu_id'         => '',
+					'echo'            => TRUE,
+					'fallback_cb'     => 'wp_page_menu',
+					'before'          => '',
+					'after'           => '',
+					'link_before'     => '',
+					'link_after'      => '',
+					'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+					'depth'           => 2,
+					'walker'          => new Footer_Nav_Menu(),
+				) ); ?>
 				<!--      / Navigation      -->
 			</div>
 			<div class="medium-2 column siteFooter-social">
@@ -55,21 +52,24 @@
 				</div>
 				<ul class="socialList u-list--plain u-list--inline">
 					<li>
-						<a href="#" target="_blank" title="Follow us on Twitter">
+						<a href="<?php echo get_option( 'w4p_social_profiles' )['twitter'][1]; ?>"
+						   target="_blank" title="Follow us on Twitter">
 							<svg class='svgIcon'>
 								<use xlink:href='#twitter'/>
 							</svg>
 						</a>
 					</li>
 					<li>
-						<a href="#" target="_blank" title="Follow us on Facebook">
+						<a href="<?php echo get_option( 'w4p_social_profiles' )['facebook'][1]; ?>"
+						   target="_blank" title="Follow us on Facebook">
 							<svg class='svgIcon'>
 								<use xlink:href='#facebook'/>
 							</svg>
 						</a>
 					</li>
 					<li>
-						<a href="#" target="_blank" title="Follow us on Youtube">
+						<a href="<?php echo get_option( 'w4p_social_profiles' )['youtube'][1]; ?>"
+						   target="_blank" title="Follow us on Youtube">
 							<svg class='svgIcon'>
 								<use xlink:href='#youtube'/>
 							</svg>
@@ -84,8 +84,12 @@
 			<div class="column">
 				<!--    Footer logotypes    -->
 				<div class="siteFooter-partnerLogos">
-					<a href="#"><img src="<?php echo get_template_directory_uri() . '/images/uploads/Pinellas_County_Government-white.png' ?>" alt="" width="150"></a>
-					<a href="#"><img src="<?php echo get_template_directory_uri() . '/images/uploads/Vspc_reverse_logo.png' ?>" alt="" width="150"></a>
+					<a href="#"><img
+							src="<?php echo get_template_directory_uri() . '/images/uploads/Pinellas_County_Government-white.png' ?>"
+							alt="" width="150"></a>
+					<a href="#"><img
+							src="<?php echo get_template_directory_uri() . '/images/uploads/Vspc_reverse_logo.png' ?>"
+							alt="" width="150"></a>
 				</div>
 				<!--   / Footer logotypes    -->
 			</div>
@@ -109,10 +113,12 @@
 	</div>
 </footer>
 
-		</div>
+</div>
+</div>
+</div>
 <div id="svgPlaceholder"></div>
 
 <?php wp_footer(); ?>
-	</body>
+</body>
 
 </html>
