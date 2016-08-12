@@ -55,6 +55,9 @@ h3 {
     font-size: $fontSize-larger;
     line-height: $lineHeight-tightest;
     color: $sky;
+    &:last-child {
+        margin-bottom: 0;
+    }
 }
 blockquote {
     margin: 1em 0;
@@ -63,6 +66,9 @@ blockquote {
     line-height: $lineHeight-tight;
     border: 1px solid $sky;
     border-width: 0 0 0 26px;
+    &:last-child {
+        margin-bottom: 0;
+    }
 }
 ul,
 ol {

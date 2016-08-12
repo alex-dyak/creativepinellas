@@ -125,7 +125,8 @@ module.exports = function (grunt) {
               socialList: '<%= fixturesPath %>/blocks/social-list.html',
               postsList: '<%= fixturesPath %>/blocks/posts-list.html',
               gridItemBlog: '<%= fixturesPath %>/blocks/grid-item-blog.html',
-              gridItemBloglanding: '<%= fixturesPath %>/blocks/grid-item-blogLanding.html'
+              gridItemBloglanding: '<%= fixturesPath %>/blocks/grid-item-blogLanding.html',
+              pagination: '<%= fixturesPath %>/blocks/pagination.html'
             }
           }
         }
@@ -147,6 +148,7 @@ module.exports = function (grunt) {
               sidebarTemplate: '<%= fixturesPath %>/partials/sidebar-template.html',
               blogPost: '<%= fixturesPath %>/partials/blog-post-template.html',
               blogLanding: '<%= fixturesPath %>/partials/blog-landing-template.html',
+              blogCategory: '<%= fixturesPath %>/partials/blog-category-template.html',
               testTemplate: '<%= fixturesPath %>/partials/testpage-template.html'
             }
           }
