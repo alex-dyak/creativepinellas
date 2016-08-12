@@ -17,9 +17,9 @@
 				<!--    Footer Logo     -->
 				<a href="<?php echo get_home_url(); ?>"
 				   title="Creative Pinellas">
-					<svg class='svgIcon svgIcon--logo'>
-						<use xlink:href='#logoFull'/>
-					</svg>
+					<img class="header-image svgIcon svgIcon--logo" src="<?php header_image(); ?>"
+					     width="<?php echo esc_attr(get_custom_header()->width ); ?>"
+					     height="<?php echo esc_attr(get_custom_header()->height ); ?>" alt=""/>
 				</a>
 				<!--   / Footer Logo     -->
 			</div>
@@ -84,11 +84,11 @@
 			<div class="column">
 				<!--    Footer logotypes    -->
 				<div class="siteFooter-partnerLogos">
-					<a href="#"><img
-							src="<?php echo get_template_directory_uri() . '/images/uploads/Pinellas_County_Government-white.png' ?>"
+					<a href="<?php echo get_option( 'w4p_partners_link_1' ); ?>"><img
+							src="<?php echo get_option( 'w4p_partners_logo_1' ); ?>"
 							alt="" width="150"></a>
-					<a href="#"><img
-							src="<?php echo get_template_directory_uri() . '/images/uploads/Vspc_reverse_logo.png' ?>"
+					<a href="<?php echo get_option( 'w4p_partners_link_2' ); ?>"><img
+							src="<?php echo get_option( 'w4p_partners_logo_2' ); ?>"
 							alt="" width="150"></a>
 				</div>
 				<!--   / Footer logotypes    -->
