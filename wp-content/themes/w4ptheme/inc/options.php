@@ -184,13 +184,13 @@ class W4PThemeSettingsPage {
 		register_setting(
 			'w4p_options_group', /* Option group */
 			'w4p_partners_logo_1', /* Option name */
-			array( $this, 'handle_logo_upload_1' )
+			array( $this, 'handle_logo_upload' )
 		);
 
 		register_setting(
 			'w4p_options_group', /* Option group */
 			'w4p_partners_logo_2', /* Option name */
-			array( $this, 'handle_logo_upload_2' )
+			array( $this, 'handle_logo_upload' )
 		);
 
 		add_settings_section(
@@ -395,30 +395,17 @@ class W4PThemeSettingsPage {
 		</div>
 	<?php }
 
-	public function handle_logo_upload_1()
-	{
+	public function handle_logo_upload() {
 		global $option;
-		if(!empty($_FILES["w4p_partners_logo_1"]["tmp_name"] ))
-		{
-			$urls = wp_handle_upload($_FILES["w4p_partners_logo_1"], array('test_form' => FALSE));
+		if ( ! empty( $_FILES[ $option ]['tmp_name'] ) ) {
+			$urls = wp_handle_upload( $_FILES[ $option ], array( 'test_form' => FALSE ) );
 			$temp = $urls["url"];
+
 			return $temp;
 		}
-		return get_option('w4p_partners_logo_1');
-	}
 
-	public function handle_logo_upload_2()
-	{
-		global $option;
-		if(!empty($_FILES["w4p_partners_logo_2"]["tmp_name"] ))
-		{
-			$urls = wp_handle_upload($_FILES["w4p_partners_logo_2"], array('test_form' => FALSE));
-			$temp = $urls["url"];
-			return $temp;
-		}
-		return get_option('w4p_partners_logo_2');
+		return get_option( $option );
 	}
-
 
 	/**
 	 * Get the settings option array and print one of its values
