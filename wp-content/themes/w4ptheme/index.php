@@ -16,35 +16,40 @@
 
 get_header(); ?>
 
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+<section class="siteBody">
 
-	<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
+	<!-- Page Content goes here -->
+	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-		<h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
+		<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
 
-		<div class="entry">
-			<?php the_content(); ?>
-		</div>
+			<h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
 
-		<footer class="postmetadata">
-			<?php the_tags( __( 'Tags: ', 'w4ptheme' ), ', ', '<br />' ); ?>
-			<?php esc_html_e( 'Posted in', 'w4ptheme' ); ?> <?php the_category( ', ' ) ?>
-			|
-			<?php comments_popup_link( __( 'No Comments &#187;', 'w4ptheme' ), __( '1 Comment &#187;', 'w4ptheme' ), __( '% Comments &#187;', 'w4ptheme' ) ); ?>
-		</footer>
+			<div class="entry">
+				<?php the_content(); ?>
+			</div>
 
-	</article>
+			<footer class="postmetadata">
+				<?php the_tags( __( 'Tags: ', 'w4ptheme' ), ', ', '<br />' ); ?>
+				<?php esc_html_e( 'Posted in', 'w4ptheme' ); ?> <?php the_category( ', ' ) ?>
+				|
+				<?php comments_popup_link( __( 'No Comments &#187;', 'w4ptheme' ), __( '1 Comment &#187;', 'w4ptheme' ), __( '% Comments &#187;', 'w4ptheme' ) ); ?>
+			</footer>
 
-<?php endwhile; ?>
+		</article>
 
-	<?php post_navigation(); ?>
+	<?php endwhile; ?>
 
-<?php else : ?>
+		<?php post_navigation(); ?>
 
-	<h2><?php esc_html_e( 'Nothing Found', 'w4ptheme' ); ?></h2>
+	<?php else : ?>
 
-<?php endif; ?>
+		<h2><?php esc_html_e( 'Nothing Found', 'w4ptheme' ); ?></h2>
 
-<?php get_sidebar(); ?>
+	<?php endif; ?>
+
+	<?php get_sidebar(); ?>
+</section>
+
 
 <?php get_footer(); ?>
