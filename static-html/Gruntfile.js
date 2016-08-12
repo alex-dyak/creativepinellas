@@ -149,7 +149,8 @@ module.exports = function (grunt) {
               blogPost: '<%= fixturesPath %>/partials/blog-post-template.html',
               blogLanding: '<%= fixturesPath %>/partials/blog-landing-template.html',
               blogCategory: '<%= fixturesPath %>/partials/blog-category-template.html',
-              testTemplate: '<%= fixturesPath %>/partials/testpage-template.html'
+              testTemplate: '<%= fixturesPath %>/partials/testpage-template.html',
+              directoryTemplate: '<%= fixturesPath %>/partials/directory-template.html'
             }
           }
         }
