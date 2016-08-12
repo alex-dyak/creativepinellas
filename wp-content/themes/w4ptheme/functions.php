@@ -42,6 +42,7 @@ function w4ptheme_setup() {
 		)
 	);
 	register_nav_menu( 'primary', __( 'Navigation Menu', 'w4ptheme' ) );
+	register_nav_menu( 'contacts', __( 'Contacts Menu', 'w4ptheme' ) );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'title-tag' );
 }
@@ -59,14 +60,20 @@ function w4ptheme_scripts_styles() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
+	// Jquery
+	wp_enqueue_script( 'w4ptheme-jquery', get_template_directory_uri() . '/js/vendor/jquery-ui.min.js', array(), NULL, TRUE );
+
 	// Load Stylesheets.
+	wp_enqueue_style( 'application.css', get_stylesheet_uri() );
 
 	// Vendors
-	wp_enqueue_script( 'w4ptheme-vendors', get_template_directory_uri() . '/js/vendor.min.js', array(), null, true );
+	wp_enqueue_script( 'w4ptheme-vendors', get_template_directory_uri() . '/js/vendor.min.js', array(), NULL, TRUE );
 
+	// Load scripts.
+	wp_enqueue_script( 'w4ptheme-svgdefs', get_template_directory_uri() . '/js/custom/svgdefs.js', array( 'w4ptheme-jquery' ), NULL, TRUE );
 
 	// This is where we put our custom JS functions.
-	wp_enqueue_script( 'w4ptheme-app', get_template_directory_uri() . '/js/custom/app.min.js', array( 'w4ptheme-vendors' ), null, true );
+	wp_enqueue_script( 'w4ptheme-app', get_template_directory_uri() . '/js/app.min.js', array( 'w4ptheme-vendors' ), NULL, TRUE );
 }
 
 add_action( 'wp_enqueue_scripts', 'w4ptheme_scripts_styles' );
@@ -134,3 +141,37 @@ require_once( get_template_directory() . '/inc/filters.php' );
 
 // Custom shortcodes.
 require_once( get_template_directory() . '/inc/shortcodes.php' );
+
+/**
+ * Class Walker
+ */
+class Main_Nav_Menu extends Walker_Nav_Menu {
+	function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
+		$id_field = $this->db_fields['id'];
+
+		if ( is_object( $args[0] ) ) {
+			$args[0]->has_children = ! empty( $children_elements[ $element->$id_field ] );
+		}
+
+		return parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
+	}
+
+	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+		if ( $args->has_children ) {
+			$item->classes[] = 'has-subNav';
+		}
+
+		parent::start_el( $output, $item, $depth, $args );
+	}
+
+	public function start_lvl( &$output, $depth = 0, $args = array() ) {
+		$indent = str_repeat( "\t", $depth );
+		$output .= "\n$indent<ul class=\"u-list--plain\">\n";
+	}
+
+	public function end_lvl( &$output, $depth = 0, $args = array() ) {
+		$indent = str_repeat( "\t", $depth );
+		$output .= "$indent</ul>\n";
+	}
+
+}

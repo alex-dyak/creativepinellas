@@ -91,6 +91,7 @@ class W4PThemeSettingsPage {
 			'googleplus' => __( 'Google+', 'w4ptheme' ),
 			'instagram' => __( 'Instagram', 'w4ptheme' ),
 			'linkedin' => __( 'LinkedIn', 'w4ptheme' ),
+			'youtube' => __( 'Youtube', 'w4ptheme' ),
 		);
 		add_action( 'admin_menu', array( $this, 'add_plugin_page' ) );
 		add_action( 'admin_init', array( $this, 'page_init' ) );
@@ -242,7 +243,7 @@ class W4PThemeSettingsPage {
 	 * @return string
 	 */
 	public function get_default_copyright() {
-		return sprintf( esc_html__( 'Copyright © %d. %s. All Rights Reserved.', 'w4ptheme' ), date( 'Y' ), get_bloginfo( 'name' ) );
+		return sprintf( esc_html__( 'Copyright © %d. %s. All Rights Reserved. Creative Pinellas, Inc. 14025 58th Street N. Largo, FL 33760', 'w4ptheme' ), date( 'Y' ), get_bloginfo( 'name' ) );
 	}
 
 	/**

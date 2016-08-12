@@ -33,45 +33,98 @@
 	<!--[if IE ]>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<![endif]-->
-
 	<title><?php wp_title( '|', true, 'right' ); ?></title>
-
 	<meta name="title" content="<?php wp_title( '|', true, 'right' ); ?>">
-
 	<meta name="description" content="<?php bloginfo( 'description' ); ?>"/>
-
 	<?php wp_head(); ?>
 
 </head>
 
 <body <?php body_class(); ?>>
 
-<div id="wrapper">
+<div id="off-canvas-wrapper">
 
-	<header id="header" role="banner">
-		<h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>"
-			   title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"
-			   rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+  <header class="siteHeader">
+    <section class="row siteHeader-top">
+      <div class="small-9 medium-3 column">
+        <div class="siteHeader-logo">
+          <a href="<?php echo get_home_url(); ?>" title="Creative Pinellas">
+            <svg class='svgIcon svgIcon--logo'>
+              <use xlink:href='#logoFull'/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="small-3 medium-9 column u-text--right">
+        <div class="show-for-medium siteHeader-social">
+          <!-- build:section blocks.socialList -->
+	        <ul class="socialList u-list--plain u-list--inline">
+		        <li>
+			        <a href="<?php echo get_option( 'w4p_social_profiles' )['twitter'][1]; ?>" target="_blank" title="Follow us on Twitter">
+				        <svg class='svgIcon'>
+					        <use xlink:href='#twitter'/>
+				        </svg>
+			        </a>
+		        </li>
+		        <li>
+			        <a href="<?php echo get_option( 'w4p_social_profiles' )['facebook'][1]; ?>" target="_blank" title="Follow us on Facebook">
+				        <svg class='svgIcon'>
+					        <use xlink:href='#facebook'/>
+				        </svg>
+			        </a>
+		        </li>
+		        <li>
+			        <a href="<?php echo get_option( 'w4p_social_profiles' )['youtube'][1]; ?>" target="_blank" title="Follow us on Youtube">
+				        <svg class='svgIcon'>
+					        <use xlink:href='#youtube'/>
+				        </svg>
+			        </a>
+		        </li>
+	        </ul>
+	        <!-- /build -->
+        </div>
+	        <?php wp_nav_menu( array(
+		        'theme_location' => 'contacts',
+		        'menu'            => 'contacts',
+		        'container'       => 'nav',
+		        'container_class' => 'show-for-medium siteHeader-topNav',
+		        'container_id'    => '',
+		        'menu_class'      => 'siteNavigation u-list--plain u-list--inline',
+		        'menu_id'         => '',
+		        'echo'            => true,
+		        'fallback_cb'     => 'wp_page_menu',
+		        'before'          => '',
+		        'after'           => '',
+		        'link_before'     => '',
+		        'link_after'      => '',
+		        'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+		        'depth'           => 0,
+		        'walker'          => '',
+	        ) ); ?>
 
-		<div class="description"><?php bloginfo( 'description' ); ?></div>
+	        <?php wp_nav_menu( array(
+		        'theme_location' => 'primary',
+		        'menu'            => 'main-menu',
+		        'container'       => 'nav',
+		        'container_class' => 'show-for-large',
+		        'container_id'    => '',
+		        'menu_class'      => 'siteNavigation siteNavigation--header u-list--plain u-list--inline u-text--left',
+		        'menu_id'         => '',
+		        'echo'            => true,
+		        'fallback_cb'     => 'wp_page_menu',
+		        'before'          => '',
+		        'after'           => '',
+		        'link_before'     => '',
+		        'link_after'      => '',
+		        'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+		        'depth'           => 2,
+		        'walker'          => new Main_Nav_Menu(),
+	        ) ); ?>
 
-		<?php
-		if ( get_header_image() && ! display_header_text() ) : /* If there's a header image but no header text. */ { ?>
-			<a href="<?php echo esc_url( home_url() ); ?>"
-			   title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" rel="home"><img
-					class="header-image" src="<?php header_image(); ?>"
-					width="<?php echo esc_attr( get_custom_header()->width ); ?>"
-					height="<?php echo esc_attr( get_custom_header()->height ); ?>"
-					alt=""/></a>
-		<?php } elseif ( get_header_image() ) : /* If there's a header image. */ { ?>
-			<img class="header-image" src="<?php header_image(); ?>"
-				 width="<?php echo absint( get_custom_header()->width ); ?>"
-				 height="<?php echo absint( get_custom_header()->height ); ?>"
-				 alt=""/>
-		<?php } endif; /* End check for header image. */ ?>
-	</header>
-
-	<nav id="nav" role="navigation">
-		<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-	</nav>
+        <button type="button" class="hide-for-large mobileNavToggle js-mobileNavToggle" data-toggle="offCanvas" data-open="CLOSE" data-close="MENU">
+          <span class="mobileNavToggle-hamburger"><span></span></span>
+        </button>
+      </div>
+    </section>
+  </header>
 
