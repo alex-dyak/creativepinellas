@@ -123,6 +123,7 @@ module.exports = function (grunt) {
           sections: {
             blocks: {
               socialList: '<%= fixturesPath %>/blocks/social-list.html',
+              promoBox: '<%= fixturesPath %>/blocks/promo-box.html',
               postsList: '<%= fixturesPath %>/blocks/posts-list.html',
               gridItemBlog: '<%= fixturesPath %>/blocks/grid-item-blog.html',
               gridItemBloglanding: '<%= fixturesPath %>/blocks/grid-item-blogLanding.html',
@@ -147,10 +148,15 @@ module.exports = function (grunt) {
               offCanvas: '<%= fixturesPath %>/partials/off-canvas.html',
               sidebarTemplate: '<%= fixturesPath %>/partials/sidebar-template.html',
               blogPost: '<%= fixturesPath %>/partials/blog-post-template.html',
+              testTemplate: '<%= fixturesPath %>/partials/testpage-template.html',
+              sectionLanding: '<%= fixturesPath %>/partials/section-landing.html',
               blogLanding: '<%= fixturesPath %>/partials/blog-landing-template.html',
+<<<<<<< HEAD
+=======
               blogCategory: '<%= fixturesPath %>/partials/blog-category-template.html',
               testTemplate: '<%= fixturesPath %>/partials/testpage-template.html',
               directoryTemplate: '<%= fixturesPath %>/partials/directory-template.html'
+>>>>>>> 3a26531b8f0168b2be1d47d591d43334171cd956
             }
           }
         }
