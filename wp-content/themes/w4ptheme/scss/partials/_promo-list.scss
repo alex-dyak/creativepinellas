@@ -1,24 +1,5 @@
 .promoList {
     margin-bottom: 40px;
-    margin-left: 0;
-    margin-right: 0;
-    @include breakpoint(medium) {
-        margin-left: -.9375rem;
-        margin-right: -.9375rem;
-    }
-    .column,
-    .columns {
-        padding: 0;
-        @include breakpoint(medium) {
-            padding-left: .9375rem;
-            padding-right: .9375rem;
-        }
-    }
-    .medium-6 {
-        @include breakpoint(halfMedium) {
-            width: 50%;
-        }
-    }
 }
 .promoList-item {
     position: relative;
@@ -37,6 +18,7 @@
     z-index: 100;
     width: 100%;
     padding: 0 15px;
+    color: $white;
     @include breakpoint(large) {
         top: 15%;
     }
@@ -55,7 +37,6 @@
         z-index: 101;
         margin-bottom: 10px;
         font-size: 1rem;
-        color: $white;
         @include breakpoint(large) {
             margin-bottom: 20px;
             font-size: 1.2rem;
@@ -66,7 +47,6 @@
         z-index: 101;
         margin-bottom: 0;
         transition: all .2s ease-out;
-        color: $white;
         @include breakpoint(large) {
             height: 0;
             max-width: 50%;
