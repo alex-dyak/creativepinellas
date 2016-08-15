@@ -291,3 +291,27 @@ function add_intro_quicktags() {
 		</script>
 	<?php endif;
 }
+
+/**
+ * Add button in Visual-editor.
+ */
+function visual_intro_button()
+{
+	if ( current_user_can('edit_posts') && current_user_can('edit_pages') )
+	{
+		add_filter('mce_external_plugins', 'visual_intro_plugin');
+		add_filter('mce_buttons', 'visual_intro_register_button');
+	}
+}
+add_action('init', 'visual_intro_button');
+
+function visual_intro_plugin($plugin_array){
+	$plugin_array['visual_intro'] = get_bloginfo('template_url').'/js/introbutton.js';
+	return $plugin_array;
+}
+
+function visual_intro_register_button($buttons){
+	array_push($buttons, "intro");
+
+	return $buttons;
+}
