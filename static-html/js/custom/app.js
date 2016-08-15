@@ -4,6 +4,14 @@
       autoWidth: false
     });
 
+    $('.js-datepicker').datepicker({
+      dayNamesMin: [ 'SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT' ],
+      firstDay: 1,
+      prevText: '&larr;',
+      nextText: '&rarr;',
+      showOtherMonths: true
+    });
+
     $(document).foundation();
 
     var $offCanvas = $(".off-canvas"),
