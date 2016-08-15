@@ -126,7 +126,8 @@ module.exports = function (grunt) {
               postsList: '<%= fixturesPath %>/blocks/posts-list.html',
               gridItemBlog: '<%= fixturesPath %>/blocks/grid-item-blog.html',
               gridItemBloglanding: '<%= fixturesPath %>/blocks/grid-item-blogLanding.html',
-              pagination: '<%= fixturesPath %>/blocks/pagination.html'
+              pagination: '<%= fixturesPath %>/blocks/pagination.html',
+              swipeboxItem: '<%= fixturesPath %>/blocks/swipebox-item.html'
             }
           }
         }
@@ -150,7 +151,8 @@ module.exports = function (grunt) {
               blogLanding: '<%= fixturesPath %>/partials/blog-landing-template.html',
               blogCategory: '<%= fixturesPath %>/partials/blog-category-template.html',
               testTemplate: '<%= fixturesPath %>/partials/testpage-template.html',
-              directoryTemplate: '<%= fixturesPath %>/partials/directory-template.html'
+              directoryTemplate: '<%= fixturesPath %>/partials/directory-template.html',
+              artistPageLayout: '<%= fixturesPath %>/partials/artist-page-template.html',
             }
           }
         }

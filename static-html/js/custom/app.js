@@ -1,6 +1,7 @@
 (function () {
   jQuery(function($) {
     $('select').selectBoxIt();
+    $('.swipebox').swipebox();
 
     $(document).foundation();
 

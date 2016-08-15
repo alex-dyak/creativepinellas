@@ -1,0 +1,17 @@
+.siteSidebar-galleryWidget {
+    padding-bottom: 15px;
+    border-bottom: 1px solid $black;
+}
+.siteSidebar-gallery-element {
+    margin-bottom: 15px;
+    li {
+        width: 50%;
+        float: left;
+        @include breakpoint(halfMedium) {
+            width: 20%;
+        }
+        @include breakpoint(medium) {
+            width: 50%;
+        }
+    }
+}
