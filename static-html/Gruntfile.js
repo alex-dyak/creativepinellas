@@ -153,6 +153,8 @@ module.exports = function (grunt) {
               testTemplate: '<%= fixturesPath %>/partials/testpage-template.html',
               directoryTemplate: '<%= fixturesPath %>/partials/directory-template.html',
               artistPageLayout: '<%= fixturesPath %>/partials/artist-page-template.html',
+              eventPageLayout: '<%= fixturesPath %>/partials/event-page-template.html',
+              venuePageLayout: '<%= fixturesPath %>/partials/venue-page-template.html',
             }
           }
         }

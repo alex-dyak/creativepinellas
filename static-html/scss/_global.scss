@@ -89,6 +89,9 @@ ol {
     margin-bottom: 30px;
     padding: 5px 0;
     border-bottom: 3px solid $black;
+    p {
+        margin-bottom: 0;
+    }
 }
 .postPage-backLink {
     margin-bottom: 40px;
@@ -97,6 +100,12 @@ ol {
         &:hover {
             text-decoration: none;
         }
+    }
+}
+.postPage-content-links {
+    .btn {
+        min-width: 220px;
+        margin-right: 20px;
     }
 }
 .postPage-content--bottomLine {
