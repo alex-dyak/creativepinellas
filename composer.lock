@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "00fa137f5ab96459349568d8b502e77f",
-    "content-hash": "dbf1e602f834b1ab7c7b54dbf3d0e823",
+    "hash": "145140ed2ce6252af716ce8f38459777",
+    "content-hash": "3450e8c2c32bf81113be08ccd454d194",
     "packages": [
         {
             "name": "composer/installers",
@@ -420,6 +420,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/wordpress-seo/"
+        },
+        {
+            "name": "wpackagist-plugin/wysiwyg-widgets",
+            "version": "2.3.5",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/wysiwyg-widgets/",
+                "reference": "tags/2.3.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/wysiwyg-widgets.2.3.5.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/wysiwyg-widgets/"
         }
     ],
     "packages-dev": [],
