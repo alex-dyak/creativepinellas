@@ -46,6 +46,12 @@ function w4ptheme_setup() {
 	register_nav_menu( 'footer', __( 'Footer Menu', 'w4ptheme' ) );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'title-tag' );
+
+	if ( function_exists( 'add_image_size' ) ) {
+		add_image_size( 'post_page_img', 650, 300, true );
+		add_image_size( 'related_post_img', 280, 280, true );
+	}
+
 }
 
 add_action( 'after_setup_theme', 'w4ptheme_setup' );
@@ -138,13 +144,15 @@ register_nav_menu( 'primary', __( 'Navigation Menu', 'w4ptheme' ) );
 
 
 /**
- * Navigation - update coming from twentythirteen.
+ * Navigation.
  */
 function post_navigation() {
-	echo '<div class="navigation">';
-	echo '	<div class="next-posts">' . esc_html( get_next_posts_link( '&laquo; Older Entries' ) ) . '</div>';
-	echo '	<div class="prev-posts">' . esc_html( get_previous_posts_link( 'Newer Entries &raquo;' ) ) . '</div>';
+	echo '<section class="row column">';
+	echo '<div class="postPageNavigation u-clearfix">';
+	echo '	<div class="postNavigation-prev">' .  get_next_post_link( '%link', '&lt; Prev Post %title' ) . '</div>';
+	echo '	<div class="postNavigation-next">' . get_previous_post_link( '%link', 'Next Post &gt;' ) . '</div>';
 	echo '</div>';
+	echo '</section>';
 }
 
 // Include theme options.
