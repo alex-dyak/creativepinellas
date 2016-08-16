@@ -127,6 +127,7 @@ module.exports = function (grunt) {
               postsList: '<%= fixturesPath %>/blocks/posts-list.html',
               gridItemBlog: '<%= fixturesPath %>/blocks/grid-item-blog.html',
               gridItemBloglanding: '<%= fixturesPath %>/blocks/grid-item-blogLanding.html',
+              gridItemArtist: '<%= fixturesPath %>/blocks/grid-item-artist.html',
               pagination: '<%= fixturesPath %>/blocks/pagination.html'
             }
           }
