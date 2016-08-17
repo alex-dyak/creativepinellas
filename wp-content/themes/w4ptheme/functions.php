@@ -275,3 +275,43 @@ class Mobile_Nav_Menu extends Walker_Nav_Menu {
 	}
 
 }
+
+/**
+ * Add button in html-editor.
+ */
+add_action( 'admin_print_footer_scripts', 'add_intro_quicktags' );
+function add_intro_quicktags() {
+	if (wp_script_is('quicktags')) :
+		?>
+		<script type="text/javascript">
+			if (QTags) {
+				// QTags.addButton( id, display, arg1, arg2, access_key, title, priority, instance );
+				QTags.addButton( 'div_intro', 'intro', '<div class="intro"><p>', '</p></div>', 'intro', 'Intro', 1 );
+			}
+		</script>
+	<?php endif;
+}
+
+/**
+ * Add button in Visual-editor.
+ */
+function visual_intro_button()
+{
+	if ( current_user_can('edit_posts') && current_user_can('edit_pages') )
+	{
+		add_filter('mce_external_plugins', 'visual_intro_plugin');
+		add_filter('mce_buttons', 'visual_intro_register_button');
+	}
+}
+add_action('init', 'visual_intro_button');
+
+function visual_intro_plugin($plugin_array){
+	$plugin_array['visual_intro'] = get_bloginfo('template_url').'/js/introbutton.js';
+	return $plugin_array;
+}
+
+function visual_intro_register_button($buttons){
+	array_push($buttons, "intro");
+
+	return $buttons;
+}

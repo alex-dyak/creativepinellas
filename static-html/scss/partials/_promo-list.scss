@@ -1,0 +1,106 @@
+.promoList {
+    margin-bottom: 40px;
+}
+.promoList-item {
+    position: relative;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+.promoList-item-image {
+    img {
+        width: 100%;
+    }
+}
+.promoList-item-body {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    padding: 0 15px;
+    color: $white;
+    @include breakpoint(large) {
+        top: 15%;
+    }
+    &:before {
+        position: relative;
+        z-index: 101;
+        display: block;
+        width: 24px;
+        height: 24px;
+        content: "";
+        margin-bottom: 10px;
+        background: $white;
+    }
+    h3 {
+        position: relative;
+        z-index: 101;
+        margin-bottom: 10px;
+        font-size: 1rem;
+        @include breakpoint(large) {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+    }
+    p {
+        position: relative;
+        z-index: 101;
+        margin-bottom: 0;
+        transition: all .2s ease-out;
+        @include breakpoint(large) {
+            height: 0;
+            max-width: 50%;
+            visibility: hidden;
+            opacity: 0;
+        }
+    }
+}
+.promoList-item-categoryDecor {
+    position: absolute;
+    left: 0;
+    top: -510px;
+    bottom: -510px;
+    z-index: 100;
+    width: 100%;
+    opacity: 0.75;
+    transition: all .2s ease-out;
+    @include breakpoint(large) {
+        top: -10px;
+        bottom: 10px;
+    }
+}
+.promoList-item-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 102;
+    transition: all .2s ease-out;
+    @include breakpoint(large) {
+        bottom: 30px;
+        right: 30px;
+        opacity: 0;
+    }
+    .btn {
+        min-width: 194px;
+    }
+}
+.promoList-item {
+    &:hover {
+        .promoList-item-categoryDecor {
+            @include breakpoint(large) {
+                top: -200px;
+                bottom: -200px;
+            }
+        }
+        .promoList-item-body {
+            p {
+                height: auto;
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        .promoList-item-button {
+            opacity: 1;
+        }
+    }
+}
