@@ -1,0 +1,33 @@
+.postPage-info {
+  font-size: $fontSize-small;
+  letter-spacing: 2px;
+  margin-top: 27px;
+  margin-bottom: 30px;
+  padding: 5px 0;
+  border-bottom: 3px solid $black;
+  p {
+    margin-bottom: 0;
+  }
+}
+.postPage-backLink {
+  margin-bottom: 40px;
+  a {
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+.postPage-content-links {
+  .btn {
+    min-width: 220px;
+    margin-right: 20px;
+  }
+}
+.postPage-content--bottomLine {
+  padding-bottom: 30px;
+  border-bottom: 2px solid $gray-border;
+}
+.postPage-image {
+  margin-bottom: 30px;
+}
