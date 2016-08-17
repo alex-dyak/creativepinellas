@@ -559,7 +559,7 @@ function wp_rp_get_related_posts($before_title = '', $after_title = '') {
 		$wrap_style = ' style="display:none;"';
 	}
 	
-	$output = $related_posts_title .
+	$output = strtoupper( $related_posts_title ) .
 	          '<div class="postsList ' . $css_classes_wrap . '" ' . $first_id_attr . $wrap_style . '>' .
 				$related_posts_ul .
 				$posts_footer .
