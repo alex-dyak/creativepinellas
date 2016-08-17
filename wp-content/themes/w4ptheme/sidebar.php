@@ -8,27 +8,28 @@
  */
 
 ?>
-<aside id="sidebar">
+<aside id="sidebar" class="medium-4 large-3 column siteSidebar">
+	<div class="siteSidebar-inner">
 
-	<?php if ( function_exists( 'dynamic_sidebar' ) && dynamic_sidebar( 'Sidebar Widgets' ) ) :
-	else : ?>
+		<?php if ( function_exists( 'dynamic_sidebar' ) && dynamic_sidebar( 'Sidebar Widgets' ) ) :
+			else : ?>
 
-		<!-- All this stuff in here only shows up if you DON'T have any widgets active in this zone -->
+			<!-- All this stuff in here only shows up if you DON'T have any widgets active in this zone -->
 
-		<?php get_search_form(); ?>
+			<?php get_search_form(); ?>
 
-		<h2><?php esc_html_e( 'Archives', 'w4ptheme' ); ?></h2>
-		<ul>
-			<?php wp_get_archives( 'type=monthly' ); ?>
-		</ul>
+			<h2><?php esc_html_e( 'Archives', 'w4ptheme' ); ?></h2>
+			<ul>
+				<?php wp_get_archives( 'type=monthly' ); ?>
+			</ul>
 
-		<h2><?php esc_html_e( 'Meta', 'w4ptheme' ); ?></h2>
-		<ul>
-			<?php wp_register(); ?>
-			<li><?php wp_loginout(); ?></li>
-			<?php wp_meta(); ?>
-		</ul>
+			<h2><?php esc_html_e( 'Meta', 'w4ptheme' ); ?></h2>
+			<ul>
+				<?php wp_register(); ?>
+				<li><?php wp_loginout(); ?></li>
+				<?php wp_meta(); ?>
+			</ul>
 
-	<?php endif; ?>
-
+		<?php endif; ?>
+	</div>
 </aside>

@@ -49,7 +49,6 @@
         transition: all .2s ease-out;
         @include breakpoint(large) {
             height: 0;
-            max-width: 50%;
             visibility: hidden;
             opacity: 0;
         }
@@ -88,8 +87,8 @@
     &:hover {
         .promoList-item-categoryDecor {
             @include breakpoint(large) {
-                top: -200px;
-                bottom: -200px;
+                top: -300px;
+                bottom: -300px;
             }
         }
         .promoList-item-body {

@@ -1,5 +1,6 @@
 (function () {
   jQuery(function($) {
+
     $('select').selectBoxIt({
       autoWidth: false
     });
@@ -11,6 +12,8 @@
       nextText: '&rarr;',
       showOtherMonths: true
     });
+
+    $('.swipebox').swipebox();
 
     $(document).foundation();
 
