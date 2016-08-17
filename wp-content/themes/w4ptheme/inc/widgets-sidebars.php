@@ -44,10 +44,10 @@ if ( function_exists( 'register_sidebar' ) ) {
 		register_sidebar( array(
 			'name'          => __( 'Sidebar Footer', 'w4ptheme' ),
 			'id'            => 'sidebar-footer',
-			'before_widget' => '<div id="%1$s" class="widget %2$s postsList-item">',
-			'after_widget'  => '</div>',
-			'before_title'  => '<h3 class="widget-title">',
-			'after_title'   => '</h3>',
+			'before_widget' => '<section class="row column">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2>',
+			'after_title'   => '</h2>',
 		) );
 
 		register_widget( 'W4P_Contacts_Widget' );

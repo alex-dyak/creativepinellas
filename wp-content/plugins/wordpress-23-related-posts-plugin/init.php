@@ -324,7 +324,6 @@ function wp_rp_generate_related_posts_list_items($related_posts, $selected_relat
 		//$data_attrs = 'data-position="' . $i . '" data-poid="' . $post_id . '" data-post-type="' . $post_type . '" ';
 
 		$output .= '<div class="postsList-item">';
-		$output .= '<div class="postsList-item-body">';
 
 		$post_url = property_exists($related_post, 'post_url') ? $related_post->post_url : get_permalink($related_post->ID);
 
@@ -390,7 +389,6 @@ function wp_rp_generate_related_posts_list_items($related_posts, $selected_relat
 			$output .= '</small>';
 		}
 
-		$output .=  '</div>';
 		$output .=  '</div>';
 	}
 
@@ -545,7 +543,7 @@ function wp_rp_get_related_posts($before_title = '', $after_title = '') {
 	$css_classes_wrap = ' ' . str_replace(array('.css', '-'), array('', '_'), esc_attr('wp_rp_' . $platform_options['theme_name']));
 
 	$related_posts_lis = wp_rp_generate_related_posts_list_items($related_posts, $selected_related_posts, $post_categories);
-	$related_posts_ul = '<ul class="' . $css_classes . '">' . $related_posts_lis . '</ul>';
+	$related_posts_ul = $related_posts_lis;
 
 	$related_posts_title = $title ? ($before_title ? $before_title . $title . $after_title : '<h2 class="related_post_title">' . $title . '</h2>') : '';
 
@@ -561,12 +559,10 @@ function wp_rp_get_related_posts($before_title = '', $after_title = '') {
 		$wrap_style = ' style="display:none;"';
 	}
 	
-	$output = '<div class="wp_rp_wrap ' . $css_classes_wrap . '" ' . $first_id_attr . $wrap_style . '>' .
-			'<div class="wp_rp_content">' .
-				$related_posts_title .
+	$output = $related_posts_title .
+	          '<div class="postsList ' . $css_classes_wrap . '" ' . $first_id_attr . $wrap_style . '>' .
 				$related_posts_ul .
 				$posts_footer .
-			'</div>' .
 		'</div>';
 
 	return "\n" . $output . "\n";

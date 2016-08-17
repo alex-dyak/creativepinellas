@@ -51,11 +51,9 @@ get_header(); ?>
 			<?php endwhile;
 			endif; ?>
 			<!--    Related Posts   -->
-			<section class="row column">
 				<?php if ( is_active_sidebar( 'sidebar-footer' ) ) : ?>
 					<?php dynamic_sidebar( 'sidebar-footer' ); ?>
 				<?php endif; ?>
-			</section>
 		</section>
 
 		<aside id="sidebar" class="medium-4 large-3 column siteSidebar">
