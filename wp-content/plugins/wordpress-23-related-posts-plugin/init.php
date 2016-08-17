@@ -342,7 +342,6 @@ function wp_rp_generate_related_posts_list_items($related_posts, $selected_relat
 
 		$output .= '<div class="postsList-item-body">';
 		$output .= '<h3>' . strtoupper( wptexturize($related_post->post_title) ) . '</h3>';
-		//$output .= '<a href="' . $post_url . '" class="wp_rp_title">' . wptexturize($related_post->post_title) . '</a>';
 
 		if ($platform_options["display_comment_count"] && property_exists($related_post, 'comment_count')){
 			$output .=  '<small class="wp_rp_comments_count"> (' . $related_post->comment_count . ')</small><br />';
