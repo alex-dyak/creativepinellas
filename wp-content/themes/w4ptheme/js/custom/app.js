@@ -1,6 +1,6 @@
 (function () {
   jQuery(function($) {
-    $('select').selectBoxIt();
+    $('select').selectBoxIt({ autoWidth: false });
 
     $(document).foundation();
 

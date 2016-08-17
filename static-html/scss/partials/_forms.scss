@@ -54,6 +54,7 @@ input[type="submit"],
 
 /*  Global Select styling */
 .selectboxit-container {
+    width: 100%;
     * {
         font-family: $font-base;
         font-size: $fontSize-base;
@@ -72,6 +73,7 @@ input[type="submit"],
         font-style: italic;
     }
     .selectboxit {
+        width: 100%;
         height: 41px;
         line-height: 41px;
         border-radius: 0;
@@ -134,5 +136,13 @@ input[type="submit"],
                 display: none;
             }
         }
+    }
+}
+.formElement-row {
+    margin-bottom: 20px;
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: $black;
     }
 }
