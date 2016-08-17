@@ -129,7 +129,8 @@ module.exports = function (grunt) {
               gridItemBloglanding: '<%= fixturesPath %>/blocks/grid-item-blogLanding.html',
               gridItemArtist: '<%= fixturesPath %>/blocks/grid-item-artist.html',
               pagination: '<%= fixturesPath %>/blocks/pagination.html',
-              entityPagination: '<%= fixturesPath %>/blocks/entity-pagination.html'
+              entityPagination: '<%= fixturesPath %>/blocks/entity-pagination.html',
+              swipeboxItem: '<%= fixturesPath %>/blocks/swipebox-item.html'
             }
           }
         }
@@ -154,7 +155,10 @@ module.exports = function (grunt) {
               sectionLanding: '<%= fixturesPath %>/partials/section-landing.html',
               blogLanding: '<%= fixturesPath %>/partials/blog-landing-template.html',
               blogCategory: '<%= fixturesPath %>/partials/blog-category-template.html',
-              directoryTemplate: '<%= fixturesPath %>/partials/directory-template.html'
+              directoryTemplate: '<%= fixturesPath %>/partials/directory-template.html',
+              artistPageLayout: '<%= fixturesPath %>/partials/artist-page-template.html',
+              eventPageLayout: '<%= fixturesPath %>/partials/event-page-template.html',
+              venuePageLayout: '<%= fixturesPath %>/partials/venue-page-template.html'
             }
           }
         }

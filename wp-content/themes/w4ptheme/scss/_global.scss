@@ -82,14 +82,6 @@ ol {
     font-size: $fontSize-small;
     color: $charcoal;
 }
-.postPage-info {
-    font-size: $fontSize-small;
-    letter-spacing: 2px;
-    margin-top: 27px;
-    margin-bottom: 30px;
-    padding: 5px 0;
-    border-bottom: 3px solid $black;
-}
 #svgPlaceholder {
     display: none;
 }
@@ -99,4 +91,8 @@ ol {
 .svgIcon--logo {
     width: 164px;
     height: 65px;
+}
+.section-bottomLined {
+    padding-bottom: 40px;
+    border-bottom: 2px solid #d4d4d4;
 }

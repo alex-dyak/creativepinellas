@@ -1,6 +1,19 @@
 (function () {
   jQuery(function($) {
-    $('select').selectBoxIt();
+
+    $('select').selectBoxIt({
+      autoWidth: false
+    });
+
+    $('.js-datepicker').datepicker({
+      dayNamesMin: [ 'SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT' ],
+      firstDay: 1,
+      prevText: '&larr;',
+      nextText: '&rarr;',
+      showOtherMonths: true
+    });
+
+    $('.swipebox').swipebox();
 
     $(document).foundation();
 
