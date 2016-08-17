@@ -1,7 +1,7 @@
 (function () {
   jQuery(function($) {
     $('select').selectBoxIt({ autoWidth: false });
-
+    $('.swipebox').swipebox();
     $(document).foundation();
 
     var $offCanvas = $(".off-canvas"),
