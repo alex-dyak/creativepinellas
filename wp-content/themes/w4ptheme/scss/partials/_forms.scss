@@ -3,9 +3,10 @@ input[type="email"],
 input[type="password"],
 textarea {
     width: 100%;
-    padding: 10px;
+    padding: 7px 10px 8px;
     font-style: italic;
     border: 2px solid $charcoal--light;
+    background: none;
     &:focus {
         outline-color: $sky;
         border-color: $sky;
@@ -39,6 +40,10 @@ input[type="submit"],
         cursor: pointer;
     }
 }
+button.btn--white,
+input[type="button"].btn--white,
+input[type="reset"].btn--white,
+input[type="submit"].btn--white,
 .btn--white {
     border-color: $white;
     color: $white;
@@ -46,6 +51,20 @@ input[type="submit"],
     &:active {
         border-color: $white--20;
         background-color: $white--20;
+    }
+}
+button.btn--ocean,
+input[type="button"].btn--ocean,
+input[type="reset"].btn--ocean,
+input[type="submit"].btn--ocean,
+.btn--ocean {
+    border-color: $ocean;
+    background: $ocean;
+    color: $white;
+    &:hover,
+    &:active {
+        border-color: $ocean--80;
+        background-color: $ocean--80;
     }
 }
 .btn--fullWidth {
@@ -135,4 +154,11 @@ input[type="submit"],
             }
         }
     }
+}
+
+label {
+    font-weight: $fontWeight-bold;
+}
+.form-row {
+    margin-bottom: 15px;
 }
