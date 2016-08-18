@@ -50,6 +50,8 @@ function w4ptheme_setup() {
 	if ( function_exists( 'add_image_size' ) ) {
 		add_image_size( 'post_page_img', 650, 300, true );
 		add_image_size( 'related_post_img', 280, 280, true );
+		add_image_size( 'big_blog_img', 1480, '', true );
+		add_image_size( 'small_blog_img', 880, '', true );
 	}
 
 }
