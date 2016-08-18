@@ -4,12 +4,14 @@ input[type="password"],
 textarea {
     width: 100%;
     padding: 7px 10px 8px;
-    font-style: italic;
     border: 2px solid $charcoal--light;
     background: none;
     &:focus {
         outline-color: $sky;
         border-color: $sky;
+    }
+    &::placeholder {
+        font-style: italic;
     }
 }
 textarea {
@@ -106,7 +108,7 @@ input[type="submit"].btn--ocean,
     }
     .selectboxit-option {
         position: relative;
-        padding: 8px 7px;
+        padding: 8px 20px;
         transition: all .2s ease-out;
         &:after {
             content: '';
@@ -160,5 +162,19 @@ label {
     font-weight: $fontWeight-bold;
 }
 .form-row {
+    position: relative;
     margin-bottom: 15px;
+
+    &.is-datepicker {
+        &:after {
+            content: $fa-var-calendar;
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-family:  FontAwesome;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    }
 }

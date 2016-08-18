@@ -245,9 +245,12 @@
                         <section class="row">
                             <div class="column">
                                 <h2 class="u-text--center">NARROW DOWN EVENTS</h2>
+                                <p class="hide-for-medium">
+                                    <a href="#" class="btn btn--fullWidth js-toggle" data-toggle="js-filtersForm">Filters</a>
+                                </p>
                             </div>
                         </section>
-                        <form action="">
+                        <form action="" class="directoryFilters-form js-filtersForm">
                             <section class="row">
                                 <div class="halfMedium-6 medium-4 column">
                                     <label for="attend">Who Should Attend</label>
@@ -285,13 +288,13 @@
                             <section class="row">
                                 <div class="halfMedium-6 medium-3 medium-offset-1 column">
                                     <label for="dateFrom">Date Range: From</label>
-                                    <div class="form-row">
+                                    <div class="form-row is-datepicker">
                                         <input type="text" id="dateFrom" placeholder="all" class="js-datepicker">
                                     </div>
                                 </div>
                                 <div class="halfMedium-6 medium-3 column">
                                     <label for="dateTo">To</label>
-                                    <div class="form-row">
+                                    <div class="form-row is-datepicker">
                                         <input type="text" id="dateTo" placeholder="all" class="js-datepicker">
                                     </div>
                                 </div>
