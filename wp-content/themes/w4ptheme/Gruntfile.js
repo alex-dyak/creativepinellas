@@ -128,7 +128,8 @@ module.exports = function (grunt) {
               gridItemBlog: '<%= fixturesPath %>/blocks/grid-item-blog.html',
               gridItemBloglanding: '<%= fixturesPath %>/blocks/grid-item-blogLanding.html',
               pagination: '<%= fixturesPath %>/blocks/pagination.html',
-              swipeboxItem: '<%= fixturesPath %>/blocks/swipebox-item.html'
+              swipeboxItem: '<%= fixturesPath %>/blocks/swipebox-item.html',
+              homeHeaderSection: '<%= fixturesPath %>/blocks/header-section.html'
             }
           }
         }
@@ -146,6 +147,7 @@ module.exports = function (grunt) {
             partials: {
               footer: '<%= fixturesPath %>/partials/footer.html',
               header: '<%= fixturesPath %>/partials/header.html',
+              homeHeader: '<%= fixturesPath %>/partials/home-header.html',
               offCanvas: '<%= fixturesPath %>/partials/off-canvas.html',
               sidebarTemplate: '<%= fixturesPath %>/partials/sidebar-template.html',
               blogPost: '<%= fixturesPath %>/partials/blog-post-template.html',

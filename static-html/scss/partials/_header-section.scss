@@ -1,0 +1,43 @@
+.headerSection {
+  position: relative;
+  z-index: 101;
+}
+.headerSection-inner-poster {
+  border: 4px solid $white;
+  margin-bottom: 10px;
+  @include breakpoint(medium) {
+    margin-bottom: 0;
+  }
+}
+.headerSection-inner-text {
+  color: $white;
+  text-align: center;
+  @include breakpoint(medium) {
+    text-align: left;
+    padding-bottom: 70px;
+  }
+  &::before {
+    max-width: 260px;
+    height: 25px;
+    margin-bottom: 20px;
+    content: "";
+    background: $white;
+    @include breakpoint(large) {
+      display: block;
+    }
+  }
+  .btn {
+    margin-top: 0;
+    margin-bottom: 0;
+    min-width: 195px;
+  }
+  h1 {
+    margin-bottom: 15px;
+  }
+  p {
+    display: none;
+    @include breakpoint(medium) {
+      display: block;
+    }
+  }
+}

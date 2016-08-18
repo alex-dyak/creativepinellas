@@ -56,3 +56,46 @@
 .siteHeader-topNav {
     margin-right: 5px;
 }
+.siteHeader--headerSection {
+    position: relative;
+    margin-bottom: 40px;
+    @include breakpoint(medium) {
+        margin-bottom: 50px;
+        &::after {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            content: "";
+            background-color: $white;
+        }
+    }
+    .siteHeader-top {
+        padding-left: .625rem;
+        padding-right: .625rem;
+        @include breakpoint(medium) {
+            padding-left: .9375rem;
+            padding-right: .9375rem;
+        }
+        &:before {
+            width: 200%;
+            @include breakpoint(halfMedium) {
+                width: 100%;
+            }
+            @include breakpoint(medium) {
+                width: 760px;
+            }
+        }
+    }
+}
+.siteHeader-top-inner {
+    margin-bottom: 20px;
+    > .column:last-child,
+    > .columns:last-child {
+        margin-top: 12px;
+        @include breakpoint(large) {
+            margin-top: 0;
+        }
+    }
+}
