@@ -11,8 +11,8 @@
 <aside id="sidebar" class="medium-4 large-3 column siteSidebar">
 	<div class="siteSidebar-inner">
 
-		<?php if ( function_exists( 'dynamic_sidebar' ) && dynamic_sidebar( 'Sidebar Widgets' ) ) :
-			else : ?>
+		<?php if ( function_exists( 'dynamic_sidebar' ) && dynamic_sidebar( 'sidebar-primary' ) ) :
+		else : ?>
 
 			<!-- All this stuff in here only shows up if you DON'T have any widgets active in this zone -->
 
