@@ -5,6 +5,12 @@
     .selectboxit {
         width: auto;
     }
+    .directoryFilters-form {
+        display: none;
+        @include breakpoint(medium) {
+            display: block;
+        }
+    }
     .directoryFilters-action {
         margin-top: 13px;
     }
