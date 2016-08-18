@@ -8,7 +8,7 @@
     .directoryFilters-form {
         display: none;
         @include breakpoint(medium) {
-            display: block;
+            display: block !important; // for show block after screen resize if toggle button was clicked
         }
     }
     .directoryFilters-action {
