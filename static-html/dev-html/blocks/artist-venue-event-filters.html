@@ -1,0 +1,65 @@
+<section class="u-background--gray directoryFilters">
+    <section class="row">
+        <div class="column">
+            <h2 class="u-text--center">NARROW DOWN EVENTS</h2>
+            <p class="hide-for-medium">
+                <a href="#" class="btn btn--fullWidth js-toggle" data-toggle="js-filtersForm">Filters</a>
+            </p>
+        </div>
+    </section>
+    <form action="" class="directoryFilters-form js-filtersForm">
+        <section class="row">
+            <div class="halfMedium-6 medium-4 column">
+                <label for="attend">Who Should Attend</label>
+                <div class="form-row">
+                    <select id="attend">
+                        <option value="Everyone">Everyone</option>
+                        <option value="For Artist">For Artist</option>
+                        <option value="For the Public">For the Public</option>
+                    </select>
+                </div>
+            </div>
+            <div class="halfMedium-6 medium-4 column">
+                <label for="eventType">Type of Event</label>
+                <div class="form-row">
+                    <select id="eventType">
+                        <option value="All types">All types</option>
+                        <option value="Option 1">Option 1</option>
+                        <option value="Option 2">Option 2</option>
+                        <option value="Option 3">Option 3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="medium-4 column">
+                <label for="location">Location</label>
+                <div class="form-row">
+                    <select id="location">
+                        <option value="All Communities">All Communities</option>
+                        <option value="Option 1">Option 1</option>
+                        <option value="Option 2">Option 2</option>
+                        <option value="Option 3">Option 3</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+        <section class="row">
+            <div class="halfMedium-6 medium-3 medium-offset-1 column">
+                <label for="dateFrom">Date Range: From</label>
+                <div class="form-row is-datepicker">
+                    <input type="text" id="dateFrom" placeholder="all" class="js-datepicker">
+                </div>
+            </div>
+            <div class="halfMedium-6 medium-3 column">
+                <label for="dateTo">To</label>
+                <div class="form-row is-datepicker">
+                    <input type="text" id="dateTo" placeholder="all"  class="js-datepicker">
+                </div>
+            </div>
+            <div class="medium-3 column end">
+                <div class="form-row directoryFilters-action">
+                    <input type="submit" value="Go" class="btn btn--fullWidth btn--ocean">
+                </div>
+            </div>
+        </section>
+    </form>
+</section>
