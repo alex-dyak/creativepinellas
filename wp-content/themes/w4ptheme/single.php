@@ -28,11 +28,15 @@ get_header(); ?>
 						<?php the_date( 'F d, Y' ); ?>
 						<?php echo __( 'by ', 'w4ptheme' ) . strtoupper( get_the_author() ) . ' | '; ?>
 						<?php $getcat = get_the_category();
-						$cat_id       = $getcat[0]->cat_ID; ?>
-						<?php
-						foreach ( ( get_the_category() ) as $category ) {
-							echo '<a href="' . get_category_link( $category->cat_ID ) . '">' . strtoupper( $category->cat_name ) . ' ' . '</a>';
-						} ?>
+						$cat_id       = $getcat[0]->cat_ID;
+						$count        = count( $getcat );
+						foreach ( $getcat as $key => $category ) : ?>
+							<?php if ( $key == $count - 1 ) : ?>
+								<a href="<?php echo get_category_link( $category->cat_ID ); ?>"><?php echo strtoupper( $category->cat_name ); ?></a>
+							<?php else : ?>
+								<a href="<?php echo get_category_link( $category->cat_ID ); ?>"><?php echo strtoupper( $category->cat_name ); ?></a><?php echo ', '; ?>
+							<?php endif; ?>
+						<?php endforeach; ?>
 					</div>
 
 					<!--    Post Content    -->
