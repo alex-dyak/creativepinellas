@@ -63,8 +63,10 @@
     transition: all .2s ease-out;
 }
 .gridItem--blog {
-    opacity: 0;
-    visibility: hidden;
+    .gridItem-info {
+        opacity: 0;
+        visibility: hidden;
+    }
     &:hover,
     a:focus {
         .gridItem-categoryDecor {
