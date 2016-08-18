@@ -12,6 +12,7 @@
 .headerSection-inner-text {
   color: $white;
   text-align: center;
+  padding-bottom: 20px;
   @include breakpoint(medium) {
     text-align: left;
     padding-bottom: 70px;
