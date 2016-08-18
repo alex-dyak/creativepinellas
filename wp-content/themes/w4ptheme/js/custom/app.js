@@ -76,7 +76,6 @@
       if (!$t.is(':focus')) {
         e.preventDefault();
         $t.focus();
-        console.log('click')
       }
     });
 
