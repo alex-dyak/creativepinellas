@@ -82,7 +82,12 @@
     /**  slide toggle element */
     $('.js-toggle').click(function (e) {
       e.preventDefault();
-      $('.' + $(this).data('toggle') ).slideToggle();
+      var $toggleBlock = $('.' + $(this).data('toggle') );
+      $toggleBlock.slideToggle(function() {
+        $toggleBlock.find('select').each(function () {
+          $(this).data("selectBox-selectBoxIt").refresh();
+        });
+      });
     })
 
   });

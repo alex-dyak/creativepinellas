@@ -6,27 +6,13 @@
 .siteHeader {
     background-color: $sky;
 }
-.siteHeader-top {
+.siteHeader-inner {
     position: relative;
-    padding: 20px 0;
     overflow: hidden;
     @include breakpoint(large) {
         overflow: visible;
     }
-    @include breakpoint(large down) {
-        display: table;
-        width: 100%;
-
-        & > .column {
-            display: table-cell;
-            vertical-align: middle;
-            float: none;
-            &:last-child:not(:first-child) {
-                float: none;
-            }
-        }
-    }
-    &:before {
+    &::before {
         content: "";
         display: block; // redefine row:before display:table
         position: absolute;
@@ -43,6 +29,23 @@
             background-position: 0 -160px;
         }
     }
+}
+.siteHeader-top {
+    position: relative;
+    padding: 20px 0;
+    @include breakpoint(large down) {
+        display: table;
+        width: 100%;
+
+        & > .column {
+            display: table-cell;
+            vertical-align: middle;
+            float: none;
+            &:last-child:not(:first-child) {
+                float: none;
+            }
+        }
+    }
     & > .column {
         position: relative;
     }
@@ -55,4 +58,28 @@
 }
 .siteHeader-topNav {
     margin-right: 5px;
+}
+.siteHeader--headerSection {
+    position: relative;
+    margin-bottom: 40px;
+    @include breakpoint(medium) {
+        margin-bottom: 50px;
+        &::after {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            content: "";
+            background-color: $white;
+        }
+    }
+    .siteHeader-inner {
+        &::before {
+            width: 200%;
+            @include breakpoint(medium) {
+                width: 760px;
+            }
+        }
+    }
 }
