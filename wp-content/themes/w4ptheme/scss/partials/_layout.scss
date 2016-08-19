@@ -18,6 +18,9 @@
         padding: 100px 15px 90px;
     }
 }
+.siteContent--noBottomSpace {
+    padding-bottom: 0;
+}
 .siteSidebar {
     padding: 0 10px 90px;
     @include breakpoint(medium) {
