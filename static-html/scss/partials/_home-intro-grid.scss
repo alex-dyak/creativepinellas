@@ -1,0 +1,26 @@
+.homeIntro {
+  margin-bottom: 40px;
+  @include breakpoint(medium) {
+    margin-bottom: 70px;
+  }
+  @include breakpoint(large) {
+    margin-bottom: 95px;
+  }
+}
+.homeIntro-gridList {
+  @include breakpoint(large) {
+    padding-left: .9375rem;
+    padding-right: .9375rem;
+  }
+  .promoList-item {
+    margin-bottom: 0;
+  }
+}
+.homeIntro-textInfo {
+  text-align: center;
+  margin-bottom: 40px;
+  @include breakpoint(medium) {
+    text-align: left;
+    margin-bottom: 60px;
+  }
+}
