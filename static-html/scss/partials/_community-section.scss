@@ -1,7 +1,12 @@
 .communitySection {
-  padding: 90px 0;
+  padding-top: 35px;
+  padding-bottom: 35px;
   background: $sky;
   color: $white;
+  @include breakpoint(medium) {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
 }
 .communitySection-text {
   margin-bottom: 35px;
@@ -35,16 +40,16 @@
     text-decoration: none;
   }
   span {
+    position: absolute;
+    top: 15px;
+    left: 50%;
     display: block;
     white-space: nowrap;
-    writing-mode: tb-rl;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    transform-origin: 0 0;
+    transform: rotate(90deg) translateY(-50%) ;
     @include breakpoint(medium) {
-      position: relative;
-      left: 0;
-      transform: translateX(0);
+      top: 20px;
+      left: 40px;
     }
   }
 }

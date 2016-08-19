@@ -24,8 +24,6 @@
       $touchFocusBlock = $('.js-touchFocus'),
       $equalContainer = $('.js-community-equalHeight');
 
-    setEqualHeight($equalContainer);
-
     $offCanvas.on("opened.zf.offcanvas", function(e) {
       $mobileNavToggle.addClass('is-open');
     });
@@ -33,11 +31,15 @@
       $mobileNavToggle.removeClass('is-open');
     });
 
+    $(window).load(function () {
+      communityEqualHeight($equalContainer);
+    });
+
     $(window).resize(function () {
       if (Foundation.MediaQuery.atLeast('large')) {
         $offCanvas.foundation('close');
       }
-      setEqualHeight($equalContainer);
+      communityEqualHeight($equalContainer);
     });
 
     /**  Mobile navigation show subNav*/
@@ -95,22 +97,17 @@
     });
   });
 
-  /* This function sets equal height to each column with data attribute [data-equal] in block var $equalContainer */
-  function setEqualHeight($equalContainer) {
+  function communityEqualHeight($equalContainer) {
     var columns = $equalContainer.find('[data-equal]'),
       tallestcolumn = 0;
     columns.height('auto');
     columns.each(function() {
-      var currentHeight = $(this).innerHeight();
+      var currentHeight = $(this).find('span').width();
       if(currentHeight > tallestcolumn) {
         tallestcolumn = currentHeight;
       }
-      $(this).css({
-        'min-height': $(this).find('span').height(),
-      });
     });
     columns.height(tallestcolumn);
-    console.log('DONE')
   }
 
 })();
