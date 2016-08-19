@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1add3882d4739c7858b6c82eeced53ee",
-    "content-hash": "f9514ce02dac36739f5aaf66cd48fcb0",
+    "hash": "0afede0b918e92a0fa93fbe918e1c14f",
+    "content-hash": "b9c3eda41845cf0d79f6792adea974f2",
     "packages": [
         {
             "name": "composer/installers",
@@ -380,6 +380,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/category-color/"
+        },
+        {
+            "name": "wpackagist-plugin/events-manager",
+            "version": "5.6.5",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/events-manager/",
+                "reference": "tags/5.6.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/events-manager.5.6.5.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/events-manager/"
         },
         {
             "name": "wpackagist-plugin/ns-featured-posts",

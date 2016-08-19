@@ -1,9 +1,16 @@
 .directoryFilters {
+    margin-bottom: 45px;
     .selectboxit-container {
         display: block;
     }
     .selectboxit {
         width: auto;
+    }
+    .directoryFilters-form {
+        display: none;
+        @include breakpoint(medium) {
+            display: block !important; // for show block after screen resize if toggle button was clicked
+        }
     }
     .directoryFilters-action {
         margin-top: 13px;

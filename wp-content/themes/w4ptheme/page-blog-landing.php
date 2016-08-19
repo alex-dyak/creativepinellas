@@ -13,7 +13,8 @@ get_header(); ?>
 					while ( have_posts() ) : the_post(); ?>
 						<article class="postPage" id="post-<?php the_ID(); ?>">
 							<!--    Page title  -->
-							<h1 class="postPage-title u-text--center"><?php the_title(); ?></h1>
+							<h1
+								class="postPage-title u-text--center"><?php the_title(); ?></h1>
 							<!--    Page Content    -->
 							<div class="postPage-content">
 								<?php the_content(); ?>
@@ -50,12 +51,18 @@ get_header(); ?>
 							<?php if ( $count == 0 ) : ?>
 								<div class="medium-8 large-6 column">
 									<div class="gridItem gridItem--blog">
-										<a href="<?php the_permalink(); ?>" class="js-touchFocus">
+										<a href="<?php the_permalink(); ?>"
+										   class="js-touchFocus">
 											<?php the_post_thumbnail( 'big_blog_img', $image_attr ); ?>
-											<span class="gridItem-categoryDecor" style="background-color: #f7941d"></span>
+											<span class="gridItem-categoryDecor"
+											      style="background-color: #f7941d"></span>
+
 											<div class="gridItem-info">
 												<h3><?php the_title(); ?></h3>
-												<p><strong><?php _e( 'Read Post', 'w4ptheme' ); ?></strong></p>
+
+												<p>
+													<strong><?php _e( 'Read Post', 'w4ptheme' ); ?></strong>
+												</p>
 											</div>
 										</a>
 									</div>
@@ -64,14 +71,23 @@ get_header(); ?>
 							<?php elseif ( $count > 0 && $count < 3 ) : ?>
 								<div class="medium-4 large-3 column">
 									<div class="row small-collapse">
-										<div class="small-12 halfMedium-6 medium-12 column">
-											<div class="gridItem gridItem--blog">
-												<a href="<?php the_permalink(); ?>" class="js-touchFocus">
+										<div
+											class="small-12 halfMedium-6 medium-12 column">
+											<div
+												class="gridItem gridItem--blog">
+												<a href="<?php the_permalink(); ?>"
+												   class="js-touchFocus">
 													<?php the_post_thumbnail( 'small_blog_img', $image_attr ); ?>
-													<span class="gridItem-categoryDecor" style="background-color: #f7941d"></span>
+													<span
+														class="gridItem-categoryDecor"
+														style="background-color: #f7941d"></span>
+
 													<div class="gridItem-info">
 														<h3><?php the_title(); ?></h3>
-														<p><strong><?php _e( 'Read Post', 'w4ptheme' ); ?></strong></p>
+
+														<p>
+															<strong><?php _e( 'Read Post', 'w4ptheme' ); ?></strong>
+														</p>
 													</div>
 												</a>
 											</div>
@@ -79,18 +95,26 @@ get_header(); ?>
 									</div>
 								</div>
 
-								<?php elseif ( $count > 2 ) : ?>
+							<?php elseif ( $count > 2 ) : ?>
 								<div class="medium-12 large-3 column">
 									<div class="row small-collapse">
-										<div class="small-12 halfMedium-6 large-12 column">
-											<div class="gridItem gridItem--blog">
-												<a href="<?php the_permalink(); ?>" class="js-touchFocus">
+										<div
+											class="small-12 halfMedium-6 large-12 column">
+											<div
+												class="gridItem gridItem--blog">
+												<a href="<?php the_permalink(); ?>"
+												   class="js-touchFocus">
 													<?php the_post_thumbnail( 'small_blog_img', $image_attr ); ?>
-													<span class="gridItem-categoryDecor" style="background-color: #f7941d"></span>
+													<span
+														class="gridItem-categoryDecor"
+														style="background-color: #f7941d"></span>
 
 													<div class="gridItem-info">
 														<h3><?php the_title(); ?></h3>
-														<p><strong><?php _e( 'Read Post', 'w4ptheme' ); ?></strong></p>
+
+														<p>
+															<strong><?php _e( 'Read Post', 'w4ptheme' ); ?></strong>
+														</p>
 													</div>
 												</a>
 											</div>
@@ -115,13 +139,19 @@ get_header(); ?>
 			</section>
 
 			<!--    Related Posts   -->
-					<?php if ( is_active_sidebar( 'sidebar-blog-landing-page' ) ) : ?>
-						<?php dynamic_sidebar( 'sidebar-blog-landing-page' ); ?>
-					<?php endif; ?>
+			<?php if ( is_active_sidebar( 'sidebar-blog-landing-page' ) ) : ?>
+				<?php dynamic_sidebar( 'sidebar-blog-landing-page' ); ?>
+			<?php endif; ?>
+			<?php if (have_posts()) : ?>
+			<?php while (have_posts()) : the_post(); ?>
+					<?php wp_pagenavi(); ?>
+				<?php endwhile; ?>
+			<?php endif; ?>
+		</section>
 
-<!--		</section>-->
+</section>
 
-	</div>
+</div>
 
 </section>
 

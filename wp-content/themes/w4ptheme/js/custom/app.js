@@ -36,7 +36,7 @@
       }
     });
 
-    /*  Mobile navigation show subNav*/
+    /**  Mobile navigation show subNav*/
     $subNavToggle.click(function (e) {
       e.preventDefault();
       e.stopPropagation();
@@ -53,7 +53,7 @@
       }
     });
 
-    /*  desktop navigation show subNav on touch devices */
+    /**  desktop navigation show subNav on touch devices */
     $touchNav.each(function () {
       var $subNavItem = $(this).find('.js-hasSubNav');
 
@@ -78,6 +78,17 @@
         $t.focus();
       }
     });
+
+    /**  slide toggle element */
+    $('.js-toggle').click(function (e) {
+      e.preventDefault();
+      var $toggleBlock = $('.' + $(this).data('toggle') );
+      $toggleBlock.slideToggle(function() {
+        $toggleBlock.find('select').each(function () {
+          $(this).data("selectBox-selectBoxIt").refresh();
+        });
+      });
+    })
 
   });
 })();
