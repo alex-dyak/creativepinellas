@@ -132,8 +132,7 @@ module.exports = function (grunt) {
               gridItemVenue: '<%= fixturesPath %>/blocks/grid-item-venue.html',
               pagination: '<%= fixturesPath %>/blocks/pagination.html',
               entityPagination: '<%= fixturesPath %>/blocks/entity-pagination.html',
-              swipeboxItem: '<%= fixturesPath %>/blocks/swipebox-item.html',
-              filters: '<%= fixturesPath %>/blocks/artist-venue-event-filters.html'
+              swipeboxItem: '<%= fixturesPath %>/blocks/swipebox-item.html'
             }
           }
         }
