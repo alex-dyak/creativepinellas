@@ -21,7 +21,8 @@
     "wpackagist-plugin/types": ">2.0",
     "wpackagist-plugin/addthis": ">5.3",
     "wpackagist-plugin/svg-support": ">2.2.3",
-    "wpackagist-plugin/wysiwyg-widgets": ">2.3.0"
+    "wpackagist-plugin/wysiwyg-widgets": ">2.3.0",
+    "wpackagist-plugin/events-manager": ">5.6.4"
   },
   "extra": {
     "installer-paths": {
