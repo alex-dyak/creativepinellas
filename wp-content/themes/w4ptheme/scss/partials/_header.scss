@@ -8,7 +8,6 @@
 }
 .siteHeader-inner {
     position: relative;
-    background-color: $sky;
     overflow: hidden;
     @include breakpoint(large) {
         overflow: visible;

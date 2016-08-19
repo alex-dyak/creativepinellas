@@ -2,14 +2,14 @@
   position: relative;
   z-index: 101;
 }
-.headerSection-inner-poster {
+.headerSection-poster {
   border: 4px solid $white;
   margin-bottom: 10px;
   @include breakpoint(medium) {
     margin-bottom: 0;
   }
 }
-.headerSection-inner-text {
+.headerSection-text {
   color: $white;
   text-align: center;
   padding-bottom: 20px;
