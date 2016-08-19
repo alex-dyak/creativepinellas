@@ -1,0 +1,50 @@
+.communitySection {
+  padding: 90px 0;
+  background: $sky;
+  color: $white;
+}
+.communitySection-text {
+  margin-bottom: 35px;
+  text-align: center;
+  @include breakpoint(medium) {
+    margin-bottom: 65px;
+    text-align: left;
+  }
+}
+.communitySection-link {
+  position: relative;
+  display: block;
+  padding: 15px;
+  font-size: $fontSize-communitySmall;
+  line-height: $lineHeight-stightest;
+  text-transform: uppercase;
+  background-position: 50% 50%;
+  background-size: cover;
+  transition: all .2s ease-out;
+  opacity: .1;
+  color: $white;
+  @include breakpoint(medium) {
+    padding: 20px;
+    font-size: $fontSize-communityMedium;
+  }
+  @include breakpoint(large) {
+    font-size: $fontSize-communityLarge;
+  }
+  &:hover {
+    opacity: 1;
+    text-decoration: none;
+  }
+  span {
+    display: block;
+    white-space: nowrap;
+    writing-mode: tb-rl;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    @include breakpoint(medium) {
+      position: relative;
+      left: 0;
+      transform: translateX(0);
+    }
+  }
+}

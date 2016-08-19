@@ -131,7 +131,8 @@ module.exports = function (grunt) {
               pagination: '<%= fixturesPath %>/blocks/pagination.html',
               swipeboxItem: '<%= fixturesPath %>/blocks/swipebox-item.html',
               homeHeaderSection: '<%= fixturesPath %>/blocks/header-section.html',
-              entityPagination: '<%= fixturesPath %>/blocks/entity-pagination.html'
+              entityPagination: '<%= fixturesPath %>/blocks/entity-pagination.html',
+              communityBlock: '<%= fixturesPath %>/blocks/community-block.html'
             }
           }
         }
@@ -160,7 +161,8 @@ module.exports = function (grunt) {
               directoryTemplate: '<%= fixturesPath %>/partials/directory-template.html',
               artistPageLayout: '<%= fixturesPath %>/partials/artist-page-template.html',
               eventPageLayout: '<%= fixturesPath %>/partials/event-page-template.html',
-              venuePageLayout: '<%= fixturesPath %>/partials/venue-page-template.html'
+              venuePageLayout: '<%= fixturesPath %>/partials/venue-page-template.html',
+              indexPageLayout: '<%= fixturesPath %>/partials/index-page-template.html'
             }
           }
         }
