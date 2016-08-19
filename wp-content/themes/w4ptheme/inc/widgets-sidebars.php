@@ -52,8 +52,9 @@ if ( function_exists( 'register_sidebar' ) ) {
 		register_sidebar( array(
 			'name'          => __( 'Sidebar Blog Landing Page', 'w4ptheme' ),
 			'id'            => 'sidebar-blog-landing-page',
-			'before_widget' => '<div class="medium-8 large-10 column medium-centered">',
-			'after_widget'  => '</div>',
+			'before_widget' => '<section class="row medium-collapse">
+                                <div class="medium-8 large-10 column medium-centered">',
+			'after_widget'  => '</div></section>',
 			'before_title'  => '<h2 class="u-text--center">',
 			'after_title'   => '</h2>',
 		) );

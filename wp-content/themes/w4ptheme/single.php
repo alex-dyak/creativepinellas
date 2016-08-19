@@ -27,7 +27,8 @@ get_header(); ?>
 					<div class="postPage-info">
 						<?php the_date( 'F d, Y' ); ?>
 						<?php echo __( 'by ', 'w4ptheme' ) . strtoupper( get_the_author() ) . ' | '; ?>
-						<?php $getcat = get_the_category();
+						<?php $getcat = get_the_category(); ?>
+						<?php if(!empty($getcat)) :
 						$cat_id       = $getcat[0]->cat_ID;
 						$count        = count( $getcat );
 						foreach ( $getcat as $key => $category ) : ?>
@@ -37,6 +38,7 @@ get_header(); ?>
 								<a href="<?php echo get_category_link( $category->cat_ID ); ?>"><?php echo strtoupper( $category->cat_name ); ?></a><?php echo ', '; ?>
 							<?php endif; ?>
 						<?php endforeach; ?>
+						<?php endif; ?>
 					</div>
 
 					<!--    Post Content    -->

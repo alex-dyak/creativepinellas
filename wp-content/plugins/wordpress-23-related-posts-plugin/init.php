@@ -367,8 +367,11 @@ function wp_rp_generate_related_posts_list_items($related_posts, $selected_relat
 		}
 		$output .= '<p><i>' . __( 'BY ', 'w4ptheme' ) . strtoupper( get_the_author() ) . ' | ';
 		$getcat = get_the_category();
-		$cat_id = $getcat[0]->cat_ID;
-		$output .= '<a href="' . get_category_link( $cat_id ) . '">' . __( 'CATEGORY', 'w4ptheme' ) . '</a></i></p>';
+		if(!empty($getcat)){
+			$cat_id = $getcat[0]->cat_ID;
+			$output .= '<a href="' . get_category_link( $cat_id ) . '">' . __( 'CATEGORY', 'w4ptheme' ) . '</a></i></p>';
+		}
+
 		$output .=  '</div>';
 		$output .= '<div><a href="' . $post_url . '" class="btn btn--fullWidth">' . __( 'Read Article', 'w4ptheme' ) . '</a></div>';
 
