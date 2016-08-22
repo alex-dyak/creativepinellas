@@ -1,20 +1,6 @@
 .communitySection {
-    padding-top: 35px;
-    padding-bottom: 35px;
     background: $sky;
     color: $white;
-    @include breakpoint(medium) {
-        padding-top: 90px;
-        padding-bottom: 90px;
-    }
-}
-.communitySection-text {
-    margin-bottom: 35px;
-    text-align: center;
-    @include breakpoint(medium) {
-        margin-bottom: 65px;
-        text-align: left;
-    }
 }
 .communitySection-link {
     position: relative;
