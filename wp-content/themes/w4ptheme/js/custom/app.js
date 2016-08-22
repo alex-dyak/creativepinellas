@@ -21,7 +21,8 @@
       $mobileNavToggle = $('.js-mobileNavToggle'),
       $subNavToggle = $('.js-subNavToggle'),
       $touchNav = $('.js-touchNav'),
-      $touchFocusBlock = $('.js-touchFocus');
+      $touchFocusBlock = $('.js-touchFocus'),
+      $equalContainer = $('.js-community-equalHeight');
 
     $offCanvas.on("opened.zf.offcanvas", function(e) {
       $mobileNavToggle.addClass('is-open');
@@ -30,10 +31,15 @@
       $mobileNavToggle.removeClass('is-open');
     });
 
+    $(window).load(function () {
+      communityEqualHeight($equalContainer);
+    });
+
     $(window).resize(function () {
       if (Foundation.MediaQuery.atLeast('large')) {
         $offCanvas.foundation('close');
       }
+      communityEqualHeight($equalContainer);
     });
 
     /**  Mobile navigation show subNav*/
@@ -88,7 +94,20 @@
           $(this).data("selectBox-selectBoxIt").refresh();
         });
       });
-    })
-
+    });
   });
+
+  function communityEqualHeight($equalContainer) {
+    var columns = $equalContainer.find('[data-equal]'),
+      tallestcolumn = 0;
+    columns.height('auto');
+    columns.each(function() {
+      var currentHeight = $(this).find('.js-equalizer').width();
+      if(currentHeight > tallestcolumn) {
+        tallestcolumn = currentHeight;
+      }
+    });
+    columns.height(tallestcolumn);
+  }
+
 })();
