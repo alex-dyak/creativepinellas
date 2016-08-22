@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8f7a8db8dc6a4170a171bfeb1b108df6",
-    "content-hash": "4d4027e8c764d1e927952bb8010a43d1",
+    "hash": "0afede0b918e92a0fa93fbe918e1c14f",
+    "content-hash": "b9c3eda41845cf0d79f6792adea974f2",
     "packages": [
         {
             "name": "composer/installers",
@@ -362,6 +362,26 @@
             "homepage": "https://wordpress.org/plugins/addthis/"
         },
         {
+            "name": "wpackagist-plugin/category-color",
+            "version": "1.2",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/category-color/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/category-color.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/category-color/"
+        },
+        {
             "name": "wpackagist-plugin/events-manager",
             "version": "5.6.5",
             "source": {
@@ -380,6 +400,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/events-manager/"
+        },
+        {
+            "name": "wpackagist-plugin/ns-featured-posts",
+            "version": "1.4.0",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/ns-featured-posts/",
+                "reference": "tags/1.4.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/ns-featured-posts.1.4.0.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/ns-featured-posts/"
         },
         {
             "name": "wpackagist-plugin/svg-support",
@@ -440,6 +480,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/wordpress-seo/"
+        },
+        {
+            "name": "wpackagist-plugin/wp-pagenavi",
+            "version": "2.91",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/wp-pagenavi/",
+                "reference": "tags/2.91"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/wp-pagenavi.2.91.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/wp-pagenavi/"
         },
         {
             "name": "wpackagist-plugin/wysiwyg-widgets",
