@@ -61,6 +61,7 @@
     height: 25px;
     opacity: .75;
     transition: all .2s ease-out;
+    backface-visibility: hidden;
 }
 .gridItem--blog {
     .gridItem-info {
@@ -75,6 +76,13 @@
         .gridItem-info {
             opacity: 1;
             visibility: visible;
+        }
+    }
+    p {
+        line-height: $lineHeight-tightest;
+        margin-bottom: 5%;
+        &:last-child {
+            margin-bottom: 0;
         }
     }
 }
