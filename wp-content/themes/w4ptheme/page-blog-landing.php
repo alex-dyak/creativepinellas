@@ -33,6 +33,7 @@ get_header(); ?>
 							'post_type'  => 'post',
 							'meta_key'   => '_is_ns_featured_post',
 							'meta_value' => 'yes',
+							'posts_per_page' => 5
 						);
 						$custom_query      = new WP_Query( $custom_query_args );
 						$image_attr        = array(
@@ -45,15 +46,16 @@ get_header(); ?>
 							<!-- the loop -->
 							<?php while ( $custom_query->have_posts() ) :
 							$custom_query->the_post(); ?>
+							<?php
+							$category = get_the_category();
+							$the_category_id = $category[0]->cat_ID;
+							if(function_exists('rl_color')){
+								$rl_category_color = rl_color($the_category_id);
+							}
+							?>
 							<?php if ( $count < 5 ) : ?>
 							<?php if ( $count == 0 ) : ?>
-								<?php
-								$category = get_the_category();
-								$the_category_id = $category[0]->cat_ID;
-								if(function_exists('rl_color')){
-									$rl_category_color = rl_color($the_category_id);
-								}
-								?>
+
 								<div class="medium-8 large-6 column">
 									<div class="gridItem gridItem--blog">
 										<a href="<?php the_permalink(); ?>"
@@ -74,13 +76,6 @@ get_header(); ?>
 								</div>
 
 							<?php elseif ( $count > 0 && $count < 3 ) : ?>
-								<?php
-								$category = get_the_category();
-								$the_category_id = $category[0]->cat_ID;
-								if(function_exists('rl_color')){
-									$rl_category_color = rl_color($the_category_id);
-								}
-								?>
 								<div class="medium-4 large-3 column">
 									<div class="row small-collapse">
 										<div
@@ -107,13 +102,6 @@ get_header(); ?>
 								</div>
 
 							<?php elseif ( $count > 2 ) : ?>
-								<?php
-								$category = get_the_category();
-								$the_category_id = $category[0]->cat_ID;
-								if(function_exists('rl_color')){
-									$rl_category_color = rl_color($the_category_id);
-								}
-								?>
 								<div class="medium-12 large-3 column">
 									<div class="row small-collapse">
 										<div
@@ -158,14 +146,14 @@ get_header(); ?>
 			<!--    RECENT Posts   -->
 			<section class="row medium-collapse">
 				<div class="medium-8 large-10 column medium-centered">
-					<h2 class="u-text--center">RECENT POSTS</h2>
+					<h2 class="u-text--center"><?php _e( 'RECENT POSTS', 'w4ptheme' ); ?></h2>
 
 					<div class="postsList">
 						<?php
 						$paged      = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 						$query_args = array(
 							'post_type'      => 'post',
-							'posts_per_page' => 2,
+							'posts_per_page' => 6,
 							'paged'          => $paged
 						);
 						$the_query  = new WP_Query( $query_args ); ?>
@@ -214,7 +202,6 @@ get_header(); ?>
 						<?php endwhile; ?>
 						<!--   / postsList-item  -->
 					</div>
-					<!--    pagination form WP theme Twenty Sixteen  -->
 					<?php if ( function_exists( 'wp_pagenavi' ) ) {
 						wp_pagenavi( array(
 							'before'        => '<nav class="navigation pagination" role="navigation">',
