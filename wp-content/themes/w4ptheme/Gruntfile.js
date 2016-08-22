@@ -131,8 +131,7 @@ module.exports = function (grunt) {
               pagination: '<%= fixturesPath %>/blocks/pagination.html',
               swipeboxItem: '<%= fixturesPath %>/blocks/swipebox-item.html',
               homeHeaderSection: '<%= fixturesPath %>/blocks/header-section.html',
-              entityPagination: '<%= fixturesPath %>/blocks/entity-pagination.html',
-              communityBlock: '<%= fixturesPath %>/blocks/community-block.html'
+              entityPagination: '<%= fixturesPath %>/blocks/entity-pagination.html'
             }
           }
         }
