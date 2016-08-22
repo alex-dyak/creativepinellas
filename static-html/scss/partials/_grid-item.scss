@@ -79,7 +79,8 @@
         }
     }
     p {
-        margin-bottom: 1%;
+        line-height: $lineHeight-tightest;
+        margin-bottom: 5%;
         &:last-child {
             margin-bottom: 0;
         }
