@@ -12,9 +12,13 @@
     &:hover,
     a:focus {
         .promoList-item-categoryDecor {
-            top: -510px;
-            bottom: -510px;
-            @include breakpoint(large) {
+            top: -480px;
+            bottom: -480px;
+            @include breakpoint(halfMedium) {
+                top: -700px;
+                bottom: -700px;
+            }
+            @include breakpoint(medium) {
                 top: -300px;
                 bottom: -300px;
             }

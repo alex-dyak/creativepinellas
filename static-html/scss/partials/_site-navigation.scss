@@ -69,6 +69,7 @@
         visibility: hidden;
         position: absolute;
         left: 0;
+        z-index: 102;
         min-width: 100%;
         background: $sky--dark;
         a {

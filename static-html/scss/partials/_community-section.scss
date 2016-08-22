@@ -1,0 +1,53 @@
+.communitySection {
+    background: $sky;
+    color: $white;
+}
+.communitySection-link {
+    position: relative;
+    display: block;
+    padding: 15px;
+    font-size: $fontSize-communitySmall;
+    line-height: $lineHeight-stightest;
+    text-transform: uppercase;
+    color: $white;
+    @include breakpoint(medium) {
+        padding: 20px;
+        font-size: $fontSize-communityMedium;
+    }
+    @include breakpoint(large) {
+        font-size: $fontSize-communityLarge;
+    }
+    &:hover {
+        text-decoration: none;
+        .communitySection-link-imgLayer {
+            opacity: 1;
+        }
+    }
+}
+.communitySection-link-text {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    z-index: 101;
+    display: block;
+    white-space: nowrap;
+    transform-origin: 0 0;
+    transform: rotate(90deg) translateY(-50%) ;
+    @include breakpoint(medium) {
+        top: 20px;
+        left: 40px;
+    }
+}
+.communitySection-link-imgLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
+    display: block;
+    background-position: 50% 50%;
+    background-size: cover;
+    transition: all .2s ease-out;
+    opacity: .1;
+}
