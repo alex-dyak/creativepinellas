@@ -49,15 +49,6 @@ if ( function_exists( 'register_sidebar' ) ) {
 			'before_title'  => '<h2>',
 			'after_title'   => '</h2>',
 		) );
-		register_sidebar( array(
-			'name'          => __( 'Sidebar Blog Landing Page', 'w4ptheme' ),
-			'id'            => 'sidebar-blog-landing-page',
-			'before_widget' => '<section class="row medium-collapse">
-                                <div class="medium-8 large-10 column medium-centered">',
-			'after_widget'  => '</div></section>',
-			'before_title'  => '<h2 class="u-text--center">',
-			'after_title'   => '</h2>',
-		) );
 
 		register_widget( 'W4P_Contacts_Widget' );
 		register_widget( 'W4P_Social_Profiles_Widget' );

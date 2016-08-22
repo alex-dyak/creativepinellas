@@ -28,7 +28,6 @@ get_header(); ?>
 						<?php echo __( 'by ', 'w4ptheme' ) . strtoupper( get_the_author() ) . ' | '; ?>
 						<?php $getcat = get_the_category(); ?>
 						<?php if(!empty($getcat)) :
-						$cat_id       = $getcat[0]->cat_ID;
 						$count        = count( $getcat );
 						foreach ( $getcat as $key => $category ) : ?>
 							<?php if ( $key == $count - 1 ) : ?>

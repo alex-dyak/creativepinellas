@@ -321,23 +321,25 @@ function wp_rp_generate_related_posts_list_items($related_posts, $selected_relat
 			$post_id = 'ex-' . $related_post->ID;
 		}
 
-		//$data_attrs = 'data-position="' . $i . '" data-poid="' . $post_id . '" data-post-type="' . $post_type . '" ';
-
 		$output .= '<div class="postsList-item">';
 
 		$post_url = property_exists($related_post, 'post_url') ? $related_post->post_url : get_permalink($related_post->ID);
 
 		$img = wp_rp_get_post_thumbnail_img($related_post, $image_size);
 		if ($img) {
+			$category = get_the_category($related_post->ID);
+			$the_category_id = $category[0]->cat_ID;
+			if(function_exists('rl_color')){
+				$rl_category_color = rl_color($the_category_id);
+			}
 			$output .= '<div class="postsList-item-image">' . $img . '
-			<span class="postsList-item-categoryDecor" style="background-color: #0177c1"></span>
+			<span class="postsList-item-categoryDecor" style="background-color:' . $rl_category_color .'"></span>
 			</div>';
 		}
 
 		if ($platform_options["display_publish_date"]) {
 			$dateformat = get_option('date_format');
 			$output .= '<small class="wp_rp_publish_date">' . mysql2date($dateformat, $related_post->post_date) . '</small> ';
-			//$output .= mysql2date($dateformat, $related_post->post_date) . " -- ";
 		}
 
 		$output .= '<div class="postsList-item-body">';
@@ -366,13 +368,19 @@ function wp_rp_generate_related_posts_list_items($related_posts, $selected_relat
 			}
 		}
 		$output .= '<p><i>' . __( 'BY ', 'w4ptheme' ) . strtoupper( get_the_author() ) . ' | ';
-		$getcat = get_the_category();
-		if(!empty($getcat)){
-			$cat_id = $getcat[0]->cat_ID;
-			$output .= '<a href="' . get_category_link( $cat_id ) . '">' . __( 'CATEGORY', 'w4ptheme' ) . '</a></i></p>';
+
+		if ( ! empty( $category ) ) {
+			$count = count( $category );
+			foreach ( $category as $key => $category ) {
+				if ( $key == $count - 1 ) {
+					$output .= '<a href="' . get_category_link( $category->cat_ID ) . '">' . strtoupper( $category->cat_name ) . '</a>';
+				} else {
+					$output .= '<a href="' . get_category_link( $category->cat_ID ) . '">' . strtoupper( $category->cat_name ) . '</a>' . ', ';
+				}
+			}
 		}
 
-		$output .=  '</div>';
+		$output .=  '</i></p></div>';
 		$output .= '<div><a href="' . $post_url . '" class="btn btn--fullWidth">' . __( 'Read Article', 'w4ptheme' ) . '</a></div>';
 
 		if ($platform_options["display_category"] && !empty($post_categories)){
