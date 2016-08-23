@@ -17,9 +17,13 @@ textarea {
         background: url("../images/calendar.svg") no-repeat 95% 8px;
         background-size: 14px 24px;
     }
+    &.wpcf7-not-valid {
+        border-color: $red;
+    }
 }
 textarea {
     resize: vertical;
+    height: 150px;
 }
 button,
 input[type="button"],
@@ -76,6 +80,10 @@ input[type="submit"].btn--ocean,
 .btn--fullWidth {
     width: 100%;
 }
+button.btn-middleWidth,
+input[type="button"].btn-middleWidth,
+input[type="reset"].btn-middleWidth,
+input[type="submit"].btn-middleWidth,
 .btn-middleWidth {
     padding-left: 50px;
     padding-right: 50px;
@@ -178,7 +186,38 @@ input[type="submit"].btn--ocean,
 label {
     font-weight: $fontWeight-bold;
 }
-.form-row {
+.form-row,
+.wpcf7-form-control-wrap {
+    display: block;
     position: relative;
     margin-bottom: 15px;
+}
+span.wpcf7-not-valid-tip {
+    display: inline-block;
+    margin-top: 5px;
+    color: $red;
+}
+div.wpcf7-response-output {
+    margin: 0 0 30px;
+    padding: 13px 20px;
+}
+div.wpcf7-validation-errors {
+    border: 2px solid $red--light;
+    background: $red--light;
+    &:before {
+        content: $fa-var-times-circle;
+        display: inline-block;
+        margin-right: 5px;
+        font-family: FontAwesome;
+        font-size: $lineHeight-tightest;
+        vertical-align: middle;
+        color: $red;
+        text-rendering: auto; // optimizelegibility throws things off #1094
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+div.wpcf7-mail-sent-ok {
+    border: 2px solid transparent;
+    background: $sky--40;
 }
