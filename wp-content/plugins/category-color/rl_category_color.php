@@ -104,14 +104,12 @@ class RadLabs_Category_Colors{
             <table class='form-table'>";
         foreach ( $this->_fields as $field ) {
             echo '<tr>';
-
 	        if ( ! isset( $field['std'] ) ) {
 		        $field['std'] = '';
 	        }
             $meta = !empty( $metas[$field['id']] ) ? $metas[$field['id']] : $field['std'];
             $meta = is_array( $meta ) ? array_map( 'esc_attr', $meta ) : esc_attr( $meta );
             call_user_func( array( $this, 'show_field_' . $field['type'] ), $field, $meta );
-
             echo '</tr>';
         }
         echo '</table>';
