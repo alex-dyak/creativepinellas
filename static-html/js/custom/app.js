@@ -14,7 +14,6 @@
     });
 
     $('.swipebox').swipebox();
-
     $(document).foundation();
 
     var $offCanvas = $(".off-canvas"),
