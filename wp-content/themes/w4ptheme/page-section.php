@@ -24,12 +24,11 @@ get_header(); ?>
 						<?php endwhile;
 					endif; ?>
 				</section>
-				<!--    Sub page Promo  -->
-				<section
-					class="row halfMedium-collapse medium-uncollapse promoList">
 					<?php
 					// check if the repeater field has rows of data
 					if ( have_rows( 'section' ) ): ?>
+              <!--    Sub page Promo  -->
+              <section class="row halfMedium-collapse medium-uncollapse promoList">
 						<?php // loop through the rows of data
 						while ( have_rows( 'section' ) ) : the_row(); ?>
 							<!--   promoList-item  -->
@@ -66,9 +65,15 @@ get_header(); ?>
 				</section>
 				<section class="promoSpace u-fullSection u-aquaGradient">
 					<div class="promoSpace-inner">
+                      <?php if( get_field( 'title' ) ) : ?>
 						<h1><?php echo get_field( 'title' ); ?></h1>
+                      <?php endif; ?>
+                      <?php if( get_field( 'title' ) ) : ?>
 						<?php echo get_field( 'description_text' ); ?>
+                      <?php endif; ?>
+                      <?php if( get_field( 'page_link_1' ) ) : ?>
 						<a href="<?php echo get_field( 'page_link_1' ); ?>" class="btn btn--white"><?php echo strtoupper( get_field( 'button_title' ) ); ?></a>
+                      <?php endif; ?>
 					</div>
 				</section>
 			</section>

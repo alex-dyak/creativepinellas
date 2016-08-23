@@ -51,7 +51,7 @@ function w4ptheme_setup() {
 		add_image_size( 'post_page_img', 650, 300, true );
 		add_image_size( 'related_post_img', 280, 280, true );
 		add_image_size( 'big_blog_img', 1480, 1480, true );
-		add_image_size( 'small_blog_img', 880, 880, true );
+		add_image_size( 'small_blog_img', 880, 1480, true );
 		add_image_size( 'big_section_img', 960, 960, true );
 		add_image_size( 'small_section_img', 480, 480, true );
 	}
