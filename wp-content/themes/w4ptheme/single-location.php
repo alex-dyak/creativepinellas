@@ -7,9 +7,7 @@
  * @since W4P Theme 1.0
  */
 
-get_header();
-global $EM_Location;
-global $EM_Event; ?>
+get_header(); ?>
     <section class="siteBody">
 
         <div class="row">
@@ -26,16 +24,19 @@ global $EM_Event; ?>
                         <h1 class="postPage-title"><?php the_title() ?></h1>
 
                         <!--    Post Image   -->
-                        <div class="postPage-image">
-                            <?php the_post_thumbnail('single_event_img'); ?>
-                        </div>
+                        <?php if (has_post_thumbnail()) : // Check if thumbnail exists ?>
+                            <div class="postPage-image">
+                                <?php the_post_thumbnail('single_event_img'); ?>
+                            </div>
+                        <?php endif; ?>
 
                         <!--    Post Content    -->
-                        <div class="postPage-content postPage-content--bottomLine">
-                            <?php if (isset($EM_Location)) : ?>
+                        <?php /* @var $EM_Location $EM_Location */ ?>
+                        <?php if (isset($EM_Location)) : ?>
+                            <div class="postPage-content postPage-content--bottomLine">
                                 <?php echo $EM_Location->post_content; ?>
-                            <?php endif ?>
-                        </div>
+                            </div>
+                        <?php endif ?>
                         <!--    Post Content    -->
                     </article>
 
@@ -85,55 +86,58 @@ global $EM_Event; ?>
                 <section class="row column">
                     <h2><?php echo __('UPCOMING EVENTS', 'w4ptheme'); ?></h2>
 
-                    <div class="postsList">
-                        <?php $events = get_related_events($EM_Location->location_id); ?>
-                        <?php /* @var $EM_Event EM_Event */ ?>
-                        <?php if (!empty($events)) : ?>
+                    <?php $events = get_related_events($EM_Location->location_id); ?>
+                    <?php /* @var $EM_Event EM_Event */ ?>
+                    <?php if (!empty($events)) : ?>
+                        <div class="postsList">
                         <?php foreach ($events as $EM_Event) : ?>
-                        <!--    postsList-item  -->
-                        <div class="postsList-item">
-                            <div class="postsList-item-image">
-                                <img
-                                    src="<?php echo get_the_post_thumbnail_url($EM_Event->post_id, 'single_event_880x880'); ?>"
-                                    alt=""
-                                    srcset="<?php echo get_the_post_thumbnail_url($EM_Event->post_id, 'single_event_880x880'); ?> 460w, <?php echo get_the_post_thumbnail_url($EM_Event->post_id, 'related_post_img'); ?> 768w">
-                                <span class="postsList-item-categoryDecor"></span>
+                            <!--    postsList-item  -->
+                            <div class="postsList-item">
+                                <div class="postsList-item-image">
+                                    <img
+                                        src="<?php echo get_the_post_thumbnail_url($EM_Event->post_id, 'single_event_880x880'); ?>"
+                                        alt=""
+                                        srcset="<?php echo get_the_post_thumbnail_url($EM_Event->post_id, 'single_event_880x880'); ?> 460w, <?php echo get_the_post_thumbnail_url($EM_Event->post_id, 'related_post_img'); ?> 768w">
+                                    <span class="postsList-item-categoryDecor"></span>
+                                </div>
+                                <div class="postsList-item-body">
+                                    <?php if (!empty($EM_Event->event_name)) : ?>
+                                        <h3><?php echo $EM_Event->event_name; ?></h3>
+                                    <?php endif; ?>
+                                    <?php if (!empty($EM_Event->post_content)) : ?>
+                                        <p><?php echo substr(strip_tags($EM_Event->post_content), 0, 150) . '(...)'; ?></p>
+                                    <?php endif; ?>
+                                    <?php $start_date = $EM_Event->event_start_date ? date_create($EM_Event->event_start_date) : $start_date = null; ?>
+                                    <?php $end_date = $EM_Event->event_end_date ? date_create($EM_Event->event_end_date) : $end_date = null; ?>
+                                    <p>
+                                        <i>
+                                            <?php if ($EM_Event->event_start_date == $EM_Event->event_end_date) : ?>
+                                                <?php echo date_format($start_date, 'M. j, Y'); ?>
+                                            <?php else : ?>
+                                                <?php echo date_format($start_date, 'M. j, Y') . ' - ' . date_format($end_date, 'M. j, Y'); ?>
+                                            <?php endif; ?>
+                                            | <?php $post_objects = get_field('event_artist', $EM_Event->post_id);
+                                            if ($post_objects): ?>
+                                                <?php foreach ($post_objects as $post): ?>
+                                                    <?php setup_postdata($post); ?>
+                                                    <?php $artist_links[] = '<a href="' . get_permalink() . '">' . get_the_title() . '</a>' ?>
+                                                <?php endforeach; ?>
+                                            <?php endif; ?>
+                                            <?php wp_reset_postdata(); ?>
+                                            <?php if (!empty($artist_links)) : ?>
+                                                <?php echo implode(", ", $artist_links); ?>
+                                                <?php unset($artist_links); ?>
+                                            <?php endif; ?>
+                                        </i>
+                                    </p>
+                                </div>
+                                <div>
+                                    <a href="<?php echo $EM_Event->guid; ?>"
+                                       class="btn btn--fullWidth"><?php echo __('SEE EVENT', 'w4ptheme'); ?></a>
+                                </div>
                             </div>
-                            <div class="postsList-item-body">
-                                <h3><?php echo $EM_Event->event_name; ?></h3>
-
-                                <p><?php echo substr(strip_tags($EM_Event->post_content), 0, 150) . '(...)'; ?></p>
-                                <?php $start_date = $EM_Event->event_start_date ? date_create($EM_Event->event_start_date) : $start_date = null; ?>
-                                <?php $end_date = $EM_Event->event_end_date ? date_create($EM_Event->event_end_date) : $end_date = null; ?>
-                                <p>
-                                    <i>
-                                        <?php if ($EM_Event->event_start_date == $EM_Event->event_end_date) : ?>
-                                            <?php echo date_format($start_date, 'M. j, Y'); ?>
-                                        <?php else : ?>
-                                            <?php echo date_format($start_date, 'M. j, Y') . ' - ' . date_format($end_date, 'M. j, Y'); ?>
-                                        <?php endif; ?>
-                                        | <?php $post_objects = get_field('event_artist', $EM_Event->post_id);
-                                        if ($post_objects): ?>
-                                            <?php foreach ($post_objects as $post): ?>
-                                                <?php setup_postdata($post); ?>
-                                                <?php $artist_links[] = '<a href="' . get_permalink() . '">' . get_the_title() . '</a>' ?>
-                                            <?php endforeach; ?>
-                                        <?php endif; ?>
-                                        <?php wp_reset_postdata(); ?>
-                                        <?php if (!empty($artist_links)) : ?>
-                                            <?php echo implode(", ", $artist_links); ?>
-                                            <?php unset($artist_links); ?>
-                                        <?php endif; ?>
-                                    </i>
-                                </p>
                             </div>
-                            <div>
-                                <a href="<?php echo $EM_Event->guid; ?>"
-                                   class="btn btn--fullWidth"><?php echo __('SEE EVENT', 'w4ptheme'); ?></a>
-                            </div>
-                        </div>
-                    </div>
-                    <?php endforeach ?>
+                        <?php endforeach ?>
                     <?php endif ?>
                 </section>
             </section>
