@@ -28,9 +28,13 @@ get_header(); ?>
                             /* @var $EM_Event EM_Event */
                             $start_time = $EM_Event->event_start_time ? date_create( $EM_Event->event_start_time ) : $start_time = null;
                             $end_time = $EM_Event->event_end_time ? date_create( $EM_Event->event_end_time ) : $end_time = null;
-                            $start_date = $EM_Event->event_start_date ? date_create( $EM_Event->event_end_date ) : $start_date = null;
-                            $end_date = $EM_Event->event_end_date ? date_create( $EM_Event->event_end_date ) : $end_date = null; ?>
-                            <p><?php echo __( 'WHEN', 'w4ptheme' ) . ': ' . date_format( $start_date, 'F jS, Y' ) . ' @ ' . date_format($start_time, 'g:i A') . ' - ' . date_format( $end_time, 'g:i A' );?></p>
+                            $start_date = $EM_Event->event_start_date ? date_create( $EM_Event->event_start_date ) : $start_date = null;
+                            $end_date = $EM_Event->event_end_date ? date_create( $EM_Event->event_end_date ) : $end_date = null;?>
+                            <?php if ($EM_Event->event_start_date == $EM_Event->event_end_date) : ?>
+                                <p><?php echo __( 'WHEN', 'w4ptheme' ) . ': ' . date_format( $start_date, 'F jS, Y' ) . ' @ ' . date_format($start_time, 'g:i A') . ' - ' . date_format( $end_time, 'g:i A' );?></p>
+                            <?php else : ?>
+                                <p><?php echo __( 'WHEN', 'w4ptheme' ) . ': ' . date_format( $start_date, 'F jS, Y' ). ' - ' . date_format( $end_date, 'F jS, Y' ) . ' @ ' . date_format($start_time, 'g:i A') . ' - ' . date_format( $end_time, 'g:i A' );?></p>
+                            <?php endif; ?>
                             <p><?php echo __( 'COST', 'w4ptheme' ) . ': ' . get_field( 'event_cost' ); ?></p>
                             <?php $terms = get_the_terms( get_the_ID(), 'who-should-attend' ); ?>
                             <?php if ( !empty($terms) ) : ?>
@@ -69,12 +73,18 @@ get_header(); ?>
                 <div class="siteSidebar-inner">
                     <!--    Sidebar widget  -->
                     <div class="siteSidebar-item">
-                        <h3><?php echo __( 'Event details H3', 'w4ptheme' );?></h3>
+                        <h3><?php echo __( 'Event details', 'w4ptheme' );?></h3>
 
                         <div class="siteSidebar-item-content">
                             <p>
-                                <strong><?php echo __( 'Date', 'w4ptheme' ) . ': ';?></strong><?php echo date_format( $start_date, 'F jS, Y' ); ?><br>
-                                <strong><?php echo __( 'Time', 'w4ptheme' ) . ': ';?></strong><?php echo date_format ($start_time, 'g:i A' ) . ' - ' . date_format($end_time, 'g:i A');?>
+                                <strong><?php echo __( 'Date', 'w4ptheme' ) . ': '; ?></strong>
+                                <?php if ($EM_Event->event_start_date == $EM_Event->event_end_date) : ?>
+                                    <?php echo date_format( $start_date, 'F jS, Y' ); ?>
+                                <?php else : ?>
+                                    <?php echo date_format( $start_date, 'F jS, Y' ) . ' - ' . date_format( $end_date, 'F jS, Y' ); ?>
+                                <?php endif; ?>
+                                <br>
+                                <strong><?php echo __( 'Time', 'w4ptheme' ) . ': '; ?></strong><?php echo date_format( $start_time, 'g:i A' ) . ' - ' . date_format( $end_time, 'g:i A' ); ?>
                             </p>
 
                             <p>
@@ -124,9 +134,17 @@ get_header(); ?>
                         <div class="siteSidebar-item-content">
                             <p><a href="<?php echo $location->guid;?>"><?php echo $location->location_name;?></a></p>
 
-                            <p><?php echo $location->location_address;?><br> <?php echo $location->location_town .', ' . $location->location_postcode ;?><br><?php echo $location->get_country( );?></p>
+                            <p>
+                                <?php echo $location->location_address;?>
+                                <br>
+                                <?php echo $location->location_town;?>
+                                <?php echo $loc_state = !empty($location->location_state) ? ', ' . $location->location_state : '';?>
+                                <?php echo $loc_postcode = !empty($location->location_postcode) ? ', ' . $location->location_postcode : '';?>
+                                <br>
+                                <?php echo $location->get_country();?>
+                            </p>
 
-                            <p><?php the_field( 'event_tel' );?></p>
+                            <p><?php the_field( 'venue_tel', $location->post_id );?></p>
 
                             <div class="siteSidebar-item-mapHolder">
                                 <!-- Map here width x height settings sets in plugin settings > formatting as width: 100%; height: 280px; -->
