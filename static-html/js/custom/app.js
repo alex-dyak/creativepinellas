@@ -1,6 +1,18 @@
 (function () {
   jQuery(function($) {
-    $('select').selectBoxIt({ autoWidth: false });
+
+    $('select').selectBoxIt({
+      autoWidth: false
+    });
+
+    $('.js-datepicker').datepicker({
+      dayNamesMin: [ 'SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT' ],
+      firstDay: 1,
+      prevText: '&larr;',
+      nextText: '&rarr;',
+      showOtherMonths: true
+    });
+
     $('.swipebox').swipebox();
     $(document).foundation();
 
@@ -8,7 +20,8 @@
       $mobileNavToggle = $('.js-mobileNavToggle'),
       $subNavToggle = $('.js-subNavToggle'),
       $touchNav = $('.js-touchNav'),
-      $touchFocusBlock = $('.js-touchFocus');
+      $touchFocusBlock = $('.js-touchFocus'),
+      $equalContainer = $('.js-community-equalHeight');
 
     $offCanvas.on("opened.zf.offcanvas", function(e) {
       $mobileNavToggle.addClass('is-open');
@@ -17,13 +30,18 @@
       $mobileNavToggle.removeClass('is-open');
     });
 
+    $(window).load(function () {
+      communityEqualHeight($equalContainer);
+    });
+
     $(window).resize(function () {
       if (Foundation.MediaQuery.atLeast('large')) {
         $offCanvas.foundation('close');
       }
+      communityEqualHeight($equalContainer);
     });
 
-    /*  Mobile navigation show subNav*/
+    /**  Mobile navigation show subNav*/
     $subNavToggle.click(function (e) {
       e.preventDefault();
       e.stopPropagation();
@@ -40,7 +58,7 @@
       }
     });
 
-    /*  desktop navigation show subNav on touch devices */
+    /**  desktop navigation show subNav on touch devices */
     $touchNav.each(function () {
       var $subNavItem = $(this).find('.js-hasSubNav');
 
@@ -66,5 +84,29 @@
       }
     });
 
+    /**  slide toggle element */
+    $('.js-toggle').click(function (e) {
+      e.preventDefault();
+      var $toggleBlock = $('.' + $(this).data('toggle') );
+      $toggleBlock.slideToggle(function() {
+        $toggleBlock.find('select').each(function () {
+          $(this).data("selectBox-selectBoxIt").refresh();
+        });
+      });
+    });
   });
+
+  function communityEqualHeight($equalContainer) {
+    var columns = $equalContainer.find('[data-equal]'),
+      tallestcolumn = 0;
+    columns.height('auto');
+    columns.each(function() {
+      var currentHeight = $(this).find('.js-equalizer').width();
+      if(currentHeight > tallestcolumn) {
+        tallestcolumn = currentHeight;
+      }
+    });
+    columns.height(tallestcolumn);
+  }
+
 })();

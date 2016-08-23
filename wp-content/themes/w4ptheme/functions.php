@@ -46,9 +46,54 @@ function w4ptheme_setup() {
 	register_nav_menu( 'footer', __( 'Footer Menu', 'w4ptheme' ) );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'title-tag' );
+
+	if ( function_exists( 'add_image_size' ) ) {
+		add_image_size( 'post_page_img', 650, 300, true );
+		add_image_size( 'related_post_img', 280, 280, true );
+		add_image_size( 'big_blog_img', 1480, '', true );
+		add_image_size( 'small_blog_img', 880, '', true );
+	}
+
 }
 
 add_action( 'after_setup_theme', 'w4ptheme_setup' );
+
+//WP-PageNavi styles
+add_filter( 'wp_pagenavi_class_previouspostslink', 'theme_pagination_class' );
+add_filter( 'wp_pagenavi_class_nextpostslink', 'theme_pagination_class' );
+add_filter( 'wp_pagenavi_class_page', 'theme_pagination_class' );
+add_filter( 'wp_pagenavi_class_larger', 'theme_pagination_class' );
+add_filter( 'wp_pagenavi_class_current', 'theme_pagination_class' );
+add_filter( 'wp_pagenavi_class_smaller', 'theme_pagination_class' );
+add_filter( 'wp_pagenavi_class_extend', 'theme_pagination_class' );
+
+function theme_pagination_class( $class_name ) {
+	switch ( $class_name ) {
+		case 'previouspostslink':
+			$class_name = 'prev page-numbers';
+			break;
+		case 'nextpostslink':
+			$class_name = 'next page-numbers';
+			break;
+		case 'page':
+			$class_name = 'meta-nav screen-reader-text';
+			break;
+		case 'extend':
+			$class_name = 'page-numbers dots';
+			break;
+		case 'smaller':
+			$class_name = 'page-numbers';
+			break;
+		case 'current':
+			$class_name = 'page-numbers current';
+			break;
+		case 'larger':
+			$class_name = 'page-numbers';
+			break;
+	}
+
+	return $class_name;
+}
 
 /**
  * Scripts & Styles.
@@ -138,13 +183,15 @@ register_nav_menu( 'primary', __( 'Navigation Menu', 'w4ptheme' ) );
 
 
 /**
- * Navigation - update coming from twentythirteen.
+ * Navigation.
  */
 function post_navigation() {
-	echo '<div class="navigation">';
-	echo '	<div class="next-posts">' . esc_html( get_next_posts_link( '&laquo; Older Entries' ) ) . '</div>';
-	echo '	<div class="prev-posts">' . esc_html( get_previous_posts_link( 'Newer Entries &raquo;' ) ) . '</div>';
+	echo '<section class="row column">';
+	echo '<div class="postPageNavigation u-clearfix">';
+	echo '	<div class="postNavigation-prev">' .  get_next_post_link( '%link', '&lt; Prev Post %title' ) . '</div>';
+	echo '	<div class="postNavigation-next">' . get_previous_post_link( '%link', 'Next Post &gt;' ) . '</div>';
 	echo '</div>';
+	echo '</section>';
 }
 
 // Include theme options.

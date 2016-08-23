@@ -69,6 +69,8 @@ wp-content/plugins/*
 # Custom and changed plugins
 !wp-content/plugins/advanced-custom-fields-pro
 !wp-content/plugins/list-sub-pages
+!wp-content/plugins/wordpress-23-related-posts-plugin
+!wp-content/plugins/category-color
 wp-content/mu-plugins/*/
 wp-content/upgrade
 wp-content/uploads/*

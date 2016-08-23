@@ -3,12 +3,19 @@ input[type="email"],
 input[type="password"],
 textarea {
     width: 100%;
-    padding: 10px;
-    font-style: italic;
+    padding: 7px 10px 8px;
     border: 2px solid $charcoal--light;
+    background: none;
     &:focus {
         outline-color: $sky;
         border-color: $sky;
+    }
+    &::placeholder {
+        font-style: italic;
+    }
+    &.is-datepicker {
+        background: url("../images/calendar.svg") no-repeat 95% 8px;
+        background-size: 14px 24px;
     }
 }
 textarea {
@@ -39,6 +46,10 @@ input[type="submit"],
         cursor: pointer;
     }
 }
+button.btn--white,
+input[type="button"].btn--white,
+input[type="reset"].btn--white,
+input[type="submit"].btn--white,
 .btn--white {
     border-color: $white;
     color: $white;
@@ -48,8 +59,26 @@ input[type="submit"],
         background-color: $white--20;
     }
 }
+button.btn--ocean,
+input[type="button"].btn--ocean,
+input[type="reset"].btn--ocean,
+input[type="submit"].btn--ocean,
+.btn--ocean {
+    border-color: $ocean;
+    background: $ocean;
+    color: $white;
+    &:hover,
+    &:active {
+        border-color: $ocean--80;
+        background-color: $ocean--80;
+    }
+}
 .btn--fullWidth {
     width: 100%;
+}
+.btn-middleWidth {
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 /*  Global Select styling */
@@ -89,7 +118,7 @@ input[type="submit"],
     }
     .selectboxit-option {
         position: relative;
-        padding: 8px 7px;
+        padding: 8px 20px;
         transition: all .2s ease-out;
         &:after {
             content: '';
@@ -145,4 +174,11 @@ input[type="submit"],
         margin-bottom: 5px;
         color: $black;
     }
+}
+label {
+    font-weight: $fontWeight-bold;
+}
+.form-row {
+    position: relative;
+    margin-bottom: 15px;
 }

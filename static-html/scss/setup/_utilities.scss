@@ -35,6 +35,9 @@
 .u-text--upper {
     text-transform: uppercase;
 }
+.u-text--italic {
+    font-style: italic;
+}
 .u-verticalAlign--center {
     position: relative;
     top: 50%;
@@ -106,3 +109,7 @@
     background: linear-gradient(to right,  #52a0d1 0%,#0777bd 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#52a0d1", endColorstr="#0777bd", GradientType=1 );
 }
+.u-background--gray {
+    background: $gray;
+}
+

@@ -1,34 +1,30 @@
 .gridItem {
     position: relative;
+    overflow: hidden;
     a {
         color: $white;
     }
     &:hover,
     a:focus {
-        .gridItem-categoryDecor {
-            height: 100%;
-        }
         .gridItem-info {
             opacity: 1;
             visibility: visible;
         }
+        .gridItem-info-showHover {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+        .gridItem-info-showHover--fSize {
+            font-size: inherit;
+        }
     }
     img {
+        display: block;
         width: 100%;
     }
 }
-.gridItem-categoryDecor {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 25px;
-    opacity: .75;
-    transition: all .2s ease-out;
-}
 .gridItem-info {
-    opacity: 0;
-    visibility: hidden;
     position: absolute;
     left: 0;
     right: 0;
@@ -47,6 +43,76 @@
             height: 24px;
             background: $white;
             margin-bottom: 15px;
+        }
+    }
+}
+.gridItem-info-showHover {
+    opacity: 0;
+    visibility: hidden;
+    transition: all .2s ease-out;
+}
+.gridItem-info-showHover--fSize {
+    font-size: 0;
+}
+.gridItem-categoryDecor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 25px;
+    opacity: .75;
+    transition: all .2s ease-out;
+    backface-visibility: hidden;
+}
+.gridItem--blog {
+    .gridItem-info {
+        opacity: 0;
+        visibility: hidden;
+    }
+    &:hover,
+    a:focus {
+        .gridItem-categoryDecor {
+            height: 100%;
+        }
+        .gridItem-info {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    p {
+        line-height: $lineHeight-tightest;
+        margin-bottom: 5%;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+.gridItem--element {
+    .gridItem-info {
+        * {
+            position: relative;
+            z-index: 1;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        &:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            z-index: 0;
+            background: rgba(0,0,0,.45);
+            transition: all .2s ease-out;
+            backface-visibility: hidden;
+        }
+    }
+    &:hover,
+    a:focus {
+        .gridItem-info:after {
+            top: -400%;
         }
     }
 }
