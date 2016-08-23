@@ -97,17 +97,22 @@ global $EM_Event; ?>
                                     src="<?php echo get_the_post_thumbnail_url($EM_Event->post_id, 'single_event_880x880'); ?>"
                                     alt=""
                                     srcset="<?php echo get_the_post_thumbnail_url($EM_Event->post_id, 'single_event_880x880'); ?> 460w, <?php echo get_the_post_thumbnail_url($EM_Event->post_id, 'related_post_img'); ?> 768w">
-                                <span class="postsList-item-categoryDecor" style="background-color: #0177c1"></span>
+                                <span class="postsList-item-categoryDecor"></span>
                             </div>
                             <div class="postsList-item-body">
                                 <h3><?php echo $EM_Event->event_name; ?></h3>
 
                                 <p><?php echo substr(strip_tags($EM_Event->post_content), 0, 150) . '(...)'; ?></p>
-                                <?php $start_date = $EM_Event->event_start_date ? date_create($EM_Event->event_end_date) : $start_date = null; ?>
+                                <?php $start_date = $EM_Event->event_start_date ? date_create($EM_Event->event_start_date) : $start_date = null; ?>
                                 <?php $end_date = $EM_Event->event_end_date ? date_create($EM_Event->event_end_date) : $end_date = null; ?>
                                 <p>
-                                    <i><?php echo date_format($start_date, 'M. j, Y'); ?> |
-                                        <?php $post_objects = get_field('event_artist', $EM_Event->post_id);
+                                    <i>
+                                        <?php if ($EM_Event->event_start_date == $EM_Event->event_end_date) : ?>
+                                            <?php echo date_format($start_date, 'M. j, Y'); ?>
+                                        <?php else : ?>
+                                            <?php echo date_format($start_date, 'M. j, Y') . ' - ' . date_format($end_date, 'M. j, Y'); ?>
+                                        <?php endif; ?>
+                                        | <?php $post_objects = get_field('event_artist', $EM_Event->post_id);
                                         if ($post_objects): ?>
                                             <?php foreach ($post_objects as $post): ?>
                                                 <?php setup_postdata($post); ?>
