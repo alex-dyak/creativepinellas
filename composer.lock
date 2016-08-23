@@ -4,8 +4,10 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+
     "hash": "17fa8b0f344db05573471a176a2fef4e",
     "content-hash": "53328d953c2c543e2c8c381b2d0a863c",
+
     "packages": [
         {
             "name": "composer/installers",
@@ -360,6 +362,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/addthis/"
+        },
+        {
+            "name": "wpackagist-plugin/category-color",
+            "version": "1.2",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/category-color/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/category-color.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/category-color/"
         },
         {
             "name": "wpackagist-plugin/events-manager",

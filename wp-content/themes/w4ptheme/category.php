@@ -5,32 +5,23 @@
 
 get_header(); ?>
 
-
-
 	<section class="siteBody">
-
 		<div class="row">
 			<section class="medium-8 large-9 column siteContent siteContent--hasSidebar">
-
-				<?php
-				// Check if there are any posts to display
-				if (have_posts()) : ?>
+				<?php if (have_posts()) : ?>
 				<section class="row column">
 					<article class="postPage">
 						<!--    Post title  -->
 						<h1 class="postPage-title"><?php single_cat_title(); ?></h1>
-
 						<!--    Post Content    -->
 						<div class="postPage-content">
 							<?php echo category_description(); ?>
 						</div>
-						<!--    Post Content    -->
+						<!--    /Post Content    -->
 					</article>
 				</section>
-
 				<section class="row column">
 					<?php while ( have_posts() ) : the_post(); ?>
-
 						<!--    postsList-item  -->
 						<div class="postsList-item">
 							<?php $img = wp_rp_get_post_thumbnail_img( get_post() );
@@ -44,8 +35,7 @@ get_header(); ?>
 								?>
 								<div
 									class="postsList-item-image"><?php echo $img; ?>
-									<span class="postsList-item-categoryDecor"
-									      style="background-color: <?php echo $rl_category_color; ?>"></span>
+									<span class="postsList-item-categoryDecor" style="background-color: <?php echo $rl_category_color; ?>"></span>
 								</div>
 							<?php endif; ?>
 							<div class="postsList-item-body">
@@ -72,9 +62,7 @@ get_header(); ?>
 							</div>
 						</div>
 						<!--   / postsList-item  -->
-
 					<?php endwhile; ?>
-
 					<?php if ( function_exists( 'wp_pagenavi' ) ) {
 						wp_pagenavi( array(
 							'before'        => '<nav class="navigation pagination" role="navigation">',
@@ -90,9 +78,7 @@ get_header(); ?>
 				</section>
 			</section>
 			<?php else: ?>
-
-				<p>Sorry, no posts matched your criteria.</p>
-
+				<p><?php _e( 'Sorry, no posts matched your criteria.', 'w4ptheme' ) ?></p>
 			<?php endif; ?>
 			<aside id="sidebar" class="medium-4 large-3 column siteSidebar">
 				<div class="siteSidebar-inner">
@@ -101,9 +87,7 @@ get_header(); ?>
 					<?php endif; ?>
 				</div>
 			</aside>
-
 		</div>
-
 	</section>
 
 <?php get_footer(); ?>
