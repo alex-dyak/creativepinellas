@@ -8,6 +8,7 @@
  */
 
 get_header(); ?>
+<?php if (have_posts()): while (have_posts()) : the_post(); ?>
     <section class="siteBody">
 
         <div class="row">
@@ -17,7 +18,8 @@ get_header(); ?>
                     <article class="postPage">
                         <!--    Back to category link -->
                         <div class="postPage-backLink">
-                            <a href="<?php echo get_post_type_archive_link( 'event' ); ?>" title="go back to category"><?php echo __( 'View All Events', 'w4ptheme' );?></a>
+                            <a href="<?php echo get_post_type_archive_link('event'); ?>"
+                               title="go back to category"><?php echo __('View All Events', 'w4ptheme'); ?></a>
                         </div>
                         <!--    Post title  -->
                         <h1 class="postPage-title"><?php the_title() ?></h1>
@@ -26,41 +28,45 @@ get_header(); ?>
                         <div class="postPage-info">
                             <?php
                             /* @var $EM_Event EM_Event */
-                            $start_time = $EM_Event->event_start_time ? date_create( $EM_Event->event_start_time ) : $start_time = null;
-                            $end_time = $EM_Event->event_end_time ? date_create( $EM_Event->event_end_time ) : $end_time = null;
-                            $start_date = $EM_Event->event_start_date ? date_create( $EM_Event->event_start_date ) : $start_date = null;
-                            $end_date = $EM_Event->event_end_date ? date_create( $EM_Event->event_end_date ) : $end_date = null;?>
+                            $start_time = $EM_Event->event_start_time ? date_create($EM_Event->event_start_time) : $start_time = null;
+                            $end_time = $EM_Event->event_end_time ? date_create($EM_Event->event_end_time) : $end_time = null;
+                            $start_date = $EM_Event->event_start_date ? date_create($EM_Event->event_start_date) : $start_date = null;
+                            $end_date = $EM_Event->event_end_date ? date_create($EM_Event->event_end_date) : $end_date = null; ?>
                             <?php if ($EM_Event->event_start_date == $EM_Event->event_end_date) : ?>
-                                <p><?php echo __( 'WHEN', 'w4ptheme' ) . ': ' . date_format( $start_date, 'F jS, Y' ) . ' @ ' . date_format($start_time, 'g:i A') . ' - ' . date_format( $end_time, 'g:i A' );?></p>
+                                <p><?php echo __('WHEN', 'w4ptheme') . ': ' . date_format($start_date, 'F jS, Y') . ' @ ' . date_format($start_time, 'g:i A') . ' - ' . date_format($end_time, 'g:i A'); ?></p>
                             <?php else : ?>
-                                <p><?php echo __( 'WHEN', 'w4ptheme' ) . ': ' . date_format( $start_date, 'F jS, Y' ). ' - ' . date_format( $end_date, 'F jS, Y' ) . ' @ ' . date_format($start_time, 'g:i A') . ' - ' . date_format( $end_time, 'g:i A' );?></p>
+                                <p><?php echo __('WHEN', 'w4ptheme') . ': ' . date_format($start_date, 'F jS, Y') . ' - ' . date_format($end_date, 'F jS, Y') . ' @ ' . date_format($start_time, 'g:i A') . ' - ' . date_format($end_time, 'g:i A'); ?></p>
                             <?php endif; ?>
-                            <p><?php echo __( 'COST', 'w4ptheme' ) . ': ' . get_field( 'event_cost' ); ?></p>
-                            <?php $terms = get_the_terms( get_the_ID(), 'who-should-attend' ); ?>
-                            <?php if ( !empty($terms) ) : ?>
-                                <?php foreach( $terms as $term ): ?>
+                            <?php if (get_field('event_cost')) : ?>
+                                <p><?php echo __('COST', 'w4ptheme') . ': ' . get_field('event_cost'); ?></p>
+                            <?php endif; ?>
+                            <?php $terms = get_the_terms(get_the_ID(), 'who-should-attend'); ?>
+                            <?php if (!empty($terms)) : ?>
+                                <?php foreach ($terms as $term): ?>
                                     <?php $terms_who_should_attend[] = $term->name; ?>
                                 <?php endforeach; ?>
                             <?php endif; ?>
-                            <p>
-                                <?php echo __('WHO SHOULD ATTEND', 'w4ptheme)') . ': '?>
-                                <?php if( !empty($terms_who_should_attend) ): ?>
+                            <?php if (!empty($terms_who_should_attend)): ?>
+                                <p>
+                                    <?php echo __('WHO SHOULD ATTEND', 'w4ptheme)') . ': ' ?>
                                     <?php echo implode(", ", $terms_who_should_attend); ?>
-                                <?php endif; ?>
-                            </p>
+                                </p>
+                            <?php endif; ?>
                         </div>
 
                         <!--    Post Image   -->
                         <div class="postPage-image">
-                            <?php the_post_thumbnail( 'single_event_img' ); ?>
+                            <?php the_post_thumbnail('single_event_img'); ?>
                         </div>
 
                         <!--    Post Content    -->
                         <div class="postPage-content">
-                            <?php echo $EM_Event->post_content;?>
+                            <?php echo $EM_Event->post_content; ?>
                             <div class="postPage-content-links">
-                                <a href="<?php echo $link_icall = isset ($EM_Event ) ? $EM_Event->get_ical_url() : '#'; ?>" class="btn"><?php echo __( '+ ADD TO iCALL', 'w4ptheme' );?></a>
-                                <a href="<?php echo $link_calendar = isset( $EM_Event ) ? $EM_Event->output( '#_EVENTGCALURL' ) : '#' ; ?>" class="btn"><?php echo __( '+ ADD TO GOOGLE CALENDAR', 'w4ptheme' );?></a>
+                                <a href="<?php echo $link_icall = isset ($EM_Event) ? $EM_Event->get_ical_url() : '#'; ?>"
+                                   class="btn"><?php echo __('+ ADD TO iCALL', 'w4ptheme'); ?></a>
+                                <a href="<?php echo $link_calendar = isset($EM_Event) ? $EM_Event->output('#_EVENTGCALURL') : '#'; ?>"
+                                   class="btn"><?php echo __('+ ADD TO GOOGLE CALENDAR', 'w4ptheme'); ?></a>
                             </div>
                         </div>
                         <!--    Post Content    -->
@@ -73,86 +79,91 @@ get_header(); ?>
                 <div class="siteSidebar-inner">
                     <!--    Sidebar widget  -->
                     <div class="siteSidebar-item">
-                        <h3><?php echo __( 'Event details', 'w4ptheme' );?></h3>
+                        <h3><?php echo __('Event details', 'w4ptheme'); ?></h3>
 
                         <div class="siteSidebar-item-content">
                             <p>
-                                <strong><?php echo __( 'Date', 'w4ptheme' ) . ': '; ?></strong>
+                                <strong><?php echo __('Date', 'w4ptheme') . ': '; ?></strong>
                                 <?php if ($EM_Event->event_start_date == $EM_Event->event_end_date) : ?>
-                                    <?php echo date_format( $start_date, 'F jS, Y' ); ?>
+                                    <?php echo date_format($start_date, 'F jS, Y'); ?>
                                 <?php else : ?>
-                                    <?php echo date_format( $start_date, 'F jS, Y' ) . ' - ' . date_format( $end_date, 'F jS, Y' ); ?>
+                                    <?php echo date_format($start_date, 'F jS, Y') . ' - ' . date_format($end_date, 'F jS, Y'); ?>
                                 <?php endif; ?>
                                 <br>
-                                <strong><?php echo __( 'Time', 'w4ptheme' ) . ': '; ?></strong><?php echo date_format( $start_time, 'g:i A' ) . ' - ' . date_format( $end_time, 'g:i A' ); ?>
+                                <strong><?php echo __('Time', 'w4ptheme') . ': '; ?></strong><?php echo date_format($start_time, 'g:i A') . ' - ' . date_format($end_time, 'g:i A'); ?>
                             </p>
 
+
+                            <?php $terms = get_the_terms(get_the_ID(), 'event-type'); ?>
+                            <?php if (!empty($terms)) : ?>
+                                <?php foreach ($terms as $term): ?>
+                                    <?php $terms_event_type[] = $term->name; ?>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+
+                            <?php if (!empty($terms_event_type)) : ?>
+                                <p>
+                                    <strong><?php echo __('Event type', 'w4ptheme)') . ': '; ?></strong>
+                                    <?php echo implode(", ", $terms_event_type); ?>
+                                </p>
+                            <?php endif; ?>
+
+                            <?php $post_objects = get_field('event_artist');
+                            if ($post_objects): ?>
                             <p>
-                                <?php $terms = get_the_terms( get_the_ID(), 'event-type' ); ?>
-                                <?php if ( !empty($terms) ) : ?>
-                                    <?php foreach( $terms as $term ): ?>
-                                        <?php $terms_event_type[] = $term->name; ?>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
-                                <strong><?php echo __( 'Event type', 'w4ptheme)' ) . ': ';?></strong>
-                                <?php if ( !empty($terms_event_type) ) : ?>
-                                    <?php echo implode( ", ", $terms_event_type ); ?>
-                                <?php endif; ?>
-                            </p>
-                            <p>
-                                <strong><?php echo __( 'Artist(s)', 'w4ptheme)' ) . ': ';?></strong>
-                                <?php $post_objects = get_field( 'event_artist' );
-                                if( $post_objects ): ?>
-                                    <?php foreach( $post_objects as $post): ?>
-                                        <?php setup_postdata($post); ?>
-                                        <?php $artist_links[] = '<a href="' . get_permalink( ) . '">' . get_the_title( ) . '</a>'?>
-                                    <?php endforeach; ?>
-                                    <?php wp_reset_postdata( ); ?>
+                                <strong><?php echo __('Artist(s)', 'w4ptheme)') . ': '; ?></strong>
+                                <?php foreach ($post_objects as $post): ?>
+                                    <?php setup_postdata($post); ?>
+                                    <?php $artist_links[] = '<a href="' . get_permalink() . '">' . get_the_title() . '</a>' ?>
+                                <?php endforeach; ?>
+                                <?php wp_reset_postdata(); ?>
                                 <?php endif; ?>
                                 <?php if (!empty($artist_links)) : ?>
-                                    <?php echo implode(", ", $artist_links); ?>
-                                <?php endif; ?>
+                                <?php echo implode(", ", $artist_links); ?>
                             </p>
+                        <?php endif; ?>
 
-                            <p>
-                                <strong><?php echo __( 'Website', 'w4ptheme' ) . ': ';?></strong>
-                                <?php $field_website = get_field( 'event_website' ); ?>
-                                <?php if(!empty($field_website)) : ?>
-                                    <a href="<?php the_field( 'event_website' );?>">
-                                        <?php $parse =  parse_url( $field_website );
-                                        echo $parse['host'];?>
+                            <?php $field_website = get_field('event_website'); ?>
+                            <?php if (!empty($field_website)) : ?>
+                                <p>
+                                    <strong><?php echo __('Website', 'w4ptheme') . ': '; ?></strong>
+                                    <a href="<?php the_field('event_website'); ?>">
+                                        <?php $parse = parse_url($field_website);
+                                        echo $parse['host']; ?>
                                     </a>
-                                <?php endif; ?>
-                            </p>
+                                </p>
+                            <?php endif; ?>
+
                         </div>
                     </div>
 
                     <!--    Sidebar widget  -->
                     <div class="siteSidebar-item">
-                        <h3><?php echo __( 'Venue details H3', 'w4ptheme' );?></h3>
-                        <?php $location = $EM_Event->get_location( ); ?>
+                        <h3><?php echo __('Venue details', 'w4ptheme'); ?></h3>
+                        <?php $location = $EM_Event->get_location(); ?>
                         <div class="siteSidebar-item-content">
-                            <p><a href="<?php echo $location->guid;?>"><?php echo $location->location_name;?></a></p>
+                            <p><a href="<?php echo $location->guid; ?>"><?php echo $location->location_name; ?></a></p>
 
                             <p>
-                                <?php echo $location->location_address;?>
+                                <?php echo $location->location_address; ?>
                                 <br>
-                                <?php echo $location->location_town;?>
-                                <?php echo $loc_state = !empty($location->location_state) ? ', ' . $location->location_state : '';?>
-                                <?php echo $loc_postcode = !empty($location->location_postcode) ? ', ' . $location->location_postcode : '';?>
+                                <?php echo $location->location_town; ?>
+                                <?php echo $loc_state = !empty($location->location_state) ? ', ' . $location->location_state : ''; ?>
+                                <?php echo $loc_postcode = !empty($location->location_postcode) ? ', ' . $location->location_postcode : ''; ?>
                                 <br>
-                                <?php echo $location->get_country();?>
+                                <?php echo $location->get_country(); ?>
                             </p>
-
-                            <p><?php the_field( 'venue_tel', $location->post_id );?></p>
-
+                            <?php if (get_field('venue_tel', $location->post_id)) : ?>
+                                <p><?php the_field('venue_tel', $location->post_id); ?></p>
+                            <?php endif; ?>
                             <div class="siteSidebar-item-mapHolder">
-                                <!-- Map here width x height settings sets in plugin settings > formatting as width: 100%; height: 280px; -->
                                 <? if (isset($EM_Event)) : ?>
-                                    <?php echo $map = $EM_Event->output( '#_LOCATIONMAP' ); ?>
+                                    <?php echo $map = $EM_Event->output('#_LOCATIONMAP'); ?>
                                 <?php endif; ?>
                             </div>
-                            <p><a href="<?php echo $location->guid;?>"><?php echo __( 'Get Directions', 'w4ptheme' );?></a></p>
+                            <p>
+                                <a href="<?php echo $location->guid; ?>"><?php echo __('Get Directions', 'w4ptheme'); ?></a>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -160,4 +171,6 @@ get_header(); ?>
         </div>
 
     </section>
+<?php endwhile; ?>
+<?php endif; ?>
 <?php get_footer(); ?>
