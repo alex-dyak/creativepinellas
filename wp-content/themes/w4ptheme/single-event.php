@@ -83,14 +83,14 @@ get_header(); ?>
 
                         <div class="siteSidebar-item-content">
                             <p>
-                                <strong><?php echo __('Date', 'w4ptheme') . ': '; ?></strong>
+                                <strong><?php echo __('DATE', 'w4ptheme') . ': '; ?></strong>
                                 <?php if ($EM_Event->event_start_date == $EM_Event->event_end_date) : ?>
                                     <?php echo date_format($start_date, 'F jS, Y'); ?>
                                 <?php else : ?>
                                     <?php echo date_format($start_date, 'F jS, Y') . ' - ' . date_format($end_date, 'F jS, Y'); ?>
                                 <?php endif; ?>
                                 <br>
-                                <strong><?php echo __('Time', 'w4ptheme') . ': '; ?></strong><?php echo date_format($start_time, 'g:i A') . ' - ' . date_format($end_time, 'g:i A'); ?>
+                                <strong><?php echo __('TIME', 'w4ptheme') . ': '; ?></strong><?php echo date_format($start_time, 'g:i A') . ' - ' . date_format($end_time, 'g:i A'); ?>
                             </p>
 
 
@@ -103,7 +103,7 @@ get_header(); ?>
 
                             <?php if (!empty($terms_event_type)) : ?>
                                 <p>
-                                    <strong><?php echo __('Event type', 'w4ptheme)') . ': '; ?></strong>
+                                    <strong><?php echo __('EVENT TYPE', 'w4ptheme)') . ': '; ?></strong>
                                     <?php echo implode(", ", $terms_event_type); ?>
                                 </p>
                             <?php endif; ?>
@@ -111,7 +111,7 @@ get_header(); ?>
                             <?php $post_objects = get_field('event_artist');
                             if ($post_objects): ?>
                             <p>
-                                <strong><?php echo __('Artist(s)', 'w4ptheme)') . ': '; ?></strong>
+                                <strong><?php echo __('ARTIST(S)', 'w4ptheme)') . ': '; ?></strong>
                                 <?php foreach ($post_objects as $post): ?>
                                     <?php setup_postdata($post); ?>
                                     <?php $artist_links[] = '<a href="' . get_permalink() . '">' . get_the_title() . '</a>' ?>
@@ -126,7 +126,7 @@ get_header(); ?>
                             <?php $field_website = get_field('event_website'); ?>
                             <?php if (!empty($field_website)) : ?>
                                 <p>
-                                    <strong><?php echo __('Website', 'w4ptheme') . ': '; ?></strong>
+                                    <strong><?php echo __('WEBSITE', 'w4ptheme') . ': '; ?></strong>
                                     <a href="<?php the_field('event_website'); ?>">
                                         <?php $parse = parse_url($field_website);
                                         echo $parse['host']; ?>
