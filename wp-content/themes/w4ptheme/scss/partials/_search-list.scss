@@ -1,0 +1,12 @@
+.searchList-item {
+    margin-bottom: 20px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid $gray-border;
+    &:last-child {
+        margin-bottom: 0;
+        border-bottom: none;
+    }
+}
+.searchList-item-title {
+    text-transform: uppercase;
+}

@@ -1,27 +1,38 @@
 (function () {
   jQuery(function($) {
 
-    $('select').selectBoxIt({
-      autoWidth: false
-    });
-
-    $('.js-datepicker').datepicker({
-      dayNamesMin: [ 'SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT' ],
-      firstDay: 1,
-      prevText: '&larr;',
-      nextText: '&rarr;',
-      showOtherMonths: true
-    });
-
-    $('.swipebox').swipebox();
-    $(document).foundation();
-
     var $offCanvas = $(".off-canvas"),
       $mobileNavToggle = $('.js-mobileNavToggle'),
       $subNavToggle = $('.js-subNavToggle'),
       $touchNav = $('.js-touchNav'),
       $touchFocusBlock = $('.js-touchFocus'),
-      $equalContainer = $('.js-community-equalHeight');
+      $equalContainer = $('.js-community-equalHeight'),
+      $select = $('select'),
+      $datepicker = $('.js-datepicker'),
+      $swipebox = $('.swipebox');
+
+    if($select.length > 0) {
+      $select.selectBoxIt({
+        autoWidth: false
+      });
+    }
+
+    if($datepicker.length > 0) {
+      $datepicker.datepicker({
+        dayNamesMin: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+        firstDay: 1,
+        prevText: '&larr;',
+        nextText: '&rarr;',
+        showOtherMonths: true
+      });
+    }
+
+    if($swipebox.length > 0) {
+      $swipebox.swipebox();
+    }
+
+    $(document).foundation();
+
 
     $offCanvas.on("opened.zf.offcanvas", function(e) {
       $mobileNavToggle.addClass('is-open');
@@ -92,6 +103,7 @@
         $toggleBlock.find('select').each(function () {
           $(this).data("selectBox-selectBoxIt").refresh();
         });
+        $toggleBlock.find('input[type=search]').focus();
       });
     });
   });

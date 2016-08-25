@@ -27,7 +27,7 @@
 }
 .siteHeader-top {
     position: relative;
-    padding: 20px 0;
+    padding: 20px 0 0;
     @include breakpoint(large down) {
         display: table;
         width: 100%;
@@ -53,6 +53,37 @@
 }
 .siteHeader-topNav {
     margin-right: 5px;
+}
+.siteHeader-mainNav {
+    display: inline-block;
+}
+.siteHeader-widgets {
+    position: relative;
+    padding-bottom: 20px;
+    .widget_search {
+        display: none;
+        input[type="search"] {
+            background: $white;
+        }
+        input[type="submit"] {
+            margin: 0;
+        }
+        .column {
+            padding-right: .625rem;;
+            @include breakpoint(medium) {
+                padding-right: .9375rem;
+            }
+        }
+    }
+}
+.siteHeader-searchToggle {
+    margin: 0 15px 0 0;
+    @include breakpoint(medium) {
+        margin-left: 15px;
+    }
+    @include breakpoint(large) {
+        margin: 0;
+    }
 }
 .siteHeader--headerSection {
     position: relative;
