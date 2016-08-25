@@ -85,11 +85,10 @@ get_header(); ?>
             <section class="medium-8 large-9 column end relatedContent relatedContent--hasSidebar">
                 <!--    Upcoming Events  -->
                 <section class="row column">
-                    <h2><?php echo __('UPCOMING EVENTS', 'w4ptheme'); ?></h2>
-
                     <?php $events = get_related_events($EM_Location->location_id); ?>
                     <?php /* @var $EM_Event EM_Event */ ?>
                     <?php if (!empty($events)) : ?>
+                        <h2><?php echo __('UPCOMING EVENTS', 'w4ptheme'); ?></h2>
                         <div class="postsList">
                         <?php foreach ($events as $EM_Event) : ?>
                             <!--    postsList-item  -->
