@@ -1,0 +1,12 @@
+.homeSection--homeIntro {
+    padding-top: 0;
+}
+.homeSection--homeIntro-gridList {
+    @include breakpoint(large) {
+        padding-left: .9375rem;
+        padding-right: .9375rem;
+    }
+    .promoList-item {
+        margin-bottom: 0;
+    }
+}

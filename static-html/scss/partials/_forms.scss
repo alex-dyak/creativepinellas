@@ -13,9 +13,17 @@ textarea {
     &::placeholder {
         font-style: italic;
     }
+    &.is-datepicker {
+        background: url("../images/calendar.svg") no-repeat 95% 8px;
+        background-size: 14px 24px;
+    }
+    &.wpcf7-not-valid {
+        border-color: $red;
+    }
 }
 textarea {
     resize: vertical;
+    height: 150px;
 }
 button,
 input[type="button"],
@@ -72,9 +80,18 @@ input[type="submit"].btn--ocean,
 .btn--fullWidth {
     width: 100%;
 }
+button.btn-middleWidth,
+input[type="button"].btn-middleWidth,
+input[type="reset"].btn-middleWidth,
+input[type="submit"].btn-middleWidth,
+.btn-middleWidth {
+    padding-left: 50px;
+    padding-right: 50px;
+}
 
 /*  Global Select styling */
 .selectboxit-container {
+    width: 100%;
     * {
         font-family: $font-base;
         font-size: $fontSize-base;
@@ -93,6 +110,7 @@ input[type="submit"].btn--ocean,
         font-style: italic;
     }
     .selectboxit {
+        width: 100%;
         height: 41px;
         line-height: 41px;
         border-radius: 0;
@@ -157,24 +175,49 @@ input[type="submit"].btn--ocean,
         }
     }
 }
-
+.formElement-row {
+    margin-bottom: 20px;
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: $black;
+    }
+}
 label {
     font-weight: $fontWeight-bold;
 }
-.form-row {
+.form-row,
+.wpcf7-form-control-wrap {
+    display: block;
     position: relative;
     margin-bottom: 15px;
-
-    &.is-datepicker {
-        &:after {
-            content: $fa-var-calendar;
-            position: absolute;
-            top: 8px;
-            right: 12px;
-            font-family:  FontAwesome;
-            text-rendering: auto;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+}
+span.wpcf7-not-valid-tip {
+    display: inline-block;
+    margin-top: 5px;
+    color: $red;
+}
+div.wpcf7-response-output {
+    margin: 0 0 30px;
+    padding: 13px 20px;
+}
+div.wpcf7-validation-errors {
+    border: 2px solid $red--light;
+    background: $red--light;
+    &:before {
+        content: $fa-var-times-circle;
+        display: inline-block;
+        margin-right: 5px;
+        font-family: FontAwesome;
+        font-size: $lineHeight-tightest;
+        vertical-align: middle;
+        color: $red;
+        text-rendering: auto; // optimizelegibility throws things off #1094
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
+}
+div.wpcf7-mail-sent-ok {
+    border: 2px solid transparent;
+    background: $sky--40;
 }

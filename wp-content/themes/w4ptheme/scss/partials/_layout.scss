@@ -1,6 +1,5 @@
 .off-canvas-wrapper,
 .off-canvas-wrapper-inner {
-    height: 100%;
     background-color: $sky;
 }
 .off-canvas-content {
@@ -12,11 +11,17 @@
 .off-canvas {
     height: 100%;
 }
+.siteBody {
+    min-height: 500px;
+}
 .siteContent {
     padding: 50px 10px 50px;
     @include breakpoint(medium) {
         padding: 100px 15px 90px;
     }
+}
+.siteContent--noBottomSpace {
+    padding-bottom: 0;
 }
 .siteSidebar {
     padding: 0 10px 90px;
