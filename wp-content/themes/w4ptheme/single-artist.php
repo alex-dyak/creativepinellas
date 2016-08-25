@@ -165,7 +165,7 @@ get_header(); ?>
                         'author' => $get_id_author['ID'],
                         'orderby' => 'post_date',
                         'order' => 'ASC',
-                        'posts_per_page' => -1
+                        'posts_per_page' => 5
                     );
                     $the_query = new WP_Query($args); ?>
                 <?php endif; ?>
