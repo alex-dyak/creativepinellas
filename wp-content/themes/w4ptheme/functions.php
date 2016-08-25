@@ -49,6 +49,9 @@ function w4ptheme_setup() {
 
 	if ( function_exists( 'add_image_size' ) ) {
 		add_image_size( 'post_page_img', 650, 300, true );
+        add_image_size( 'related_post_img', 280, 280, true );
+        add_image_size( 'single_event_img', 650, 380, true );
+        add_image_size( 'single_event_880x880', 880, 880, true );
 		add_image_size( 'related_post_img', 280, 280, true );
 		add_image_size( 'big_blog_img', 1480, 1480, true );
 		add_image_size( 'small_blog_img', 880, 1480, true );
@@ -363,4 +366,38 @@ function visual_intro_register_button($buttons){
 	array_push($buttons, "intro");
 
 	return $buttons;
+}
+
+/**
+ * Validate custom field vanue_tel.
+ */
+function acf_validate_value_tel_field( $valid, $value, $field, $input ){
+    if( !$valid ) {
+        return $valid;
+    }
+    // valid telephone data, format (000) 000-0000.
+    $pattern = '/^\(\d{3}\)\s\d{3}-\d{4}/';
+    if( preg_match($pattern, $value)  == FALSE | preg_match($pattern, $value)  == 0 ) {
+
+        $valid = __('Incorrect phone number, correct format to (000) 000-0000', 'w4ptheme') ;
+
+    }
+    return $valid;
+}
+add_filter('acf/validate_value/name=venue_tel', 'acf_validate_value_tel_field', 10, 4);
+
+/**
+ * Get related events in location page.
+ */
+function get_related_events($location_id){
+    $events_count = EM_Events::count( array('location'=>$location_id, 'scope'=>'future') );
+    if ( $events_count > 0 ) {
+        $args = array('location' => $location_id, 'scope' => 'future', 'pagination' => 1, 'ajax' => 0);
+        $args['format_header'] = get_option('dbem_location_event_list_item_header_format');
+        $args['format_footer'] = get_option('dbem_location_event_list_item_footer_format');
+        $args['format'] = get_option('dbem_location_event_list_item_format');
+        $args['limit'] = get_option('dbem_location_event_list_limit');
+        $args['page'] = (!empty($_REQUEST['pno']) && is_numeric($_REQUEST['pno'])) ? $_REQUEST['pno'] : 1;
+        return $replace = EM_Events::get($args);
+    }
 }
