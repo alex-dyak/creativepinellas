@@ -21,6 +21,8 @@ get_header(); ?>
 					</article>
 				</section>
 				<section class="row column">
+					<!--    Posts List  -->
+					<div class="postsList">
 					<?php while ( have_posts() ) : the_post(); ?>
 						<!--    postsList-item  -->
 						<div class="postsList-item">
@@ -63,6 +65,7 @@ get_header(); ?>
 						</div>
 						<!--   / postsList-item  -->
 					<?php endwhile; ?>
+					</div>
 					<?php if ( function_exists( 'wp_pagenavi' ) ) {
 						wp_pagenavi( array(
 							'before'        => '<nav class="navigation pagination" role="navigation">',
