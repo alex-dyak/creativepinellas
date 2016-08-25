@@ -36,18 +36,14 @@ get_header(); ?>
 							'posts_per_page' => 5
 						);
 						$custom_query      = new WP_Query( $custom_query_args );
-						$image_attr        = array(
-							'alt' => '',
-							'srcset' => "http://placehold.it/1480x1480 768w, http://placehold.it/800x800 1024w"
-						);
 						?>
 
 						<?php if ( $custom_query->have_posts() ) :
 							$count = 0; ?>
 							<!-- the loop -->
 							<?php while ( $custom_query->have_posts() ) :
-							$custom_query->the_post(); ?>
-							<?php
+							$custom_query->the_post();
+
 							$category = get_the_category();
 							$the_category_id = $category[0]->cat_ID;
 							if(function_exists('rl_color')){
@@ -56,18 +52,17 @@ get_header(); ?>
 							?>
 							<?php if ( $count < 5 ) : ?>
 							<?php if ( $count == 0 ) : ?>
-
 								<div class="medium-8 large-6 column">
 									<div class="gridItem gridItem--blog">
-										<a href="<?php the_permalink(); ?>"
-										   class="js-touchFocus">
-											<?php the_post_thumbnail( 'big_blog_img', $image_attr ); ?>
-											<span class="gridItem-categoryDecor"
-											      style="background-color: <?php echo $rl_category_color; ?>"></span>
+										<a href="<?php the_permalink(); ?>" class="js-touchFocus">
 
+											<img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'big_blog_img'); ?>" alt=""
+											     srcset="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'big_blog_img'); ?> 768W,
+																<?php echo get_the_post_thumbnail_url(get_the_ID(), 'small_blog_img'); ?> 1024w">
+
+											<span class="gridItem-categoryDecor" style="background-color: <?php echo $rl_category_color; ?>"></span>
 											<div class="gridItem-info">
 												<h3><?php the_title(); ?></h3>
-
 												<p>
 													<strong><?php _e( 'Read Post', 'w4ptheme' ); ?></strong>
 												</p>
@@ -76,20 +71,21 @@ get_header(); ?>
 									</div>
 								</div>
 
-							<?php elseif ( $count > 0 && $count < 3 ) : ?>
+							<?php elseif ( $count > 0 && $count < 3 ) :
+								?>
 								<div class="medium-4 large-3 column">
 									<div class="row small-collapse">
 										<div
 											class="small-12 halfMedium-6 medium-12 column">
 											<div
 												class="gridItem gridItem--blog">
-												<a href="<?php the_permalink(); ?>"
-												   class="js-touchFocus">
-													<?php the_post_thumbnail( 'small_blog_img', $image_attr ); ?>
-													<span
-														class="gridItem-categoryDecor"
-														style="background-color: <?php echo $rl_category_color; ?>"></span>
+												<a href="<?php the_permalink(); ?>" class="js-touchFocus">
 
+													<img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'big_blog_img'); ?>" alt=""
+													     srcset="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'big_blog_img'); ?> 768W,
+																<?php echo get_the_post_thumbnail_url(get_the_ID(), 'small_blog_img'); ?> 1024w">
+
+													<span class="gridItem-categoryDecor" style="background-color: <?php echo $rl_category_color; ?>"></span>
 													<div class="gridItem-info">
 														<h3><?php the_title(); ?></h3>
 														<p>
@@ -102,20 +98,19 @@ get_header(); ?>
 									</div>
 								</div>
 
-							<?php elseif ( $count > 2 ) : ?>
+							<?php elseif ( $count > 2 ) :
+
+								?>
 								<div class="medium-12 large-3 column">
 									<div class="row small-collapse">
-										<div
-											class="small-12 halfMedium-6 large-12 column">
-											<div
-												class="gridItem gridItem--blog">
-												<a href="<?php the_permalink(); ?>"
-												   class="js-touchFocus">
-													<?php the_post_thumbnail( 'small_blog_img', $image_attr ); ?>
-													<span
-														class="gridItem-categoryDecor"
-														style="background-color: <?php echo $rl_category_color; ?>"></span>
+										<div class="small-12 halfMedium-6 large-12 column">
+											<div class="gridItem gridItem--blog">
+												<a href="<?php the_permalink(); ?>" class="js-touchFocus">
+													<img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'big_blog_img'); ?>" alt=""
+													     srcset="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'big_blog_img'); ?> 768W,
+																<?php echo get_the_post_thumbnail_url(get_the_ID(), 'small_blog_img'); ?> 1024w">
 
+													<span class="gridItem-categoryDecor" style="background-color: <?php echo $rl_category_color; ?>"></span>
 													<div class="gridItem-info">
 														<h3><?php the_title(); ?></h3>
 														<p>
@@ -136,10 +131,7 @@ get_header(); ?>
 							<!-- end of the loop -->
 
 						<?php endif; ?>
-						<?php
-						// Reset postdata
-						wp_reset_postdata();
-						?>
+						<?php wp_reset_query(); ?>
 					</div>
 				</div>
 			</section>
@@ -154,7 +146,7 @@ get_header(); ?>
 						$paged      = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 						$query_args = array(
 							'post_type'      => 'post',
-							'posts_per_page' => 2,
+							'posts_per_page' => 6,
 							'paged'          => $paged
 						);
 						$the_query  = new WP_Query( $query_args ); ?>
@@ -171,14 +163,16 @@ get_header(); ?>
 										$rl_category_color = rl_color($the_category_id);
 									}
 									?>
-									<div class="postsList-item-image"><?php echo $img; ?>
-										<span class="postsList-item-categoryDecor"
-											style="background-color: <?php echo $rl_category_color; ?>"></span>
+									<div class="postsList-item-image">
+										<img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'small_blog_img'); ?>" alt=""
+											srcset="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'small_blog_img'); ?> 460w,
+											<?php echo get_the_post_thumbnail_url(get_the_ID(), 'related_post_img'); ?> 768w">
+										<span class="postsList-item-categoryDecor"></span>
 									</div>
 								<?php endif; ?>
 								<div class="postsList-item-body">
 									<h3><?php the_title(); ?></h3>
-									<p><?php the_excerpt(); ?></p>
+									<p><?php the_excerpt_max_charlength(120); ?></p>
 									<p><i>
 											<?php echo __( 'BY ', 'w4ptheme' ) . strtoupper( get_the_author() ) . ' | '; ?>
 											<?php $getcat = get_the_category(); ?>
@@ -196,11 +190,11 @@ get_header(); ?>
 										</i></p>
 								</div>
 								<div>
-									<a href="<?php the_permalink(); ?>"
-									   class="btn btn--fullWidth"><?php _e( 'Read Article', 'w4ptheme' ); ?></a>
+									<a href="<?php the_permalink(); ?>" class="btn btn--fullWidth"><?php _e( 'Read Article', 'w4ptheme' ); ?></a>
 								</div>
 							</div>
 						<?php endwhile; ?>
+						<?php wp_reset_query(); ?>
 						<!--   / postsList-item  -->
 					</div>
 					<?php if ( function_exists( 'wp_pagenavi' ) ) {

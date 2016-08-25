@@ -35,9 +35,14 @@ get_header(); ?>
 									$rl_category_color = rl_color( $the_category_id );
 								}
 								?>
-								<div
-									class="postsList-item-image"><?php echo $img; ?>
-									<span class="postsList-item-categoryDecor" style="background-color: <?php echo $rl_category_color; ?>"></span>
+								<div class="postsList-item-image">
+									<img
+										src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'small_blog_img' ); ?>"
+										alt=""
+										srcset="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'small_blog_img' ); ?> 460w,
+											<?php echo get_the_post_thumbnail_url( get_the_ID(), 'related_post_img' ); ?> 768w">
+									<span class="postsList-item-categoryDecor"
+									      style="background-color: <?php echo $rl_category_color; ?>"></span>
 								</div>
 							<?php endif; ?>
 							<div class="postsList-item-body">
