@@ -48,7 +48,7 @@ define("WP_RP_RECOMMENDATIONS_NUM_PREGENERATED_POSTS", 50);
 
 define("WP_RP_THUMBNAILS_NUM_PREGENERATED_POSTS", 50);
 
-define("WP_RP_EXCERPT_SHORTENED_SYMBOL", " (&hellip;");
+define("WP_RP_EXCERPT_SHORTENED_SYMBOL", " (&hellip;)");
 
 global $wp_rp_options, $wp_rp_meta, $wp_rp_global_notice_pages;
 $wp_rp_options = false;
