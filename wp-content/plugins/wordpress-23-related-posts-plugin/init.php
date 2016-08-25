@@ -20,7 +20,7 @@ register_deactivation_hook(__FILE__, 'wp_rp_deactivate_hook');
 
 add_action('wp_head', 'wp_rp_head_resources');
 
-add_action('plugins_loaded', 'wp_rp_init_zemanta');
+//add_action('plugins_loaded', 'wp_rp_init_zemanta');
 
 
 function wp_rp_init_zemanta() {

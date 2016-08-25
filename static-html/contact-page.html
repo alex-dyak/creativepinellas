@@ -212,23 +212,74 @@
                 <section class="siteBody">
 
                     <div class="row">
-                        <section class="column siteContent siteContent--noBottomSpace">
+                        <section class="medium-8 large-9 column siteContent siteContent--hasSidebar">
                             <section class="row column">
 
                                 <article class="postPage">
                                     <!--    Post title  -->
-                                    <h1 class="postPage-title u-text--center">Art Venues</h1>
+                                    <h1 class="postPage-title">H1 Contact Page</h1>
 
                                     <!--    Post Content    -->
                                     <div class="postPage-content">
 
-                                        <!-- TODO: Centering of this block should be done from WYSIWYG editor, in case it will be custom field/ just add class ".u-text--center" -->
-                                        <div class="intro" style="text-align: center;">
-                                            <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
-                                                survived not only five centuries
-                                            </p>
+                                        <div class="intro">
+                                            <p>Intro p is 1.5em/1.25em and is colored using #04b4c3 to help it stand out.&nbsp;Intro p is 1.5em/1.25em and is colored using #04b4c3 to help it stand out.</p>
                                         </div>
+
+                                        <div class="contactForm">
+                                            <form action="#">
+                                                <!-- TODO: default wp Contact7 form error and success message, replase only text -->
+                                                <div class="wpcf7-response-output wpcf7-display-none wpcf7-validation-errors" role="alert" style="display: block;">There was a problem with your submission. Errors are highlighter below</div>
+
+                                                <div class="wpcf7-response-output wpcf7-display-none wpcf7-mail-sent-ok" style="display: block;" role="alert">Thank you for your message. It has been sent.</div>
+                                                <!-- TODO: end -->
+
+                                                <div class="large-5">
+                                                    <label for="name_field">Name *</label>
+                                                    <!--    TODO: span will be generated automaticly with Form7-->
+                                                    <span class="wpcf7-form-control-wrap">
+                                    <input type="text" name="name_field" id="name_field" class="wpcf7-not-valid">
+                                    <!--    TODO: error messages is default from Form7 -->
+                                    <span role="alert" class="wpcf7-not-valid-tip">The field is required.</span>
+                                                    </span>
+                                                </div>
+                                                <div class="large-5">
+                                                    <label for="email_field">Email *</label>
+                                                    <span class="wpcf7-form-control-wrap">
+                                    <input type="email" name="email_field" id="email_field">
+                                </span>
+                                                </div>
+                                                <div class="large-5">
+                                                    <label for="org_field">Organization</label>
+                                                    <span class="wpcf7-form-control-wrap">
+                                    <input type="text" name="org_field" id="org_field">
+                                </span>
+                                                </div>
+                                                <div class="large-5">
+                                                    <label for="person_select">I am a(n)</label>
+                                                    <span class="wpcf7-form-control-wrap">
+                                    <select id="person_select" name="person_select">
+                                        <option value="Artist">Artist</option>
+                                        <option value="Art Lover">Art Lover</option>
+                                        <option value="Member of Media">Member of Media</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </span>
+                                                </div>
+                                                <div class="small-12">
+                                                    <label for="org_field">Message *</label>
+                                                    <span class="wpcf7-form-control-wrap">
+                                    <textarea></textarea>
+                                </span>
+                                                </div>
+                                                <div class="small-12">
+                                                    <div class="form-row">
+                                                        <input type="submit" value="Submit" class="btn btn-middleWidth btn--ocean">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+
 
                                     </div>
                                     <!--    Post Content    -->
@@ -238,253 +289,30 @@
 
                         </section>
 
+                        <aside class="medium-4 large-3 column siteSidebar">
+                            <div class="siteSidebar-inner">
+                                <!--    Sidebar widget  -->
+                                <div class="siteSidebar-item">
+                                    <h3>Offices & Mailing Address</h3>
+                                    <div class="siteSidebar-item-content">
+                                        <p>
+                                            Creative Pinellas <br> 8200 Bryan Dairy Road, Suite 200 <br> Largo, FL 33777
+                                        </p>
+                                        <p>
+                                            <a href="tel:(727) 464-7261">(727) 464-7261</a>
+                                        </p>
+                                        <div class="siteSidebar-item-mapHolder">
+                                            <!-- Map here width x height settings sets in plugin settings > formatting as width: 100%; height: 280px; -->
+                                            <img src="images/map-thumb.jpg" alt="">
+                                            <!-- TODO:remove this image when plugins map took it's place -->
+                                        </div>
+                                        <p><a href="#">Get Directions</a></p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </aside>
                     </div>
-
-                    <section class="u-background--gray directoryFilters">
-                        <section class="row">
-                            <div class="column">
-                                <h2 class="u-text--center">NARROW DOWN VENUE</h2>
-                                <p class="hide-for-medium">
-                                    <a href="#" class="btn btn--fullWidth js-toggle" data-toggle="js-filtersForm">Filters</a>
-                                </p>
-                            </div>
-                        </section>
-                        <form action="" class="directoryFilters-form js-filtersForm">
-                            <section class="row">
-                                <div class="halfMedium-6 medium-4 column">
-                                    <label for="eventType">Type</label>
-                                    <div class="form-row">
-                                        <select id="eventType">
-                        <option value="All types">All types</option>
-                        <option value="Option 1">Option 1</option>
-                        <option value="Option 2">Option 2</option>
-                        <option value="Option 3">Option 3</option>
-                    </select>
-                                    </div>
-                                </div>
-                                <div class="halfMedium-6 medium-4 column">
-                                    <label for="location">Location</label>
-                                    <div class="form-row">
-                                        <select id="location">
-                        <option value="All Communities">All Communities</option>
-                        <option value="Option 1">Option 1</option>
-                        <option value="Option 2">Option 2</option>
-                        <option value="Option 3">Option 3</option>
-                    </select>
-                                    </div>
-                                </div>
-                                <div class="medium-4 column">
-                                    <div class="form-row directoryFilters-action">
-                                        <input type="submit" value="Go" class="btn btn--fullWidth btn--ocean">
-                                    </div>
-                                </div>
-                            </section>
-                        </form>
-                    </section>
-
-
-                    <section class="row expanded small-collapse small-up-1 medium-up-3 xxlarge-up-5 entityGrid">
-                        <div class="column">
-                            <div class="gridItem gridItem--element">
-                                <a href="#" class="js-touchFocus">
-                                    <img src="http://placehold.it/1480x1480" alt="" srcset="http://placehold.it/960x960 480w ,http://placehold.it/1480x1480 768w, http://placehold.it/680x680 1024w,  http://placehold.it/940x940 1400w">
-                                    <div class="gridItem-info">
-                                        <h3>Vanue Name max 60char Vanue Name max 60char Vanue Name ma</h3>
-                                        <p class="u-text--upper"><i>Community</i></p>
-                                        <p class="gridItem-info-showHover gridItem-info-showHover--fSize"><strong>See Venue</strong></p>
-                                    </div>
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="column">
-                            <div class="gridItem gridItem--element">
-                                <a href="#" class="js-touchFocus">
-                                    <img src="http://placehold.it/1480x1480" alt="" srcset="http://placehold.it/960x960 480w ,http://placehold.it/1480x1480 768w, http://placehold.it/680x680 1024w,  http://placehold.it/940x940 1400w">
-                                    <div class="gridItem-info">
-                                        <h3>Vanue Name max 60char Vanue Name max 60char Vanue Name ma</h3>
-                                        <p class="u-text--upper"><i>Community</i></p>
-                                        <p class="gridItem-info-showHover gridItem-info-showHover--fSize"><strong>See Venue</strong></p>
-                                    </div>
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="column">
-                            <div class="gridItem gridItem--element">
-                                <a href="#" class="js-touchFocus">
-                                    <img src="http://placehold.it/1480x1480" alt="" srcset="http://placehold.it/960x960 480w ,http://placehold.it/1480x1480 768w, http://placehold.it/680x680 1024w,  http://placehold.it/940x940 1400w">
-                                    <div class="gridItem-info">
-                                        <h3>Vanue Name max 60char Vanue Name max 60char Vanue Name ma</h3>
-                                        <p class="u-text--upper"><i>Community</i></p>
-                                        <p class="gridItem-info-showHover gridItem-info-showHover--fSize"><strong>See Venue</strong></p>
-                                    </div>
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="column">
-                            <div class="gridItem gridItem--element">
-                                <a href="#" class="js-touchFocus">
-                                    <img src="http://placehold.it/1480x1480" alt="" srcset="http://placehold.it/960x960 480w ,http://placehold.it/1480x1480 768w, http://placehold.it/680x680 1024w,  http://placehold.it/940x940 1400w">
-                                    <div class="gridItem-info">
-                                        <h3>Vanue Name max 60char Vanue Name max 60char Vanue Name ma</h3>
-                                        <p class="u-text--upper"><i>Community</i></p>
-                                        <p class="gridItem-info-showHover gridItem-info-showHover--fSize"><strong>See Venue</strong></p>
-                                    </div>
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="column">
-                            <div class="gridItem gridItem--element">
-                                <a href="#" class="js-touchFocus">
-                                    <img src="http://placehold.it/1480x1480" alt="" srcset="http://placehold.it/960x960 480w ,http://placehold.it/1480x1480 768w, http://placehold.it/680x680 1024w,  http://placehold.it/940x940 1400w">
-                                    <div class="gridItem-info">
-                                        <h3>Vanue Name max 60char Vanue Name max 60char Vanue Name ma</h3>
-                                        <p class="u-text--upper"><i>Community</i></p>
-                                        <p class="gridItem-info-showHover gridItem-info-showHover--fSize"><strong>See Venue</strong></p>
-                                    </div>
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="column">
-                            <div class="gridItem gridItem--element">
-                                <a href="#" class="js-touchFocus">
-                                    <img src="http://placehold.it/1480x1480" alt="" srcset="http://placehold.it/960x960 480w ,http://placehold.it/1480x1480 768w, http://placehold.it/680x680 1024w,  http://placehold.it/940x940 1400w">
-                                    <div class="gridItem-info">
-                                        <h3>Vanue Name max 60char Vanue Name max 60char Vanue Name ma</h3>
-                                        <p class="u-text--upper"><i>Community</i></p>
-                                        <p class="gridItem-info-showHover gridItem-info-showHover--fSize"><strong>See Venue</strong></p>
-                                    </div>
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="column">
-                            <div class="gridItem gridItem--element">
-                                <a href="#" class="js-touchFocus">
-                                    <img src="http://placehold.it/1480x1480" alt="" srcset="http://placehold.it/960x960 480w ,http://placehold.it/1480x1480 768w, http://placehold.it/680x680 1024w,  http://placehold.it/940x940 1400w">
-                                    <div class="gridItem-info">
-                                        <h3>Vanue Name max 60char Vanue Name max 60char Vanue Name ma</h3>
-                                        <p class="u-text--upper"><i>Community</i></p>
-                                        <p class="gridItem-info-showHover gridItem-info-showHover--fSize"><strong>See Venue</strong></p>
-                                    </div>
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="column">
-                            <div class="gridItem gridItem--element">
-                                <a href="#" class="js-touchFocus">
-                                    <img src="http://placehold.it/1480x1480" alt="" srcset="http://placehold.it/960x960 480w ,http://placehold.it/1480x1480 768w, http://placehold.it/680x680 1024w,  http://placehold.it/940x940 1400w">
-                                    <div class="gridItem-info">
-                                        <h3>Vanue Name max 60char Vanue Name max 60char Vanue Name ma</h3>
-                                        <p class="u-text--upper"><i>Community</i></p>
-                                        <p class="gridItem-info-showHover gridItem-info-showHover--fSize"><strong>See Venue</strong></p>
-                                    </div>
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="column">
-                            <div class="gridItem gridItem--element">
-                                <a href="#" class="js-touchFocus">
-                                    <img src="http://placehold.it/1480x1480" alt="" srcset="http://placehold.it/960x960 480w ,http://placehold.it/1480x1480 768w, http://placehold.it/680x680 1024w,  http://placehold.it/940x940 1400w">
-                                    <div class="gridItem-info">
-                                        <h3>Vanue Name max 60char Vanue Name max 60char Vanue Name ma</h3>
-                                        <p class="u-text--upper"><i>Community</i></p>
-                                        <p class="gridItem-info-showHover gridItem-info-showHover--fSize"><strong>See Venue</strong></p>
-                                    </div>
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="column">
-                            <div class="gridItem gridItem--element">
-                                <a href="#" class="js-touchFocus">
-                                    <img src="http://placehold.it/1480x1480" alt="" srcset="http://placehold.it/960x960 480w ,http://placehold.it/1480x1480 768w, http://placehold.it/680x680 1024w,  http://placehold.it/940x940 1400w">
-                                    <div class="gridItem-info">
-                                        <h3>Vanue Name max 60char Vanue Name max 60char Vanue Name ma</h3>
-                                        <p class="u-text--upper"><i>Community</i></p>
-                                        <p class="gridItem-info-showHover gridItem-info-showHover--fSize"><strong>See Venue</strong></p>
-                                    </div>
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="column">
-                            <div class="gridItem gridItem--element">
-                                <a href="#" class="js-touchFocus">
-                                    <img src="http://placehold.it/1480x1480" alt="" srcset="http://placehold.it/960x960 480w ,http://placehold.it/1480x1480 768w, http://placehold.it/680x680 1024w,  http://placehold.it/940x940 1400w">
-                                    <div class="gridItem-info">
-                                        <h3>Vanue Name max 60char Vanue Name max 60char Vanue Name ma</h3>
-                                        <p class="u-text--upper"><i>Community</i></p>
-                                        <p class="gridItem-info-showHover gridItem-info-showHover--fSize"><strong>See Venue</strong></p>
-                                    </div>
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="column">
-                            <div class="gridItem gridItem--element">
-                                <a href="#" class="js-touchFocus">
-                                    <img src="http://placehold.it/1480x1480" alt="" srcset="http://placehold.it/960x960 480w ,http://placehold.it/1480x1480 768w, http://placehold.it/680x680 1024w,  http://placehold.it/940x940 1400w">
-                                    <div class="gridItem-info">
-                                        <h3>Vanue Name max 60char Vanue Name max 60char Vanue Name ma</h3>
-                                        <p class="u-text--upper"><i>Community</i></p>
-                                        <p class="gridItem-info-showHover gridItem-info-showHover--fSize"><strong>See Venue</strong></p>
-                                    </div>
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="column">
-                            <div class="gridItem gridItem--element">
-                                <a href="#" class="js-touchFocus">
-                                    <img src="http://placehold.it/1480x1480" alt="" srcset="http://placehold.it/960x960 480w ,http://placehold.it/1480x1480 768w, http://placehold.it/680x680 1024w,  http://placehold.it/940x940 1400w">
-                                    <div class="gridItem-info">
-                                        <h3>Vanue Name max 60char Vanue Name max 60char Vanue Name ma</h3>
-                                        <p class="u-text--upper"><i>Community</i></p>
-                                        <p class="gridItem-info-showHover gridItem-info-showHover--fSize"><strong>See Venue</strong></p>
-                                    </div>
-                                </a>
-                            </div>
-
-                        </div>
-                    </section>
-
-                    <section class="row entityGrid-pagination">
-                        <section class="column">
-                            <!--    pagination form WP theme Twenty Sixteen  -->
-                            <nav class="navigation pagination" role="navigation">
-                                <h2 class="screen-reader-text">Posts navigation</h2>
-                                <div class="nav-links">
-                                    <a class="prev page-numbers" href="#">
-            Previous page
-        </a>
-                                    <a class="page-numbers" href="#">
-                                        <span class="meta-nav screen-reader-text">Page </span> 1
-                                    </a>
-                                    <span class="page-numbers dots">...</span>
-                                    <a class="page-numbers" href="#">
-                                        <span class="meta-nav screen-reader-text">Page </span> 3
-                                    </a>
-                                    <span class="page-numbers current">
-            <span class="meta-nav screen-reader-text">Page </span> 4
-                                    </span>
-                                    <a class="page-numbers" href="#">
-                                        <span class="meta-nav screen-reader-text">Page </span> 5
-                                    </a>
-                                    <a class="next page-numbers" href="#">
-            Next page
-        </a>
-                                </div>
-                            </nav>
-
-                        </section>
-                    </section>
 
                 </section>
 
