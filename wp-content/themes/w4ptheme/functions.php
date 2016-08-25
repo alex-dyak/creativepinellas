@@ -57,6 +57,9 @@ function w4ptheme_setup() {
 		add_image_size( 'small_blog_img', 880, 1480, true );
 		add_image_size( 'big_section_img', 960, 960, true );
 		add_image_size( 'small_section_img', 480, 480, true );
+        add_image_size( 'artist_gallery_300x300', 300, 300, true );
+        add_image_size( 'artist_gallery_440x440', 440, 440, true );
+        add_image_size( 'artist_gallery_600x250', 600, 250, true );
 	}
 
 }
@@ -130,6 +133,9 @@ function w4ptheme_scripts_styles() {
 
 	// Vendors
 	wp_enqueue_script( 'w4ptheme-vendors', get_template_directory_uri() . '/js/vendor.min.js', array(), NULL, TRUE );
+
+    // Swipebox
+    wp_enqueue_script( 'w4ptheme-swipebox', get_template_directory_uri() . '/js/vendor/jquery.swipebox.min.js', array(), NULL, TRUE );
 }
 
 add_action( 'wp_enqueue_scripts', 'w4ptheme_scripts_styles' );
