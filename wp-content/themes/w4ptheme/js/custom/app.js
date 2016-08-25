@@ -92,6 +92,7 @@
         $toggleBlock.find('select').each(function () {
           $(this).data("selectBox-selectBoxIt").refresh();
         });
+        $toggleBlock.find('input[type=search]').focus();
       });
     });
   });

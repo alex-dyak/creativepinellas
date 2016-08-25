@@ -96,3 +96,11 @@ ol {
     padding-bottom: 40px;
     border-bottom: 2px solid #d4d4d4;
 }
+.searchToggle {
+    font-size: $fontSize-large;
+    color: $white;
+    transition: all .2s ease-out;
+    &:hover {
+        color: $ocean;
+    }
+}

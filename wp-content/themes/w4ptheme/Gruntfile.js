@@ -133,7 +133,8 @@ module.exports = function (grunt) {
               pagination: '<%= fixturesPath %>/blocks/pagination.html',
               swipeboxItem: '<%= fixturesPath %>/blocks/swipebox-item.html',
               homeHeaderSection: '<%= fixturesPath %>/blocks/header-section.html',
-              entityPagination: '<%= fixturesPath %>/blocks/entity-pagination.html'
+              entityPagination: '<%= fixturesPath %>/blocks/entity-pagination.html',
+              search: '<%= fixturesPath %>/blocks/search.html'
             }
           }
         }

@@ -1,11 +1,15 @@
 input[type="text"],
 input[type="email"],
 input[type="password"],
+input[type="search"],
 textarea {
     width: 100%;
     padding: 7px 10px 8px;
     border: 2px solid $charcoal--light;
+    border-radius: 0;
     background: none;
+    -webkit-appearance: none;
+    box-sizing: border-box; // redefine foundation content-box for search type
     &:focus {
         outline-color: $sky;
         border-color: $sky;
@@ -36,6 +40,7 @@ input[type="submit"],
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
+    border-radius: 0;
     border: 1px solid $black;
     color: $black;
     transition: background-color .2s ease-out, border-color .2s ease-out;
@@ -56,6 +61,7 @@ input[type="reset"].btn--white,
 input[type="submit"].btn--white,
 .btn--white {
     border-color: $white;
+    background: transparent;
     color: $white;
     &:hover,
     &:active {
@@ -209,7 +215,7 @@ div.wpcf7-validation-errors {
         display: inline-block;
         margin-right: 5px;
         font-family: FontAwesome;
-        font-size: $lineHeight-tightest;
+        font-size: $fontSize-large;
         vertical-align: middle;
         color: $red;
         text-rendering: auto; // optimizelegibility throws things off #1094

@@ -1,7 +1,7 @@
 <header class="siteHeader">
     <div class="row siteHeader-inner">
         <section class="row column siteHeader-top">
-            <div class="small-9 medium-3 column">
+            <div class="small-8 medium-3 column">
                 <div class="siteHeader-logo">
                     <a href="#" title="Creative Pinellas">
                         <svg class='svgIcon svgIcon--logo'>
@@ -10,7 +10,7 @@
                     </a>
                 </div>
             </div>
-            <div class="small-3 medium-9 column u-text--right">
+            <div class="small-4 medium-9 column u-text--right">
                 <div class="show-for-medium siteHeader-social">
                     <ul class="socialList u-list--plain u-list--inline">
                         <li>
@@ -83,9 +83,28 @@
                         </li>
                     </ul>
                 </nav>
+                <a href="#" class="siteHeader-searchToggle searchToggle js-toggle" data-toggle="widget_search"><i class="fa fa-search" aria-hidden="true"></i></a>
                 <a href="#" class="hide-for-large mobileNavToggle js-mobileNavToggle" data-toggle="offCanvas" data-open="CLOSE" data-close="MENU">
                     <span class="mobileNavToggle-hamburger"><span></span></span>
                 </a>
+            </div>
+        </section>
+        <section class="row column medium-collapse siteHeader-widgets">
+            <div class="medium-6 medium-offset-6 column">
+                <div id="search-2" class="widget widget_search">
+                    <form role="search" method="get" id="searchform" action="http://creativepinellas.loc/">
+                        <div class="row medium-collapse">
+                            <div class="small-8 column">
+                                <label for="s" class="screen-reader-text">Search for:</label>
+                                <input type="search" id="s" name="s" value="" placeholder="e.g gallery opening">
+                            </div>
+                            <div class="small-4 column">
+                                <input type="submit" value="Search" id="searchsubmit" class="btn btn--fullWidth btn--white">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
             </div>
         </section>
     </div>
