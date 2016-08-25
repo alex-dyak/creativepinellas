@@ -29,22 +29,17 @@ get_header(); ?>
 			<!--    Sub page Promo  -->
 			<section class="row halfMedium-collapse medium-uncollapse promoList">
 				<?php // loop through the rows of data
-				while ( have_rows( 'section' ) ) : the_row(); ?>
+				while ( have_rows( 'section' ) ) : the_row();
+					$img_id = get_sub_field( 'page_image' );
+					?>
 					<!--   promoList-item  -->
 					<div class="halfMedium-6 column">
 						<div class="promoList-item">
 							<a href="<?php the_sub_field( 'page_link' ); ?>" class="js-touchFocus">
 								<div class="promoList-item-image">
-									<?php
-									$image  = get_sub_field( 'page_image' );
-									$size   = 'big_section_img';
-									$thumb  = $image['sizes'][ $size ];
-									$width  = $image['sizes'][ $size . '-width' ];
-									$height = $image['sizes'][ $size . '-height' ];
-									if ( ! empty( $image ) ): ?>
-										<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>"
-										     width="<?php echo $width; ?>" height="<?php echo $height; ?>"/>
-									<?php endif; ?>
+									<img src="<?php echo wp_get_attachment_image_url($img_id, 'big_section_img'); ?>" alt=""
+									     srcset="<?php echo wp_get_attachment_image_url($img_id, 'big_section_img'); ?> 480w,
+											<?php echo wp_get_attachment_image_url($img_id, 'small_section_img'); ?> 1200w">
 								</div>
 								<div class="promoList-item-body">
 									<h3><?php the_sub_field( 'page_name' ); ?></h3>

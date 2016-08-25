@@ -332,8 +332,11 @@ function wp_rp_generate_related_posts_list_items($related_posts, $selected_relat
 			if(function_exists('rl_color')){
 				$rl_category_color = rl_color($the_category_id);
 			}
-			$output .= '<div class="postsList-item-image">' . $img . '
-			<span class="postsList-item-categoryDecor" style="background-color:' . $rl_category_color .'"></span>
+			$output .= '<div class="postsList-item-image">
+						<img src="' . get_the_post_thumbnail_url( get_the_ID(), "small_blog_img" ) . '" alt=""
+			srcset="' . get_the_post_thumbnail_url( get_the_ID(), "small_blog_img" ) . ' 460w,'
+			  . get_the_post_thumbnail_url( get_the_ID(), "related_post_img" ) . ' 768w">
+			<span class="postsList-item-categoryDecor" style="background-color:' . $rl_category_color . '"></span>
 			</div>';
 		}
 
