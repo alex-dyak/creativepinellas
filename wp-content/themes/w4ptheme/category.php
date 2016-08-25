@@ -42,7 +42,7 @@ get_header(); ?>
 							<?php endif; ?>
 							<div class="postsList-item-body">
 								<h3><?php the_title(); ?></h3>
-								<p><?php the_excerpt(); ?></p>
+								<p><?php the_excerpt_max_charlength(150); ?></p>
 								<p><i>
 										<?php echo __( 'BY ', 'w4ptheme' ) . strtoupper( get_the_author() ) . ' | '; ?>
 										<?php $getcat = get_the_category(); ?>

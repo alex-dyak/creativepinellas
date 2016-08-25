@@ -200,6 +200,10 @@ require_once('fields.php');
 function rl_color($catid){
     $meta = get_option('rl_category_meta');
     $meta = isset($meta[$catid]) ? $meta[$catid] : array();
-    $yt_cat_color = $meta['rl_cat_color'];
+	if ($meta) {
+		$yt_cat_color = $meta['rl_cat_color'];
+	} else {
+		$yt_cat_color = 'white';
+	}
     return $yt_cat_color;
 }

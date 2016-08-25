@@ -38,6 +38,7 @@ get_header(); ?>
 						$custom_query      = new WP_Query( $custom_query_args );
 						$image_attr        = array(
 							'alt' => '',
+							'srcset' => "http://placehold.it/1480x1480 768w, http://placehold.it/800x800 1024w"
 						);
 						?>
 
