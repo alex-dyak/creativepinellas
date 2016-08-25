@@ -16,9 +16,8 @@ get_header(); ?>
 			class="medium-8 large-9 column siteContent siteContent--hasSidebar">
 			<section class="row column">
 
-				<?php if (have_posts()) :
-				while (have_posts()) :
-				the_post(); ?>
+				<?php if (have_posts()) : ?>
+				<?php while (have_posts()) : the_post(); ?>
 
 				<article class="postPage" id="post-<?php the_ID(); ?>">
 					<!--    Post title  -->
@@ -27,8 +26,8 @@ get_header(); ?>
 					<div class="postPage-info">
 						<?php the_date( 'F d, Y' ); ?>
 						<?php echo __( 'by ', 'w4ptheme' ) . strtoupper( get_the_author() ) . ' | '; ?>
-						<?php $getcat = get_the_category();
-						$cat_id       = $getcat[0]->cat_ID;
+						<?php $getcat = get_the_category(); ?>
+						<?php if(!empty($getcat)) :
 						$count        = count( $getcat );
 						foreach ( $getcat as $key => $category ) : ?>
 							<?php if ( $key == $count - 1 ) : ?>
@@ -37,6 +36,7 @@ get_header(); ?>
 								<a href="<?php echo get_category_link( $category->cat_ID ); ?>"><?php echo strtoupper( $category->cat_name ); ?></a><?php echo ', '; ?>
 							<?php endif; ?>
 						<?php endforeach; ?>
+						<?php endif; ?>
 					</div>
 
 					<!--    Post Content    -->
@@ -52,8 +52,8 @@ get_header(); ?>
 				</article>
 			</section>
 			<?php post_navigation(); ?>
-			<?php endwhile;
-			endif; ?>
+			<?php endwhile; ?>
+			<?php endif; ?>
 			<!--    Related Posts   -->
 			<?php if ( is_active_sidebar( 'sidebar-footer' ) ) : ?>
 				<?php dynamic_sidebar( 'sidebar-footer' ); ?>

@@ -52,11 +52,53 @@ function w4ptheme_setup() {
         add_image_size( 'related_post_img', 280, 280, true );
         add_image_size( 'single_event_img', 650, 380, true );
         add_image_size( 'single_event_880x880', 880, 880, true );
+		add_image_size( 'related_post_img', 280, 280, true );
+		add_image_size( 'big_blog_img', 1480, 1480, true );
+		add_image_size( 'small_blog_img', 880, 1480, true );
+		add_image_size( 'big_section_img', 960, 960, true );
+		add_image_size( 'small_section_img', 480, 480, true );
 	}
 
 }
 
 add_action( 'after_setup_theme', 'w4ptheme_setup' );
+
+//WP-PageNavi styles
+add_filter( 'wp_pagenavi_class_previouspostslink', 'theme_pagination_class' );
+add_filter( 'wp_pagenavi_class_nextpostslink', 'theme_pagination_class' );
+add_filter( 'wp_pagenavi_class_page', 'theme_pagination_class' );
+add_filter( 'wp_pagenavi_class_larger', 'theme_pagination_class' );
+add_filter( 'wp_pagenavi_class_current', 'theme_pagination_class' );
+add_filter( 'wp_pagenavi_class_smaller', 'theme_pagination_class' );
+add_filter( 'wp_pagenavi_class_extend', 'theme_pagination_class' );
+
+function theme_pagination_class( $class_name ) {
+	switch ( $class_name ) {
+		case 'previouspostslink':
+			$class_name = 'prev page-numbers';
+			break;
+		case 'nextpostslink':
+			$class_name = 'next page-numbers';
+			break;
+		case 'page':
+			$class_name = 'meta-nav screen-reader-text';
+			break;
+		case 'extend':
+			$class_name = 'page-numbers dots';
+			break;
+		case 'smaller':
+			$class_name = 'page-numbers';
+			break;
+		case 'current':
+			$class_name = 'page-numbers current';
+			break;
+		case 'larger':
+			$class_name = 'page-numbers';
+			break;
+	}
+
+	return $class_name;
+}
 
 /**
  * Scripts & Styles.

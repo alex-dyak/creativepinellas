@@ -131,8 +131,9 @@ module.exports = function (grunt) {
               gridItemEvent: '<%= fixturesPath %>/blocks/grid-item-event.html',
               gridItemVenue: '<%= fixturesPath %>/blocks/grid-item-venue.html',
               pagination: '<%= fixturesPath %>/blocks/pagination.html',
-              entityPagination: '<%= fixturesPath %>/blocks/entity-pagination.html',
-              swipeboxItem: '<%= fixturesPath %>/blocks/swipebox-item.html'
+              swipeboxItem: '<%= fixturesPath %>/blocks/swipebox-item.html',
+              homeHeaderSection: '<%= fixturesPath %>/blocks/header-section.html',
+              entityPagination: '<%= fixturesPath %>/blocks/entity-pagination.html'
             }
           }
         }
@@ -150,6 +151,7 @@ module.exports = function (grunt) {
             partials: {
               footer: '<%= fixturesPath %>/partials/footer.html',
               header: '<%= fixturesPath %>/partials/header.html',
+              homeHeader: '<%= fixturesPath %>/partials/home-header.html',
               offCanvas: '<%= fixturesPath %>/partials/off-canvas.html',
               sidebarTemplate: '<%= fixturesPath %>/partials/sidebar-template.html',
               blogPost: '<%= fixturesPath %>/partials/blog-post-template.html',
@@ -158,11 +160,13 @@ module.exports = function (grunt) {
               blogLanding: '<%= fixturesPath %>/partials/blog-landing-template.html',
               blogCategory: '<%= fixturesPath %>/partials/blog-category-template.html',
               directoryTemplate: '<%= fixturesPath %>/partials/directory-template.html',
+              contactTemplate: '<%= fixturesPath %>/partials/contact-template.html',
               artistPageLayout: '<%= fixturesPath %>/partials/artist-page-template.html',
               eventPageLayout: '<%= fixturesPath %>/partials/event-page-template.html',
               venuePageLayout: '<%= fixturesPath %>/partials/venue-page-template.html',
               eventListTemplate: '<%= fixturesPath %>/partials/event-list-template.html',
-              venueListTemplate: '<%= fixturesPath %>/partials/venue-list-template.html'
+              venueListTemplate: '<%= fixturesPath %>/partials/venue-list-template.html',
+              indexPageLayout: '<%= fixturesPath %>/partials/index-page-template.html'
             }
           }
         }
