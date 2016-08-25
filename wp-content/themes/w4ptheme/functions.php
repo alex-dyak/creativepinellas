@@ -76,7 +76,7 @@ function theme_pagination_class( $class_name ) {
 			$class_name = 'next page-numbers';
 			break;
 		case 'page':
-			$class_name = 'meta-nav screen-reader-text';
+			$class_name = 'page-numbers';
 			break;
 		case 'extend':
 			$class_name = 'page-numbers dots';

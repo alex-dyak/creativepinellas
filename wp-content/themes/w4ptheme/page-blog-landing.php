@@ -153,7 +153,7 @@ get_header(); ?>
 						$paged      = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 						$query_args = array(
 							'post_type'      => 'post',
-							'posts_per_page' => 6,
+							'posts_per_page' => 2,
 							'paged'          => $paged
 						);
 						$the_query  = new WP_Query( $query_args ); ?>
