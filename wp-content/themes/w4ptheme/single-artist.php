@@ -58,15 +58,12 @@ get_header(); ?>
 
                     </section>
                 </section>
-                <?php
-
-                $images = get_field('artist_image_gallery');
-
-                if ($images): ?>
-                    <aside class="medium-4 large-3 column siteSidebar">
-                        <div class="siteSidebar-inner">
-                            <!--    Sidebar widget  -->
-                            <div class="siteSidebar-galleryWidget">
+                <aside class="medium-4 large-3 column siteSidebar">
+                    <div class="siteSidebar-inner">
+                        <!--    Sidebar widget  -->
+                        <div class="siteSidebar-galleryWidget">
+                            <?php $images = get_field('artist_image_gallery'); ?>
+                            <?php if ($images): ?>
                                 <h3><?php echo __('Artist Gallery', 'w4ptheme'); ?></h3>
                                 <ul class="siteSidebar-gallery-element u-list--plain u-clearfix">
                                     <?php foreach ($images as $image): ?>
@@ -80,12 +77,14 @@ get_header(); ?>
                                         </li>
                                     <?php endforeach; ?>
                                 </ul>
+                            <?php endif; ?>
+                            <?php if (get_field('artist_web_site_url')) : ?>
                                 <a href="<?php the_field('artist_web_site_url'); ?>"
                                    class="btn btn--fullWidth"><?php echo __('Artist WebSite', 'w4ptheme'); ?></a>
-                            </div>
+                            <?php endif; ?>
                         </div>
-                    </aside>
-                <?php endif; ?>
+                    </div>
+                </aside>
             <?php endwhile; ?>
             <?php endif; ?>
             <?php
@@ -119,12 +118,14 @@ get_header(); ?>
                             <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
                                 <div class="postsList-item">
                                     <div class="postsList-item-image">
+                                        <?php if (has_post_thumbnail()) : ?>
                                         <img
                                             src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'single_event_880x880'); ?>"
                                             alt=""
                                             srcset="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'single_event_880x880'); ?> 460w, <?php echo get_the_post_thumbnail_url(get_the_ID(), 'related_post_img'); ?> 768w">
                                         <span class="postsList-item-categoryDecor"></span>
                                     </div>
+                                    <?php endif; ?>
                                     <div class="postsList-item-body">
                                         <h3><?php the_title(); ?></h3>
 
@@ -172,20 +173,25 @@ get_header(); ?>
                 <?php if ($the_query->have_posts()): ?>
                     <section class="row column">
                         <h2><?php echo __('POSTS BY ', 'w4ptheme') . strtoupper(get_the_title()); ?></h2>
+
                         <div class="postsList">
                             <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
                                 <!--    postsList-item  -->
                                 <div class="postsList-item">
                                     <div class="postsList-item-image">
-                                        <img
-                                            src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'single_event_880x880'); ?>"
-                                            alt=""
-                                            srcset="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'single_event_880x880'); ?> 460w, <?php echo get_the_post_thumbnail_url(get_the_ID(), 'related_post_img'); ?> 768w">
+                                        <?php if (has_post_thumbnail()) : ?>
+                                            <img
+                                                src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'single_event_880x880'); ?>"
+                                                alt=""
+                                                srcset="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'single_event_880x880'); ?> 460w, <?php echo get_the_post_thumbnail_url(get_the_ID(), 'related_post_img'); ?> 768w">
+                                        <?php endif; ?>
                                         <span class="postsList-item-categoryDecor"></span>
                                     </div>
                                     <div class="postsList-item-body">
                                         <h3><?php the_title(); ?></h3>
+
                                         <p><?php echo substr(strip_tags($post->post_content), 0, 150) . '(...)'; ?></p>
+
                                         <p>
                                             <i>
                                                 <?php
