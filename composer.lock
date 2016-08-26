@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "17fa8b0f344db05573471a176a2fef4e",
-    "content-hash": "53328d953c2c543e2c8c381b2d0a863c",
+    "hash": "cc157062dc0c331486c3484527c3d7ab",
+    "content-hash": "b7ad32d2a8d10672efb771ac928a6d9e",
     "packages": [
         {
             "name": "composer/installers",
@@ -422,16 +422,36 @@
             "homepage": "https://wordpress.org/plugins/svg-support/"
         },
         {
-            "name": "wpackagist-plugin/types",
-            "version": "2.1",
+            "name": "wpackagist-plugin/tinymce-advanced",
+            "version": "4.4.1",
             "source": {
                 "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/types/",
-                "reference": "tags/2.1"
+                "url": "https://plugins.svn.wordpress.org/tinymce-advanced/",
+                "reference": "tags/4.4.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/types.2.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/tinymce-advanced.4.4.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/tinymce-advanced/"
+        },
+        {
+            "name": "wpackagist-plugin/types",
+            "version": "2.2.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/types/",
+                "reference": "tags/2.2.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/types.2.2.1.zip",
                 "reference": null,
                 "shasum": null
             },
