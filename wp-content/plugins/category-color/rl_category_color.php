@@ -13,6 +13,8 @@ class RadLabs_Category_Colors{
     protected $_meta;
     protected $_taxonomies;
     protected $_fields;
+    protected $css;
+    protected $js;
 
     function __construct( $meta ){
         if ( !is_admin() )
@@ -30,15 +32,6 @@ class RadLabs_Category_Colors{
      * Enqueue scripts and styles
      ********************************/
     function load_edit_page(){
-        $screen = get_current_screen();
-        if(
-            'edit-tags' != $screen->base
-            || empty( $_GET['action'] ) || 'edit' != $_GET['action']
-            || !in_array( $screen->taxonomy, $this->_taxonomies )
-        ){
-            return;
-        }
-
         add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
         add_action( 'admin_head', array( $this, 'output_css' ) );
         add_action( 'admin_footer', array( $this, 'output_js' ), 100 );
@@ -147,6 +140,7 @@ class RadLabs_Category_Colors{
         $meta = isset( $metas[$term_id] ) ? $metas[$term_id] : array();
         foreach ( $this->_fields as $field ) {
             $name = $field['id'];
+	        $field['multiple'] = '';
             $new = isset( $_POST[$name] ) ? $_POST[$name] : ( $field['multiple'] ? array() : '' );
             $new = is_array( $new ) ? array_map( 'stripslashes', $new ) : stripslashes( $new );
             if ( empty( $new ) ) {
