@@ -15,11 +15,10 @@
 		<div class="row medium-collapse">
 			<div class="large-3 column siteFooter-logo">
 				<!--    Footer Logo     -->
-				<a href="<?php echo get_home_url(); ?>"
-				   title="Creative Pinellas">
-					<img class="header-image svgIcon svgIcon--logo" src="<?php header_image(); ?>"
-					     width="<?php echo esc_attr(get_custom_header()->width ); ?>"
-					     height="<?php echo esc_attr(get_custom_header()->height ); ?>" alt=""/>
+				<a href="<?php echo get_home_url(); ?>" title="Creative Pinellas">
+					<svg class='svgIcon svgIcon--logo'>
+						<use xlink:href='#logoFull'/>
+					</svg>
 				</a>
 				<!--   / Footer Logo     -->
 			</div>

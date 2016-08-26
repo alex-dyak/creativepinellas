@@ -154,7 +154,7 @@ get_header(); ?>
 						<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 							<!--    postsList-item  -->
 							<div class="postsList-item">
-								<?php $img = wp_rp_get_post_thumbnail_img( get_post() );
+								<?php $img = get_the_post_thumbnail_url( get_the_ID() );
 								if ( $img ) : ?>
 									<?php
 									$category = get_the_category();
