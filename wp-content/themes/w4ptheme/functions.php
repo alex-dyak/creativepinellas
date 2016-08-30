@@ -57,6 +57,12 @@ function w4ptheme_setup() {
 		add_image_size( 'small_blog_img', 880, 880, true );
 		add_image_size( 'big_section_img', 960, 960, true );
 		add_image_size( 'small_section_img', 480, 480, true );
+		add_image_size( 'header_img', 960, '', true );
+		add_image_size( 'header_img_1600x1080', 1600, '', true );
+		add_image_size( 'header_img_1060x715', 1060, '', true );
+		add_image_size( 'arts_community_img', 320, 800, true );
+		add_image_size( 'img_940x940', 940, 940, true );
+		add_image_size( 'img_680x680', 680, 680, true );
 	}
 
 }
@@ -235,7 +241,7 @@ class Main_Nav_Menu extends Walker_Nav_Menu {
 		}
 
 		if ( $args->has_children ) {
-			$item->classes[] = 'has-subNav';
+			$item->classes[] = 'has-subNav js-hasSubNav';
 		}
 
 		parent::start_el( $output, $item, $depth, $args );
