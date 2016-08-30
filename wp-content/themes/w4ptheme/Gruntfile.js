@@ -63,8 +63,6 @@ module.exports = function (grunt) {
       vendor: {
         files: {
           'js/vendor.min.js': [
-            'bower_components/jquery/dist/jquery.min.js',
-            'js/vendor/jquery-ui.min.js',
             'js/vendor/jquery.selectBoxIt.min.js',
             'js/vendor/foundation/*.js'
           ]
