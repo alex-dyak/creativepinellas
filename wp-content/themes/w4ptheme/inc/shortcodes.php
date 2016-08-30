@@ -18,8 +18,8 @@ function posts_for_home_page( $atts ) {
 	if ( ! $atts ) {
 		$atts = array();
 	}
-	if ( ! $atts['page_number'] ) {
-		$atts['page_number'] = 12;
+	if ( ! $atts['post_number'] ) {
+		$atts['post_number'] = 12;
 	}
 	if ( ! $atts['category'] ) {
 		$atts['category'] = '';
@@ -29,7 +29,7 @@ function posts_for_home_page( $atts ) {
 	}
 
 	extract( shortcode_atts( array(
-		'page_number' => $atts['page_number'],
+		'page_number' => $atts['post_number'],
 		'category'    => $atts['category'],
 		'featured'    => $atts['featured']
 	), $atts ) );
@@ -52,7 +52,7 @@ function posts_for_home_page( $atts ) {
 				$query_args = array(
 					'post_type'      => 'post',
 					'category_name' => $atts['category'],
-					'posts_per_page' => $atts['page_number'],
+					'posts_per_page' => $atts['post_number'],
 					'meta_key'       => '_is_ns_featured_post',
 					'meta_value'     => 'yes'
 				);
@@ -60,7 +60,7 @@ function posts_for_home_page( $atts ) {
 				$query_args = array(
 					'post_type'      => 'post',
 					'category_name' => $atts['category'],
-					'posts_per_page' => $atts['page_number'],
+					'posts_per_page' => $atts['post_number'],
 				);
 			}
 			$the_query  = new WP_Query( $query_args ); ?>

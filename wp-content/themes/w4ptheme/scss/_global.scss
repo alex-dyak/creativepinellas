@@ -100,7 +100,10 @@ ol {
     font-size: $fontSize-large;
     color: $white;
     transition: all .2s ease-out;
-    &:hover {
-        color: $ocean;
+
+    @include breakpoint(large) {
+        &:hover {
+            color: $ocean;
+        }
     }
 }
