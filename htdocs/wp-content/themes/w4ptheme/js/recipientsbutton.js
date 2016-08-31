@@ -2,7 +2,7 @@
     tinymce.create('tinymce.plugins.recipients', {
         init : function(ed, url) {
             ed.addButton('recipients', {
-                title : 'Recipients',
+                title : 'Recipients shortcode',
                 image : url + '/images/recipients.jpg',
                 onclick : function() {
                     ed.selection.setContent('[resipients_list recipients=4]');
