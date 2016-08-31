@@ -57,6 +57,8 @@ function w4ptheme_setup() {
 		add_image_size( 'small_blog_img', 880, 880, true );
 		add_image_size( 'big_section_img', 960, 960, true );
 		add_image_size( 'small_section_img', 480, 480, true );
+		add_image_size( 'event_list_680x680', 680, 680, true );
+		add_image_size( 'event_list_940x940', 940, 940, true );
 	}
 
 }
@@ -130,6 +132,11 @@ function w4ptheme_scripts_styles() {
 
 	// Vendors
 	wp_enqueue_script( 'w4ptheme-vendors', get_template_directory_uri() . '/js/vendor.min.js', array(), NULL, TRUE );
+
+    // Ajax pagination
+    if (em_is_events_page()) {
+        wp_enqueue_script('w4ptheme-ajax', get_template_directory_uri() . '/js/custom/ajax.js', array(), NULL, TRUE);
+    }
 }
 
 add_action( 'wp_enqueue_scripts', 'w4ptheme_scripts_styles' );
@@ -420,4 +427,17 @@ function the_excerpt_max_charlength( $charlength ){
 	} else {
 		echo $excerpt;
 	}
+}
+
+/**
+ * Shorten title page.
+ */
+function short_title($after = '', $length) {
+    $title = get_the_title();
+    if ( strlen($title) > $length ) {
+        $title = substr($title,0,$length);
+        echo $title . $after;
+    } else {
+        echo $title;
+    }
 }
