@@ -61,7 +61,7 @@ get_header(); ?>
 					<?php if ( get_field( 'title' ) ) : ?>
 						<h1><?php echo get_field( 'title' ); ?></h1>
 					<?php endif; ?>
-					<?php if ( get_field( 'title' ) ) : ?>
+					<?php if ( get_field( 'description_text' ) ) : ?>
 						<?php echo get_field( 'description_text' ); ?>
 					<?php endif; ?>
 					<?php if ( get_field( 'page_link_1' ) ) : ?>
