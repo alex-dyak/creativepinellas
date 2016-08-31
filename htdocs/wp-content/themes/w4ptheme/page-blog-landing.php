@@ -57,7 +57,7 @@ get_header(); ?>
 								<img
 									src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'big_blog_img' ); ?>"
 									alt=""
-									srcset="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'big_blog_img' ); ?> 768W,
+									srcset="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'big_blog_img' ); ?> 768w,
 																<?php echo get_the_post_thumbnail_url( get_the_ID(), 'small_blog_img' ); ?> 1024w">
 								<span class="gridItem-categoryDecor" style="background-color: <?php echo $rl_category_color; ?>"></span>
 								<div class="gridItem-info">
