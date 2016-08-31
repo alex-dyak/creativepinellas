@@ -364,16 +364,23 @@ function add_intro_quicktags() {
 				QTags.addButton('shortcode', 'Shortcode', '[blog category="" post_number=12 featured=0]', '', 'shortcode', 'Shortcode', 1);
 			}
 		</script>
+		<script type="text/javascript">
+			if (QTags) {
+				// QTags.addButton( id, display, arg1, arg2, access_key, title, priority, instance );
+				QTags.addButton( 'recipients', 'recipients', '[resipients_list recipients=4]', 'recipients', 'Recipients', 1 );
+			}
+		</script>
 	<?php endif;
 }
 
 /**
  * Add intro button in Visual-editor.
  */
-function visual_intro_button() {
-	if ( current_user_can( 'edit_posts' ) && current_user_can( 'edit_pages' ) ) {
-		add_filter( 'mce_external_plugins', 'visual_intro_plugin' );
-		add_filter( 'mce_buttons_3', 'visual_intro_register_button' );
+function visual_intro_button()
+{
+	if ( current_user_can('edit_posts') && current_user_can('edit_pages') ) {
+		add_filter('mce_external_plugins', 'visual_intro_plugin');
+		add_filter('mce_buttons_3', 'visual_intro_register_button');
 	}
 }
 
@@ -411,6 +418,30 @@ function visual_shortcode_plugin( $plugin_array ) {
 
 function visual_shortcode_register_button( $buttons ) {
 	array_push( $buttons, "shortcode" );
+
+	return $buttons;
+}
+
+/**
+ * Add recipients button in Visual-editor.
+ */
+function recipients_button()
+{
+	if ( current_user_can('edit_posts') && current_user_can('edit_pages') )
+	{
+		add_filter('mce_external_plugins', 'recipients_plugin');
+		add_filter('mce_buttons_3', 'recipients_register_button');
+	}
+}
+add_action('init', 'recipients_button');
+
+function recipients_plugin($plugin_array){
+	$plugin_array['recipients'] = get_bloginfo('template_url').'/js/recipientsbutton.js';
+	return $plugin_array;
+}
+
+function recipients_register_button($buttons){
+	array_push($buttons, "recipients");
 
 	return $buttons;
 }
