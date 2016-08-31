@@ -62,6 +62,15 @@ function w4ptheme_setup() {
         add_image_size( 'artist_gallery_300x300', 300, 300, true );
         add_image_size( 'artist_gallery_440x440', 440, 440, true );
         add_image_size( 'artist_gallery_600x250', 600, 250, true );
+		add_image_size( 'header_img', 960, '', TRUE );
+		add_image_size( 'header_img_1600x1080', 1600, '', TRUE );
+		add_image_size( 'header_img_1060x715', 1060, '', TRUE );
+		add_image_size( 'arts_community_img', 320, 800, TRUE );
+		add_image_size( 'img_940x940', 940, 940, TRUE );
+		add_image_size( 'img_680x680', 680, 680, TRUE );
+		add_image_size( 'artist_gallery_300x300', 300, 300, TRUE );
+		add_image_size( 'artist_gallery_440x440', 440, 440, TRUE );
+		add_image_size( 'artist_gallery_600x250', 600, 250, TRUE );
 	}
 
 }
@@ -128,7 +137,7 @@ function w4ptheme_scripts_styles() {
 	// Load mobile scripts.
 	wp_enqueue_script( 'w4ptheme-gpb0qdz', "https://use.typekit.net/gpb0qdz.js", array(), NULL, TRUE );
 
-	add_action('wp_footer', 'add_this_script_footer');
+	add_action( 'wp_footer', 'add_this_script_footer' );
 
 	// This is where we put our custom JS functions.
 	wp_enqueue_script( 'w4ptheme-app', get_template_directory_uri() . '/js/app.min.js', array( 'w4ptheme-vendors' ), NULL, TRUE );
@@ -150,7 +159,8 @@ add_action( 'wp_enqueue_scripts', 'w4ptheme_scripts_styles' );
 /**
  * Function add script to footer.
  */
-function add_this_script_footer(){ ?>
+function add_this_script_footer() {
+	?>
 	<script>
 		try {
 			Typekit.load({
@@ -159,7 +169,8 @@ function add_this_script_footer(){ ?>
 		} catch (e) {
 		}
 	</script>
-<?php }
+<?php
+}
 
 
 /**
@@ -206,7 +217,7 @@ register_nav_menu( 'primary', __( 'Navigation Menu', 'w4ptheme' ) );
 function post_navigation() {
 	echo '<section class="row column">';
 	echo '<div class="postPageNavigation u-clearfix">';
-	echo '	<div class="postNavigation-prev">' .  get_next_post_link( '%link', '&lt; Prev Post %title' ) . '</div>';
+	echo '	<div class="postNavigation-prev">' . get_next_post_link( '%link', '&lt; Prev Post %title' ) . '</div>';
 	echo '	<div class="postNavigation-next">' . get_previous_post_link( '%link', 'Next Post &gt;' ) . '</div>';
 	echo '</div>';
 	echo '</section>';
@@ -248,7 +259,7 @@ class Main_Nav_Menu extends Walker_Nav_Menu {
 		}
 
 		if ( $args->has_children ) {
-			$item->classes[] = 'has-subNav';
+			$item->classes[] = 'has-subNav js-hasSubNav';
 		}
 
 		parent::start_el( $output, $item, $depth, $args );
@@ -346,12 +357,18 @@ class Mobile_Nav_Menu extends Walker_Nav_Menu {
  */
 add_action( 'admin_print_footer_scripts', 'add_intro_quicktags' );
 function add_intro_quicktags() {
-	if (wp_script_is('quicktags')) :
+	if ( wp_script_is( 'quicktags' ) ) :
 		?>
 		<script type="text/javascript">
 			if (QTags) {
 				// QTags.addButton( id, display, arg1, arg2, access_key, title, priority, instance );
-				QTags.addButton( 'div_intro', 'intro', '<div class="intro"><p>', '</p></div>', 'intro', 'Intro', 1 );
+				QTags.addButton('div_intro', 'intro', '<div class="intro"><p>', '</p></div>', 'intro', 'Intro', 1);
+			}
+		</script>
+		<script type="text/javascript">
+			if (QTags) {
+				// QTags.addButton( id, display, arg1, arg2, access_key, title, priority, instance );
+				QTags.addButton('shortcode', 'Shortcode', '[blog category="" post_number=12 featured=0]', '', 'shortcode', 'Shortcode', 1);
 			}
 		</script>
 		<script type="text/javascript">
@@ -364,25 +381,50 @@ function add_intro_quicktags() {
 }
 
 /**
- * Add button in Visual-editor.
+ * Add intro button in Visual-editor.
  */
 function visual_intro_button()
 {
-	if ( current_user_can('edit_posts') && current_user_can('edit_pages') )
-	{
+	if ( current_user_can('edit_posts') && current_user_can('edit_pages') ) {
 		add_filter('mce_external_plugins', 'visual_intro_plugin');
 		add_filter('mce_buttons_3', 'visual_intro_register_button');
 	}
 }
-add_action('init', 'visual_intro_button');
 
-function visual_intro_plugin($plugin_array){
-	$plugin_array['visual_intro'] = get_bloginfo('template_url').'/js/introbutton.js';
+add_action( 'init', 'visual_intro_button' );
+
+function visual_intro_plugin( $plugin_array ) {
+	$plugin_array['visual_intro'] = get_bloginfo( 'template_url' ) . '/js/introbutton.js';
+
 	return $plugin_array;
 }
 
-function visual_intro_register_button($buttons){
-	array_push($buttons, "intro");
+function visual_intro_register_button( $buttons ) {
+	array_push( $buttons, "intro" );
+
+	return $buttons;
+}
+
+/**
+ * Add shortcode button in Visual-editor.
+ */
+function visual_shortcode_button() {
+	if ( current_user_can( 'edit_posts' ) && current_user_can( 'edit_pages' ) ) {
+		add_filter( 'mce_external_plugins', 'visual_shortcode_plugin' );
+		add_filter( 'mce_buttons_3', 'visual_shortcode_register_button' );
+	}
+}
+
+add_action( 'init', 'visual_shortcode_button' );
+
+function visual_shortcode_plugin( $plugin_array ) {
+	$plugin_array['visual_shortcode'] = get_bloginfo( 'template_url' ) . '/js/shortcodebutton.js';
+
+	return $plugin_array;
+}
+
+function visual_shortcode_register_button( $buttons ) {
+	array_push( $buttons, "shortcode" );
 
 	return $buttons;
 }
@@ -414,46 +456,55 @@ function recipients_register_button($buttons){
 /**
  * Validate custom field vanue_tel.
  */
-function acf_validate_value_tel_field( $valid, $value, $field, $input ){
-    if( !$valid ) {
-        return $valid;
-    }
-    // valid telephone data, format (000) 000-0000.
-    $pattern = '/^\(\d{3}\)\s\d{3}-\d{4}/';
-    if( preg_match($pattern, $value)  == FALSE | preg_match($pattern, $value)  == 0 ) {
+function acf_validate_value_tel_field( $valid, $value, $field, $input ) {
+	if ( ! $valid ) {
+		return $valid;
+	}
+	// valid telephone data, format (000) 000-0000.
+	$pattern = '/^\(\d{3}\)\s\d{3}-\d{4}/';
+	if ( preg_match( $pattern, $value ) == FALSE | preg_match( $pattern, $value ) == 0 ) {
+		$valid = __( 'Incorrect phone number, correct format to (000) 000-0000', 'w4ptheme' );
+	}
 
-        $valid = __('Incorrect phone number, correct format to (000) 000-0000', 'w4ptheme') ;
-
-    }
-    return $valid;
+	return $valid;
 }
-add_filter('acf/validate_value/name=venue_tel', 'acf_validate_value_tel_field', 10, 4);
+
+add_filter( 'acf/validate_value/name=venue_tel', 'acf_validate_value_tel_field', 10, 4 );
 
 /**
  * Get related events in location page.
  */
-function get_related_events($location_id){
-    $events_count = EM_Events::count( array('location'=>$location_id, 'scope'=>'future') );
-    if ( $events_count > 0 ) {
-        $args = array('location' => $location_id, 'scope' => 'future', 'pagination' => 1, 'ajax' => 0);
-        $args['format_header'] = get_option('dbem_location_event_list_item_header_format');
-        $args['format_footer'] = get_option('dbem_location_event_list_item_footer_format');
-        $args['format'] = get_option('dbem_location_event_list_item_format');
-        $args['limit'] = get_option('dbem_location_event_list_limit');
-        $args['page'] = (!empty($_REQUEST['pno']) && is_numeric($_REQUEST['pno'])) ? $_REQUEST['pno'] : 1;
-        return $replace = EM_Events::get($args);
-    }
+function get_related_events( $location_id ) {
+	$events_count = EM_Events::count( array(
+			'location' => $location_id,
+			'scope'    => 'future'
+		) );
+	if ( $events_count > 0 ) {
+		$args                  = array(
+			'location'   => $location_id,
+			'scope'      => 'future',
+			'pagination' => 1,
+			'ajax'       => 0
+		);
+		$args['format_header'] = get_option( 'dbem_location_event_list_item_header_format' );
+		$args['format_footer'] = get_option( 'dbem_location_event_list_item_footer_format' );
+		$args['format']        = get_option( 'dbem_location_event_list_item_format' );
+		$args['limit']         = get_option( 'dbem_location_event_list_limit' );
+		$args['page']          = ( ! empty( $_REQUEST['pno'] ) && is_numeric( $_REQUEST['pno'] ) ) ? $_REQUEST['pno'] : 1;
+
+		return $replace = EM_Events::get( $args );
+	}
 }
 
 
-function the_excerpt_max_charlength( $charlength ){
+function the_excerpt_max_charlength( $charlength ) {
 	$excerpt = get_the_excerpt();
-	$charlength++;
+	$charlength ++;
 
 	if ( mb_strlen( $excerpt ) > $charlength ) {
-		$subex = mb_substr( $excerpt, 0, $charlength - 5 );
+		$subex   = mb_substr( $excerpt, 0, $charlength - 5 );
 		$exwords = explode( ' ', $subex );
-		$excut = - ( mb_strlen( $exwords[ count( $exwords ) - 1 ] ) );
+		$excut   = - ( mb_strlen( $exwords[ count( $exwords ) - 1 ] ) );
 		if ( $excut < 0 ) {
 			echo mb_substr( $subex, 0, $excut );
 		} else {
