@@ -28,12 +28,13 @@ get_header(); ?>
                     <?php endwhile;
                 endif; ?>
             </section>
-
-            <section class="row column">
-                <p class="u-text--center">
-                    <a href="#" class="btn btn-middleWidth"><?php echo __('SUBMIT YOUR EVENT', 'w4ptheme'); ?></a>
-                </p>
-            </section>
+            <?php if (get_field('event_list_link_page')) : ?>
+                <section class="row column">
+                    <p class="u-text--center">
+                        <a href="<?php the_field('event_list_link_page'); ?>" class="btn btn-middleWidth"><?php echo __('SUBMIT YOUR EVENT', 'w4ptheme'); ?></a>
+                    </p>
+                </section>
+            <?php endif; ?>
 
         </section>
 
