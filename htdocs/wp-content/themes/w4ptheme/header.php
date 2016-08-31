@@ -126,16 +126,15 @@
 </div>
 <div class="off-canvas-content" data-off-canvas-content>
 	<?php if (is_front_page()): ?>
-	<header class="siteHeader siteHeader--headerSection">
-		<?php else : ?>
+		<header class="siteHeader siteHeader--headerSection">
+	<?php else : ?>
 		<header class="siteHeader">
-			<?php endif; ?>
+	<?php endif; ?>
 			<div class="row siteHeader-inner">
 				<section class="row column siteHeader-top">
 					<div class="small-8 medium-3 column">
 						<div class="siteHeader-logo">
-							<a href="<?php echo get_home_url(); ?>"
-							   title="Creative Pinellas">
+							<a href="<?php echo get_home_url(); ?>" title="Creative Pinellas">
 								<svg class='svgIcon svgIcon--logo'>
 									<use xlink:href='#logoFull'/>
 								</svg>
@@ -147,8 +146,7 @@
 							<ul class="socialList u-list--plain u-list--inline">
 								<li>
 									<a href="<?php echo get_option( 'w4p_social_profiles' )['twitter'][1]; ?>"
-									   target="_blank"
-									   title="Follow us on Twitter">
+									   target="_blank" title="Follow us on Twitter">
 										<svg class='svgIcon'>
 											<use xlink:href='#twitter'/>
 										</svg>
@@ -156,18 +154,15 @@
 								</li>
 								<li>
 									<a href="<?php echo get_option( 'w4p_social_profiles' )['facebook'][1]; ?>"
-									   target="_blank"
-									   title="Follow us on Facebook">
+									   target="_blank" title="Follow us on Facebook">
 										<svg class='svgIcon'>
-											<use
-												xlink:href='#facebook'/>
+											<use xlink:href='#facebook'/>
 										</svg>
 									</a>
 								</li>
 								<li>
 									<a href="<?php echo get_option( 'w4p_social_profiles' )['youtube'][1]; ?>"
-									   target="_blank"
-									   title="Follow us on Youtube">
+									   target="_blank" title="Follow us on Youtube">
 										<svg class='svgIcon'>
 											<use xlink:href='#youtube'/>
 										</svg>
@@ -213,17 +208,12 @@
 							'depth'           => 2,
 							'walker'          => new Main_Nav_Menu(),
 						) ); ?>
-						<a href="#"
-						   class="siteHeader-searchToggle searchToggle js-toggle"
+						<a href="#" class="siteHeader-searchToggle searchToggle js-toggle"
 						   data-toggle="widget_search"><i
-								class="fa fa-search"
-								aria-hidden="true"></i></a>
-						<a href="#"
-						   class="hide-for-large mobileNavToggle js-mobileNavToggle"
-						   data-toggle="offCanvas" data-open="CLOSE"
-						   data-close="MENU">
-									<span
-										class="mobileNavToggle-hamburger"><span></span></span>
+								class="fa fa-search" aria-hidden="true"></i></a>
+						<a href="#" class="hide-for-large mobileNavToggle js-mobileNavToggle"
+						   data-toggle="offCanvas" data-open="CLOSE" data-close="MENU">
+							<span class="mobileNavToggle-hamburger"><span></span></span>
 						</a>
 					</div>
 				</section>
@@ -231,16 +221,12 @@
 					class="row column medium-collapse siteHeader-widgets">
 					<div class="medium-6 medium-offset-6 column">
 						<div id="search-2" class="widget widget_search">
-							<form role="search" method="get"
-							      id="searchform"
-							      action="http://creativepinellas.loc/">
+							<form role="search" method="get" id="searchform" action="#">
 								<div class="row medium-collapse">
 									<div class="small-8 column">
-										<label for="s"
-										       class="screen-reader-text">Search
+										<label for="s" class="screen-reader-text">Search
 											for:</label>
-										<input type="search" id="s"
-										       name="s" value=""
+										<input type="search" id="s" name="s" value=""
 										       placeholder="e.g gallery opening">
 									</div>
 									<div class="small-4 column">
