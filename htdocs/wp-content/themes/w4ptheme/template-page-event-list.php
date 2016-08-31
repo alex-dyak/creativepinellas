@@ -163,7 +163,7 @@ $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 // base arguments if taxonomy and date empty.
 $args = array(
     'post_type' => 'event',
-    'posts_per_page' => 1,
+    'posts_per_page' => 12,
     'paged'          => $paged,
 );
 if (!empty($location_meta_query)) {
@@ -275,8 +275,6 @@ $the_query = new WP_Query($args); ?>
 <?php else : ?>
     <section class="row expanded small-collapse small-up-1 medium-up-3 xlarge-up-4 xxlarge-up-5 entityGrid">
         <h2 class="u-text--center"><?php echo __( 'Nothing Found', 'w4ptheme' ); ?></h2>
-        <br>
-        <br>
     </section>
 <?php endif; ?>
 </section>
