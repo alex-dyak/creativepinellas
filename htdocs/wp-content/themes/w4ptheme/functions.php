@@ -529,3 +529,13 @@ function short_title($after = '', $length) {
     }
 }
 
+/**
+ * Function change excerpt more braces.
+ * @param $more
+ *
+ * @return string
+ */
+function new_excerpt_more($more) {
+	return '(...)';
+}
+add_filter('excerpt_more', 'new_excerpt_more');

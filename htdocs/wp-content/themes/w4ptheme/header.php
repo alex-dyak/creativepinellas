@@ -221,22 +221,7 @@
 					class="row column medium-collapse siteHeader-widgets">
 					<div class="medium-6 medium-offset-6 column">
 						<div id="search-2" class="widget widget_search">
-							<form role="search" method="get" id="searchform" action="#">
-								<div class="row medium-collapse">
-									<div class="small-8 column">
-										<label for="s" class="screen-reader-text">Search
-											for:</label>
-										<input type="search" id="s" name="s" value=""
-										       placeholder="e.g gallery opening">
-									</div>
-									<div class="small-4 column">
-										<input type="submit"
-										       value="Search"
-										       id="searchsubmit"
-										       class="btn btn--fullWidth btn--white">
-									</div>
-								</div>
-							</form>
+							<?php get_search_form(); ?>
 						</div>
 					</div>
 				</section>
