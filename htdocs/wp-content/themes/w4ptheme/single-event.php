@@ -161,9 +161,12 @@ get_header(); ?>
                                     <?php echo $map = $EM_Event->output('#_LOCATIONMAP'); ?>
                                 <?php endif; ?>
                             </div>
-                            <p>
-                                <a href="<?php echo $location->guid; ?>"><?php echo __('Get Directions', 'w4ptheme'); ?></a>
-                            </p>
+                            <?php if (!empty($location->location_latitude) & !empty($location->location_longitude)) : ?>
+                                <?php $get_directions_link = 'http://maps.google.com/maps?q=' . $location->location_latitude .',' . $location->location_longitude; ?>
+                                <p>
+                                    <a href="<?php echo $get_directions_link; ?>" target="_blank"><?php echo __('Get Directions', 'w4ptheme'); ?></a>
+                                </p>
+                            <?php endif ?>
                         </div>
                     </div>
                 </div>

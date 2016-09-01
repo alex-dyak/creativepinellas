@@ -48,27 +48,29 @@ function w4ptheme_setup() {
 	add_theme_support( 'title-tag' );
 
 	if ( function_exists( 'add_image_size' ) ) {
-		add_image_size( 'post_page_img', 650, 300, TRUE );
-		add_image_size( 'related_post_img', 280, 280, TRUE );
-		add_image_size( 'single_event_img', 650, 380, TRUE );
-		add_image_size( 'single_event_880x880', 880, 880, TRUE );
-		add_image_size( 'related_post_img', 280, 280, TRUE );
-		add_image_size( 'big_blog_img', 1480, 1480, TRUE );
-		add_image_size( 'small_blog_img', 880, 880, TRUE );
-		add_image_size( 'big_section_img', 960, 960, TRUE );
-		add_image_size( 'small_section_img', 480, 480, TRUE );
-
+		add_image_size( 'post_page_img', 650, 300, true );
+        add_image_size( 'related_post_img', 280, 280, true );
+        add_image_size( 'single_event_img', 650, 380, true );
+        add_image_size( 'single_event_880x880', 880, 880, true );
+		add_image_size( 'related_post_img', 280, 280, true );
+		add_image_size( 'big_blog_img', 1480, 1480, true );
+		add_image_size( 'small_blog_img', 880, 880, true );
+		add_image_size( 'big_section_img', 960, 960, true );
+		add_image_size( 'small_section_img', 480, 480, true );
+		add_image_size( 'event_list_680x680', 680, 680, true );
+		add_image_size( 'event_list_940x940', 940, 940, true );
+        add_image_size( 'artist_gallery_300x300', 300, 300, true );
+        add_image_size( 'artist_gallery_440x440', 440, 440, true );
+        add_image_size( 'artist_gallery_600x250', 600, 250, true );
 		add_image_size( 'header_img', 960, '', TRUE );
 		add_image_size( 'header_img_1600x1080', 1600, '', TRUE );
 		add_image_size( 'header_img_1060x715', 1060, '', TRUE );
 		add_image_size( 'arts_community_img', 320, 800, TRUE );
 		add_image_size( 'img_940x940', 940, 940, TRUE );
 		add_image_size( 'img_680x680', 680, 680, TRUE );
-
 		add_image_size( 'artist_gallery_300x300', 300, 300, TRUE );
 		add_image_size( 'artist_gallery_440x440', 440, 440, TRUE );
 		add_image_size( 'artist_gallery_600x250', 600, 250, TRUE );
-
 	}
 
 }
@@ -137,11 +139,17 @@ function w4ptheme_scripts_styles() {
 	// Vendors
 	wp_enqueue_script( 'w4ptheme-vendors', get_template_directory_uri() . '/js/vendor.min.js', array(), NULL, TRUE );
 
+
 	// Swipebox
 	wp_enqueue_script( 'w4ptheme-swipebox', get_template_directory_uri() . '/js/vendor/jquery.swipebox.min.js', array(), NULL, TRUE );
 
 	// This is where we put our custom JS functions.
 	wp_enqueue_script( 'w4ptheme-app', get_template_directory_uri() . '/js/app.min.js', array( 'w4ptheme-vendors' ), NULL, TRUE );
+
+    // Ajax pagination
+    if (em_is_events_page()) {
+        wp_enqueue_script('w4ptheme-ajax', get_template_directory_uri() . '/js/custom/ajax.js', array(), NULL, TRUE);
+    }
 }
 
 add_action( 'wp_enqueue_scripts', 'w4ptheme_scripts_styles' );
@@ -486,7 +494,11 @@ function get_related_events( $location_id ) {
 	}
 }
 
-
+/**
+ * Max lenght to excerpt.
+ *
+ * @param $charlength
+ */
 function the_excerpt_max_charlength( $charlength ) {
 	$excerpt = get_the_excerpt();
 	$charlength ++;
@@ -505,3 +517,17 @@ function the_excerpt_max_charlength( $charlength ) {
 		echo $excerpt;
 	}
 }
+
+/**
+ * Shorten title page.
+ */
+function short_title($after = '', $length) {
+    $title = get_the_title();
+    if ( strlen($title) > $length ) {
+        $title = substr($title,0,$length);
+        echo $title . $after;
+    } else {
+        echo $title;
+    }
+}
+
