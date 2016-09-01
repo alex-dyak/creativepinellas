@@ -129,29 +129,27 @@ function w4ptheme_scripts_styles() {
 	wp_enqueue_script( 'w4ptheme-jquery', get_template_directory_uri() . '/js/vendor/jquery-ui.min.js', array(), NULL, TRUE );
 
 	// Load Stylesheets.
-	wp_enqueue_style( 'application.css', get_stylesheet_uri() );
-
-	// Load scripts.
-	wp_enqueue_script( 'w4ptheme-svgdefs', get_template_directory_uri() . '/js/custom/svgdefs.js', array( 'w4ptheme-jquery' ), NULL, TRUE );
+	wp_enqueue_style( 'style.css', get_stylesheet_uri() );
 
 	// Load mobile scripts.
 	wp_enqueue_script( 'w4ptheme-gpb0qdz', "https://use.typekit.net/gpb0qdz.js", array(), NULL, TRUE );
 
 	add_action( 'wp_footer', 'add_this_script_footer' );
 
-	// This is where we put our custom JS functions.
-	wp_enqueue_script( 'w4ptheme-app', get_template_directory_uri() . '/js/app.min.js', array( 'w4ptheme-vendors' ), NULL, TRUE );
-
 	// Vendors
 	wp_enqueue_script( 'w4ptheme-vendors', get_template_directory_uri() . '/js/vendor.min.js', array(), NULL, TRUE );
+
+
+	// Swipebox
+	wp_enqueue_script( 'w4ptheme-swipebox', get_template_directory_uri() . '/js/vendor/jquery.swipebox.min.js', array(), NULL, TRUE );
+
+	// This is where we put our custom JS functions.
+	wp_enqueue_script( 'w4ptheme-app', get_template_directory_uri() . '/js/app.min.js', array( 'w4ptheme-vendors' ), NULL, TRUE );
 
     // Ajax pagination
     if (em_is_events_page()) {
         wp_enqueue_script('w4ptheme-ajax', get_template_directory_uri() . '/js/custom/ajax.js', array(), NULL, TRUE);
     }
-
-    // Swipebox
-    wp_enqueue_script( 'w4ptheme-swipebox', get_template_directory_uri() . '/js/vendor/jquery.swipebox.min.js', array(), NULL, TRUE );
 }
 
 add_action( 'wp_enqueue_scripts', 'w4ptheme_scripts_styles' );
@@ -496,7 +494,11 @@ function get_related_events( $location_id ) {
 	}
 }
 
-
+/**
+ * Max lenght to excerpt.
+ *
+ * @param $charlength
+ */
 function the_excerpt_max_charlength( $charlength ) {
 	$excerpt = get_the_excerpt();
 	$charlength ++;
