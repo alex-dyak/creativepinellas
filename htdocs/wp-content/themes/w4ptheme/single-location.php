@@ -98,9 +98,9 @@ get_header(); ?>
                                 <?php if (has_post_thumbnail()) : ?>
                                     <div class="postsList-item-image">
                                         <img
-                                            src="<?php echo get_the_post_thumbnail_url($EM_Event->post_id, 'single_event_880x880'); ?>"
+                                            src="<?php echo get_the_post_thumbnail_url($EM_Event->post_id, 'small_blog_img'); ?>"
                                             alt=""
-                                            srcset="<?php echo get_the_post_thumbnail_url($EM_Event->post_id, 'single_event_880x880'); ?> 460w, <?php echo get_the_post_thumbnail_url($EM_Event->post_id, 'related_post_img'); ?> 768w">
+                                            srcset="<?php echo get_the_post_thumbnail_url($EM_Event->post_id, 'small_blog_img'); ?> 460w, <?php echo get_the_post_thumbnail_url($EM_Event->post_id, 'related_post_img'); ?> 768w">
                                         <span class="postsList-item-categoryDecor"></span>
                                     </div>
                                 <?php endif ?>

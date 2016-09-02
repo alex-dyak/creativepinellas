@@ -120,9 +120,9 @@ get_header(); ?>
                                     <div class="postsList-item-image">
                                         <?php if (has_post_thumbnail()) : ?>
                                         <img
-                                            src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'single_event_880x880'); ?>"
+                                            src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'small_blog_img'); ?>"
                                             alt=""
-                                            srcset="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'single_event_880x880'); ?> 460w, <?php echo get_the_post_thumbnail_url(get_the_ID(), 'related_post_img'); ?> 768w">
+                                            srcset="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'small_blog_img'); ?> 460w, <?php echo get_the_post_thumbnail_url(get_the_ID(), 'related_post_img'); ?> 768w">
                                         <span class="postsList-item-categoryDecor"></span>
                                     </div>
                                     <?php endif; ?>
@@ -181,9 +181,9 @@ get_header(); ?>
                                     <div class="postsList-item-image">
                                         <?php if (has_post_thumbnail()) : ?>
                                             <img
-                                                src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'single_event_880x880'); ?>"
+                                                src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'small_blog_img'); ?>"
                                                 alt=""
-                                                srcset="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'single_event_880x880'); ?> 460w, <?php echo get_the_post_thumbnail_url(get_the_ID(), 'related_post_img'); ?> 768w">
+                                                srcset="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'small_blog_img'); ?> 460w, <?php echo get_the_post_thumbnail_url(get_the_ID(), 'related_post_img'); ?> 768w">
                                         <?php endif; ?>
                                         <span class="postsList-item-categoryDecor"></span>
                                     </div>

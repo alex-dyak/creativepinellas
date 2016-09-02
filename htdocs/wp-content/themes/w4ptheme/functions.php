@@ -48,29 +48,22 @@ function w4ptheme_setup() {
 	add_theme_support( 'title-tag' );
 
 	if ( function_exists( 'add_image_size' ) ) {
-		add_image_size( 'post_page_img', 650, 300, true );
         add_image_size( 'related_post_img', 280, 280, true );
-        add_image_size( 'single_event_img', 650, 380, true );
-        add_image_size( 'single_event_880x880', 880, 880, true );
-		add_image_size( 'related_post_img', 280, 280, true );
-		add_image_size( 'big_blog_img', 1480, 1480, true );
-		add_image_size( 'small_blog_img', 880, 880, true );
-		add_image_size( 'big_section_img', 960, 960, true );
-		add_image_size( 'small_section_img', 480, 480, true );
-		add_image_size( 'event_list_680x680', 680, 680, true );
-		add_image_size( 'event_list_940x940', 940, 940, true );
-        add_image_size( 'artist_gallery_300x300', 300, 300, true );
+        add_image_size( 'artist_gallery_300x300', 300, 300, TRUE );
+        add_image_size( 'arts_community_img', 320, 800, TRUE );
         add_image_size( 'artist_gallery_440x440', 440, 440, true );
-        add_image_size( 'artist_gallery_600x250', 600, 250, true );
-		add_image_size( 'header_img', 960, '', TRUE );
-		add_image_size( 'header_img_1600x1080', 1600, '', TRUE );
-		add_image_size( 'header_img_1060x715', 1060, '', TRUE );
-		add_image_size( 'arts_community_img', 320, 800, TRUE );
-		add_image_size( 'img_940x940', 940, 940, TRUE );
-		add_image_size( 'img_680x680', 680, 680, TRUE );
-		add_image_size( 'artist_gallery_300x300', 300, 300, TRUE );
-		add_image_size( 'artist_gallery_440x440', 440, 440, TRUE );
-		add_image_size( 'artist_gallery_600x250', 600, 250, TRUE );
+        add_image_size( 'small_section_img', 480, 480, true );
+        add_image_size( 'artist_gallery_600x250', 600, 250, TRUE );
+        add_image_size( 'post_page_img', 650, 300, true );
+        add_image_size( 'single_event_img', 650, 380, true );
+        add_image_size( 'img_680x680', 680, 680, TRUE );
+        add_image_size( 'small_blog_img', 880, 880, true );
+        add_image_size( 'img_940x940', 940, 940, TRUE );
+        add_image_size( 'header_img', 960, '', TRUE );
+        add_image_size( 'big_section_img', 960, 960, true );
+        add_image_size( 'header_img_1060x715', 1060, '', TRUE );
+        add_image_size( 'big_blog_img', 1480, 1480, true );
+        add_image_size( 'header_img_1600x1080', 1600, '', TRUE );
 	}
 
 }
