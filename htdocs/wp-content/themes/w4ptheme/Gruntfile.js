@@ -286,7 +286,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-html-build');
 
-  grunt.registerTask('default', ['sass', 'postcss', 'imagemin', 'svgstore', 'svginjector', 'babel', 'uglify']);
+  grunt.registerTask('default', ['sass', 'postcss', 'svgstore', 'svginjector', 'babel', 'uglify']);
 
   // task 'wpbuild' for copy all needed files to wp theme.
   grunt.registerTask('wpbuild', ['copy:build']);
