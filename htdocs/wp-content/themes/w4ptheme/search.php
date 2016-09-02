@@ -20,8 +20,8 @@ get_header(); ?>
 						<!--    Post title  -->
 						<h1 class="postPage-title"><?php esc_html_e( 'Search Results', 'w4ptheme' ); ?></h1>
 						<!--    Post Info   -->
-						<div class="postPage-info">YOU SEARCHED FOR:
-							[<?php echo $s; ?>]
+						<div class="postPage-info">
+							<?php esc_html_e( 'YOU SEARCHED FOR:', 'w4ptheme' ); ?>[<?php echo $s; ?>]
 						</div>
 						<!--    Post Content    -->
 						<div class="postPage-content">
