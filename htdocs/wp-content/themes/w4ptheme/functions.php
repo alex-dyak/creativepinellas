@@ -147,7 +147,7 @@ function w4ptheme_scripts_styles() {
 	wp_enqueue_script( 'w4ptheme-app', get_template_directory_uri() . '/js/app.min.js', array( 'w4ptheme-vendors' ), NULL, TRUE );
 
     // Ajax pagination
-    if (em_is_events_page()) {
+    if (em_is_events_page() | is_page_template('template-page-artist-list.php') | is_page_template('template-page-venue-list.php')) {
         wp_enqueue_script('w4ptheme-ajax', get_template_directory_uri() . '/js/custom/ajax.js', array(), NULL, TRUE);
     }
 }
