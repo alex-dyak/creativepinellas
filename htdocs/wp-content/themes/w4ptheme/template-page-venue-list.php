@@ -1,6 +1,6 @@
 <?php
 /*
-* Template Name: Artist list
+* Template Name: Venue list
 */
 
 get_header(); ?>
@@ -34,7 +34,7 @@ get_header(); ?>
     <section class="u-background--gray directoryFilters">
         <section class="row">
             <div class="column">
-                <h2 class="u-text--center"><?php echo __('NARROW DOWN ARTIST', 'w4ptheme'); ?></h2>
+                <h2 class="u-text--center"><?php echo __('NARROW DOWN VENUE', 'w4ptheme'); ?></h2>
 
                 <p class="hide-for-medium">
                     <a href="#" class="btn btn--fullWidth js-toggle"
@@ -44,24 +44,41 @@ get_header(); ?>
         </section>
         <form action="<?php the_permalink() ?>" class="directoryFilters-form js-filtersForm" method="GET">
             <section class="row">
-                <div class="halfMedium-6 column">
-                    <label for="eventType"><?php echo __('Media', 'w4ptheme'); ?></label>
+                <div class="halfMedium-6 medium-4 column">
+                    <label for="eventType"><?php echo __('Type', 'w4ptheme'); ?></label>
 
                     <div class="form-row">
                         <?php
                         $args = array(
                             'show_option_all' => 'All types',
-                            'taxonomy' => 'artist_media',
+                            'taxonomy' => 'venue_type',
                             'value_field' => 'slug',
-                            'name' => 'artist_media',
-                            'selected' => get_query_var('artist_media'),
+                            'name' => 'venue_type',
+                            'selected' => get_query_var('venue_type'),
                         );
 
                         wp_dropdown_categories($args);
                         ?>
                     </div>
                 </div>
-                <div class="halfMedium-6 column">
+                <div class="halfMedium-6 medium-4 column">
+                    <label for="location"><?php echo __('Location', 'w4ptheme'); ?></label>
+
+                    <div class="form-row">
+                        <?php
+                        $args = array(
+                            'show_option_all' => 'All Communities',
+                            'taxonomy' => 'venue_community',
+                            'value_field' => 'slug',
+                            'name' => 'venue_community',
+                            'selected' => get_query_var('venue_community'),
+                        );
+
+                        wp_dropdown_categories($args);
+                        ?>
+                    </div>
+                </div>
+                <div class="medium-4 column">
                     <div class="form-row directoryFilters-action">
                         <input type="submit" value="Go" class="btn btn--fullWidth btn--ocean">
                     </div>
@@ -73,14 +90,21 @@ get_header(); ?>
     $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
     // base arguments of filter.
     $args = array(
-        'post_type' => 'artist',
+        'post_type' => 'location',
         'posts_per_page' => 1,
         'paged'          => $paged,
     );
-    if (!empty($_GET['artist_media'])) {
+    if (!empty($_GET['venue_community'])) {
         $args['tax_query'][] = array(
-            'taxonomy' => 'artist_media',
-            'terms' => get_query_var('artist_media'),
+            'taxonomy' => 'venue_community',
+            'terms' => get_query_var('venue_community'),
+            'field' => 'slug',
+        );
+    }
+    if (!empty($_GET['venue_type'])) {
+        $args['tax_query'][] = array(
+            'taxonomy' => 'venue_type',
+            'terms' => get_query_var('venue_type'),
             'field' => 'slug',
         );
     }
@@ -100,22 +124,20 @@ get_header(); ?>
                                     <div class="gridItem-info">
                                         <h3><?php short_title('', 60); ?> </h3>
                                         <p class="u-text--upper">
-                                                <?php echo __('Media', 'w4ptheme'); ?>
-                                                |
-                                                <?php $terms = get_the_terms(get_the_ID(), 'artist_media'); ?>
-                                                <?php if (!empty($terms)) : ?>
-                                                    <?php foreach ($terms as $term): ?>
-                                                        <?php $event_type[] = $term->name; ?>
-                                                    <?php endforeach; ?>
-                                                <?php endif; ?>
-                                                <?php if (!empty($event_type)): ?>
-                                                    <?php echo implode(", ", $event_type); ?>
-                                                    <?php unset($event_type); ?>
-                                                <?php endif; ?>
+                                            <?php $terms = get_the_terms(get_the_ID(), 'venue_community'); ?>
+                                            <?php if (!empty($terms)) : ?>
+                                                <?php foreach ($terms as $term): ?>
+                                                    <?php $event_type[] = $term->name; ?>
+                                                <?php endforeach; ?>
+                                            <?php endif; ?>
+                                            <?php if (!empty($event_type)): ?>
+                                                <?php echo implode(", ", $event_type); ?>
+                                                <?php unset($event_type); ?>
+                                            <?php endif; ?>
                                         </p>
 
                                         <p class="gridItem-info-showHover gridItem-info-showHover--fSize">
-                                            <strong><?php echo __('See Artist', 'w4ptheme'); ?></strong>
+                                            <strong><?php echo __('See Venue', 'w4ptheme'); ?></strong>
                                         </p>
                                     </div>
                                 </a>
@@ -151,4 +173,3 @@ get_header(); ?>
     <?php endif; ?>
 </section>
 <?php get_footer(); ?>
-

@@ -164,7 +164,7 @@ $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 // base arguments if taxonomy and date empty.
 $args = array(
     'post_type' => 'event',
-    'posts_per_page' => 12,
+    'posts_per_page' => 1,
     'paged'          => $paged,
 );
 if (!empty($location_meta_query)) {
@@ -213,7 +213,7 @@ $the_query = new WP_Query($args); ?>
                             <a href="<?php the_permalink(); ?>" class="js-touchFocus">
                                 <?php if (has_post_thumbnail()) : ?>
                                     <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'big_blog_img'); ?>" alt=""
-                                         srcset="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'big_blog_img'); ?> 768w, <?php echo get_the_post_thumbnail_url(get_the_ID(), 'event_list_680x680'); ?> 1024w,  <?php echo get_the_post_thumbnail_url(get_the_ID(), 'event_list_940x940'); ?> 1400w">
+                                         srcset="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'big_blog_img'); ?> 768w, <?php echo get_the_post_thumbnail_url(get_the_ID(), 'img_680x680'); ?> 1024w,  <?php echo get_the_post_thumbnail_url(get_the_ID(), 'img_940x940'); ?> 1400w">
                                 <?php endif; ?>
                                 <div class="gridItem-info">
                                     <h3><?php short_title('', 60); ?> </h3>
