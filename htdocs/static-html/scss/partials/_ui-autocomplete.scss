@@ -1,0 +1,48 @@
+.ui-autocomplete {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    outline: none;
+    cursor: default;
+    background: $white;
+    box-shadow: 1px 1px 5px $black--40;
+    overflow-y: auto;
+    li {
+        position: relative;
+        padding: 8px 20px;
+        cursor: pointer;
+        transition: all .2s ease-out;
+        &:after {
+            content: '';
+            position: absolute;
+            height: 1px;
+            left: 25px;
+            right: 25px;
+            bottom: 0;
+            background: #f2f2f2;
+            transition: all .2s ease-out;
+        }
+        &:last-child {
+            &:after {
+                display: none;
+            }
+        }
+        &:hover {
+            background: $ocean;
+            &:after {
+                background: $ocean;
+            }
+            a {
+                color: $white;
+            }
+        }
+    }
+    a {
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
