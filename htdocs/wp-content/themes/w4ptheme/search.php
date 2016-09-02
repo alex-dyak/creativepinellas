@@ -9,36 +9,54 @@
 
 get_header(); ?>
 
-<?php if ( have_posts() ) : ?>
+<section class="siteBody">
 
-	<h2><?php esc_html_e( 'Search Results', 'w4ptheme' ); ?></h2>
+	<div class="row">
+		<section class="column siteContent">
+			<section class="row column">
+				<article class="postPage">
 
-	<?php post_navigation(); ?>
+					<?php if (have_posts()) : ?>
+						<!--    Post title  -->
+						<h1 class="postPage-title"><?php esc_html_e( 'Search Results', 'w4ptheme' ); ?></h1>
+						<!--    Post Info   -->
+						<div class="postPage-info">
+							<?php esc_html_e( 'YOU SEARCHED FOR:', 'w4ptheme' ); ?>[<?php echo $s; ?>]
+						</div>
+						<!--    Post Content    -->
+						<div class="postPage-content">
+							<div class="searchList">
+								<?php while ( have_posts() ) : the_post(); ?>
+									<div class="searchList-item">
+										<h3 class="searchList-item-title">
+											<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+										</h3>
 
-	<?php while ( have_posts() ) : the_post(); ?>
+										<p><?php the_excerpt(); ?></p>
+									</div>
+								<?php endwhile; ?>
+							</div>
+							<?php if ( function_exists( 'wp_pagenavi' ) ) {
+								wp_pagenavi( array(
+									'before'        => '<nav class="navigation pagination" role="navigation">',
+									'after'         => '</nav>',
+									'wrapper_tag'   => 'div',
+									'wrapper_class' => 'nav-links',
+									'options'       => array(),
+									'echo'          => TRUE
+								) );
+							}
+							?>
+						</div>
+					<?php else : ?>
+					<h2><?php esc_html_e( 'Nothing Found', 'w4ptheme' ); ?></h2>
+					<?php endif; ?>
+				</article>
+			</section>
 
-		<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
+		</section>
+	</div>
 
-			<h2><?php the_title(); ?></h2>
-
-			<div class="entry">
-
-				<?php the_excerpt(); ?>
-
-			</div>
-
-		</article>
-
-	<?php endwhile; ?>
-
-	<?php post_navigation(); ?>
-
-<?php else : ?>
-
-	<h2><?php esc_html_e( 'Nothing Found', 'w4ptheme' ); ?></h2>
-
-<?php endif; ?>
-
-<?php get_sidebar(); ?>
+</section>
 
 <?php get_footer(); ?>
