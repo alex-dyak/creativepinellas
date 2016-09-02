@@ -25,7 +25,7 @@ get_header(); ?>
                         <h1 class="postPage-title"><?php the_title() ?></h1>
 
                         <!--    Post Image   -->
-                        <?php if (has_post_thumbnail()) : // Check if thumbnail exists ?>
+                        <?php if (has_post_thumbnail()) : ?>
                             <div class="postPage-image">
                                 <?php the_post_thumbnail('single_event_img'); ?>
                             </div>
@@ -68,14 +68,16 @@ get_header(); ?>
                                 </p>
                                 <p><?php the_field('venue_tel'); ?></p>
                                 <div class="siteSidebar-item-mapHolder">
-                                    <!-- Map here width x height settings sets in plugin settings > formatting as width: 100%; height: 280px; -->
                                     <? if (isset($EM_Location)) : ?>
                                         <?php echo $map = $EM_Location->output('#_LOCATIONMAP'); ?>
                                     <?php endif; ?>
                                 </div>
-                                <p>
-                                    <a href="<?php echo $EM_Location->guid; ?>"><?php echo __('Get Directions', 'w4ptheme'); ?></a>
-                                </p>
+                                <?php if (!empty($EM_Location->location_latitude) & !empty($EM_Location->location_longitude)) : ?>
+                                    <?php $get_directions_link = 'http://maps.google.com/maps?q=' . $EM_Location->location_latitude .',' . $EM_Location->location_longitude; ?>
+                                    <p>
+                                        <a href="<?php echo $get_directions_link; ?>" target="_blank"><?php echo __('Get Directions', 'w4ptheme'); ?></a>
+                                    </p>
+                                <?php endif ?>
                             <?php endif ?>
                         </div>
                     </div>
@@ -93,13 +95,15 @@ get_header(); ?>
                         <?php foreach ($events as $EM_Event) : ?>
                             <!--    postsList-item  -->
                             <div class="postsList-item">
-                                <div class="postsList-item-image">
-                                    <img
-                                        src="<?php echo get_the_post_thumbnail_url($EM_Event->post_id, 'single_event_880x880'); ?>"
-                                        alt=""
-                                        srcset="<?php echo get_the_post_thumbnail_url($EM_Event->post_id, 'single_event_880x880'); ?> 460w, <?php echo get_the_post_thumbnail_url($EM_Event->post_id, 'related_post_img'); ?> 768w">
-                                    <span class="postsList-item-categoryDecor"></span>
-                                </div>
+                                <?php if (has_post_thumbnail()) : ?>
+                                    <div class="postsList-item-image">
+                                        <img
+                                            src="<?php echo get_the_post_thumbnail_url($EM_Event->post_id, 'single_event_880x880'); ?>"
+                                            alt=""
+                                            srcset="<?php echo get_the_post_thumbnail_url($EM_Event->post_id, 'single_event_880x880'); ?> 460w, <?php echo get_the_post_thumbnail_url($EM_Event->post_id, 'related_post_img'); ?> 768w">
+                                        <span class="postsList-item-categoryDecor"></span>
+                                    </div>
+                                <?php endif ?>
                                 <div class="postsList-item-body">
                                     <?php if (!empty($EM_Event->event_name)) : ?>
                                         <h3><?php echo $EM_Event->event_name; ?></h3>
