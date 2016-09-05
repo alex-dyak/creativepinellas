@@ -124,7 +124,7 @@
       tallestcolumn = 0;
     columns.height('auto');
     columns.each(function() {
-      var currentHeight = $(this).find('.js-equalizer').width();
+      var currentHeight = jQuery(this).find('.js-equalizer').width();
       if(currentHeight > tallestcolumn) {
         tallestcolumn = currentHeight;
       }
