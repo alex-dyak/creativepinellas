@@ -1,0 +1,39 @@
+.submitEventForm {
+    span.row {
+        display: block;
+    }
+    span.form-row {
+        display: block;
+    }
+    h3 {
+        text-transform: uppercase;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="search"],
+    input[type="url"],
+    textarea {
+        padding-top: 9px;
+        padding-bottom: 10px;
+    }
+}
+.submitEventForm-section {
+    margin-bottom: 50px;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+//Location map
+#em-location-data .em-location-map-container {
+
+}
+//#em-location-data .em-location-map-404,
+#em-location-data .em-location-map-content {
+    width: 100%;
+    height: 300px;
+}
+#em-location-data .em-location-map-404 {
+    vertical-align: middle;
+}

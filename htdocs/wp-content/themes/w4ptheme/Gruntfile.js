@@ -63,8 +63,6 @@ module.exports = function (grunt) {
       vendor: {
         files: {
           'js/vendor.min.js': [
-            'bower_components/jquery/dist/jquery.min.js',
-            'js/vendor/jquery-ui.min.js',
             'js/vendor/jquery.selectBoxIt.min.js',
             'js/vendor/foundation/*.js'
           ]
@@ -288,7 +286,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-html-build');
 
-  grunt.registerTask('default', ['sass', 'postcss', 'imagemin', 'svgstore', 'svginjector', 'babel', 'uglify']);
+  grunt.registerTask('default', ['sass', 'postcss', 'svgstore', 'svginjector', 'babel', 'uglify']);
 
   // task 'wpbuild' for copy all needed files to wp theme.
   grunt.registerTask('wpbuild', ['copy:build']);

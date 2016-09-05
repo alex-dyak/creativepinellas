@@ -9,7 +9,8 @@
       $equalContainer = $('.js-community-equalHeight'),
       $select = $('select'),
       $datepicker = $('.js-datepicker'),
-      $swipebox = $('.swipebox');
+      $swipebox = $('.swipebox'),
+      datepickerOptions = {};
 
     if($select.length > 0) {
       $select.selectBoxIt({
@@ -17,15 +18,25 @@
       });
     }
 
+    datepickerOptions = {
+      dayNamesMin: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+      firstDay: 1,
+      prevText: '&larr;',
+      nextText: '&rarr;',
+      showOtherMonths: true,
+      changeMonth: false,
+      changeYear: false
+    };
     if($datepicker.length > 0) {
-      $datepicker.datepicker({
-        dayNamesMin: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
-        firstDay: 1,
-        prevText: '&larr;',
-        nextText: '&rarr;',
-        showOtherMonths: true
-      });
+      $datepicker.datepicker(datepickerOptions);
     }
+
+    //update event form datepicker
+    if($('.em-date-input-loc').length > 0) {
+      $('#jquery-ui-css').remove();
+      $(".em-date-input-loc").datepicker("option", datepickerOptions);
+    }
+
 
     if($swipebox.length > 0) {
       $swipebox.swipebox();
