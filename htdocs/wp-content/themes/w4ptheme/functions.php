@@ -124,12 +124,13 @@ function w4ptheme_scripts_styles() {
 	// Load Stylesheets.
 	wp_enqueue_style( 'style.css', get_stylesheet_uri() );
 
-	// Load mobile scripts.
-	wp_enqueue_script( 'w4ptheme-gpb0qdz', "https://use.typekit.net/gpb0qdz.js", array(), NULL, TRUE );
+    // Load typekit.
+    wp_enqueue_script( 'w4ptheme-typekit', get_template_directory_uri() . '/js/custom/typekit_load.js', array('w4ptheme-gpb0qdz'), NULL, TRUE );
 
-	add_action( 'wp_footer', 'add_this_script_footer' );
+    // Load mobile scripts.
+    wp_enqueue_script( 'w4ptheme-gpb0qdz', "https://use.typekit.net/gpb0qdz.js", array(), NULL, TRUE );
 
-	// Vendors
+    // Vendors
 	wp_enqueue_script( 'w4ptheme-vendors', get_template_directory_uri() . '/js/vendor.min.js', array(), NULL, TRUE );
 
 
@@ -146,23 +147,6 @@ function w4ptheme_scripts_styles() {
 }
 
 add_action( 'wp_enqueue_scripts', 'w4ptheme_scripts_styles' );
-
-/**
- * Function add script to footer.
- */
-function add_this_script_footer() {
-	?>
-	<script>
-		try {
-			Typekit.load({
-				async: true
-			});
-		} catch (e) {
-		}
-	</script>
-<?php
-}
-
 
 /**
  * WP Title.
