@@ -139,6 +139,7 @@ input[type="submit"].btn-middleWidth,
     .selectboxit-option {
         position: relative;
         padding: 8px 20px;
+        text-indent: 0;
         transition: all .2s ease-out;
         &:after {
             content: '';
