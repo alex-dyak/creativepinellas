@@ -91,7 +91,7 @@ get_header(); ?>
     // base arguments of filter.
     $args = array(
         'post_type' => 'location',
-        'posts_per_page' => 1,
+        'posts_per_page' => 12,
         'paged'          => $paged,
     );
     if (!empty($_GET['venue_community'])) {
