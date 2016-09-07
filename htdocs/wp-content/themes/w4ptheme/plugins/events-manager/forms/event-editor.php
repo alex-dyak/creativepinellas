@@ -29,7 +29,8 @@ $query_args = array(
 	'posts_per_page' => -1
 );
 $artist_query  = new WP_Query( $query_args );
-?>	
+
+?>
 <form enctype='multipart/form-data' id="event-form" method="post" action="<?php echo esc_url(add_query_arg(array('success'=>null))); ?>"> <!--event-form-->
 	<div class="wrap submitEventForm">
 		<?php do_action('em_front_event_form_header'); ?>
@@ -64,10 +65,15 @@ $artist_query  = new WP_Query( $query_args );
 					<?php em_locate_template('forms/event/group.php',true); ?>
 				</div>
 			</div>
+
+
+
 			<div class="large-8">
 				<label><?php esc_html_e('Event Type', 'events-manager'); ?></label>
 				<div class="form-row">
-					<?php wp_dropdown_categories(array(
+					<?php $select_events = wp_dropdown_categories(array(
+						'echo' => 0,
+						'show_option_all'    => __('none selected','events-manager'),
 						'hide_empty' => 0,
 						'orderby' =>'name',
 						'name' => 'event-type',
@@ -77,13 +83,19 @@ $artist_query  = new WP_Query( $query_args );
 						'show_option_none' =>'',
 						'option_none_value'=> 0,
 						'class'=>'em-events-search-category'
-					)); ?>
+					));
+					$select_events = str_replace( "name='event-type' id=", "name='event-type[]' multiple='multiple' id=", $select_events );
+					echo $select_events;
+					?>
 				</div>
 			</div>
+
 			<div class="large-8">
 				<label><?php esc_html_e('Who Should Attend', 'events-manager'); ?></label>
 				<div class="form-row">
-					<?php wp_dropdown_categories(array(
+					<?php $select_cats = wp_dropdown_categories(array(
+						'echo' => 0,
+						'show_option_all'    => __('none selected','events-manager'),
 						'hide_empty' => 0,
 						'orderby' =>'name',
 						'name' => 'who-should-attend',
@@ -93,50 +105,44 @@ $artist_query  = new WP_Query( $query_args );
 						'show_option_none' =>'',
 						'option_none_value'=> 0,
 						'class'=>'em-events-search-category'
-					)); ?>
+					));
+					$select_cats = str_replace( "name='who-should-attend' id=", "name='who-should-attend[]' multiple='multiple' id=", $select_cats );
+					echo $select_cats;
+					?>
 				</div>
 			</div>
+
 			<div class="large-8">
 				<label><?php esc_html_e('Artist', 'events-manager'); ?></label>
 				<div class="form-row">
 					<?php if ($artist_query->have_posts()) : ?>
-					<select id="artist-modifier" name="artist">
+					<select id="artist" name="artist[]" multiple="multiple" size="5" style="display: block;">
+						<option value="0" selected="selected"><?php _e('none selected','events-manager'); ?></option>
 						<?php while ( $artist_query->have_posts() ) : $artist_query->the_post(); ?>
-						<option><?php the_title(); ?></option>
+						<option value="<?php the_ID(); ?>"><?php the_title(); ?></option>
 						<?php endwhile; ?>
 					</select>
 					<?php endif; ?>
 				</div>
 				<?php wp_reset_query(); ?>
 			</div>
-			<div class="large-8">
-				<label><?php esc_html_e('Community', 'events-manager'); ?></label>
-				<div class="form-row">
-					<?php wp_dropdown_categories(array(
-						'hide_empty' => 0,
-						'orderby' =>'name',
-						'name' => 'venue_community',
-						'hierarchical' => true,
-						'taxonomy' => 'venue_community',
-						'selected' => '',
-						'show_option_none' =>'',
-						'option_none_value'=> 0,
-						'class'=>'em-events-search-category'
-					)); ?>
-				</div>
-			</div>
+
 			<div class="large-8">
 				<label><?php esc_html_e('Cost', 'events-manager'); ?></label>
 				<div class="form-row">
 					<input type="text" name="cost" id="cost" value="" />
 				</div>
 			</div>
+
 			<div class="large-8">
 				<label><?php esc_html_e('Website URL', 'events-manager'); ?></label>
 				<div class="form-row">
-					<input type="url" />
+					<input name="event-website" type="url" />
 				</div>
 			</div>
+
+
+
 			<div class="small-12">
 				<label><?php esc_html_e( 'Details', 'events-manager'); ?></label>
 				<div class="event-editor form-row">

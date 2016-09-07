@@ -120,6 +120,28 @@ $required = apply_filters('em_required_html','<i>*</i>');
 					</select>
 				</div>
 			</div>
+
+			<div class="em-location-data-community large-8">
+				<label><?php esc_html_e('Community:', 'events-manager'); ?></label>
+				<div class="form-row">
+					<?php $select_cats = wp_dropdown_categories(array(
+						'echo' => 0,
+						'hide_empty' => 0,
+						'show_option_all'    => __('none selected','events-manager'),
+						'orderby' =>'name',
+						'name' => 'venue_community',
+						'hierarchical' => true,
+						'taxonomy' => 'venue_community',
+						'selected' => '',
+						'show_option_none' =>'',
+						'option_none_value'=> 0,
+						'class'=>'em-events-search-category'
+					));
+					$select_cats = str_replace( "name='venue_community' id=", "name='venue_community[]' multiple='multiple' id=", $select_cats );
+					echo $select_cats;
+					?>
+				</div>
+			</div>
 		</div>
 	<?php endif; ?>
 	<?php if ( get_option( 'dbem_gmap_is_active' ) ) em_locate_template('forms/map-container.php',true); ?>
