@@ -12,8 +12,8 @@ textarea {
     -webkit-appearance: none;
     box-sizing: border-box; // redefine foundation content-box for search type
     &:focus {
-        outline-color: $sky;
-        border-color: $sky;
+        outline-color: $ocean;
+        border-color: $ocean;
     }
     &::placeholder {
         font-style: italic;
@@ -101,91 +101,113 @@ input[type="submit"].btn-middleWidth,
 }
 
 /*  Global Select styling */
-.selectboxit-container {
+.jcf-select {
+    max-width: none;
+    display: block;
     width: 100%;
+    height: auto;
+    margin: 0;
+    border: 2px solid $charcoal--light;
+    background: none;
     * {
         font-family: $font-base;
         font-size: $fontSize-base;
         font-weight: $fontWeight-light;
     }
-    .selectboxit-btn {
-        border: 2px solid $charcoal--light;
-        background: none;
-        &.selectboxit-enabled:hover,
-        &.selectboxit-enabled:focus {
-            color: $black;
-            background: none;
-        }
+    &.jcf-compact-multiple {
+        max-width: none;
     }
-    .selectboxit-text {
-        padding-right: 5px;
-        font-style: italic;
+    &.jcf-focus {
+        border-color: $ocean !important;
     }
-    .selectboxit {
-        width: 100%;
+    .jcf-select-text {
         height: 41px;
         line-height: 41px;
-        border-radius: 0;
+        padding-left: 3px;
+        font-style: italic;
     }
-    .selectboxit span,
-    & > span {
-        height: 37px;
-        line-height: 37px;
-    }
-    .selectboxit-options a {
-        height: auto;
-        line-height: normal;
-    }
-    .selectboxit-option {
-        position: relative;
-        padding: 8px 20px;
-        text-indent: 0;
-        transition: all .2s ease-out;
-        &:after {
+    &.jcf-compact-multiple .jcf-select-opener,
+    .jcf-select-opener {
+        background: none;
+        height: 100%;
+        &:before {
             content: '';
             position: absolute;
-            height: 1px;
-            left: 25px;
-            right: 25px;
-            bottom: 0;
-            background: #f2f2f2;
-            transition: all .2s ease-out;
+            top: 50%;
+            right: 0;
+            left: 0;
+            width: 0;
+            margin: 0 auto;
+            padding: 0;
+            border-top: 4px solid $black;
+            border-right: 4px solid transparent;
+            border-left: 4px solid transparent;
         }
-        &.selectboxit-focus {
-            background: $ocean;
-            a {
-                color: $white;
-            }
-            &:after {
-                background: $ocean;
+    }
+}
+.jcf-select-drop {
+    * {
+        font-family: $font-base;
+        font-size: $fontSize-base;
+        font-weight: $fontWeight-light;
+    }
+    &.jcf-compact-multiple {
+        .jcf-selected {
+            color: $ocean;
+            background: none;
+            &:before {
+                vertical-align: middle;
+                margin: 0 10px 0 0;
+                border-color: $ocean;
+                border-width: 0 0 2px 3px
             }
         }
     }
-    .selectboxit-list {
-        border-radius: 0;
+    .jcf-select-drop-content {
         border: none;
         box-shadow: 1px 1px 5px $black--40;
-        .selectboxit-option-anchor {
-            display: inline;
+    }
+    .jcf-list {
+        ul li {
+            position: relative;
+            line-height: normal;
             color: $ocean;
-            white-space: normal;
-        }
-        .selectboxit-focus {
-            .selectboxit-option-anchor {
-                background: none;
-            }
-        }
-    }
-    .selectboxit-option-first,
-    .selectboxit-option-last {
-        border-radius: 0;
-    }
-    .selectboxit-option-last {
-        .selectboxit-option-anchor {
+            transition: all .2s ease-out;
             &:after {
+                content: '';
+                position: absolute;
+                height: 1px;
+                left: 25px;
+                right: 25px;
+                bottom: 0;
+                background: #f2f2f2;
+                transition: all .2s ease-out;
+            }
+            &:hover {
+                background: $ocean;
+                color: $white;
+                &:after {
+                    background: $ocean;
+                }
+                .jcf-option {
+                    color: $white;
+                    &:before {
+                        border-color: $white;
+                    }
+                }
+            }
+            &:last-child:after {
                 display: none;
             }
         }
+        .jcf-option {
+            padding: 8px 20px;
+            color: $ocean;
+            white-space: normal;
+        }
+    }
+    .jcf-hover {
+        background: none;
     }
 }
 
