@@ -63,7 +63,8 @@ module.exports = function (grunt) {
       vendor: {
         files: {
           'js/vendor.min.js': [
-            'js/vendor/jquery.selectBoxIt.min.js',
+            'js/vendor/jcf.js',
+            'js/vendor/jcf.select.js',
             'js/vendor/foundation/*.js'
           ]
         }
