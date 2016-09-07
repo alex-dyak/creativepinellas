@@ -53,8 +53,6 @@ $artist_query  = new WP_Query( $query_args );
 				<?php do_action('em_font_event_form_guest'); //deprecated ?>
 			</div>
 		<?php endif; ?>
-
-
 		<h3 class="event-form-name"><?php esc_html_e( 'Event Details', 'events-manager'); ?></h3>
 		<div class="inside event-form-name submitEventForm-section">
 			<div class="large-8">
@@ -65,9 +63,6 @@ $artist_query  = new WP_Query( $query_args );
 					<?php em_locate_template('forms/event/group.php',true); ?>
 				</div>
 			</div>
-
-
-
 			<div class="large-8">
 				<label><?php esc_html_e('Event Type', 'events-manager'); ?></label>
 				<div class="form-row">
@@ -89,7 +84,6 @@ $artist_query  = new WP_Query( $query_args );
 					?>
 				</div>
 			</div>
-
 			<div class="large-8">
 				<label><?php esc_html_e('Who Should Attend', 'events-manager'); ?></label>
 				<div class="form-row">
@@ -111,7 +105,6 @@ $artist_query  = new WP_Query( $query_args );
 					?>
 				</div>
 			</div>
-
 			<div class="large-8">
 				<label><?php esc_html_e('Artist', 'events-manager'); ?></label>
 				<div class="form-row">
@@ -126,23 +119,18 @@ $artist_query  = new WP_Query( $query_args );
 				</div>
 				<?php wp_reset_query(); ?>
 			</div>
-
 			<div class="large-8">
 				<label><?php esc_html_e('Cost', 'events-manager'); ?></label>
 				<div class="form-row">
 					<input type="text" name="cost" id="cost" value="" />
 				</div>
 			</div>
-
 			<div class="large-8">
 				<label><?php esc_html_e('Website URL', 'events-manager'); ?></label>
 				<div class="form-row">
 					<input name="event-website" type="url" />
 				</div>
 			</div>
-
-
-
 			<div class="small-12">
 				<label><?php esc_html_e( 'Details', 'events-manager'); ?></label>
 				<div class="event-editor form-row">
@@ -150,7 +138,6 @@ $artist_query  = new WP_Query( $query_args );
 						<?php wp_editor($EM_Event->post_content, 'em-editor-content', array('textarea_name'=>'content') ); ?>
 					<?php else: ?>
 						<textarea name="content" rows="10" style="width:100%"><?php echo $EM_Event->post_content ?></textarea>
-
 						<?php esc_html_e( 'Details about the event.', 'events-manager')?> <?php esc_html_e( 'HTML allowed.', 'events-manager')?>
 					<?php endif; ?>
 				</div>
@@ -160,7 +147,6 @@ $artist_query  = new WP_Query( $query_args );
 				<?php if(get_option('dbem_categories_enabled')) { em_locate_template('forms/event/categories-public.php',true); }  ?>
 			</div>
 		</div>
-
 
 		<h3 class="event-form-when"><?php esc_html_e( 'When', 'events-manager'); ?></h3>
 		<div class="inside event-form-when submitEventForm-section">
@@ -203,7 +189,6 @@ $artist_query  = new WP_Query( $query_args );
 		
 		<?php do_action('em_front_event_form_footer'); ?>
 	</div>
-
 
 	<div class="submit">
 	    <?php if( empty($EM_Event->event_id) ): ?>
