@@ -68,7 +68,7 @@ get_header(); ?>
                                 <ul class="siteSidebar-gallery-element u-list--plain u-clearfix">
                                     <?php foreach ($images as $image): ?>
                                         <li>
-                                            <a href="<?php echo $image['sizes']['artist_gallery_600x250']; ?>"
+                                            <a href="<?php echo $image['url']; ?>"
                                                class="swipebox">
                                                 <img src="<?php echo $image['sizes']['artist_gallery_300x300']; ?>"
                                                      srcset="<?php echo $image['sizes']['artist_gallery_440x440']; ?> 480w, <?php echo $image['sizes']['artist_gallery_300x300']; ?> 768w"
