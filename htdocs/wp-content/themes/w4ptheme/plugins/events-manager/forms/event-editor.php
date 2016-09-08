@@ -35,10 +35,11 @@ $artist_query  = new WP_Query( $query_args );
 	<div class="wrap submitEventForm">
 		<?php do_action('em_front_event_form_header'); ?>
 		<?php if(get_option('dbem_events_anonymous_submissions') && !is_user_logged_in()): ?>
+
 			<h3 class="event-form-submitter"><?php esc_html_e( 'Your Details', 'events-manager'); ?></h3>
 			<div class="inside event-form-submitter submitEventForm-section">
 				<div class="large-8">
-					<label><?php esc_html_e('Name', 'events-manager'); ?></label>
+					<label><?php esc_html_e('Name', 'events-manager'); ?><?php echo $required; ?></label>
 					<div class="form-row">
 						<input type="text" name="event_owner_name" id="event-owner-name" value="<?php echo esc_attr($EM_Event->event_owner_name); ?>" />
 					</div>
@@ -53,6 +54,7 @@ $artist_query  = new WP_Query( $query_args );
 				<?php do_action('em_font_event_form_guest'); //deprecated ?>
 			</div>
 		<?php endif; ?>
+<!-- Custom fields -->
 		<h3 class="event-form-name"><?php esc_html_e( 'Event Details', 'events-manager'); ?></h3>
 		<div class="inside event-form-name submitEventForm-section">
 			<div class="large-8">
@@ -68,7 +70,7 @@ $artist_query  = new WP_Query( $query_args );
 				<div class="form-row">
 					<?php $select_events = wp_dropdown_categories(array(
 						'echo' => 0,
-						'show_option_all'    => __('none selected','events-manager'),
+						'show_option_all'    => __('','events-manager'),
 						'hide_empty' => 0,
 						'orderby' =>'name',
 						'name' => 'event-type',
@@ -89,7 +91,7 @@ $artist_query  = new WP_Query( $query_args );
 				<div class="form-row">
 					<?php $select_cats = wp_dropdown_categories(array(
 						'echo' => 0,
-						'show_option_all'    => __('none selected','events-manager'),
+						'show_option_all'    => __('','events-manager'),
 						'hide_empty' => 0,
 						'orderby' =>'name',
 						'name' => 'who-should-attend',
@@ -109,15 +111,15 @@ $artist_query  = new WP_Query( $query_args );
 				<label><?php esc_html_e('Artist', 'events-manager'); ?></label>
 				<div class="form-row">
 					<?php if ($artist_query->have_posts()) : ?>
-					<select id="artist" name="artist[]" multiple="multiple" size="5" style="display: block;">
-						<option value="0" selected="selected"><?php _e('none selected','events-manager'); ?></option>
-						<?php while ( $artist_query->have_posts() ) : $artist_query->the_post(); ?>
-						<option value="<?php the_ID(); ?>"><?php the_title(); ?></option>
-						<?php endwhile; ?>
-					</select>
+						<select id="artist" name="artist[]" multiple="multiple" size="5" style="display: block;">
+							<option value="0"><?php _e('','events-manager'); ?></option>
+							<?php while ( $artist_query->have_posts() ) : $artist_query->the_post(); ?>
+								<option value="<?php the_ID(); ?>"><?php the_title(); ?></option>
+							<?php endwhile; ?>
+						</select>
 					<?php endif; ?>
 				</div>
-				<?php wp_reset_query(); ?>
+				<?php  wp_reset_query(); ?>
 			</div>
 			<div class="large-8">
 				<label><?php esc_html_e('Cost', 'events-manager'); ?></label>
@@ -147,7 +149,7 @@ $artist_query  = new WP_Query( $query_args );
 				<?php if(get_option('dbem_categories_enabled')) { em_locate_template('forms/event/categories-public.php',true); }  ?>
 			</div>
 		</div>
-
+		<!-- /Custom fields -->
 		<h3 class="event-form-when"><?php esc_html_e( 'When', 'events-manager'); ?></h3>
 		<div class="inside event-form-when submitEventForm-section">
 		<?php 

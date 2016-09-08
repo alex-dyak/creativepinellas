@@ -534,29 +534,38 @@ function pre_save_event( $EM_Event ) {
 				exit( 'Trying to perform an illegal action.' );
 			}
 
-			update_post_meta( $EM_Event->post_id, 'event_cost', $_POST['cost'] );
-			update_post_meta( $EM_Event->post_id, 'event_website', $_POST['event-website'] );
-			$art = serialize( $_POST['artist'] );
-			update_post_meta( $EM_Event->post_id, 'event_artist', $art );
+			if ( isset( $_POST['cost'] ) ) {
+				update_post_meta( $EM_Event->post_id, 'event_cost', $_POST['cost'] );
+			}
+			if ( isset( $_POST['event-website'] ) ) {
+				update_post_meta( $EM_Event->post_id, 'event_website', $_POST['event-website'] );
+			}
+			if ( isset( $_POST['artist'] ) ) {
+				$art = serialize( $_POST['artist'] );
+				update_post_meta( $EM_Event->post_id, 'event_artist', $art );
+			}
 
 			foreach ( $_POST['event-type'] as $event_type ) {
-				wp_set_post_terms( $EM_Event->post_id, $event_type, 'event-type' );
+				wp_set_post_terms( $EM_Event->post_id, $event_type, 'event-type', true );
 			}
 
 			foreach ( $_POST['who-should-attend'] as $who_should_attend ) {
-				wp_set_post_terms( $EM_Event->post_id, $who_should_attend, 'who-should-attend' );
+				wp_set_post_terms( $EM_Event->post_id, $who_should_attend, 'who-should-attend', true );
 			}
 		}
 	}
 }
 add_action('em_event_save_meta_pre', 'pre_save_event');
 
-
+/**
+ * Save post meta to Location.
+ * @param $EM_Location
+ */
 function pre_save_location( $EM_Location ) {
 	//Location Actions
 	if ( isset( $_POST['venue_community'] ) ) {
 		foreach ( $_POST['venue_community'] as $venue_community ) {
-			wp_set_post_terms( $EM_Location->post_id, $venue_community, 'venue_community' );
+			wp_set_post_terms( $EM_Location->post_id, $venue_community, 'venue_community', true );
 		}
 	}
 }
