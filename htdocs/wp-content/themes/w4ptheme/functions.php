@@ -192,8 +192,8 @@ register_nav_menu( 'primary', __( 'Navigation Menu', 'w4ptheme' ) );
 function post_navigation() {
 	echo '<section class="row column">';
 	echo '<div class="postPageNavigation u-clearfix">';
-	echo '	<div class="postNavigation-prev">' . get_next_post_link( '%link', '&lt; Prev Post %title' ) . '</div>';
-	echo '	<div class="postNavigation-next">' . get_previous_post_link( '%link', 'Next Post &gt;' ) . '</div>';
+	echo '	<div class="postNavigation-prev">' . get_next_post_link( '%link', '&lt; %title' ) . '</div>';
+	echo '	<div class="postNavigation-next">' . get_previous_post_link( '%link', '%title &gt;' ) . '</div>';
 	echo '</div>';
 	echo '</section>';
 }
