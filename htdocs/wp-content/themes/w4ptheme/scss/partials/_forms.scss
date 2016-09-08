@@ -12,7 +12,7 @@ textarea {
     -webkit-appearance: none;
     box-sizing: border-box; // redefine foundation content-box for search type
     &:focus {
-        outline-color: $ocean;
+        outline: none;
         border-color: $ocean;
     }
     &::placeholder {
@@ -24,6 +24,9 @@ textarea {
     }
     &.wpcf7-not-valid {
         border-color: $red;
+        &:focus {
+            border-color: $ocean;
+        }
     }
     &.is-inline {
         width: auto;
@@ -210,7 +213,6 @@ input[type="submit"].btn-middleWidth,
         background: none;
     }
 }
-
 // Time picker from submit Event form
 .time-picker {
     position: absolute;
