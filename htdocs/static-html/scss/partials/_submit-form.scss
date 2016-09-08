@@ -1,3 +1,24 @@
+.statusnotice {
+    margin-bottom: 20px;
+    .em-warning {
+        padding: 13px 20px;
+    }
+    .em-warning-errors {
+        background: $red--light;
+        p:before {
+            content: $fa-var-times-circle;
+            display: inline-block;
+            margin-right: 5px;
+            font-family: FontAwesome;
+            font-size: $fontSize-large;
+            vertical-align: middle;
+            color: $red;
+            text-rendering: auto; // optimizelegibility throws things off #1094
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    }
+}
 .submitEventForm {
     span.row {
         display: block;
