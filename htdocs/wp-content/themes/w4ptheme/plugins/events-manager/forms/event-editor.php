@@ -111,8 +111,7 @@ $artist_query  = new WP_Query( $query_args );
 				<label><?php esc_html_e('Artist', 'events-manager'); ?></label>
 				<div class="form-row">
 					<?php if ($artist_query->have_posts()) : ?>
-						<select id="artist" name="artist[]" multiple="multiple" size="5" style="display: block;">
-							<option value="0"><?php _e('','events-manager'); ?></option>
+						<select id="artist" name="artist[]" multiple="multiple" size="5">
 							<?php while ( $artist_query->have_posts() ) : $artist_query->the_post(); ?>
 								<option value="<?php the_ID(); ?>"><?php the_title(); ?></option>
 							<?php endwhile; ?>
