@@ -15,7 +15,7 @@
 		<div class="small-8 column">
 			<label for="s"
 			       class="screen-reader-text"><?php esc_html_e( 'Search for:', 'w4ptheme' ); ?></label>
-			<input type="search" id="s" name="s" value=""
+			<input type="search" id="s" name="s" value="" required
 			       placeholder="<?php esc_html_e( 'e.g gallery opening:', 'w4ptheme' ); ?>">
 		</div>
 		<div class="small-4 column">
