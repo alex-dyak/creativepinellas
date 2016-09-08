@@ -74,7 +74,7 @@ get_header(); ?>
     // base arguments of filter.
     $args = array(
         'post_type' => 'artist',
-        'posts_per_page' => 1,
+        'posts_per_page' => 12,
         'paged'          => $paged,
     );
     if (!empty($_GET['artist_media'])) {

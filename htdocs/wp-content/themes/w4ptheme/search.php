@@ -15,41 +15,46 @@ get_header(); ?>
 		<section class="column siteContent">
 			<section class="row column">
 				<article class="postPage">
+					<?php if ( ! empty( $_GET['s'] ) ): ?>
 
-					<?php if (have_posts()) : ?>
-						<!--    Post title  -->
-						<h1 class="postPage-title"><?php esc_html_e( 'Search Results', 'w4ptheme' ); ?></h1>
-						<!--    Post Info   -->
-						<div class="postPage-info">
-							<?php esc_html_e( 'YOU SEARCHED FOR:', 'w4ptheme' ); ?>[<?php echo $s; ?>]
-						</div>
-						<!--    Post Content    -->
-						<div class="postPage-content">
-							<div class="searchList">
-								<?php while ( have_posts() ) : the_post(); ?>
-									<div class="searchList-item">
-										<h3 class="searchList-item-title">
-											<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-										</h3>
-
-										<p><?php the_excerpt(); ?></p>
-									</div>
-								<?php endwhile; ?>
+						<?php if ( have_posts() ) : ?>
+							<!--    Post title  -->
+							<h1 class="postPage-title"><?php esc_html_e( 'Search Results', 'w4ptheme' ); ?></h1>
+							<!--    Post Info   -->
+							<div class="postPage-info">
+								<?php esc_html_e( 'YOU SEARCHED FOR:', 'w4ptheme' ); ?>
+								[<?php echo $s; ?>]
 							</div>
-							<?php if ( function_exists( 'wp_pagenavi' ) ) {
-								wp_pagenavi( array(
-									'before'        => '<nav class="navigation pagination" role="navigation">',
-									'after'         => '</nav>',
-									'wrapper_tag'   => 'div',
-									'wrapper_class' => 'nav-links',
-									'options'       => array(),
-									'echo'          => TRUE
-								) );
-							}
-							?>
-						</div>
+							<!--    Post Content    -->
+							<div class="postPage-content">
+								<div class="searchList">
+									<?php while ( have_posts() ) : the_post(); ?>
+										<div class="searchList-item">
+											<h3 class="searchList-item-title">
+												<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+											</h3>
+
+											<p><?php the_excerpt(); ?></p>
+										</div>
+									<?php endwhile; ?>
+								</div>
+								<?php if ( function_exists( 'wp_pagenavi' ) ) {
+									wp_pagenavi( array(
+										'before'        => '<nav class="navigation pagination" role="navigation">',
+										'after'         => '</nav>',
+										'wrapper_tag'   => 'div',
+										'wrapper_class' => 'nav-links',
+										'options'       => array(),
+										'echo'          => TRUE
+									) );
+								}
+								?>
+							</div>
+						<?php else : ?>
+							<h2><?php esc_html_e( 'Nothing Found', 'w4ptheme' ); ?></h2>
+						<?php endif; ?>
 					<?php else : ?>
-					<h2><?php esc_html_e( 'Nothing Found', 'w4ptheme' ); ?></h2>
+						<h2><?php esc_html_e( 'Enter search word', 'w4ptheme' ); ?></h2>
 					<?php endif; ?>
 				</article>
 			</section>

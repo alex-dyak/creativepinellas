@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4282d0472793e49b08c8c458e2dc5dad",
-    "content-hash": "6c0e187dd61fc7f787fb1c2c8da3adba",
+    "hash": "03c61f6b061e3cb5e9c4bbfbceee563d",
+    "content-hash": "60b9506173083e7973aab90a687fdf00",
     "packages": [
         {
             "name": "composer/installers",
@@ -383,15 +383,15 @@
         },
         {
             "name": "wpackagist-plugin/events-manager",
-            "version": "5.6.5",
+            "version": "5.6.6.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/events-manager/",
-                "reference": "tags/5.6.5"
+                "reference": "tags/5.6.6.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/events-manager.5.6.5.zip",
+                "url": "https://downloads.wordpress.org/plugin/events-manager.5.6.6.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -440,6 +440,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/ns-featured-posts/"
+        },
+        {
+            "name": "wpackagist-plugin/regenerate-thumbnails",
+            "version": "2.2.6",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/regenerate-thumbnails/",
+                "reference": "tags/2.2.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/regenerate-thumbnails.2.2.6.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/regenerate-thumbnails/"
         },
         {
             "name": "wpackagist-plugin/svg-support",
@@ -503,15 +523,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "3.4.2",
+            "version": "3.5",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/3.4.2"
+                "reference": "tags/3.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.4.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.5.zip",
                 "reference": null,
                 "shasum": null
             },
