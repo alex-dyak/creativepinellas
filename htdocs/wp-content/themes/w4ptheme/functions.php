@@ -540,17 +540,21 @@ function pre_save_event( $EM_Event ) {
 			if ( isset( $_POST['event-website'] ) ) {
 				update_post_meta( $EM_Event->post_id, 'event_website', $_POST['event-website'] );
 			}
-			if ( isset( $_POST['artist'] ) ) {
-				$art = serialize( $_POST['artist'] );
+			if ( isset( $_POST['artist_name'] ) ) {
+				$art = serialize( $_POST['artist_name'] );
 				update_post_meta( $EM_Event->post_id, 'event_artist', $art );
 			}
 
-			foreach ( $_POST['event-type'] as $event_type ) {
-				wp_set_post_terms( $EM_Event->post_id, $event_type, 'event-type', true );
+			if ( isset( $_POST['event-type'] ) ) {
+				foreach ( $_POST['event-type'] as $event_type ) {
+					wp_set_post_terms( $EM_Event->post_id, $event_type, 'event-type', TRUE );
+				}
 			}
 
-			foreach ( $_POST['who-should-attend'] as $who_should_attend ) {
-				wp_set_post_terms( $EM_Event->post_id, $who_should_attend, 'who-should-attend', true );
+			if ( isset( $_POST['who-should-attend'] ) ) {
+				foreach ( $_POST['who-should-attend'] as $who_should_attend ) {
+					wp_set_post_terms( $EM_Event->post_id, $who_should_attend, 'who-should-attend', TRUE );
+				}
 			}
 		}
 	}

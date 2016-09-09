@@ -23,19 +23,12 @@ if( !empty($_REQUEST['success']) ){
 	if(!get_option('dbem_events_form_reshow')) return false;
 }
 
-//Get the artists.
-$query_args = array(
-	'post_type'      => 'artist',
-	'posts_per_page' => -1
-);
-$artist_query  = new WP_Query( $query_args );
-
 ?>
 <form enctype='multipart/form-data' id="event-form" method="post" action="<?php echo esc_url(add_query_arg(array('success'=>null))); ?>"> <!--event-form-->
 	<div class="wrap submitEventForm">
 		<?php do_action('em_front_event_form_header'); ?>
 		<?php if(get_option('dbem_events_anonymous_submissions') && !is_user_logged_in()): ?>
-
+<!-- Not login user -->
 			<h3 class="event-form-submitter"><?php esc_html_e( 'Your Details', 'events-manager'); ?></h3>
 			<div class="inside event-form-submitter submitEventForm-section">
 				<div class="large-8">
@@ -45,7 +38,7 @@ $artist_query  = new WP_Query( $query_args );
 					</div>
 				</div>
 				<div class="large-8">
-					<label><?php esc_html_e('Email', 'events-manager'); ?></label>
+					<label><?php esc_html_e('Email', 'events-manager'); ?><?php echo $required; ?></label>
 					<div class="form-row">
 						<input type="text" name="event_owner_email" id="event-owner-email" value="<?php echo esc_attr($EM_Event->event_owner_email); ?>" />
 					</div>
@@ -54,6 +47,7 @@ $artist_query  = new WP_Query( $query_args );
 				<?php do_action('em_font_event_form_guest'); //deprecated ?>
 			</div>
 		<?php endif; ?>
+<!-- /Not login user -->
 <!-- Custom fields -->
 		<h3 class="event-form-name"><?php esc_html_e( 'Event Details', 'events-manager'); ?></h3>
 		<div class="inside event-form-name submitEventForm-section">
@@ -110,15 +104,23 @@ $artist_query  = new WP_Query( $query_args );
 			<div class="large-8">
 				<label><?php esc_html_e('Artist', 'events-manager'); ?></label>
 				<div class="form-row">
-					<?php if ($artist_query->have_posts()) : ?>
-						<select id="artist" name="artist[]" multiple="multiple" size="5">
+					<?php
+					//Get the artists.
+					$query_args = array(
+						'post_type'      => 'artist',
+						'posts_per_page' => -1
+					);
+					$artist_query  = new WP_Query( $query_args );
+					if ($artist_query->have_posts()) : ?>
+						<select id="artist" name="artist_name[]" multiple="multiple">
 							<?php while ( $artist_query->have_posts() ) : $artist_query->the_post(); ?>
 								<option value="<?php the_ID(); ?>"><?php the_title(); ?></option>
 							<?php endwhile; ?>
 						</select>
 					<?php endif; ?>
+					<?php  wp_reset_query(); ?>
 				</div>
-				<?php  wp_reset_query(); ?>
+
 			</div>
 			<div class="large-8">
 				<label><?php esc_html_e('Cost', 'events-manager'); ?></label>
