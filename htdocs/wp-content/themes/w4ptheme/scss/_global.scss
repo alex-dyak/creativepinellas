@@ -107,3 +107,25 @@ ol {
         }
     }
 }
+.ajaxLoader {
+    visibility: hidden;
+    opacity: 0;
+    z-index: 4;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: $white--80;
+    transition: all .3s ease-in-out;
+    i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    &.is-active {
+        opacity: 1;
+        visibility: visible;
+    }
+}
