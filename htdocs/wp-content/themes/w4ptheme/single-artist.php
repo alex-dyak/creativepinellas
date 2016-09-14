@@ -107,10 +107,10 @@ get_header(); ?>
             );
             $the_query = new WP_Query($args); ?>
             <section class="medium-8 large-9 column end relatedContent relatedContent--hasSidebar">
-                <!--    Upcoming Events  -->
-                <section class="row column section-bottomLined">
-                    <?php if ($the_query->have_posts()): ?>
 
+                <?php if ($the_query->have_posts()): ?>
+                    <!--    Upcoming Events  -->
+                    <section class="row column section-bottomLined">
                         <h2><?php echo __('UPCOMING EVENTS', 'w4ptheme'); ?></h2>
 
                         <div class="postsList">
@@ -154,10 +154,11 @@ get_header(); ?>
                             <?php endwhile; ?>
                             <!--   / postsList-item  -->
                         </div>
-                    <?php endif; ?>
+                    </section>
+                <?php endif; ?>
 
-                    <?php wp_reset_query(); ?>
-                </section>
+                <?php wp_reset_query(); ?>
+
                 <?php
                 $get_id_author = get_field('artist_associate');
                 if (!empty($get_id_author['ID'])) :
