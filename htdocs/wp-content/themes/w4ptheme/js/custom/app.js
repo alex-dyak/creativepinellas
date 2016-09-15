@@ -13,9 +13,16 @@
       datepickerOptions = {};
 
     if($select.length > 0) {
-      $select.selectBoxIt({
-        autoWidth: false
+      jcf.replace( $select, 'Select', {
+        wrapNative: false,
+        multipleCompactStyle: true
       });
+
+      //jcf.replaceAll();
+
+      /*$select.selectBoxIt({
+        autoWidth: false
+      });*/
     }
 
     datepickerOptions = {

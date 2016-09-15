@@ -192,8 +192,8 @@ register_nav_menu( 'primary', __( 'Navigation Menu', 'w4ptheme' ) );
 function post_navigation() {
 	echo '<section class="row column">';
 	echo '<div class="postPageNavigation u-clearfix">';
-	echo '	<div class="postNavigation-prev">' . get_next_post_link( '%link', '&lt; Prev Post %title' ) . '</div>';
-	echo '	<div class="postNavigation-next">' . get_previous_post_link( '%link', 'Next Post &gt;' ) . '</div>';
+	echo '	<div class="postNavigation-prev">' . get_next_post_link( '%link', '&lt; %title' ) . '</div>';
+	echo '	<div class="postNavigation-next">' . get_previous_post_link( '%link', '%title &gt;' ) . '</div>';
 	echo '</div>';
 	echo '</section>';
 }
@@ -538,3 +538,60 @@ function add_settings_artist_page() {
     }
 }
 add_action('init' , 'add_settings_artist_page');
+
+/**
+ * Save post meta to event.
+ * @param $EM_Event
+ */
+function pre_save_event( $EM_Event ) {
+
+	//Event Actions
+	if ( ! empty( $_REQUEST['action'] ) && substr( $_REQUEST['action'], 0, 5 ) == 'event' ) {
+		//Save Event, only via BP or via [event_form]
+		if ( $_REQUEST['action'] == 'event_save' && $EM_Event->can_manage( 'edit_events', 'edit_others_events' ) ) {
+			//Check Nonces
+			if ( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'wpnonce_event_save' ) ) {
+				exit( 'Trying to perform an illegal action.' );
+			}
+
+			if ( isset( $_POST['cost'] ) ) {
+				update_post_meta( $EM_Event->post_id, 'event_cost', $_POST['cost'] );
+			}
+			if ( isset( $_POST['event-website'] ) ) {
+				update_post_meta( $EM_Event->post_id, 'event_website', $_POST['event-website'] );
+			}
+			if ( isset( $_POST['artist_name'] ) ) {
+				$art = serialize( $_POST['artist_name'] );
+				update_post_meta( $EM_Event->post_id, 'event_artist', $art );
+			}
+
+			if ( isset( $_POST['event-type'] ) ) {
+				foreach ( $_POST['event-type'] as $event_type ) {
+					wp_set_post_terms( $EM_Event->post_id, $event_type, 'event-type', TRUE );
+				}
+			}
+
+			if ( isset( $_POST['who-should-attend'] ) ) {
+				foreach ( $_POST['who-should-attend'] as $who_should_attend ) {
+					wp_set_post_terms( $EM_Event->post_id, $who_should_attend, 'who-should-attend', TRUE );
+				}
+			}
+		}
+	}
+}
+add_action('em_event_save_meta_pre', 'pre_save_event');
+
+/**
+ * Save post meta to Location.
+ * @param $EM_Location
+ */
+function pre_save_location( $EM_Location ) {
+	//Location Actions
+	if ( isset( $_POST['venue_community'] ) ) {
+		foreach ( $_POST['venue_community'] as $venue_community ) {
+			wp_set_post_terms( $EM_Location->post_id, $venue_community, 'venue_community', true );
+		}
+	}
+}
+add_action('em_location_save_meta_pre', 'pre_save_location');
+
