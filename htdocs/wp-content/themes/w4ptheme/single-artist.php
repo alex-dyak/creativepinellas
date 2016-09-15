@@ -17,10 +17,12 @@ get_header(); ?>
 
                         <article class="postPage">
                             <!--    Back to category link -->
-                            <div class="postPage-backLink">
-                                <a href="<?php echo get_post_type_archive_link('artist'); ?>"
-                                   title="go back to category"><?php echo __('View All Artist', 'w4ptheme'); ?></a>
-                            </div>
+                            <?php if (get_field('atrist_page_list', 'option')) : ?>
+                                <div class="postPage-backLink">
+                                    <a href="<?php the_field('atrist_page_list', 'option'); ?>"
+                                       title="go back to category"><?php echo __('View All Artist', 'w4ptheme'); ?></a>
+                                </div>
+                            <?php endif; ?>
                             <!--    Post title  -->
                             <h1 class="postPage-title"><?php the_title(); ?></h1>
 

@@ -520,6 +520,26 @@ function new_excerpt_more($more) {
 add_filter('excerpt_more', 'new_excerpt_more');
 
 /**
+ * Function create custom settings page from content type artist.
+ */
+function add_settings_artist_page() {
+    if(function_exists('acf_add_options_page'))
+    {
+        acf_add_options_page(array(
+            'page_title' 	=> 'Settings category Artist page',
+            'menu_title' 	=> 'Settings',
+            'menu_slug' 	=> 'options_artist_link',
+            'capability' 	=> 'edit_posts',
+            'parent_slug'	=> 'edit.php?post_type=artist',
+            'position'	=> false,
+            'icon_url' 	=> 'dashicons-images-alt2',
+            'redirect'	=> false,
+        ));
+    }
+}
+add_action('init' , 'add_settings_artist_page');
+
+/**
  * Save post meta to event.
  * @param $EM_Event
  */
@@ -574,3 +594,4 @@ function pre_save_location( $EM_Location ) {
 	}
 }
 add_action('em_location_save_meta_pre', 'pre_save_location');
+
