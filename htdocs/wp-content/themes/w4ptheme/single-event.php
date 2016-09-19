@@ -79,7 +79,7 @@ get_header(); ?>
                 <div class="siteSidebar-inner">
                     <!--    Sidebar widget  -->
                     <div class="siteSidebar-item">
-                        <h3><?php echo __('Event details', 'w4ptheme'); ?></h3>
+                        <h3><?php echo __('Event Details', 'w4ptheme'); ?></h3>
 
                         <div class="siteSidebar-item-content">
                             <p>
@@ -139,7 +139,7 @@ get_header(); ?>
 
                     <!--    Sidebar widget  -->
                     <div class="siteSidebar-item">
-                        <h3><?php echo __('Venue details', 'w4ptheme'); ?></h3>
+                        <h3><?php echo __('Venue Details', 'w4ptheme'); ?></h3>
                         <?php $location = $EM_Event->get_location(); ?>
                         <div class="siteSidebar-item-content">
                             <p><a href="<?php echo $location->guid; ?>"><?php echo $location->location_name; ?></a></p>

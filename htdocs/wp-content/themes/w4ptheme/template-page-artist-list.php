@@ -34,7 +34,7 @@ get_header(); ?>
     <section class="u-background--gray directoryFilters">
         <section class="row">
             <div class="column">
-                <h2 class="u-text--center"><?php echo __('NARROW DOWN ARTIST', 'w4ptheme'); ?></h2>
+                <h2 class="u-text--center"><?php echo __('EASY SEARCH', 'w4ptheme'); ?></h2>
 
                 <p class="hide-for-medium">
                     <a href="#" class="btn btn--fullWidth js-toggle"

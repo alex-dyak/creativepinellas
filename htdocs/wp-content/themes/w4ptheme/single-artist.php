@@ -20,7 +20,7 @@ get_header(); ?>
                             <?php if (get_field('atrist_page_list', 'option')) : ?>
                                 <div class="postPage-backLink">
                                     <a href="<?php the_field('atrist_page_list', 'option'); ?>"
-                                       title="go back to category"><?php echo __('View All Artist', 'w4ptheme'); ?></a>
+                                       title="go back to category"><?php echo __('View All Artists', 'w4ptheme'); ?></a>
                                 </div>
                             <?php endif; ?>
                             <!--    Post title  -->
@@ -28,7 +28,7 @@ get_header(); ?>
 
                             <!--    Post Info   -->
                             <div class="postPage-info">
-                                <?php echo $result = get_field('artist_grant_recipient') ? __('GRAND RECIPIENT', 'w4ptheme') . ' | ' : ''; ?>
+                                <?php echo $result = get_field('artist_grant_recipient') ? __('GRANT RECIPIENT', 'w4ptheme') . ' | ' : ''; ?>
                                 <?php $terms = get_the_terms(get_the_ID(), 'artist_media'); ?>
                                 <?php if (!empty($terms)) : ?>
                                     <?php foreach ($terms as $term): ?>
