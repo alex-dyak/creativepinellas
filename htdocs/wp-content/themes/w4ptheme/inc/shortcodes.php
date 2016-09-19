@@ -108,7 +108,7 @@ add_shortcode( 'blog', 'posts_for_home_page' );
  *
  * @return string
  */
-function resipients_list( $atts ) {
+function recipients_list( $atts ) {
 
 	if ( ! $atts ) {
 		$atts               = array();
@@ -184,4 +184,4 @@ function resipients_list( $atts ) {
 	return $output;
 }
 
-add_shortcode( 'resipients_list', 'resipients_list' );
+add_shortcode( 'recipients_list', 'recipients_list' );
