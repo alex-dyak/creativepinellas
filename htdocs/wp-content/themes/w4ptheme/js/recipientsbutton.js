@@ -5,7 +5,7 @@
                 title : 'Recipients shortcode',
                 image : url + '/images/recipients.jpg',
                 onclick : function() {
-                    ed.selection.setContent('[resipients_list recipients=4]');
+                    ed.selection.setContent('[recipients_list recipients=4]');
                 }
             });
         },
