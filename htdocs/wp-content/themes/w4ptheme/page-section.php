@@ -56,19 +56,19 @@ get_header(); ?>
 				<?php endwhile; ?>
 				<?php endif; ?>
 			</section>
-			<section class="promoSpace u-fullSection u-aquaGradient">
-				<div class="promoSpace-inner">
-					<?php if ( get_field( 'title' ) ) : ?>
-						<h1><?php echo get_field( 'title' ); ?></h1>
-					<?php endif; ?>
-					<?php if ( get_field( 'description_text' ) ) : ?>
-						<?php echo get_field( 'description_text' ); ?>
-					<?php endif; ?>
-					<?php if ( get_field( 'page_link_1' ) ) : ?>
-						<a href="<?php echo get_field( 'page_link_1' ); ?>" class="btn btn--white"><?php echo strtoupper( get_field( 'button_title' ) ); ?></a>
-					<?php endif; ?>
-				</div>
-			</section>
+            <?php if ( get_field( 'title' ) ) : ?>
+                <section class="promoSpace u-fullSection u-aquaGradient">
+                    <div class="promoSpace-inner">
+                        <h1><?php echo get_field( 'title' ); ?></h1>
+                        <?php if ( get_field( 'description_text' ) ) : ?>
+                            <?php echo get_field( 'description_text' ); ?>
+                        <?php endif; ?>
+                        <?php if ( get_field( 'page_link_1' ) ) : ?>
+                            <a href="<?php echo get_field( 'page_link_1' ); ?>" class="btn btn--white"><?php echo strtoupper( get_field( 'button_title' ) ); ?></a>
+                        <?php endif; ?>
+                    </div>
+                </section>
+            <?php endif; ?>
 		</section>
 	</div>
 </section>
