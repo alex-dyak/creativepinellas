@@ -76,7 +76,7 @@ get_header(); ?>
                     <div class="form-row">
                         <?php
                         $args = array(
-                            'show_option_all' => 'All types',
+                            'show_option_all' => 'All Types',
                             'taxonomy' => 'event-type',
                             'value_field' => 'slug',
                             'name' => 'event-type',
