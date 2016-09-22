@@ -64,7 +64,7 @@ get_header(); ?>
                             <?php echo $EM_Event->post_content; ?>
                             <div class="postPage-content-links">
                                 <a href="<?php echo $link_icall = isset ($EM_Event) ? $EM_Event->get_ical_url() : '#'; ?>"
-                                   class="btn"><?php echo __('+ ADD TO iCALL', 'w4ptheme'); ?></a>
+                                   class="btn"><?php echo __('+ ADD TO iCAL', 'w4ptheme'); ?></a>
                                 <a href="<?php echo $link_calendar = isset($EM_Event) ? $EM_Event->output('#_EVENTGCALURL') : '#'; ?>"
                                    class="btn" target="_blank"><?php echo __('+ ADD TO GOOGLE CALENDAR', 'w4ptheme'); ?></a>
                             </div>
