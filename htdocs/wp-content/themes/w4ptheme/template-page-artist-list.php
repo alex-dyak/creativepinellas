@@ -103,19 +103,18 @@ get_header(); ?>
                                     <?php endif; ?>
                                     <div class="gridItem-info">
                                         <h3><?php short_title('', 60); ?> </h3>
+
                                         <p class="u-text--upper">
-                                                <?php echo __('Media', 'w4ptheme'); ?>
-                                                |
-                                                <?php $terms = get_the_terms(get_the_ID(), 'artist_media'); ?>
-                                                <?php if (!empty($terms)) : ?>
-                                                    <?php foreach ($terms as $term): ?>
-                                                        <?php $event_type[] = $term->name; ?>
-                                                    <?php endforeach; ?>
-                                                <?php endif; ?>
-                                                <?php if (!empty($event_type)): ?>
-                                                    <?php echo implode(", ", $event_type); ?>
-                                                    <?php unset($event_type); ?>
-                                                <?php endif; ?>
+                                            <?php $terms = get_the_terms(get_the_ID(), 'artist_media'); ?>
+                                            <?php if (!empty($terms)) : ?>
+                                                <?php foreach ($terms as $term): ?>
+                                                    <?php $event_type[] = $term->name; ?>
+                                                <?php endforeach; ?>
+                                            <?php endif; ?>
+                                            <?php if (!empty($event_type)): ?>
+                                                <?php echo implode(", ", $event_type); ?>
+                                                <?php unset($event_type); ?>
+                                            <?php endif; ?>
                                         </p>
 
                                         <p class="gridItem-info-showHover gridItem-info-showHover--fSize">
