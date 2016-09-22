@@ -57,8 +57,33 @@ function posts_for_home_page( $atts ) {
 
 	<?php if ( $the_query->have_posts() ) : ?>
 		<?php  while ( $the_query->have_posts() ) : $the_query->the_post();
-			$category        = get_the_category();
-			$the_category_id = $category[0]->cat_ID;
+			// Get primary category.
+			$category = get_the_category();
+			// If post has a category assigned.
+			if ($category){
+				if ( class_exists('WPSEO_Primary_Term') )
+				{
+					// Show the post's 'Primary' category, if this Yoast feature is available, & one is set
+					$wpseo_primary_term = new WPSEO_Primary_Term( 'category', get_the_id() );
+					$wpseo_primary_term = $wpseo_primary_term->get_primary_term();
+					$term = get_term( $wpseo_primary_term );
+					if (is_wp_error($term)) {
+						// Default to first category (not Yoast) if an error is returned
+						$the_category_id = $category[0]->term_id;
+						$category_name = $category[0]->name;
+					} else {
+						// Yoast Primary category
+						$the_category_id = $term->term_id;
+						$category_name = $term->name;
+					}
+				}
+				else {
+					// Default, display the first category in WP's list of assigned categories
+					$the_category_id = $category[0]->term_id;
+					$category_name = $category[0]->name;
+				}
+			}
+
 			if ( function_exists( 'rl_color' ) ) {
 				$rl_category_color = rl_color( $the_category_id );
 			}
@@ -86,7 +111,7 @@ function posts_for_home_page( $atts ) {
 							</p>
 
 							<p class="u-text--upper">
-								<i><?php echo strtoupper( $category[0]->cat_name ); ?></i>
+								<i><?php echo strtoupper( $category_name ); ?></i>
 							</p>
 						</div>
 					</a>

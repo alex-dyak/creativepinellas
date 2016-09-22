@@ -42,9 +42,32 @@ get_header(); ?>
 				<!-- the loop -->
 				<?php while ( $custom_query->have_posts() ) :
 				$custom_query->the_post();
-
+				// Get primary category.
 				$category        = get_the_category();
-				$the_category_id = $category[0]->cat_ID;
+				$useCatLink = true;
+				// If post has a category assigned.
+				if ($category){
+					$the_category_id = '';
+					if ( class_exists('WPSEO_Primary_Term') )
+					{
+						// Show the post's 'Primary' category, if this Yoast feature is available, & one is set
+						$wpseo_primary_term = new WPSEO_Primary_Term( 'category', get_the_id() );
+						$wpseo_primary_term = $wpseo_primary_term->get_primary_term();
+						$term = get_term( $wpseo_primary_term );
+						if (is_wp_error($term)) {
+							// Default to first category (not Yoast) if an error is returned
+							$the_category_id = $category[0]->term_id;
+						} else {
+							// Yoast Primary category
+							$the_category_id = $term->term_id;
+						}
+					}
+					else {
+						// Default, display the first category in WP's list of assigned categories
+						$the_category_id = $category[0]->term_id;
+					}
+				}
+
 				if ( function_exists( 'rl_color' ) ) {
 					$rl_category_color = rl_color( $the_category_id );
 				}
@@ -158,8 +181,30 @@ get_header(); ?>
 					<?php $img = get_the_post_thumbnail_url( get_the_ID() );
 					if ( $img ) : ?>
 						<?php
-						$category        = get_the_category();
-						$the_category_id = $category[0]->cat_ID;
+						// Get primary category.
+						$category = get_the_category();
+						// If post has a category assigned.
+						if ($category){
+							if ( class_exists('WPSEO_Primary_Term') )
+							{
+								// Show the post's 'Primary' category, if this Yoast feature is available, & one is set
+								$wpseo_primary_term = new WPSEO_Primary_Term( 'category', get_the_id() );
+								$wpseo_primary_term = $wpseo_primary_term->get_primary_term();
+								$term = get_term( $wpseo_primary_term );
+								if (is_wp_error($term)) {
+									// Default to first category (not Yoast) if an error is returned
+									$the_category_id = $category[0]->term_id;
+								} else {
+									// Yoast Primary category
+									$the_category_id = $term->term_id;
+								}
+							}
+							else {
+								// Default, display the first category in WP's list of assigned categories
+								$the_category_id = $category[0]->term_id;
+							}
+						}
+
 						if ( function_exists( 'rl_color' ) ) {
 							$rl_category_color = rl_color( $the_category_id );
 						}
