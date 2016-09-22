@@ -161,11 +161,23 @@ if (!empty($_GET['venue_community'])) {
     }
 }
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+$current_date = date('Y-m-d');
 // base arguments if taxonomy and date empty.
 $args = array(
     'post_type' => 'event',
     'posts_per_page' => 12,
     'paged'          => $paged,
+    'meta_key' => '_event_start_date',
+    'orderby' => '_event_start_date',
+    'order'  => 'ASC',
+    'meta_query' => array(
+        array(
+            'key' => '_event_start_date',
+            'value' => $current_date,
+            'compare' => '>=',
+            'type' => 'DATE',
+        ),
+    )
 );
 if (!empty($location_meta_query)) {
     $args['meta_query'][] = $location_meta_query;
