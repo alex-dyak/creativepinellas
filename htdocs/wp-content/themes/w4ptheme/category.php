@@ -29,8 +29,29 @@ get_header(); ?>
 							<?php $img = wp_rp_get_post_thumbnail_img( get_post() );
 							if ( $img ) : ?>
 								<?php
-								$category        = get_the_category();
-								$the_category_id = $category[0]->cat_ID;
+								$category = get_the_category();
+								// If post has a category assigned.
+								if ($category){
+									if ( class_exists('WPSEO_Primary_Term') )
+									{
+										// Show the post's 'Primary' category, if this Yoast feature is available, & one is set
+										$wpseo_primary_term = new WPSEO_Primary_Term( 'category', get_the_id() );
+										$wpseo_primary_term = $wpseo_primary_term->get_primary_term();
+										$term = get_term( $wpseo_primary_term );
+										if (is_wp_error($term)) {
+											// Default to first category (not Yoast) if an error is returned
+											$the_category_id = $category[0]->term_id;
+										} else {
+											// Yoast Primary category
+											$the_category_id = $term->term_id;
+										}
+									}
+									else {
+										// Default, display the first category in WP's list of assigned categories
+										$the_category_id = $category[0]->term_id;
+									}
+								}
+
 								if ( function_exists( 'rl_color' ) ) {
 									$rl_category_color = rl_color( $the_category_id );
 								}
