@@ -109,7 +109,7 @@ get_header(); ?>
                             <?php endif; ?>
 
                             <?php $post_objects = get_field('event_artist');
-                            if ($post_objects): ?>
+                            if (!empty($post_objects)): ?>
                             <p>
                                 <strong><?php echo __('ARTIST(S)', 'w4ptheme)') . ': '; ?></strong>
                                 <?php foreach ($post_objects as $post): ?>
