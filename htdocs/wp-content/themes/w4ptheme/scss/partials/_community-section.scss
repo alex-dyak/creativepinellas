@@ -26,17 +26,13 @@
 }
 .communitySection-link-text {
     position: absolute;
-    top: 15px;
-    left: 50%;
+    top: 20px;
+    left: 40px;
     z-index: 101;
     display: block;
     white-space: nowrap;
     transform-origin: 0 0;
-    transform: rotate(90deg) translateY(-50%) ;
-    @include breakpoint(medium) {
-        top: 20px;
-        left: 40px;
-    }
+    transform: rotate(90deg);
 }
 .communitySection-link-imgLayer {
     position: absolute;
