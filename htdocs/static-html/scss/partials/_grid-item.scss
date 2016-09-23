@@ -33,9 +33,6 @@
     transition: all .2s ease-out;
     h3 {
         text-transform: uppercase;
-        @include breakpoint(medium) {
-            font-size: $fontSize-base;
-        }
         &:before {
             content: "";
             display: block;
@@ -43,6 +40,15 @@
             height: 24px;
             background: $white;
             margin-bottom: 15px;
+        }
+    }
+}
+.gridLanding {
+    .gridItem-info {
+        h3 {
+            @include breakpoint(medium) {
+                font-size: $fontSize-base;
+            }
         }
     }
 }
