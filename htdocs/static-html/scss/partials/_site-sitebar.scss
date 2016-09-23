@@ -17,6 +17,16 @@
     border-bottom: none;
     background: url("../images/sky-background.jpg") $sky no-repeat 0 0;
     color: $white;
+    p {
+        font-weight: $fontWeight-normal;
+    }
+    a {
+        color: $white;
+        text-decoration: underline;
+        &:hover {
+            text-decoration: none;
+        }
+    }
 }
 .siteSidebar-item-mapHolder {
     margin-bottom: 10px;
