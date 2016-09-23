@@ -54,6 +54,7 @@ h3 {
 .intro {
     margin: 1.2em 0;
     font-size: $fontSize-larger;
+    font-weight: $fontWeight-extraLighter;
     line-height: $lineHeight-tightest;
     color: $sky;
     &:last-child {
