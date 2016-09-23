@@ -5,7 +5,6 @@
 }
 .siteSidebar-inner {
     @include breakpoint(medium) {
-        float: right;
         max-width: 220px;
     }
 }
