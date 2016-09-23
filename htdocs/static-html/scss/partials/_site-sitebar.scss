@@ -20,6 +20,13 @@
     p {
         font-weight: $fontWeight-normal;
     }
+    a {
+        color: $white;
+        text-decoration: underline;
+        &:hover {
+            text-decoration: none;
+        }
+    }
 }
 .siteSidebar-item-mapHolder {
     margin-bottom: 10px;
