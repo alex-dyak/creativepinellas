@@ -28,8 +28,7 @@
         "wpackagist-plugin/tinymce-advanced": ">4.3.10",
         "wpackagist-plugin/contact-form-7": ">4.4.2",
         "wpackagist-plugin/mappress-google-maps-for-wordpress": ">2.43",
-        "wpackagist-plugin/regenerate-thumbnails": ">2.2.5",
-        "wpackagist-plugin/forget-about-shortcode-buttons": ">1.1.1"
+        "wpackagist-plugin/regenerate-thumbnails": ">2.2.5"
     },
     "extra": {
         "installer-paths": {
