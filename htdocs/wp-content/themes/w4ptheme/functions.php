@@ -328,34 +328,6 @@ class Mobile_Nav_Menu extends Walker_Nav_Menu {
 }
 
 /**
- * Add button in html-editor.
- */
-add_action( 'admin_print_footer_scripts', 'add_intro_quicktags' );
-function add_intro_quicktags() {
-	if ( wp_script_is( 'quicktags' ) ) :
-		?>
-		<script type="text/javascript">
-			if (QTags) {
-				// QTags.addButton( id, display, arg1, arg2, access_key, title, priority, instance );
-				QTags.addButton('div_intro', 'intro', '<div class="intro"><p>', '</p></div>', 'intro', 'Intro', 1);
-			}
-		</script>
-		<script type="text/javascript">
-			if (QTags) {
-				// QTags.addButton( id, display, arg1, arg2, access_key, title, priority, instance );
-				QTags.addButton('shortcode', 'Shortcode', '[blog category="" post_number=12 featured=0]', '', 'shortcode', 'Shortcode', 1);
-			}
-		</script>
-		<script type="text/javascript">
-			if (QTags) {
-				// QTags.addButton( id, display, arg1, arg2, access_key, title, priority, instance );
-				QTags.addButton( 'recipients', 'recipients', '[resipients_list recipients=4]', 'recipients', 'Recipients', 1 );
-			}
-		</script>
-	<?php endif;
-}
-
-/**
  * Add intro button in Visual-editor.
  */
 function visual_intro_button()
