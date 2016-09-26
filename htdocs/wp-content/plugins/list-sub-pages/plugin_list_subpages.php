@@ -316,10 +316,15 @@ class ls_sub_pages extends WP_Widget {
 		// WIDGET CODE GOES HERE
 		$page_id = $post->ID;
         $parent_page = wp_get_post_parent_id( $page_id );
-        $attachments = get_pages(array(
-            'child_of' => $parent_page,
-            'exclude' => $post->ID,
-        ))?>
+        if ($parent_page !== 0) {
+            $attachments = get_pages(array(
+                'child_of' => $parent_page,
+                'exclude' => $post->ID,
+            ));
+        } else {
+            $attachments = false;
+        };
+        ?>
 
 		<?php
 		if ( $attachments ) {
