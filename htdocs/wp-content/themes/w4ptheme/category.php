@@ -67,7 +67,7 @@ get_header(); ?>
 								</div>
 							<?php endif; ?>
 							<div class="postsList-item-body">
-								<h3><?php the_title(); ?></h3>
+								<h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
 								<p><?php the_excerpt_max_charlength(150); ?></p>
 								<p><i>
 										<?php echo __( 'BY ', 'w4ptheme' ) . strtoupper( get_the_author() ) . ' | '; ?>
