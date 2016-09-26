@@ -25,15 +25,22 @@ get_header(); ?>
 			</section>
 			<?php
 			// check if the repeater field has rows of data
+			$coutn_rows = count( get_field('section') );
+			$counter_rows = 0;
 			if (have_rows( 'section' )): ?>
 			<!--    Sub page Promo  -->
 			<section class="row halfMedium-collapse medium-uncollapse promoList">
 				<?php // loop through the rows of data
 				while ( have_rows( 'section' ) ) : the_row();
+					$counter_rows++ ;
 					$img_id = get_sub_field( 'page_image' );
 					?>
-					<!--   promoList-item  -->
+				<!--   promoList-item  -->
+				<?php if( $counter_rows == $coutn_rows ): ?>
+					<div class="halfMedium-6 column end">
+				<?php else: ?>
 					<div class="halfMedium-6 column">
+				<?php endif; ?>
 						<div class="promoList-item">
 							<a href="<?php the_sub_field( 'page_link' ); ?>" class="js-touchFocus">
 								<div class="promoList-item-image">
