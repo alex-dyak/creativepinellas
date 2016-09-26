@@ -154,7 +154,7 @@ function recipients_list( $atts ) {
 	<?php if ( $the_query->have_posts() ) : ?>
 		<!--    RECIPIENTS List   -->
 
-		<h2 class="u-text--center"><?php _e( 'RECIPIENTS LIST', 'w4ptheme' ); ?></h2>
+		<h2 class=""><?php _e( 'RECIPIENTS LIST', 'w4ptheme' ); ?></h2>
 
 		<div class="postsList">
 			<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
