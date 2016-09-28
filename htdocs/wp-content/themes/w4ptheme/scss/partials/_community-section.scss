@@ -33,6 +33,9 @@
     white-space: nowrap;
     transform-origin: 0 0;
     transform: rotate(90deg);
+    @include breakpoint(medium) {
+        left: 60px;
+    }
 }
 .communitySection-link-imgLayer {
     position: absolute;
