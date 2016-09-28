@@ -191,7 +191,6 @@ function recipients_list( $atts ) {
 										<?php endif; ?>
 									<?php endforeach; ?>
 								<?php endif; ?>
-								<?php echo ' | ' . get_field( 'artist_genre' ); ?>
 							</i></p>
 					</div>
 					<div>
