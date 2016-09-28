@@ -154,7 +154,7 @@ function recipients_list( $atts ) {
 	<?php if ( $the_query->have_posts() ) : ?>
 		<!--    RECIPIENTS List   -->
 
-		<h2 class="u-text--center"><?php _e( 'RECIPIENTS LIST', 'w4ptheme' ); ?></h2>
+		<h2 class=""><?php _e( 'RECIPIENTS LIST', 'w4ptheme' ); ?></h2>
 
 		<div class="postsList">
 			<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
@@ -173,7 +173,9 @@ function recipients_list( $atts ) {
 						</div>
 					<?php endif; ?>
 					<div class="postsList-item-body">
-						<h3><?php the_title(); ?></h3>
+						<h3>
+							<a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
+						</h3>
 
 						<p><?php the_excerpt_max_charlength( 100 ); ?></p>
 
