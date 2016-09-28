@@ -9,7 +9,7 @@
 
 get_header(); ?>
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
-    <section class="siteBody">
+    <section class="siteBody" xmlns="http://www.w3.org/1999/html">
 
         <div class="row">
             <section class="medium-8 large-9 column siteContent siteContent--hasSidebar">
@@ -106,7 +106,11 @@ get_header(); ?>
                                 <?php endif ?>
                                 <div class="postsList-item-body">
                                     <?php if (!empty($EM_Event->event_name)) : ?>
-                                        <h3><?php echo $EM_Event->event_name; ?></h3>
+                                        <h3>
+                                            <a href="<?php echo $EM_Event->guid; ?>">
+                                                 <?php echo $EM_Event->event_name; ?>
+                                            </a>
+                                        </h3>
                                     <?php endif; ?>
                                     <?php if (!empty($EM_Event->post_content)) : ?>
                                         <p><?php echo substr(strip_tags($EM_Event->post_content), 0, 150) . '(...)'; ?></p>
