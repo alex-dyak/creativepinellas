@@ -140,9 +140,11 @@ get_header(); ?>
                     <!--    Sidebar widget  -->
                     <div class="siteSidebar-item">
                         <h3><?php echo __('Venue Details', 'w4ptheme'); ?></h3>
-                        <?php $location = $EM_Event->get_location(); ?>
+                        <?php $location = $EM_Event->get_location();
+                        $location_link = get_permalink( $location->post_id );
+                        ?>
                         <div class="siteSidebar-item-content">
-                            <p><a href="<?php echo $location->guid; ?>"><?php echo $location->location_name; ?></a></p>
+                            <p><a href="<?php echo $location_link; ?>"><?php echo $location->location_name; ?></a></p>
 
                             <p>
                                 <?php echo $location->location_address; ?>
