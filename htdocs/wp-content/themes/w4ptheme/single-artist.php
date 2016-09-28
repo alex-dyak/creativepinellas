@@ -129,7 +129,7 @@ get_header(); ?>
                                     </div>
                                     <?php endif; ?>
                                     <div class="postsList-item-body">
-                                        <h3><?php the_title(); ?></h3>
+                                        <h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
 
                                         <p><?php echo substr(strip_tags($post->post_content), 0, 150) . '(...)'; ?></p>
                                         <?php /* @var $EM_Event EM_Event */ ?>
@@ -191,7 +191,7 @@ get_header(); ?>
                                         <span class="postsList-item-categoryDecor"></span>
                                     </div>
                                     <div class="postsList-item-body">
-                                        <h3><?php the_title(); ?></h3>
+                                        <h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
 
                                         <p><?php echo substr(strip_tags($post->post_content), 0, 150) . '(...)'; ?></p>
 
