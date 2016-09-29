@@ -53,7 +53,7 @@ get_header(); ?>
                         <div class="siteSidebar-item-content">
                             <?php if (!empty($EM_Location)) : ?>
                                 <p>
-                                    <a href="<?php echo $EM_Location->guid; ?>">
+                                    <a href="<?php echo get_permalink($EM_Location->post_id); ?>">
                                         <?php echo $EM_Location->location_name; ?>
                                     </a>
                                 </p>
@@ -107,7 +107,7 @@ get_header(); ?>
                                 <div class="postsList-item-body">
                                     <?php if (!empty($EM_Event->event_name)) : ?>
                                         <h3>
-                                            <a href="<?php echo $EM_Event->guid; ?>">
+                                            <a href="<?php echo get_permalink($EM_Event->post_id); ?>">
                                                  <?php echo $EM_Event->event_name; ?>
                                             </a>
                                         </h3>
@@ -140,12 +140,12 @@ get_header(); ?>
                                     </p>
                                 </div>
                                 <div>
-                                    <a href="<?php echo $EM_Event->guid; ?>"
+                                    <a href="<?php echo get_permalink($EM_Event->post_id); ?>"
                                        class="btn btn--fullWidth"><?php echo __('SEE EVENT', 'w4ptheme'); ?></a>
                                 </div>
                             </div>
-                            </div>
                         <?php endforeach ?>
+                        </div>
                     <?php endif ?>
                 </section>
             </section>
