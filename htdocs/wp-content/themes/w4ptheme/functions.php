@@ -229,7 +229,7 @@ class Main_Nav_Menu extends Walker_Nav_Menu {
 	}
 
 	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-		if ( $item->title == 'Contacts' ) {
+		if ( $item->title == 'Contact Us' ) {
 			return;
 		}
 
