@@ -55,7 +55,7 @@ function w4ptheme_setup() {
         add_image_size( 'small_section_img', 480, 480, true );
         add_image_size( 'artist_gallery_600x250', 600, 250, TRUE );
         add_image_size( 'post_page_img', 650, 300, true );
-        add_image_size( 'single_event_img', 650, 380, true );
+        add_image_size( 'single_event_img', 650, '', true );
         add_image_size( 'img_680x680', 680, 680, TRUE );
         add_image_size( 'small_blog_img', 880, 880, true );
         add_image_size( 'img_940x940', 940, 940, TRUE );
