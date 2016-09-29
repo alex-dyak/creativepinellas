@@ -144,7 +144,7 @@ get_header(); ?>
                                                     <?php echo date_format($start_date, 'M. j, Y') . ' - ' . date_format($end_date, 'M. j, Y'); ?>
                                                 <?php endif; ?>
                                                 | <a
-                                                    href="<?php echo $location->guid; ?>"><?php echo strtoupper($location->location_name); ?></a>
+                                                    href="<?php echo get_permalink($location->post_id); ?>"><?php echo strtoupper($location->location_name); ?></a>
                                             </i>
                                         </p>
                                     </div>
