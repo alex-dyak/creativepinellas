@@ -38,7 +38,7 @@ get_header(); ?>
                         <?php /* @var $EM_Location $EM_Location */ ?>
                         <?php if (isset($EM_Location)) : ?>
                             <div class="postPage-content postPage-content--bottomLine">
-                                <?php echo $EM_Location->post_content; ?>
+                                <?php echo do_shortcode( $EM_Location->post_content ); ?>
                             </div>
                         <?php endif ?>
                         <!--    Post Content    -->
