@@ -57,11 +57,17 @@ get_header(); ?>
 								}
 								?>
 								<div class="postsList-item-image">
+								<?php if ( has_post_thumbnail() ) : ?>
 									<img
 										src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'small_blog_img' ); ?>"
 										alt=""
 										srcset="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'small_blog_img' ); ?> 460w,
 											<?php echo get_the_post_thumbnail_url( get_the_ID(), 'related_post_img' ); ?> 768w">
+								<?php else : ?>
+									<?php $img = get_template_directory_uri() . '/images/default_for_grid/cpin-fallback-image-icon.jpg'; ?>
+									<img src="<?php echo $img; ?>" alt=""
+									     srcset="<?php echo $img; ?> 768w, <?php echo $img; ?> 1024w,  <?php echo $img; ?> 1400w">
+								<?php endif; ?>
 									<span class="postsList-item-categoryDecor"
 									      style="background-color: <?php echo $rl_category_color; ?>"></span>
 								</div>
