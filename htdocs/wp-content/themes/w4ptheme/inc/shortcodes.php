@@ -91,13 +91,19 @@ function posts_for_home_page( $atts ) {
 			<div class="column">
 				<div class="gridItem gridItem--blog">
 					<a href="<?php the_permalink() ?>" class="js-touchFocus">
-						<img
-							src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'big_blog_img' ); ?>"
-							alt=""
-							srcset="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'big_section_img' ); ?> 480w,
-																     <?php echo get_the_post_thumbnail_url( get_the_ID(), 'big_blog_img' ); ?> 768w,
-																     <?php echo get_the_post_thumbnail_url( get_the_ID(), 'img_680x680' ); ?> 1024w,
-																     <?php echo get_the_post_thumbnail_url( get_the_ID(), 'img_940x940' ); ?> 1400w">
+						<?php if (has_post_thumbnail()) : ?>
+							<img
+								src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'big_blog_img' ); ?>"
+								alt=""
+								srcset="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'big_section_img' ); ?> 480w,
+																	     <?php echo get_the_post_thumbnail_url( get_the_ID(), 'big_blog_img' ); ?> 768w,
+																	     <?php echo get_the_post_thumbnail_url( get_the_ID(), 'img_680x680' ); ?> 1024w,
+																	     <?php echo get_the_post_thumbnail_url( get_the_ID(), 'img_940x940' ); ?> 1400w">
+						<?php else : ?>
+							<?php $img = get_template_directory_uri() . '/images/default_for_grid/cpin-fallback-image-icon.jpg'; ?>
+							<img src="<?php echo $img; ?>" alt=""
+							     srcset="<?php echo $img; ?> 768w, <?php echo $img; ?> 1024w,  <?php echo $img; ?> 1400w">
+						<?php endif; ?>
 						<span class="gridItem-categoryDecor"
 						      style="background-color: <?php echo $rl_category_color; ?>"></span>
 
@@ -191,7 +197,6 @@ function recipients_list( $atts ) {
 										<?php endif; ?>
 									<?php endforeach; ?>
 								<?php endif; ?>
-								<?php echo ' | ' . get_field( 'artist_genre' ); ?>
 							</i></p>
 					</div>
 					<div>

@@ -56,12 +56,19 @@ get_header(); ?>
 
                         <!--    Post Image   -->
                         <div class="postPage-image">
-                            <?php the_post_thumbnail('single_event_img'); ?>
+							<?php if ( has_post_thumbnail() ) : ?>
+		                        <figure class="wp-caption alignnone">
+			                        <?php the_post_thumbnail('single_event_img'); ?>
+			                        <figcaption class="wp-caption-text">
+				                        <?php echo get_post( get_post_thumbnail_id() )->post_excerpt; ?>
+			                        </figcaption>
+		                    <?php endif; ?>
+	                        </figure>
                         </div>
 
                         <!--    Post Content    -->
                         <div class="postPage-content">
-                            <?php echo $EM_Event->post_content; ?>
+                            <?php echo do_shortcode( $EM_Event->post_content ); ?>
                             <div class="postPage-content-links">
                                 <a href="<?php echo $link_icall = isset ($EM_Event) ? $EM_Event->get_ical_url() : '#'; ?>"
                                    class="btn"><?php echo __('+ ADD TO iCAL', 'w4ptheme'); ?></a>
@@ -140,9 +147,11 @@ get_header(); ?>
                     <!--    Sidebar widget  -->
                     <div class="siteSidebar-item">
                         <h3><?php echo __('Venue Details', 'w4ptheme'); ?></h3>
-                        <?php $location = $EM_Event->get_location(); ?>
+                        <?php $location = $EM_Event->get_location();
+                        $location_link = get_permalink( $location->post_id );
+                        ?>
                         <div class="siteSidebar-item-content">
-                            <p><a href="<?php echo $location->guid; ?>"><?php echo $location->location_name; ?></a></p>
+                            <p><a href="<?php echo $location_link; ?>"><?php echo $location->location_name; ?></a></p>
 
                             <p>
                                 <?php echo $location->location_address; ?>

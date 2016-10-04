@@ -9,7 +9,7 @@
 
 get_header(); ?>
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
-    <section class="siteBody">
+    <section class="siteBody" xmlns="http://www.w3.org/1999/html">
 
         <div class="row">
             <section class="medium-8 large-9 column siteContent siteContent--hasSidebar">
@@ -26,16 +26,19 @@ get_header(); ?>
 
                         <!--    Post Image   -->
                         <?php if (has_post_thumbnail()) : ?>
-                            <div class="postPage-image">
-                                <?php the_post_thumbnail('single_event_img'); ?>
-                            </div>
+                            <figure class="wp-caption alignnone">
+                                <?php the_post_thumbnail( 'single_event_img' ); ?>
+                                <figcaption class="wp-caption-text">
+                                    <?php echo get_post( get_post_thumbnail_id() )->post_excerpt; ?>
+                                </figcaption>
+                            </figure>
                         <?php endif; ?>
 
                         <!--    Post Content    -->
                         <?php /* @var $EM_Location $EM_Location */ ?>
                         <?php if (isset($EM_Location)) : ?>
                             <div class="postPage-content postPage-content--bottomLine">
-                                <?php echo $EM_Location->post_content; ?>
+                                <?php echo do_shortcode( $EM_Location->post_content ); ?>
                             </div>
                         <?php endif ?>
                         <!--    Post Content    -->
@@ -53,7 +56,7 @@ get_header(); ?>
                         <div class="siteSidebar-item-content">
                             <?php if (!empty($EM_Location)) : ?>
                                 <p>
-                                    <a href="<?php echo $EM_Location->guid; ?>">
+                                    <a href="<?php echo get_permalink($EM_Location->post_id); ?>">
                                         <?php echo $EM_Location->location_name; ?>
                                     </a>
                                 </p>
@@ -106,7 +109,11 @@ get_header(); ?>
                                 <?php endif ?>
                                 <div class="postsList-item-body">
                                     <?php if (!empty($EM_Event->event_name)) : ?>
-                                        <h3><?php echo $EM_Event->event_name; ?></h3>
+                                        <h3>
+                                            <a href="<?php echo get_permalink($EM_Event->post_id); ?>">
+                                                 <?php echo $EM_Event->event_name; ?>
+                                            </a>
+                                        </h3>
                                     <?php endif; ?>
                                     <?php if (!empty($EM_Event->post_content)) : ?>
                                         <p><?php echo substr(strip_tags($EM_Event->post_content), 0, 150) . '(...)'; ?></p>
@@ -136,12 +143,12 @@ get_header(); ?>
                                     </p>
                                 </div>
                                 <div>
-                                    <a href="<?php echo $EM_Event->guid; ?>"
+                                    <a href="<?php echo get_permalink($EM_Event->post_id); ?>"
                                        class="btn btn--fullWidth"><?php echo __('SEE EVENT', 'w4ptheme'); ?></a>
                                 </div>
                             </div>
-                            </div>
                         <?php endforeach ?>
+                        </div>
                     <?php endif ?>
                 </section>
             </section>

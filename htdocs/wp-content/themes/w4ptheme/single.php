@@ -41,12 +41,14 @@ get_header(); ?>
 
 					<!--    Post Content    -->
 					<div class="postPage-content">
-						<figure class="wp-caption alignnone">
-							<?php the_post_thumbnail( 'post_page_img' ); ?>
-							<figcaption class="wp-caption-text">
-								<?php echo get_post( get_post_thumbnail_id() )->post_excerpt; ?>
-							</figcaption>
-						</figure>
+						<?php if ( has_post_thumbnail() ) : ?>
+							<figure class="wp-caption alignnone">
+								<?php the_post_thumbnail( 'post_page_img' ); ?>
+								<figcaption class="wp-caption-text">
+									<?php echo get_post( get_post_thumbnail_id() )->post_excerpt; ?>
+								</figcaption>
+							</figure>
+						<?php endif; ?>
 						<?php the_content(); ?>
 					</div>
 				</article>

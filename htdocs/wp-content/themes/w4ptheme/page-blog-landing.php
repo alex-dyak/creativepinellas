@@ -43,26 +43,27 @@ get_header(); ?>
 				<?php while ( $custom_query->have_posts() ) :
 				$custom_query->the_post();
 				// Get primary category.
-				$category        = get_the_category();
+				$category   = get_the_category();
 				$useCatLink = true;
 				// If post has a category assigned.
-				if ($category){
+				if ( $category ) {
 					$the_category_id = '';
-					if ( class_exists('WPSEO_Primary_Term') )
-					{
+					if ( class_exists( 'WPSEO_Primary_Term' ) ) {
 						// Show the post's 'Primary' category, if this Yoast feature is available, & one is set
-						$wpseo_primary_term = new WPSEO_Primary_Term( 'category', get_the_id() );
-						$wpseo_primary_term = $wpseo_primary_term->get_primary_term();
+						$wpseo_primary_term
+							= new WPSEO_Primary_Term( 'category',
+							get_the_id() );
+						$wpseo_primary_term
+							  = $wpseo_primary_term->get_primary_term();
 						$term = get_term( $wpseo_primary_term );
-						if (is_wp_error($term)) {
+						if ( is_wp_error( $term ) ) {
 							// Default to first category (not Yoast) if an error is returned
 							$the_category_id = $category[0]->term_id;
 						} else {
 							// Yoast Primary category
 							$the_category_id = $term->term_id;
 						}
-					}
-					else {
+					} else {
 						// Default, display the first category in WP's list of assigned categories
 						$the_category_id = $category[0]->term_id;
 					}
@@ -76,17 +77,32 @@ get_header(); ?>
 				<?php if ( $count == 0 ) : ?>
 					<div class="medium-8 large-6 column">
 						<div class="gridItem gridItem--blog">
-							<a href="<?php the_permalink(); ?>" class="js-touchFocus">
-								<img
-									src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'big_blog_img' ); ?>"
-									alt=""
-									srcset="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'big_blog_img' ); ?> 768w,
-																<?php echo get_the_post_thumbnail_url( get_the_ID(), 'small_blog_img' ); ?> 1024w">
-								<span class="gridItem-categoryDecor" style="background-color: <?php echo $rl_category_color; ?>"></span>
+							<a href="<?php the_permalink(); ?>"
+							   class="js-touchFocus">
+								<?php if ( has_post_thumbnail() ) : ?>
+									<img
+										src="<?php echo get_the_post_thumbnail_url( get_the_ID(),
+											'big_blog_img' ); ?>"
+										alt=""
+										srcset="<?php echo get_the_post_thumbnail_url( get_the_ID(),
+											'big_blog_img' ); ?> 768w,
+																			<?php echo get_the_post_thumbnail_url( get_the_ID(),
+											'small_blog_img' ); ?> 1024w">
+								<?php else : ?>
+									<?php $img = get_template_directory_uri()
+									             . '/images/default_for_grid/cpin-fallback-image-icon.jpg'; ?>
+									<img src="<?php echo $img; ?>" alt=""
+									     srcset="<?php echo $img; ?> 768w, <?php echo $img; ?> 1024w">
+								<?php endif; ?>
+								<span class="gridItem-categoryDecor"
+								      style="background-color: <?php echo $rl_category_color; ?>"></span>
+
 								<div class="gridItem-info">
 									<h3><?php the_title(); ?></h3>
+
 									<p>
-										<strong><?php _e( 'Read Post', 'w4ptheme' ); ?></strong>
+										<strong><?php _e( 'Read Post',
+												'w4ptheme' ); ?></strong>
 									</p>
 								</div>
 							</a>
@@ -101,18 +117,32 @@ get_header(); ?>
 					<?php endif; ?>
 					<div class="small-12 halfMedium-6 medium-12 column">
 						<div class="gridItem gridItem--blog">
-							<a href="<?php the_permalink(); ?>" class="js-touchFocus">
-								<img
-									src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'big_blog_img' ); ?>"
-									alt=""
-									srcset="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'big_blog_img' ); ?> 768w,
-																<?php echo get_the_post_thumbnail_url( get_the_ID(), 'small_blog_img' ); ?> 1024w">
+							<a href="<?php the_permalink(); ?>"
+							   class="js-touchFocus">
+								<?php if ( has_post_thumbnail() ) : ?>
+									<img
+										src="<?php echo get_the_post_thumbnail_url( get_the_ID(),
+											'big_blog_img' ); ?>"
+										alt=""
+										srcset="<?php echo get_the_post_thumbnail_url( get_the_ID(),
+											'big_blog_img' ); ?> 768w,
+																		<?php echo get_the_post_thumbnail_url( get_the_ID(),
+											'small_blog_img' ); ?> 1024w">
+								<?php else : ?>
+									<?php $img = get_template_directory_uri()
+									             . '/images/default_for_grid/cpin-fallback-image-icon.jpg'; ?>
+									<img src="<?php echo $img; ?>" alt=""
+									     srcset="<?php echo $img; ?> 768w, <?php echo $img; ?> 1024w">
+								<?php endif; ?>
 								<span class="gridItem-categoryDecor"
 								      style="background-color: <?php echo $rl_category_color; ?>"></span>
+
 								<div class="gridItem-info">
 									<h3><?php the_title(); ?></h3>
+
 									<p>
-										<strong><?php _e( 'Read Post', 'w4ptheme' ); ?></strong>
+										<strong><?php _e( 'Read Post',
+												'w4ptheme' ); ?></strong>
 									</p>
 								</div>
 							</a>
@@ -130,17 +160,32 @@ get_header(); ?>
 					<?php endif; ?>
 					<div class="small-12 halfMedium-6 large-12 column">
 						<div class="gridItem gridItem--blog">
-							<a href="<?php the_permalink(); ?>" class="js-touchFocus">
-								<img
-									src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'big_blog_img' ); ?>"
-									alt=""
-									srcset="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'big_blog_img' ); ?> 768w,
-																<?php echo get_the_post_thumbnail_url( get_the_ID(), 'small_blog_img' ); ?> 1024w">
-								<span class="gridItem-categoryDecor" style="background-color: <?php echo $rl_category_color; ?>"></span>
+							<a href="<?php the_permalink(); ?>"
+							   class="js-touchFocus">
+								<?php if ( has_post_thumbnail() ) : ?>
+									<img
+										src="<?php echo get_the_post_thumbnail_url( get_the_ID(),
+											'big_blog_img' ); ?>"
+										alt=""
+										srcset="<?php echo get_the_post_thumbnail_url( get_the_ID(),
+											'big_blog_img' ); ?> 768w,
+																			<?php echo get_the_post_thumbnail_url( get_the_ID(),
+											'small_blog_img' ); ?> 1024w">
+								<?php else : ?>
+									<?php $img = get_template_directory_uri()
+									             . '/images/default_for_grid/cpin-fallback-image-icon.jpg'; ?>
+									<img src="<?php echo $img; ?>" alt=""
+									     srcset="<?php echo $img; ?> 768w, <?php echo $img; ?> 1024w,  <?php echo $img; ?> 1400w">
+								<?php endif; ?>
+								<span class="gridItem-categoryDecor"
+								      style="background-color: <?php echo $rl_category_color; ?>"></span>
+
 								<div class="gridItem-info">
 									<h3><?php the_title(); ?></h3>
+
 									<p>
-										<strong><?php _e( 'Read Post', 'w4ptheme' ); ?></strong>
+										<strong><?php _e( 'Read Post',
+												'w4ptheme' ); ?></strong>
 									</p>
 								</div>
 							</a>
@@ -164,10 +209,13 @@ get_header(); ?>
 <!--    RECENT Posts   -->
 <section class="row medium-collapse">
 	<div class="medium-8 large-10 column medium-centered">
-		<h2 class="u-text--center"><?php _e( 'RECENT POSTS', 'w4ptheme' ); ?></h2>
+		<h2 class="u-text--center"><?php _e( 'RECENT POSTS',
+				'w4ptheme' ); ?></h2>
+
 		<div class="postsList">
 			<?php
-			$paged      = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+			$paged      = ( get_query_var( 'paged' ) )
+				? get_query_var( 'paged' ) : 1;
 			$query_args = array(
 				'post_type'      => 'post',
 				'posts_per_page' => 6,
@@ -184,22 +232,24 @@ get_header(); ?>
 						// Get primary category.
 						$category = get_the_category();
 						// If post has a category assigned.
-						if ($category){
-							if ( class_exists('WPSEO_Primary_Term') )
-							{
+						if ( $category ) {
+							if ( class_exists( 'WPSEO_Primary_Term' ) ) {
 								// Show the post's 'Primary' category, if this Yoast feature is available, & one is set
-								$wpseo_primary_term = new WPSEO_Primary_Term( 'category', get_the_id() );
-								$wpseo_primary_term = $wpseo_primary_term->get_primary_term();
-								$term = get_term( $wpseo_primary_term );
-								if (is_wp_error($term)) {
+								$wpseo_primary_term
+									= new WPSEO_Primary_Term( 'category',
+									get_the_id() );
+								$wpseo_primary_term
+									= $wpseo_primary_term->get_primary_term();
+								$term
+									= get_term( $wpseo_primary_term );
+								if ( is_wp_error( $term ) ) {
 									// Default to first category (not Yoast) if an error is returned
 									$the_category_id = $category[0]->term_id;
 								} else {
 									// Yoast Primary category
 									$the_category_id = $term->term_id;
 								}
-							}
-							else {
+							} else {
 								// Default, display the first category in WP's list of assigned categories
 								$the_category_id = $category[0]->term_id;
 							}
@@ -211,22 +261,40 @@ get_header(); ?>
 						?>
 						<div class="postsList-item-image">
 							<img
-								src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'small_blog_img' ); ?>"
+								src="<?php echo get_the_post_thumbnail_url( get_the_ID(),
+									'small_blog_img' ); ?>"
 								alt=""
-								srcset="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'small_blog_img' ); ?> 460w,
-											<?php echo get_the_post_thumbnail_url( get_the_ID(), 'related_post_img' ); ?> 768w">
-							<span class="postsList-item-categoryDecor" style="background-color: <?php echo $rl_category_color; ?>"></span>
+								srcset="<?php echo get_the_post_thumbnail_url( get_the_ID(),
+									'small_blog_img' ); ?> 460w,
+											<?php echo get_the_post_thumbnail_url( get_the_ID(),
+									'related_post_img' ); ?> 768w">
+							<span class="postsList-item-categoryDecor"
+							      style="background-color: <?php echo $rl_category_color; ?>"></span>
+						</div>
+						<?php else : ?>
+						<div class="postsList-item-image">
+							<?php $img = get_template_directory_uri() . '/images/default_for_grid/cpin-fallback-image-icon.jpg'; ?>
+							<img src="<?php echo $img; ?>" alt=""
+							     srcset="<?php echo $img; ?> 460w, <?php echo $img; ?> 768w">
+							<span class="postsList-item-categoryDecor"
+							      style="background-color: <?php echo $rl_category_color; ?>"></span>
 						</div>
 					<?php endif; ?>
 					<div class="postsList-item-body">
-						<h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
+						<h3>
+							<a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
+						</h3>
+
 						<p><?php the_excerpt_max_charlength( 120 ); ?></p>
+
 						<p><i>
-								<?php echo __( 'BY ', 'w4ptheme' ) . strtoupper( get_the_author() ) . ' | '; ?>
+								<?php echo __( 'BY ', 'w4ptheme' )
+								           . strtoupper( get_the_author() )
+								           . ' | '; ?>
 								<?php $getcat = get_the_category(); ?>
 								<?php if ( ! empty( $getcat ) ) :
 									$count = count( $getcat );
-									foreach ( $getcat as $key => $category ) : ?>
+									foreach ( $getcat as $key => $category ) :?>
 										<?php if ( $key == $count - 1 ) : ?>
 											<a href="<?php echo get_category_link( $category->cat_ID ); ?>"><?php echo strtoupper( $category->cat_name ); ?></a>
 										<?php else : ?>
@@ -238,7 +306,9 @@ get_header(); ?>
 							</i></p>
 					</div>
 					<div>
-						<a href="<?php the_permalink(); ?>" class="btn btn--fullWidth"><?php _e( 'Read Article', 'w4ptheme' ); ?></a>
+						<a href="<?php the_permalink(); ?>"
+						   class="btn btn--fullWidth"><?php _e( 'Read Article',
+								'w4ptheme' ); ?></a>
 					</div>
 				</div>
 			<?php endwhile; ?>
@@ -254,7 +324,7 @@ get_header(); ?>
 				'options'       => array(),
 				'query'         => $the_query,
 				'type'          => 'posts',
-				'echo'          => TRUE
+				'echo'          => true
 			) );
 		}
 		?>

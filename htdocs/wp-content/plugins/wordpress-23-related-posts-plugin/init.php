@@ -325,17 +325,25 @@ function wp_rp_generate_related_posts_list_items($related_posts, $selected_relat
 
 		$post_url = property_exists($related_post, 'post_url') ? $related_post->post_url : get_permalink($related_post->ID);
 
-		$img = wp_rp_get_post_thumbnail_img($related_post, $image_size);
+		$img = get_the_post_thumbnail_url($related_post->ID);
+		$category = get_the_category($related_post->ID);
+		$the_category_id = $category[0]->cat_ID;
+		if(function_exists('rl_color')){
+			$rl_category_color = rl_color($the_category_id);
+		}
 		if ($img) {
-			$category = get_the_category($related_post->ID);
-			$the_category_id = $category[0]->cat_ID;
-			if(function_exists('rl_color')){
-				$rl_category_color = rl_color($the_category_id);
-			}
 			$output .= '<div class="postsList-item-image">
 						<img src="' . get_the_post_thumbnail_url( $related_post->ID, "small_blog_img" ) . '" alt=""
 			srcset="' . get_the_post_thumbnail_url( $related_post->ID, "small_blog_img" ) . ' 460w,'
 			  . get_the_post_thumbnail_url( $related_post->ID, "related_post_img" ) . ' 768w">
+			<span class="postsList-item-categoryDecor" style="background-color:' . $rl_category_color . '"></span>
+			</div>';
+		} else {
+			$img = get_template_directory_uri() . '/images/default_for_grid/cpin-fallback-image-icon.jpg';
+			$output .= '<div class="postsList-item-image">
+						<img src="' . $img . '" alt=""
+			srcset="' . $img . ' 460w,'
+			           . $img . ' 768w">
 			<span class="postsList-item-categoryDecor" style="background-color:' . $rl_category_color . '"></span>
 			</div>';
 		}
@@ -346,7 +354,7 @@ function wp_rp_generate_related_posts_list_items($related_posts, $selected_relat
 		}
 
 		$output .= '<div class="postsList-item-body">';
-		$output .= '<h3>' . strtoupper( wptexturize($related_post->post_title) ) . '</h3>';
+		$output .= '<h3><a href="' . $post_url . '">' . strtoupper( wptexturize($related_post->post_title) ) . '</a></h3>';
 
 		if ($platform_options["display_comment_count"] && property_exists($related_post, 'comment_count')){
 			$output .=  '<small class="wp_rp_comments_count"> (' . $related_post->comment_count . ')</small><br />';

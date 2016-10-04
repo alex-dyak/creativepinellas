@@ -45,7 +45,12 @@ get_header(); ?>
                             <!--    Post Image   -->
                             <?php if (has_post_thumbnail()) : // Check if thumbnail exists ?>
                                 <div class="postPage-image">
-                                    <?php the_post_thumbnail('single_event_img'); ?>
+	                                <figure class="wp-caption alignnone">
+		                                <?php the_post_thumbnail('single_event_img'); ?>
+		                                <figcaption class="wp-caption-text">
+			                                <?php echo get_post( get_post_thumbnail_id() )->post_excerpt; ?>
+		                                </figcaption>
+	                                </figure>
                                 </div>
                             <?php endif; ?>
 
@@ -70,7 +75,7 @@ get_header(); ?>
                                 <ul class="siteSidebar-gallery-element u-list--plain u-clearfix">
                                     <?php foreach ($images as $image): ?>
                                         <li>
-                                            <a href="<?php echo $image['url']; ?>"
+                                            <a href="<?php echo $image['url']; ?>" title="<?php echo $image['caption']; ?>"
                                                class="swipebox">
                                                 <img src="<?php echo $image['sizes']['artist_gallery_300x300']; ?>"
                                                      srcset="<?php echo $image['sizes']['artist_gallery_440x440']; ?> 480w, <?php echo $image['sizes']['artist_gallery_300x300']; ?> 768w"
@@ -129,7 +134,7 @@ get_header(); ?>
                                     </div>
                                     <?php endif; ?>
                                     <div class="postsList-item-body">
-                                        <h3><?php the_title(); ?></h3>
+                                        <h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
 
                                         <p><?php echo substr(strip_tags($post->post_content), 0, 150) . '(...)'; ?></p>
                                         <?php /* @var $EM_Event EM_Event */ ?>
@@ -144,7 +149,7 @@ get_header(); ?>
                                                     <?php echo date_format($start_date, 'M. j, Y') . ' - ' . date_format($end_date, 'M. j, Y'); ?>
                                                 <?php endif; ?>
                                                 | <a
-                                                    href="<?php echo $location->guid; ?>"><?php echo strtoupper($location->location_name); ?></a>
+                                                    href="<?php echo get_permalink($location->post_id); ?>"><?php echo strtoupper($location->location_name); ?></a>
                                             </i>
                                         </p>
                                     </div>
@@ -172,54 +177,86 @@ get_header(); ?>
                         'posts_per_page' => 5
                     );
                     $the_query = new WP_Query($args); ?>
+
+                    <?php if ($the_query->have_posts()): ?>
+                        <section class="row column">
+                            <h2><?php echo __('POSTS BY ', 'w4ptheme') . strtoupper(get_the_title()); ?></h2>
+
+                            <div class="postsList">
+                                <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+                                    <!--    postsList-item  -->
+                                    <div class="postsList-item">
+                                        <div class="postsList-item-image">
+                                            <?php if (has_post_thumbnail()) : ?>
+                                                <img
+                                                    src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'small_blog_img'); ?>"
+                                                    alt=""
+                                                    srcset="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'small_blog_img'); ?> 460w, <?php echo get_the_post_thumbnail_url(get_the_ID(), 'related_post_img'); ?> 768w">
+                                            <?php endif; ?>
+                                            <?php
+                                            $category = get_the_category();
+                                            $useCatLink = true;
+                                            // If post has a category assigned.
+                                            if ($category){
+                                                $the_category_id = '';
+                                                if ( class_exists('WPSEO_Primary_Term') )
+                                                {
+                                                    // Show the post's 'Primary' category, if this Yoast feature is available, & one is set
+                                                    $wpseo_primary_term = new WPSEO_Primary_Term( 'category', get_the_id() );
+                                                    $wpseo_primary_term = $wpseo_primary_term->get_primary_term();
+                                                    $term = get_term( $wpseo_primary_term );
+                                                    if (is_wp_error($term)) {
+                                                        // Default to first category (not Yoast) if an error is returned
+                                                        $the_category_id = $category[0]->term_id;
+                                                    } else {
+                                                        // Yoast Primary category
+                                                        $the_category_id = $term->term_id;
+                                                    }
+                                                }
+                                                else {
+                                                    // Default, display the first category in WP's list of assigned categories
+                                                    $the_category_id = $category[0]->term_id;
+                                                }
+                                            }
+
+                                            if ( function_exists( 'rl_color' ) ) {
+                                                $rl_category_color = rl_color( $the_category_id );
+                                            }
+                                            ?>
+                                            <span class="postsList-item-categoryDecor" style="background-color: <?php echo $rl_category_color; ?>"></span>
+                                        </div>
+                                        <div class="postsList-item-body">
+                                            <h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
+
+                                            <p><?php echo substr(strip_tags($post->post_content), 0, 150) . '(...)'; ?></p>
+
+                                            <p>
+                                                <i>
+                                                    <?php echo __( 'BY ', 'w4ptheme' ) . strtoupper( get_the_author() ) . ' | '; ?>
+                                                    <?php
+                                                    $post_categories = get_the_category();
+                                                    foreach ($post_categories as $post_category) :
+                                                        $link_category[] = '<a href="' . get_category_link($post_category->cat_ID) . '">' . strtoupper($post_category->cat_name) . '</a>';
+                                                    endforeach; ?>
+                                                    <?php if (!empty($link_category)) : ?>
+                                                        <?php echo implode(", ", $link_category); ?>
+                                                        <?php unset($link_category); ?>
+                                                    <?php endif; ?>
+                                                </i>
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <a href="<?php the_permalink(); ?>"
+                                               class="btn btn--fullWidth"><?php echo __('READ MORE', 'w4ptheme'); ?></a>
+                                        </div>
+                                    </div>
+                                    <!--   / postsList-item  -->
+                                <?php endwhile; ?>
+                            </div>
+                        </section>
+                    <?php endif; ?>
+                    <?php wp_reset_query(); ?>
                 <?php endif; ?>
-                <?php if ($the_query->have_posts()): ?>
-                    <section class="row column">
-                        <h2><?php echo __('POSTS BY ', 'w4ptheme') . strtoupper(get_the_title()); ?></h2>
-
-                        <div class="postsList">
-                            <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
-                                <!--    postsList-item  -->
-                                <div class="postsList-item">
-                                    <div class="postsList-item-image">
-                                        <?php if (has_post_thumbnail()) : ?>
-                                            <img
-                                                src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'small_blog_img'); ?>"
-                                                alt=""
-                                                srcset="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'small_blog_img'); ?> 460w, <?php echo get_the_post_thumbnail_url(get_the_ID(), 'related_post_img'); ?> 768w">
-                                        <?php endif; ?>
-                                        <span class="postsList-item-categoryDecor"></span>
-                                    </div>
-                                    <div class="postsList-item-body">
-                                        <h3><?php the_title(); ?></h3>
-
-                                        <p><?php echo substr(strip_tags($post->post_content), 0, 150) . '(...)'; ?></p>
-
-                                        <p>
-                                            <i>
-                                                <?php
-                                                $post_categories = get_the_category();
-                                                foreach ($post_categories as $post_category) :
-                                                    $link_category[] = '<a href="' . get_category_link($post_category->cat_ID) . '">' . strtoupper($post_category->cat_name) . '</a>';
-                                                endforeach; ?>
-                                                <?php if (!empty($link_category)) : ?>
-                                                    <?php echo implode(", ", $link_category); ?>
-                                                    <?php unset($link_category); ?>
-                                                <?php endif; ?>
-                                            </i>
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <a href="<?php the_permalink(); ?>"
-                                           class="btn btn--fullWidth"><?php echo __('READ MORE', 'w4ptheme'); ?></a>
-                                    </div>
-                                </div>
-                                <!--   / postsList-item  -->
-                            <?php endwhile; ?>
-                        </div>
-                    </section>
-                <?php endif; ?>
-                <?php wp_reset_query(); ?>
             </section>
         </div>
 
