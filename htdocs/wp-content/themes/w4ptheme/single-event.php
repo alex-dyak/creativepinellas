@@ -56,7 +56,12 @@ get_header(); ?>
 
                         <!--    Post Image   -->
                         <div class="postPage-image">
-                            <?php the_post_thumbnail('single_event_img'); ?>
+	                        <figure class="wp-caption alignnone">
+		                        <?php the_post_thumbnail('single_event_img'); ?>
+		                        <figcaption class="wp-caption-text">
+			                        <?php echo get_post( get_post_thumbnail_id() )->post_excerpt; ?>
+		                        </figcaption>
+	                        </figure>
                         </div>
 
                         <!--    Post Content    -->
