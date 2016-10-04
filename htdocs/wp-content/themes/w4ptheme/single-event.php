@@ -61,7 +61,7 @@ get_header(); ?>
 
                         <!--    Post Content    -->
                         <div class="postPage-content">
-                            <?php echo $EM_Event->post_content; ?>
+                            <?php echo do_shortcode( $EM_Event->post_content ); ?>
                             <div class="postPage-content-links">
                                 <a href="<?php echo $link_icall = isset ($EM_Event) ? $EM_Event->get_ical_url() : '#'; ?>"
                                    class="btn"><?php echo __('+ ADD TO iCAL', 'w4ptheme'); ?></a>
