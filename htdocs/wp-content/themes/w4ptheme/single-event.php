@@ -132,13 +132,15 @@ get_header(); ?>
 
                             <?php $field_website = get_field('event_website'); ?>
                             <?php if (!empty($field_website)) : ?>
-                                <p>
-                                    <strong><?php echo __('WEBSITE', 'w4ptheme') . ': '; ?></strong>
-                                    <a href="<?php the_field('event_website'); ?>">
-                                        <?php $parse = parse_url($field_website);
-                                        echo $parse['host']; ?>
-                                    </a>
-                                </p>
+	                            <?php $parse = parse_url($field_website); ?>
+	                            <?php if (!empty($parse['host'])) : ?>
+	                                <p>
+	                                    <strong><?php echo __('WEBSITE', 'w4ptheme') . ': '; ?></strong>
+	                                    <a href="<?php the_field('event_website'); ?>">
+	                                        <?php echo $parse['host']; ?>
+	                                    </a>
+	                                </p>
+                                <?php endif; ?>
                             <?php endif; ?>
 
                         </div>
