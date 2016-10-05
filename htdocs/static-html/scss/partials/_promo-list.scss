@@ -3,8 +3,16 @@
 }
 .promoList-item {
     position: relative;
-    margin-bottom: 30px;
+    max-width: 498px;
+    margin: 0 auto 30px;
+    padding-right: 30px;
+    padding-left: 30px;
     overflow: hidden;
+    @include breakpoint(medium) {
+        max-width: 100%;
+        padding-right: 0;
+        padding-left: 0;
+    }
     a {
         display: block;
         position: relative;
