@@ -1,0 +1,18 @@
+#swipebox-top-bar {
+	top: 0;
+	height: auto;
+	padding: 10px 50px;
+	text-shadow: none;
+	color: $white;
+	font-weight: $fontWeight-light;
+	font-size: $fontSize-caption;
+	line-height: $lineHeight-tightest;
+	background: $black--70;
+}
+#swipebox-top-bar.visible-bars {
+	transform: translate3d(0, 0, 0);
+}
+#swipebox-title {
+	max-width: 1100px;
+	margin: 0 auto;
+}
