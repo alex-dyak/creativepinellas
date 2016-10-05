@@ -71,3 +71,7 @@ a img.aligncenter {
     width: 1px;
     overflow: hidden;
 }
+/*wp-content images reset*/
+.postPage-content .wp-caption {
+    max-width: 100%;
+}
