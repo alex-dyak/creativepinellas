@@ -129,7 +129,7 @@ get_header(); ?>
 							<?php endif; ?>
 						</div>
 					</div>
-					<div class="row expanded small-collapse small-up-1 halfMedium-up-2 medium-up-3 xlarge-up-4 xxlarge-up-5 entityGrid">
+					<div class="row expanded small-collapse small-up-1 customHalfMedium-up-2 medium-up-3 xlarge-up-4 xxlarge-up-5 entityGrid">
 						<?php if ( get_field( 'blog_content' ) ) : ?>
 							<?php echo get_field( 'blog_content' ); ?>
 						<?php endif; ?>

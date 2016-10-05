@@ -238,7 +238,7 @@ $the_query = new WP_Query( $args ); ?>
 				<span class="sr-only">Loading...</span>
 			</div>
 			<section
-				class="row expanded small-collapse small-up-1 medium-up-3 xlarge-up-4 xxlarge-up-5 entityGrid">
+				class="row expanded small-collapse small-up-1 customHalfMedium-up-2 medium-up-3 xlarge-up-4 xxlarge-up-5 entityGrid">
 				<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 					<div class="column">
 						<div class="gridItem gridItem--element">
