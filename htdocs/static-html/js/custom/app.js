@@ -27,6 +27,7 @@
 
     datepickerOptions = {
       dayNamesMin: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+      dateFormat: 'mm/dd/yy',
       firstDay: 1,
       prevText: '&larr;',
       nextText: '&rarr;',
