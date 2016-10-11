@@ -125,14 +125,15 @@ get_header(); ?>
                             <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
                                 <div class="postsList-item">
                                     <div class="postsList-item-image">
-                                        <?php if (has_post_thumbnail()) : ?>
                                         <img
-                                            src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'small_blog_img'); ?>"
+                                            src="<?php echo get_the_post_thumbnail_or_placeholder( get_the_ID(), 'big_blog_img' ); ?>"
                                             alt=""
-                                            srcset="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'small_blog_img'); ?> 460w, <?php echo get_the_post_thumbnail_url(get_the_ID(), 'related_post_img'); ?> 768w">
+                                            srcset="<?php echo get_the_post_thumbnail_or_placeholder( get_the_ID(), 'big_section_img' ); ?> 480w,
+                                                <?php echo get_the_post_thumbnail_or_placeholder( get_the_ID(), 'big_blog_img' ); ?> 768w,
+                                                <?php echo get_the_post_thumbnail_or_placeholder( get_the_ID(), 'img_680x680' ); ?> 1024w,
+                                                <?php echo get_the_post_thumbnail_or_placeholder( get_the_ID(), 'img_940x940' ); ?> 1400w">
                                         <span class="postsList-item-categoryDecor"></span>
                                     </div>
-                                    <?php endif; ?>
                                     <div class="postsList-item-body">
                                         <h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
 
@@ -187,12 +188,13 @@ get_header(); ?>
                                     <!--    postsList-item  -->
                                     <div class="postsList-item">
                                         <div class="postsList-item-image">
-                                            <?php if (has_post_thumbnail()) : ?>
-                                                <img
-                                                    src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'small_blog_img'); ?>"
-                                                    alt=""
-                                                    srcset="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'small_blog_img'); ?> 460w, <?php echo get_the_post_thumbnail_url(get_the_ID(), 'related_post_img'); ?> 768w">
-                                            <?php endif; ?>
+                                            <img
+                                                src="<?php echo get_the_post_thumbnail_or_placeholder( get_the_ID(), 'big_blog_img' ); ?>"
+                                                alt=""
+                                                srcset="<?php echo get_the_post_thumbnail_or_placeholder( get_the_ID(), 'big_section_img' ); ?> 480w,
+                                                    <?php echo get_the_post_thumbnail_or_placeholder( get_the_ID(), 'big_blog_img' ); ?> 768w,
+                                                    <?php echo get_the_post_thumbnail_or_placeholder( get_the_ID(), 'img_680x680' ); ?> 1024w,
+                                                    <?php echo get_the_post_thumbnail_or_placeholder( get_the_ID(), 'img_940x940' ); ?> 1400w">
                                             <?php
                                             $category = get_the_category();
                                             $useCatLink = true;

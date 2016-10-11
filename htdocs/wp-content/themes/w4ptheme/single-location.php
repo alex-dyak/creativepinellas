@@ -69,7 +69,14 @@ get_header(); ?>
                                     <br>
                                     <?php echo $EM_Location->get_country(); ?>
                                 </p>
-                                <p><?php the_field('venue_tel'); ?></p>
+                                <p>
+                                    <?php if( !empty( get_field('venue_tel', false) ) ) : ?>
+                                        <div><?php the_field('venue_tel'); ?></div>
+                                    <?php endif; ?>
+                                    <?php if( !empty( get_field('venue_url', false) ) ) : ?>
+                                        <div><a href="<?php the_field('venue_url'); ?>">Website</a></div>
+                                    <?php endif; ?>
+                                </p>
                                 <div class="siteSidebar-item-mapHolder">
                                     <? if (isset($EM_Location)) : ?>
                                         <?php echo $map = $EM_Location->output('#_LOCATIONMAP'); ?>
@@ -80,8 +87,7 @@ get_header(); ?>
                                     <p>
                                         <a href="<?php echo $get_directions_link; ?>" target="_blank"><?php echo __('Get Directions', 'w4ptheme'); ?></a>
                                     </p>
-                                <?php endif ?>
-                            <?php endif ?>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -98,15 +104,16 @@ get_header(); ?>
                         <?php foreach ($events as $EM_Event) : ?>
                             <!--    postsList-item  -->
                             <div class="postsList-item">
-                                <?php if (has_post_thumbnail()) : ?>
-                                    <div class="postsList-item-image">
-                                        <img
-                                            src="<?php echo get_the_post_thumbnail_url($EM_Event->post_id, 'small_blog_img'); ?>"
-                                            alt=""
-                                            srcset="<?php echo get_the_post_thumbnail_url($EM_Event->post_id, 'small_blog_img'); ?> 460w, <?php echo get_the_post_thumbnail_url($EM_Event->post_id, 'related_post_img'); ?> 768w">
-                                        <span class="postsList-item-categoryDecor"></span>
-                                    </div>
-                                <?php endif ?>
+                                <div class="postsList-item-image">
+                                    <img
+                                        src="<?php echo get_the_post_thumbnail_or_placeholder( $EM_Event->post_id, 'big_blog_img' ); ?>"
+                                        alt=""
+                                        srcset="<?php echo get_the_post_thumbnail_or_placeholder( $EM_Event->post_id, 'big_section_img' ); ?> 480w,
+                                            <?php echo get_the_post_thumbnail_or_placeholder( $EM_Event->post_id, 'big_blog_img' ); ?> 768w,
+                                            <?php echo get_the_post_thumbnail_or_placeholder( $EM_Event->post_id, 'img_680x680' ); ?> 1024w,
+                                            <?php echo get_the_post_thumbnail_or_placeholder( $EM_Event->post_id, 'img_940x940' ); ?> 1400w">
+                                    <span class="postsList-item-categoryDecor"></span>
+                                </div>
                                 <div class="postsList-item-body">
                                     <?php if (!empty($EM_Event->event_name)) : ?>
                                         <h3>
