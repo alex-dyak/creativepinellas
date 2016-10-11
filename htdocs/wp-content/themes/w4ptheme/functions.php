@@ -57,7 +57,8 @@ function w4ptheme_setup() {
         add_image_size( 'post_page_img', 650, 300, true );
         add_image_size( 'single_event_img', 650, '', true );
         add_image_size( 'img_680x680', 680, 680, TRUE );
-        add_image_size( 'small_blog_img', 880, 880, true );
+        add_image_size( 'small_blog_img', 400, 400, true );
+        add_image_size( 'large_blog_img', 880, 880, true );
         add_image_size( 'img_940x940', 940, 940, TRUE );
         add_image_size( 'header_img', 960, '', TRUE );
         add_image_size( 'big_section_img', 960, 960, true );
@@ -67,6 +68,23 @@ function w4ptheme_setup() {
 	}
 
 }
+        add_image_size( 'related_post_img', 280, 280, true );
+        add_image_size( 'artist_gallery_300x300', 300, 300, TRUE );
+        add_image_size( 'arts_community_img', 320, 800, TRUE );
+        add_image_size( 'artist_gallery_440x440', 440, 440, true );
+        add_image_size( 'small_section_img', 480, 480, true );
+        add_image_size( 'artist_gallery_600x250', 600, 250, TRUE );
+        add_image_size( 'post_page_img', 650, 300, true );
+        add_image_size( 'single_event_img', 650, '', true );
+        add_image_size( 'img_680x680', 680, 680, TRUE );
+        add_image_size( 'small_blog_img', 400, 400, true );
+        add_image_size( 'large_blog_img', 880, 880, true );
+        add_image_size( 'img_940x940', 940, 940, TRUE );
+        add_image_size( 'header_img', 960, '', TRUE );
+        add_image_size( 'big_section_img', 960, 960, true );
+        add_image_size( 'header_img_1060x715', 1060, '', TRUE );
+        add_image_size( 'big_blog_img', 1480, 1480, true );
+        add_image_size( 'header_img_1600x1080', 1600, '', TRUE );
 
 add_action( 'after_setup_theme', 'w4ptheme_setup' );
 
@@ -537,14 +555,14 @@ function pre_save_event( $EM_Event ) {
 				update_post_meta( $EM_Event->post_id, 'event_artist', $art );
 			}
 
-			if ( isset( $_POST['event-type'] ) ) {
-				foreach ( $_POST['event-type'] as $event_type ) {
+			if ( isset( $_POST['tax_input']['event-type'] ) ) {
+				foreach ( $_POST['tax_input']['event-type'] as $event_type ) {
 					wp_set_post_terms( $EM_Event->post_id, $event_type, 'event-type', TRUE );
 				}
 			}
 
-			if ( isset( $_POST['who-should-attend'] ) ) {
-				foreach ( $_POST['who-should-attend'] as $who_should_attend ) {
+			if ( isset( $_POST['tax_input']['who-should-attend'] ) ) {
+				foreach ( $_POST['tax_input']['who-should-attend'] as $who_should_attend ) {
 					wp_set_post_terms( $EM_Event->post_id, $who_should_attend, 'who-should-attend', TRUE );
 				}
 			}
@@ -552,6 +570,44 @@ function pre_save_event( $EM_Event ) {
 	}
 }
 add_action('em_event_save_meta_pre', 'pre_save_event');
+
+
+/**
+ * Save post meta to event.
+ * @param $EM_Event
+ */
+function post_save_event( $updated, $EM_Event, $event_ids, $post_ids ) {
+    //var_dump($_POST['event-type']);die();
+    foreach( $post_ids as $post_id ) {
+        if ( isset( $_POST['cost'] ) ) {
+                update_post_meta( $post_id, 'event_cost', $_POST['cost'] );
+        }
+        if ( isset( $_POST['event-website'] ) ) {
+                update_post_meta( $post_id, 'event_website', $_POST['event-website'] );
+        }
+        if ( isset( $_POST['artist_name'] ) ) {
+                $art = serialize( $_POST['artist_name'] );
+                update_post_meta( $post_id, 'event_artist', $art );
+        }
+        
+        if ( isset( $_POST['tax_input']['event-type'] ) ) {
+                foreach ( $_POST['tax_input']['event-type'] as $event_type ) {
+                    if( !empty( $event_type ) ) {
+                        wp_set_post_terms( $post_id, $event_type, 'event-type', TRUE );
+                    }
+                }
+        }
+
+        if ( isset( $_POST['tax_input']['who-should-attend'] ) ) {
+                foreach ( $_POST['tax_input']['who-should-attend'] as $who_should_attend ) {
+                    if( !empty( $who_should_attend ) ) {
+                        wp_set_post_terms( $post_id, $who_should_attend, 'who-should-attend', TRUE );
+                    }
+                }
+        }
+    }
+}
+add_filter('em_event_save_events', 'post_save_event', 10, 4);
 
 /**
  * Save post meta to Location.
@@ -567,3 +623,29 @@ function pre_save_location( $EM_Location ) {
 }
 add_action('em_location_save_meta_pre', 'pre_save_location');
 
+
+function get_the_post_thumbnail_or_placeholder( $id, $size ) {
+    $img = get_the_post_thumbnail_url( get_the_ID(), $size );
+    if ( !$img ) {
+        $img = get_template_directory_uri() . '/images/default_for_grid/cpin-fallback-image-icon.jpg';
+    }
+    return $img;
+}
+
+/* functions to force wordpress to upscale */
+/* from http://www.binarynote.com/how-to-perfectly-upscale-image-in-wordpress.html */
+function binary_thumbnail_upscale( $default, $orig_w, $orig_h, $new_w, $new_h, $crop ){
+    if ( !$crop ) return null; // let the WordPress default function handle this
+
+    $aspect_ratio = $orig_w / $orig_h;
+    $size_ratio = max($new_w / $orig_w, $new_h / $orig_h);
+
+    $crop_w = round($new_w / $size_ratio);
+    $crop_h = round($new_h / $size_ratio);
+
+    $s_x = floor( ($orig_w - $crop_w) / 2 );
+    $s_y = floor( ($orig_h - $crop_h) / 2 );
+var_dump($s_x);
+    return array( 0, 0, (int) $s_x, (int) $s_y, (int) $new_w, (int) $new_h, (int) $crop_w, (int) $crop_h );
+}
+add_filter( 'image_resize_dimensions', 'binary_thumbnail_upscale', 10, 6 );

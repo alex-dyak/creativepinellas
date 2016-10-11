@@ -16,8 +16,7 @@ if( is_object($EM_Event) && !$EM_Event->can_manage('edit_events','edit_others_ev
 	$EM_Event = new EM_Event();
 }
 $required = apply_filters('em_required_html','<i>*</i>');
-
-echo $EM_Notices;
+var_dump($EM_Event);die();echo $EM_Notices;
 //Success notice
 if( !empty($_REQUEST['success']) ){
 	if(!get_option('dbem_events_form_reshow')) return false;
@@ -62,22 +61,7 @@ if( !empty($_REQUEST['success']) ){
 			<div class="large-8">
 				<label><?php esc_html_e('Event Type', 'events-manager'); ?></label>
 				<div class="form-row">
-					<?php $select_events = wp_dropdown_categories(array(
-						'echo' => 0,
-						'show_option_all'    => __('','events-manager'),
-						'hide_empty' => 0,
-						'orderby' =>'name',
-						'name' => 'event-type',
-						'hierarchical' => true,
-						'taxonomy' => 'event-type',
-						'selected' => '',
-						'show_option_none' =>'',
-						'option_none_value'=> 0,
-						'class'=>'em-events-search-category'
-					));
-					$select_events = str_replace( "name='event-type' id=", "name='event-type[]' multiple='multiple' id=", $select_events );
-					echo $select_events;
-					?>
+					
 				</div>
 			</div>
 			<div class="large-8">

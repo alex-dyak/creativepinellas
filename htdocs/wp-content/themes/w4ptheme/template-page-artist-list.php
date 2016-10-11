@@ -104,18 +104,13 @@ get_header(); ?>
 							<div class="gridItem gridItem--element">
 								<a href="<?php the_permalink(); ?>"
 								   class="js-touchFocus">
-									<?php if ( has_post_thumbnail() ) : ?>
-										<img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'small_blog_img' ); ?>"
-										     alt=""
-										     srcset="<?php echo get_the_post_thumbnail_url( get_the_ID(),
-											     'small_blog_img' ); ?> 460w,
-											<?php echo get_the_post_thumbnail_url( get_the_ID(),
-											     'related_post_img' ); ?> 768w">
-										<?php else : ?>
-										<?php $img = get_template_directory_uri() . '/images/default_for_grid/cpin-fallback-image-icon.jpg'; ?>
-										<img src="<?php echo $img; ?>" alt=""
-										     srcset="<?php echo $img; ?> 768w, <?php echo $img; ?> 1024w,  <?php echo $img; ?> 1400w">
-									<?php endif; ?>
+									<img
+                                                                            src="<?php echo get_the_post_thumbnail_or_placeholder( get_the_ID(), 'big_blog_img' ); ?>"
+                                                                            alt=""
+                                                                            srcset="<?php echo get_the_post_thumbnail_or_placeholder( get_the_ID(), 'big_section_img' ); ?> 480w,
+                                                                                <?php echo get_the_post_thumbnail_or_placeholder( get_the_ID(), 'big_blog_img' ); ?> 768w,
+                                                                                <?php echo get_the_post_thumbnail_or_placeholder( get_the_ID(), 'img_680x680' ); ?> 1024w,
+                                                                                <?php echo get_the_post_thumbnail_or_placeholder( get_the_ID(), 'img_940x940' ); ?> 1400w">
 									<div class="gridItem-info">
 										<h3><?php short_title( '',
 												60 ); ?> </h3>
